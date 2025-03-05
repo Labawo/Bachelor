@@ -1,10 +1,13 @@
 using System.Collections;
 using System.Security.Claims;
+using System.Text.Json;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.JsonWebTokens;
 using backend.Auth.Models;
+using backend.Data;
+using backend.Data.Dtos.Levels;
 using backend.Data.Dtos.Words;
 using backend.Data.Repositories;
 using backend.Data.Entities;
@@ -86,172 +89,107 @@ public class WordsController : ControllerBase
     [Authorize(Roles = SiteRoles.Admin)]
     public async Task<ActionResult<WordDto>> Create(int levelId, CreateWordDto wordDto)
     {
-        var therapy = await _therapiesRepository.GetAsync(therapyId);
-        if (therapy == null) return NotFound($"Couldn't find a therapy with id of {therapyId}");
+        var level = await _levelsRepository.GetAsync(levelId);
+        if (level == null) return NotFound($"Couldn't find a level with id of {levelId}");
 
-        var authorizationResult = await _authorizationService.AuthorizeAsync(User, therapy, PolicyNames.ResourceOwner);
+        var authorizationResult = await _authorizationService.AuthorizeAsync(User, level, PolicyNames.ResourceOwner);
 
         if (!authorizationResult.Succeeded)
         {
             return Forbid();
         }
 
-        var appointment = new Appointment { Price = appointmentDto.Price };
-        appointment.therapy = therapy;
-        appointment.TherapyId = therapy.Id;
-        var userId = therapy.OwnerId;
-        var doctor = await _userManager.FindByIdAsync(userId);
+        var word = new Word { Price = wordDto.Price };
+        word.level = level;
+        word.LevelId = level.Id;
 
-        if (doctor != null)
-        {
-            appointment.DoctorName =
-                doctor.UserName; // Replace FullName with the property name containing the doctor's name in your ApplicationUser model
-        }
+        await _wordsRepository.CreateAsync(word);
 
-        var existingAppointments = await _appointmentRepository.GetManyForDoctorWithoutFilterAsync(therapy.OwnerId);
-        DateTime oneWeekFromNow = DateTime.UtcNow.AddDays(7);
-
-        var weeklyAppointments = existingAppointments.Where(existingAppointment =>
-            existingAppointment.Time >= DateTime.UtcNow && existingAppointment.Time <= oneWeekFromNow
-        );
-
-        // Convert the appointment time from the DTO to DateTime
-        DateTime newAppointmentStart = DateTime.Parse(appointmentDto.Time);
-        DateTime newAppointmentEnd = newAppointmentStart.AddHours(1);
-
-        // Check if there's any existing appointment that overlaps with the new appointment
-        if (existingAppointments.Any(existingAppointment =>
-                (existingAppointment.Time >= newAppointmentStart && existingAppointment.Time < newAppointmentEnd) ||
-                (existingAppointment.Time <= newAppointmentStart &&
-                 existingAppointment.Time.AddHours(1) > newAppointmentStart)
-            ) || weeklyAppointments.Count() >= 12)
-        {
-            return Conflict("Appointment at this time already exists or you have reached appointment limit.");
-        }
-
-
-        appointment.Time = DateTime.Parse(appointmentDto.Time);
-
-        if (appointment.Time < DateTime.UtcNow)
-        {
-            return Forbid();
-        }
-
-        await _appointmentRepository.CreateAsync(appointment);
-
-        return Created("GetAppointment",
-            new AppointmentDto(appointment.Id, appointment.Time, appointment.Price, appointment.PatientId,
-                appointment.DoctorName));
+        return Created("GetWord",
+            new WordDto(word.Id, word.Time));
     }
 
-    [HttpPut("{appointmentId}")]
-    [Authorize(Roles = ClinicRoles.Doctor + "," + ClinicRoles.Admin)]
-    public async Task<ActionResult<AppointmentDto>> Update(int therapyId, int appointmentId,
-        UpdateAppointmentDto updateAppointmentDto)
+    [HttpPut("{wordId}")]
+    [Authorize(Roles = SiteRoles.Admin)]
+    public async Task<ActionResult<WordDto>> Update(int levelId, int wordId,
+        UpdateWordDto updateWordDto)
     {
-        var therapy = await _therapiesRepository.GetAsync(therapyId);
-        if (therapy == null) return NotFound($"Couldn't find a therapy with id of {therapyId}");
+        var level = await _levelsRepository.GetAsync(levelId);
+        if (level == null) return NotFound($"Couldn't find a level with id of {levelId}");
 
-        var authorizationResult = await _authorizationService.AuthorizeAsync(User, therapy, PolicyNames.ResourceOwner);
+        var authorizationResult = await _authorizationService.AuthorizeAsync(User, level, PolicyNames.ResourceOwner);
 
         if (!authorizationResult.Succeeded)
         {
             return Forbid();
         }
 
-        var oldAppointment = await _appointmentRepository.GetAsync(therapyId, appointmentId);
-        if (oldAppointment == null)
+        var oldWord = await _wordsRepository.GetAsync(levelId, wordId);
+        
+        if (oldWord == null)
             return NotFound();
+        
+        oldWord.Price = updateWordDto.Price;
 
-        //oldPost.Body = postDto.Body;
-        oldAppointment.Price = updateAppointmentDto.Price;
+        await _wordsRepository.UpdateAsync(oldWord);
 
-        if (oldAppointment.Time < DateTime.UtcNow)
-        {
-            return Forbid();
-        }
-
-        if (oldAppointment.Time != DateTime.Parse(updateAppointmentDto.Time))
-        {
-            var existingAppointments = await _appointmentRepository.GetManyForDoctorWithoutFilterAsync(therapy.OwnerId);
-            DateTime oneWeekFromNow = DateTime.UtcNow.AddDays(7);
-
-            var weeklyAppointments = existingAppointments.Where(appointment =>
-                appointment.Time >= DateTime.UtcNow && appointment.Time <= oneWeekFromNow
-            );
-
-            // Convert the appointment time from the DTO to DateTime
-            DateTime newAppointmentStart = DateTime.Parse(updateAppointmentDto.Time);
-            DateTime newAppointmentEnd = newAppointmentStart.AddHours(1);
-
-            // Check if there's any existing appointment that overlaps with the new appointment
-            if (existingAppointments.Any(appointment =>
-                    (appointment.Time >= newAppointmentStart && appointment.Time < newAppointmentEnd) ||
-                    (appointment.Time <= newAppointmentStart && appointment.Time.AddHours(1) > newAppointmentStart)
-                ) || weeklyAppointments.Count() >= 12)
-            {
-                return Conflict("Appointment at this time already exists or you have reached appointment limit.");
-            }
-
-            oldAppointment.Time = DateTime.Parse(updateAppointmentDto.Time);
-
-            if (oldAppointment.Time < DateTime.UtcNow)
-            {
-                return Forbid();
-            }
-        }
-
-        await _appointmentRepository.UpdateAsync(oldAppointment);
-
-        if (oldAppointment.PatientId != null)
-        {
-            var notification = new Notification
-            {
-                Content = "Your selected appointment was changed.",
-                Time = DateTime.UtcNow,
-                OwnerId = oldAppointment.PatientId
-            };
-
-            await _notificationsRepository.CreateAsync(notification);
-        }
-
-        return Ok(new AppointmentDto(oldAppointment.Id, oldAppointment.Time, oldAppointment.Price,
-            oldAppointment.PatientId, oldAppointment.DoctorName));
+        return Ok(new WordDto(oldWord.Id, oldWord.Time));
     }
 
-    [HttpDelete("{appointmentId}")]
-    [Authorize(Roles = ClinicRoles.Doctor + "," + ClinicRoles.Admin)]
-    public async Task<ActionResult> Remove(int therapyId, int appointmentId)
+    [HttpDelete("{wordId}")]
+    [Authorize(Roles = SiteRoles.Admin)]
+    public async Task<ActionResult> Remove(int levelId, int wordId)
     {
-        var therapy = await _therapiesRepository.GetAsync(therapyId);
-        if (therapy == null) return NotFound($"Couldn't find a therapy with id of {therapyId}");
+        var level = await _levelsRepository.GetAsync(levelId);
+        if (level == null) return NotFound($"Couldn't find a level with id of {levelId}");
 
-        var authorizationResult = await _authorizationService.AuthorizeAsync(User, therapy, PolicyNames.ResourceOwner);
+        var authorizationResult = await _authorizationService.AuthorizeAsync(User, level, PolicyNames.ResourceOwner);
 
         if (!authorizationResult.Succeeded)
         {
             return Forbid();
         }
 
-        var appointment = await _appointmentRepository.GetAsync(therapyId, appointmentId);
-        if (appointment == null)
+        var word = await _wordsRepository.GetAsync(levelId, wordId);
+        
+        if (word == null)
             return NotFound();
 
-        if (appointment.PatientId != null)
-        {
-            var notification = new Notification
-            {
-                Content = "Appointment at " + appointment.Time + " was removed.",
-                Time = DateTime.UtcNow,
-                OwnerId = appointment.PatientId
-            };
-
-            await _notificationsRepository.CreateAsync(notification);
-        }
-
-        await _appointmentRepository.RemoveAsync(appointment);
+        await _wordsRepository.RemoveAsync(word);
 
         // 204
         return NoContent();
+    }
+    
+    private IEnumerable<LinkDto> CreateLinksForWords(int wordId)
+    {
+        yield return new LinkDto{ Href = Url.Link("GetWord", new {wordId}), Rel = "self", Method = "GET"};
+        yield return new LinkDto{ Href = Url.Link("DeleteWord", new {wordId}), Rel = "delete_topic", Method = "DELETE"};
+    }
+
+    private string? CreateWordsResourceUri(WordSearchParameters wordSearchParameters, RecourceUriType type)
+    {
+
+        return type switch
+        {
+            RecourceUriType.PreviousPage => Url.Link("GetWords",
+                new
+                {
+                    pageNumber = wordSearchParameters.PageNumber - 1,
+                    pageSize = wordSearchParameters.PageSize,
+                }),
+            RecourceUriType.NextPage => Url.Link("GetWords",
+                new
+                {
+                    pageNumber = wordSearchParameters.PageNumber + 1,
+                    pageSize = wordSearchParameters.PageSize,
+                }),
+            _ => Url.Link("GetWords",
+                new
+                {
+                    pageNumber = wordSearchParameters.PageNumber,
+                    pageSize = wordSearchParameters.PageSize,
+                })
+        };
     }
 }

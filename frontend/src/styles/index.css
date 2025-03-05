@@ -1,0 +1,736 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-family: "Times New Roman", Times, serif;
+    font-size: 15px;
+    color: #FEFFFF;
+}
+
+body {
+    min-height: 100vh;
+    background-color: white;
+    padding: 0;
+    margin: 0;
+}
+
+h1, h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+h3 {
+    text-align: center;
+}
+
+.App {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+section {
+    padding-top: 35px;
+    width: 100vw; 
+    min-height: 85vh; 
+    max-width: 100%; 
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start; 
+    background-color: #3AAFA9;
+}
+
+.log-reg-sec {
+    min-height: 95vh; 
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    flex-grow: 1;
+    padding-bottom: 1rem;
+}
+
+
+input[type="text"],
+input[type="password"],
+input[type="email"],
+input[type="number"],
+input[type="time"],
+input[type="date"],
+input[type="file"],
+button,
+select,
+textarea {
+  font-family: 'Nunito', sans-serif;
+  font-size: 18px;
+  padding: 0.25rem;
+  border-radius: 0.5rem;
+  margin: 10px;
+  width: 50%;
+}
+
+label,
+button {
+  margin-top: 1rem;
+}
+
+button {
+  padding: 0.5rem;
+}
+
+li {
+    list-style-type: none;
+}
+
+.instructions {
+    font-size: 0.75rem;
+    border-radius: 0.5rem;
+    background: #000;
+    width: 51%;
+    color: #fff;
+    padding: 0.25rem;
+    position: relative;
+    bottom: -10px;
+}
+
+.instructions > svg {
+    margin-right: 0.25rem;
+}
+
+.offscreen {
+    position: absolute;
+    left: -9999px;
+}
+
+.hide {
+    display: none;
+}
+
+.valid {
+    color: limegreen;
+    margin-left: 0.25rem;
+}
+
+.invalid {
+    color: red;
+    margin-left: 0.25rem;
+}
+
+.errmsg {
+    background-color: lightpink;
+    color: firebrick;
+    font-weight: bold;
+    padding: 0.5rem;
+    margin-bottom: 0.5rem;
+    width: 35%;
+    margin: auto;
+}
+
+.line {
+    display: inline-block;
+}
+
+.flexGrow {
+    flex-grow: 1;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-end;
+}
+
+.title_div {
+    background-color: #3AAFA9;
+    border-bottom: 1px solid #FEFFFF;
+    width: 100%;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    margin: 0;
+    font-size: 35px;
+    color: #FEFFFF
+}
+
+.title_div h3 {
+    text-align: center;
+}
+
+.shortcut-div {
+    margin-left: 20px;
+    width: 150px;
+}
+
+.menu-icon {
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    padding: 10px;
+    cursor: pointer;
+}
+
+.menu-icon:hover {
+    background-color: black;
+    color: white;
+}
+
+.footer {
+    position: relative;
+    width: 100%; 
+    background-color: #3AAFA9;
+    padding-top: 15px;
+    padding-bottom: 0;
+    color:#FEFFFF;
+    font-size: 15px;
+    font-weight: 250;
+}
+
+.footer {
+    font-size: 14px;
+    text-align: center;
+    padding-top: 7px;
+    padding-bottom: 7px;
+}
+
+.navbar {
+    background-color: #3AAFA9;
+    width: 100%;
+}
+
+.nav-link-span {
+    flex: 1;
+    text-align: center;
+}
+
+.nav-link {
+    text-decoration: none;
+    display: inline-block;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    width: 100%;
+    height: 100%;
+    font-size: 25px;
+    font-weight: bold;
+    color: white;
+}
+
+.navbar-links {
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: 0px;
+}
+
+.nav-link-span:hover {
+    cursor: pointer;
+    color: #17252A;
+    transition: background-color 0.3s, border 0.3s;
+}
+
+.nav-link-span:hover .nav-link {
+    color: #DEF2F1; 
+    transition: color 0.3s;
+}
+
+.active-span .nav-link{
+    color: #DEF2F1; 
+}
+
+.hidden {
+    display: none;
+}
+
+.logout-div {
+    float: right;
+    text-align: center;
+    margin-top: 5px;
+    width: 20%;
+}
+
+.logout-btn {
+    background-color: #3AAFA9;
+    color: #FEFFFF;
+    border: none;
+    text-align: center;
+    margin-top: 0;
+    font-size: 22px;
+    cursor: pointer;
+    width: 20%;
+    padding: 0;
+}
+
+.logout-btn:hover{
+    background-color: rgb(190, 2, 2);
+}
+
+.password-btn {
+    background-color: #3AAFA9;
+    color: #FEFFFF;
+    border: none;
+    text-align: center;
+    margin-top: 0;
+    font-size: 25px;
+    cursor: pointer;
+    width: 20%;
+    padding: 0;
+}
+
+.password-btn:hover{
+    background-color: #bcbbb7;
+}
+
+.user-name-div {
+    background-color: #3AAFA9;
+    color: #FEFFFF;
+    border: none;
+    text-align: center;
+    margin-top: 0;
+    font-size: 22px;
+    width: 25%;
+    padding: 0;
+}
+
+.table-container h2{
+    display: flex;
+    justify-content: center; 
+    align-items: center; 
+}
+
+.therapy-image {
+    max-width: 100%; 
+    height: auto; 
+    display: block; 
+    margin: 0 auto; 
+}
+
+.password-reset-container {
+    max-width: 90%; 
+    overflow-x: hidden; 
+    overflow-y: auto; 
+}
+
+.popup {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: center;
+}
+
+.popup.active {
+    display: flex;
+}
+
+.popup-content {
+    color: black; 
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    width: 30%;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.popup-content h3 {
+    color: black; 
+    margin-bottom: 10px;
+}
+
+.popup-content .close {
+    color: red; 
+    cursor: pointer;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 20px;
+}
+
+.recommendations-table {
+    border: 1px solid black;
+    width: 100%;
+    text-align: left;
+}
+
+
+.table-container {
+    overflow-x: auto; 
+  }
+  
+
+.my-table {
+    width: 50%; 
+    border-collapse: collapse;
+    text-align: center;
+}
+
+.create-button-v1,
+.related-button,
+.load-button-v1, 
+.therapy-create-btn {
+    background-color: #3066be;
+    border: none;
+    cursor: pointer;
+    color: white;
+    transition: background-color 0.3s; 
+    width: 10%;
+}
+
+.table-buttons-blue {
+    background-color: #3066be;
+    border: none;
+    cursor: pointer;
+    color: white;
+    padding-left: 15px;
+    padding-right: 35px;
+    transition: background-color 0.3s; 
+    width: 0;
+}
+
+.mock-button {
+    background-color: white;
+    border: none;
+    color: white;
+    padding-left: 15px;
+    padding-right: 35px; 
+    width: 0;
+}
+
+.create-button-v1,
+.related-button {
+    width: 20%;
+}
+
+.therapy-create-btn {
+    width: 90%;
+}
+
+.related-button {
+    margin-left: 40%;
+}
+
+.table-buttons-red {
+    background-color: #f44336;
+    border: none;
+    cursor: pointer;
+    color: white;
+    padding-left: 15px;
+    padding-right: 30px;
+    transition: background-color 0.3s; 
+    width: 0;
+}
+
+.table-buttons-green {
+    background-color: #75975e;
+    border: none;
+    cursor: pointer;
+    color: white;
+    padding-left: 15px;
+    padding-right: 30px;
+    transition: background-color 0.3s; 
+    width: 0;
+}
+
+.table-buttons-gold {
+    background-color: #ffd700;
+    border: none;
+    cursor: pointer;
+    padding-left: 15px;
+    padding-right: 30px;
+    transition: background-color 0.3s; 
+    width: 0;
+}
+
+.allowance {
+    width: 15%;
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.restriction {
+    width: 15%;
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.create-button-v1:hover,
+.table-buttons-blue:hover,
+.related-button:hover,
+.auth_button:hover,
+.load-button-v1:hover,
+.therapy-create-btn:hover {
+    background-color: #28559e; 
+}
+
+.table-buttons-red:hover {
+    background-color: #d32f2f; 
+}
+
+.table-buttons-green:hover {
+    background-color: #5a784b; 
+}
+
+.table-buttons-gold:hover {
+    background-color: #cca000; 
+}
+
+.create-button-v1  {
+    float: right;
+}
+
+.load-button-v1 {
+    margin-left: 45%;
+}
+
+.no-list-items-p {
+    margin-top: 10%;
+    text-align: center;
+}
+
+.no-list-items-np {
+    text-align: center;
+}
+
+.test-score-p {
+    text-align: center;
+    margin-bottom: 20px;
+    margin-top: 10px;
+}
+
+.system-title {
+    display: block;
+}
+
+.notification-item {
+    background-color: rgba(255, 255, 255, 0.54);
+    padding: 10px;
+    border-radius: 25px;
+    border: 1px solid black;
+    font-size: 18px;
+    width: 75%;
+    margin: 5px auto;
+}
+
+.close-button {
+    background-color: none;
+    border: none;
+    font-weight: bold;
+    float: right;
+    padding-top: 0;
+    margin-top: 0;
+    font-size: 16px;
+    cursor: pointer;
+    transition: color 0.3s;
+    width: 10%;
+}
+
+.close-button {
+    background-color: white;
+    
+}
+
+.close-button:hover {
+    color: #d32f2f;
+    transition: color 0.3s;
+}
+
+.notification-header {
+    border-top-left-radius: 25px;
+    border-top-right-radius: 25px;
+    background-color: #5DADE2;
+    padding-top: 30px;
+    padding-bottom: 20px;
+    margin-bottom: 5px;
+    border-bottom: 1px solid black;
+}
+
+.notifications-container {
+    width: 100%;
+    align-items: center;
+}
+
+.notificationsdiv-container {
+    width: 50%;
+    margin: 0 auto;
+    border: 1px solid black;
+    border-radius: 25px;
+}
+
+.input_form {
+    margin-left: 32.5%;
+}
+
+.login_footer {
+    text-align: center;
+}
+
+.auth_button {
+    background-color: #3066be;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    color: white;
+    font-weight: bold;
+}
+
+.greeting-note {
+    text-align: center;
+    font-size: 35px;
+    padding-bottom: 40px;   
+}
+
+.therapy-row {
+    border: 1px solid black;
+    width: 47.5%;
+    margin: 1.25%;
+    display: inline-block;
+}
+
+.therapy-create-btn-div {
+    padding-bottom: 0px;
+    width: 25%;
+    margin-left: auto;
+}
+
+.therapy-create-btn {
+    margin-right: auto;
+}
+
+.therapy-info-name {
+    background-color: #5DADE2;
+    border-bottom: 1px solid black;
+    padding-left: 10px;
+    font-size: 35px;
+    font-weight: bold;
+    padding-bottom: 10px;
+    padding-top: 10px;
+}
+
+.therapy-info {
+    font-style: italic;
+    padding-left: 15px;
+    padding-bottom: 10px;
+    padding-top: 10px;
+}
+
+.therapy-actions {
+    width: 62.5%;
+    margin-left: auto;
+}
+
+tbody tr {
+    border-bottom: 1px solid black;
+}
+
+.center-testp {
+    text-align: center;
+    padding-top: 20px;
+    padding-bottom: 5px;
+}
+
+.had-test-create-btn {
+    margin-right: 40%;
+}
+
+.red {
+    color: red;
+}
+
+.green {
+    color: green;
+}
+
+.red-button {
+    width: 135px;
+    cursor: pointer;
+    color: white;
+    background-color: #f44336;
+    font-weight: bold;
+    border: none;
+}
+
+.red-button:hover {
+    background-color: red;
+}
+
+.error-message {
+    color: red;
+}
+
+.filter-container {
+    width: 100%;
+}
+
+.filter-container-inside {
+    width: 50%;
+    margin: 0 auto;
+}
+
+.filter-container-input {
+    width: 100%;
+}
+
+@media screen and (max-width: 768px) { 
+    section {
+        max-width: 100%;
+    }
+
+    .load-button-v1, .related-button {
+        margin-left: 0;
+    }
+
+    .no-list-items-p {
+        margin-top: 40%;
+    }
+
+    html {
+        font-size: 18px;
+    }
+
+    .notification-item{
+        width: 100%;
+        margin-left: 0;
+    }
+
+    .nav-link-span {
+        display: block;
+        max-width: 50%;
+    }
+
+    .navbar-links {
+        display: block;
+    }
+
+    .logout-div {
+        width: 40%;
+    }
+
+    .therapy-row {
+        border: 1px solid black;
+        width: 95%;
+        margin: 10px;
+        display: inline-block;
+    }
+
+    .therapy-create-btn-div {
+        width: 100%;
+    }
+
+    .therapy-actions {
+        width: 90%;
+        margin-left: auto;
+    }
+
+    .allowance {
+        width: 90%;
+    }
+    
+    .restriction {
+        width: 90%;
+    }
+}
