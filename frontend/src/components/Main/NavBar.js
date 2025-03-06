@@ -20,10 +20,16 @@ const NavBar = () => {
             <div className="navbar-allign">
                 <div className="navbar-links">
                     <span className={`nav-link-span ${isActiveLink('/') ? 'active-span' : ''}`}>
-                        <Link to="/" className='nav-link'>Home</Link>
+                        <Link to="/" className='nav-link'>Pagrindinis</Link>
                     </span>
                     <span className={canAccessAdmin ? `nav-link-span ${isActiveLink('/admin') ? 'active-span' : ''}` : 'hidden'}>
-                        <Link to="/admin" className={canAccessAdmin ? 'nav-link' : 'hidden'}>Users</Link>
+                        <Link to="/admin" className={canAccessAdmin ? 'nav-link' : 'hidden'}>Naudotojai</Link>
+                    </span>
+                    <span className={canAccessAdmin ? `nav-link-span ${isActiveLink('/admin') ? 'active-span' : ''}` : 'hidden'}>
+                        <Link to="/admin" className={canAccessAdmin ? 'nav-link' : 'hidden'}>Lygiai</Link>
+                    </span>
+                    <span className={canAccessAdmin ? `nav-link-span ${isActiveLink('/admin') ? 'active-span' : ''}` : 'hidden'}>
+                        <Link to="/admin" className={canAccessAdmin ? 'nav-link' : 'hidden'}>Ženkleliai</Link>
                     </span>
                     <span className={canAccessStudent ? `nav-link-span ${isActiveLink('/training') ? 'active-span' : ''}` : 'hidden'}>
                         <Link to="/training" className={canAccessStudent ? 'nav-link' : 'hidden'}>Treniruotė</Link>

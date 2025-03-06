@@ -1,10 +1,13 @@
 .quiz-container {
-    width: 500px; 
-    background-color: rgb(176, 176, 176);
-    border-radius: 4px;
-    margin-top: 100px;
+    width: 100%; 
+    max-height: 50vh;
+    min-height: 50vh;
+    overflow: auto;
+    background-color: white;
+    border: 5px double #c6c6cb;
     padding: 30px 60px;
     box-sizing: border-box;
+    margin: auto;
 }
 
 .active-question-no {
@@ -20,7 +23,7 @@
 }
 
 .quiz-question {
-    font-size: 20px;
+    font-size: 16px;
     font-weight: 500;
     margin: 0;
 }
@@ -34,7 +37,7 @@
     text-decoration: none;
     list-style: none;
     font-size: 16px;
-    border: 1px solid white;
+    border: 1px solid black;
     border-radius: 16px;
     padding: 11px;
     margin-top: 15px;
@@ -53,15 +56,19 @@
 }
 
 .quiz-button {
-    background: black;
-    border-radius: 9px;
-    font-size: 18px;
-    color: white;
-    padding: 10px 42px;
-    outline: none;
-    border: none;
-    margin-top: 15px;
+    padding: 0.25rem 0.75rem;
+    font-size: 1.3rem;
+    background: "transparent";
+    border-radius: 3px;
+    display: inline-block;
+    border: 2px solid #000;
     cursor: pointer;
+    transition: 0.25s;
+    will-change: transform;
+    box-shadow: -1px 1px 0px #333,
+        -2px 2px 0px #333,
+        -3px 3px 0px #333,
+        -4px 4px 0px #333;
 }
 
 .quiz-button:disabled {
@@ -86,13 +93,12 @@
 }
 
 .quiz-span {
-    color: blue;
+    color: black;
     font-size: 22px;
 }
 
 .quiz-input {
-    border: 1px solid black;
-    border-radius: 4px;
+    border: 5px double #c6c6cb;
     padding: 10px 20px;
     width: 100%;
     margin-top: 20px;

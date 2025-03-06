@@ -2,7 +2,7 @@ const Footer = () => {
 
     return (
         <div className="footer">
-            <p className='footer-text'>2024 Human Emotional State Monitoring System</p>
+            <p className='footer-text'>@2025 Spartaus rašymo sistema</p>
         </div>
     );
 };

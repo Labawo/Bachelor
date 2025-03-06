@@ -12,8 +12,14 @@ const TrainingPage = () => {
         <>
             <Title />
             <NavBar />
-            <div className='engine-holder-div'>
-                <Game />
+            <div className='gameboy-carcass'>
+                <div className='gameboy-screen'>
+                    <div className='engine-holder-div'>
+                        <Game />
+                    </div>                   
+                </div>
+                <div className='arrow-button'></div>
+                <div className='round-button'></div>
             </div>
             <Footer />
         </>

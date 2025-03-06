@@ -4,9 +4,10 @@ import React from 'react';
 const { Component } = React;
 
 const data = {
-  letters: "abcdefghijklmnopqrstuvwxyz".split(""),
-  numbers: "0123456789".split(""),
-  symbols: "<>;'\"[]{}+=()&%$#@!_-*:.,`?".split("")
+  raidės: "abcdefghijklmnopqrstuvwxyz".split(""),
+  skaičiai: "0123456789".split(""),
+  simboliai: "<>;'\"[]{}+=()&%$#@!_-*:.,`?".split(""),
+  lietuviškos: "ąčęėįšųūž".split(""),
 };
 
 const StyledButton = styled.button`
@@ -113,7 +114,7 @@ const AnimatedHeader = styled.h1`
   animation: header-animation 2s infinite linear;
   font-family: "Bungee Shade", cursive;
   text-align: center;
-  font-size: 4rem;
+  font-size: 3rem;
 
   @keyframes header-animation {
     0% {
@@ -203,7 +204,7 @@ const AnimatedHeader = styled.h1`
 
 const ViewContainer = styled.div`
   width: 100%;
-  min-height: 85vh;
+  max-height: 50vh;
   display: flex;
   overflow: hidden;
   align-items: center;
@@ -243,7 +244,7 @@ function HealthBar(props) {
   return (
     <HealthBarContainer>
       <HealthBarDiv style={style} />
-      <Title>Health</Title>
+      <Title>Sveikata</Title>
     </HealthBarContainer>
   );
 }
@@ -257,21 +258,7 @@ const InnerContainer = styled.div`
   position: relative;
   background: white;
   margin: 1rem;
-  animation: slide-in forwards 0.5s;
   transition: 0.5s;
-
-  @keyframes slide-in {
-    0% {
-      transform: translateY(-150vh);
-    }
-    100% {
-      transform: translateY(0);
-    }
-  }
-
-  &.reverse-animate-slide-in {
-    transform: translateY(-100vw);
-  }
 `;
 
 function RadioCheckBox(props) {
@@ -403,14 +390,12 @@ class StartView extends Component {
     });
 
     const speedOptions = [
-      "Faster",
-      "Fast",
-      "Normal",
-      "Slow",
-      "Slower"
+      "Greitai",
+      "Įprastai",
+      "Lėtai"
     ].map((el, i) => {
       let checked = false;
-      let value = 10 + i * 5;
+      let value = 60 + i * 5;
       if (spawnRate === value) {
         checked = true;
       }
@@ -431,35 +416,20 @@ class StartView extends Component {
     const disabled = this.state.selectedTextOptions.length >= 1 ? false : true;
 
     const animatingOut = this.state.animatingOut
-      ? { opacity: "1", top: "-150vh" }
+      ? { opacity: "1" }
       : {};
 
     return (
       <ViewContainer>
         <InnerContainer style={animatingOut}>
-          <AnimatedHeader>Type Fall</AnimatedHeader>
-          <p>
-            Select the types of characters you would like to practice, the rate
-            and whether you are penalized for mistakes(Hardcore).
-          </p>
+          <AnimatedHeader>Treniruoklis</AnimatedHeader>
           <OptionsContainer>
             <OptionsList>{textOptions}</OptionsList>
             <OptionsList>{speedOptions}</OptionsList>
-            <OptionsList>
-              <StyledCheckbox
-                value={"hardcore"}
-                checked={this.state.hardcore}
-                handleInput={() => {
-                  this.handleHardcore();
-                }}
-              >
-                Hardcore
-              </StyledCheckbox>
-            </OptionsList>
           </OptionsContainer>
           <div style={{ textAlign: "right" }}>
             <Button handleClick={this.onStartGame} disabled={disabled}>
-              Start Game
+              Pradėti
             </Button>
           </div>
         </InnerContainer>
@@ -480,7 +450,7 @@ class GameView extends Component {
     });
     options = [].concat.apply([], options);
     this.gameTime = 0;
-    this.intSpeed = 50;
+    this.intSpeed = 100;
     this.spawnRate = this.intSpeed * props.spawnRate;
     this.handleGameOver = props.onGameOver;
     this.hardcore = props.hardcore;
@@ -508,7 +478,7 @@ class GameView extends Component {
       const index = this.randomIntInRange(0, this.state.options.length);
       let item = {
         character: this.state.options[index],
-        xPosition: this.randomIntInRange(5, 95),
+        xPosition: this.randomIntInRange(5, 25),
         yPosition: -20,
         active: true,
         hitHealth: false,
@@ -630,14 +600,13 @@ class GameView extends Component {
 
     let containerStyles = {
       padding: "0 1rem",
-      height: "85vh",
+      height: "50vh",
       overflow: "hidden",
       position: "relative",
-      animation: "slide-in forwards .5s",
       transition: ".5s"
     };
 
-    containerStyles.top = this.state.animatingOut ? "150vh" : "0";
+    containerStyles.top = this.state.animatingOut ? "0" : "0";
     containerStyles.background = this.state.animatingOut ? "#F46652" : "white";
 
     return (
@@ -647,7 +616,7 @@ class GameView extends Component {
           document.querySelector("input").focus();
         }}
       >
-        <h1>Score: {this.state.score}</h1>
+        <h1>Taškai: {this.state.score}</h1>
         <input
           type="text"
           autoFocus
@@ -673,11 +642,11 @@ const GameOverContainer = styled.div`
 
   h2 {
     text-align: center;
-    font-size: 2.5rem;
+    font-size: 2rem;
     animation: scale-in 2s forwards;
   }
   h3 {
-    font-size: 1.5rem;
+    font-size: 1rem;
   }
 `;
 
@@ -713,48 +682,41 @@ class GameOverView extends React.Component {
     });
 
     const highScoretext =
-      props.score === props.highScore ? "New Highscore!" : "";
+      props.score === props.highScore ? "Naujas rekordas!" : "";
 
     let spawnSpeedText = "";
     switch (props.spawnRate) {
-      case 10:
-        spawnSpeedText = "Faster";
+      case 60:
+        spawnSpeedText = "Greitai";
         break;
-      case 15:
-        spawnSpeedText = "Fast";
+      case 65:
+        spawnSpeedText = "Įprastai";
         break;
-      case 20:
-        spawnSpeedText = "Normal";
-        break;
-      case 25:
-        spawnSpeedText = "Slow";
-        break;
-      case 30:
-        spawnSpeedText = "Slower";
+      case 70:
+        spawnSpeedText = "Lėtai";
         break;
       default:
         spawnSpeedText = "";
         break;
     }
 
-    const hardcoreText = props.hardcore ? "Hardcore" : "";
+    const hardcoreText = props.hardcore ? "Be klaidu" : "";
 
-    const containerStyle = this.state.animatingOut ? { top: "-150vh" } : {};
+    const containerStyle = this.state.animatingOut ? {} : {};
 
     return (
       <ViewContainer>
         <InnerContainer style={containerStyle}>
-          <AnimatedHeader>Type Fall</AnimatedHeader>
+          <AnimatedHeader>Treniruoklis</AnimatedHeader>
           <GameOverContainer>
-            <h2>Game Over!</h2>
+            <h2>Žaidimas baigtas!</h2>
             <h2>{highScoretext}</h2>
-            <h3>Score: {props.score}</h3>
-            <h3>Highscore: {props.highScore}</h3>
-            <h3>{hardcoreText}</h3>
-            <h3>Characters: {options}</h3>
-            <h3>Speed: {spawnSpeedText}</h3>
+            <h3>Taškai: {props.score}</h3>
+            <h3>Rekordas: {props.highScore}</h3>
+            <h3>Simboliu t.: {options}</h3>
+            <h3>Greitis: {spawnSpeedText}</h3>
             <div style={{ textAlign: "right" }}>
-              <Button handleClick={this.restartGame}>New Game</Button>
+              <Button handleClick={this.restartGame}>Naujas žaidimas</Button>
             </div>
           </GameOverContainer>
         </InnerContainer>
@@ -768,10 +730,10 @@ class Game extends Component {
     super(props);
     this.state = {
       currentView: "StartView",
-      selectedTextOptions: ["letters"],
-      textOptions: ["letters", "numbers", "symbols"],
-      spawnRate: 30,
-      hardcore: false,
+      selectedTextOptions: ["raidės"],
+      textOptions: ["raidės", "skaičiai", "simboliai", "lietuviškos"],
+      spawnRate: 60,
+      hardcore: true,
       score: 0,
       highScore: 0
     };

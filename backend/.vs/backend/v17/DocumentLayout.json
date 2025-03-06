@@ -47,21 +47,19 @@
               "RelativeToolTip": "backend\\appsettings.json",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2025-03-05T22:01:18.167Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-05T22:01:18.167Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "backend",
+              "Title": "backend.csproj",
               "DocumentMoniker": "C:\\Users\\Laurynas\\Desktop\\Bachelor\\backend\\backend\\backend.csproj",
               "RelativeDocumentMoniker": "backend\\backend.csproj",
               "ToolTip": "C:\\Users\\Laurynas\\Desktop\\Bachelor\\backend\\backend\\backend.csproj",
               "RelativeToolTip": "backend\\backend.csproj",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAABVAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2025-03-05T22:01:12.345Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-05T22:01:12.345Z"
             }
           ]
         }

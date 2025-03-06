@@ -3,7 +3,8 @@ import './typingtest.css';
 
 const TypingTest = () => {
 
-    const paragraph = `I love you baby when it is quite alright, I need you baby...`;
+    const paragraphfull = `I love you baby when it is quite alright, I need you baby...I love you baby when it is quite alright, I need you baby...I love you baby when it is quite alright, I need you baby...I love you baby when it is quite alright, I need you baby...I love you baby when it is quite alright, I need you baby...I love you baby when it is quite alright, I need you baby...I love you baby when it is quite alright, I need you baby...I love you baby when it is quite alright, I need you baby...I love you baby when it is quite alright, I need you baby...I love you baby when it is quite alright, I need you baby...I love you baby when it is quite alright, I need you baby...I love you baby when it is quite alright, I need you baby...I love you baby when it is quite alright, I need you baby...I love you baby when it is quite alright, I need you baby...I love you baby when it is quite alright, I need you baby...I love you baby when it is quite alright, I need you baby...I love you baby when it is quite alright, I need you baby...I love you baby when it is quite alright, I need you baby...`;
+    const paragraph = paragraphfull.length > 250 ? paragraphfull.substring(0, paragraphfull.indexOf(' ', 250)) : paragraphfull;
     const maxTime = 60;
     const [timeLeft, setTimeLeft] = useState(maxTime);
     const [mistakes, setMistakes] = useState(0);

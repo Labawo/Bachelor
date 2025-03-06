@@ -42,7 +42,7 @@ const Title = () => {
                 </span>                      
             </div>   
             <div className="shortcut-div">
-                <h3>HESMS</h3>
+                <h3>SRMS</h3>
             </div>           
         </div>
     );

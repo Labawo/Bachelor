@@ -48,7 +48,8 @@ section {
 }
 
 .log-reg-sec {
-    min-height: 95vh; 
+    min-height: 100vh; 
+    justify-content: center;
 }
 
 form {
@@ -462,7 +463,6 @@ li {
 .create-button-v1:hover,
 .table-buttons-blue:hover,
 .related-button:hover,
-.auth_button:hover,
 .load-button-v1:hover,
 .therapy-create-btn:hover {
     background-color: #28559e; 
@@ -566,18 +566,6 @@ li {
     margin-left: 32.5%;
 }
 
-.login_footer {
-    text-align: center;
-}
-
-.auth_button {
-    background-color: #3066be;
-    cursor: pointer;
-    transition: background-color 0.3s;
-    color: white;
-    font-weight: bold;
-}
-
 .greeting-note {
     text-align: center;
     font-size: 35px;
@@ -675,12 +663,6 @@ tbody tr {
     width: 100%;
 }
 
-.engine-holder-div {
-    width: 100%;
-    min-height: 85vh;
-    color: black;
-}
-
 @media screen and (max-width: 768px) { 
     section {
         max-width: 100%;
@@ -738,5 +720,185 @@ tbody tr {
     
     .restriction {
         width: 90%;
+    }
+}
+
+
+.login_footer {
+    text-align: center;
+}
+
+.login-full-div {
+    background-color: white;
+    color: black;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    width: 70%;
+    margin: auto;
+    border: 5px double #c6c6cb;
+}
+
+.auth_button {
+  padding: 0.25rem 0.75rem;
+  font-size: 1.3rem;
+  background: "transparent";
+  border-radius: 3px;
+  display: inline-block;
+  border: 2px solid #000;
+  cursor: pointer;
+  transition: 0.25s;
+  will-change: transform;
+  box-shadow: -1px 1px 0px #333,
+    -2px 2px 0px #333,
+    -3px 3px 0px #333,
+    -4px 4px 0px #333;
+}
+
+.auth_button:hover {
+    transform: scale(1.05);
+    box-shadow: -1px 1px 0px #333, -2px 2px 0px #333, -3px 3px 0px #333,
+      -4px 4px 0px #333, -5px 5px 0px #333, -6px 6px 0px #333;
+}
+
+.auth_button:active {
+    transform: scale(0.95);
+    box-shadow: -1px 1px 0px #222, -2px 2px 0px #222;
+}
+
+.animated-header {
+  animation: header-animation 2s infinite linear;
+  font-family: "Bungee Shade", cursive;
+  text-align: center;
+  font-size: 4rem;
+}
+
+.reg-succ-div {
+    width: 50%;
+    margin: auto;
+    background-color: white;
+    color: black;
+    padding-top: 30px;
+    padding-bottom: 40px;
+    text-align: center;
+    margin: auto;
+    border: 5px double #c6c6cb;
+}
+
+.reg-succ-div p{
+    font-size: 25px;
+}
+
+.gameboy-carcass {
+    background-color: green;
+    width: 45%;
+    min-height: 78vh;
+    margin: auto;
+    padding-top: 5%;
+    margin-bottom: 0;
+    border-top-left-radius: 300px 60px;
+    border-top-right-radius: 300px 60px;
+}
+
+.gameboy-screen {
+    background-color: black;
+    width: 90%;
+    min-height: 57vh;
+    margin: auto;
+    padding-top: 3%;
+    margin-bottom: 0;
+    border-top-left-radius: 50px;
+    border-top-right-radius: 50px;
+    border-bottom-left-radius: 300px 60px;
+    border-bottom-right-radius: 300px 60px;
+}
+
+.engine-holder-div {
+    width: 75%;
+    margin: auto;
+    color: black;
+}
+
+@keyframes header-animation {
+    0% {
+      text-shadow: -1px 1px #ddd, -2px 2px #ddd, -3px 3px #ddd, -4px 4px #ddd,
+        -5px 5px #ddd, -6px 6px #fff, -7px 7px #fff, -8px 8px #fff,
+        -9px 9px #fff, -10px 10px #fff;
+    }
+    10% {
+      text-shadow: -1px 1px #fff, -2px 2px #ddd, -3px 3px #ddd, -4px 4px #ddd,
+        -5px 5px #ddd, -6px 6px #ddd, -7px 7px #fff, -8px 8px #fff,
+        -9px 9px #fff, -10px 10px #fff;
+    }
+    20% {
+      text-shadow: -1px 1px #fff, -2px 2px #fff, -3px 3px #ddd, -4px 4px #ddd,
+        -5px 5px #ddd, -6px 6px #ddd, -7px 7px #ddd, -8px 8px #fff,
+        -9px 9px #fff, -10px 10px #fff;
+    }
+    30% {
+      text-shadow: -1px 1px #fff, -2px 2px #fff, -3px 3px #fff, -4px 4px #ddd,
+        -5px 5px #ddd, -6px 6px #ddd, -7px 7px #ddd, -8px 8px #ddd,
+        -9px 9px #fff, -10px 10px #fff;
+    }
+    40% {
+      text-shadow: -1px 1px #fff, -2px 2px #fff, -3px 3px #fff, -4px 4px #fff,
+        -5px 5px #ddd, -6px 6px #ddd, -7px 7px #ddd, -8px 8px #ddd,
+        -9px 9px #ddd, -10px 10px #fff;
+    }
+    50% {
+      text-shadow: -1px 1px #fff, -2px 2px #fff, -3px 3px #fff, -4px 4px #fff,
+        -5px 5px #fff, -6px 6px #ddd, -7px 7px #ddd, -8px 8px #ddd,
+        -9px 9px #ddd, -10px 10px #ddd;
+    }
+    60% {
+      text-shadow: -1px 1px #ddd, -2px 2px #fff, -3px 3px #fff, -4px 4px #fff,
+        -5px 5px #fff, -6px 6px #fff, -7px 7px #ddd, -8px 8px #ddd,
+        -9px 9px #ddd, -10px 10px #ddd;
+    }
+    70% {
+      text-shadow: -1px 1px #ddd, -2px 2px #ddd, -3px 3px #fff, -4px 4px #fff,
+        -5px 5px #fff, -6px 6px #fff, -7px 7px #fff, -8px 8px #ddd,
+        -9px 9px #ddd, -10px 10px #ddd;
+    }
+    80% {
+      text-shadow: -1px 1px #ddd, -2px 2px #ddd, -3px 3px #ddd, -4px 4px #fff,
+        -5px 5px #fff, -6px 6px #fff, -7px 7px #fff, -8px 8px #fff,
+        -9px 9px #ddd, -10px 10px #ddd;
+    }
+    90% {
+      text-shadow: -1px 1px #ddd, -2px 2px #ddd, -3px 3px #ddd, -4px 4px #ddd,
+        -5px 5px #fff, -6px 6px #fff, -7px 7px #fff, -8px 8px #fff,
+        -9px 9px #fff, -10px 10px #ddd;
+    }
+    100% {
+      text-shadow: -1px 1px #ddd, -2px 2px #ddd, -3px 3px #ddd, -4px 4px #ddd,
+        -5px 5px #ddd, -6px 6px #fff, -7px 7px #fff, -8px 8px #fff,
+        -9px 9px #fff, -10px 10px #fff;
+    }
+}
+
+@keyframes header-animation-2 {
+    0% {
+        text-shadow: -1px 1px #fff, -2px 2px #fff, -3px 3px #fff, -4px 4px #fff,
+        -5px 5px #fff;
+    }
+    20% {
+        text-shadow: -1px 1px #ddd, -2px 2px #fff, -3px 3px #fff, -4px 4px #fff,
+        -5px 5px #fff;
+    }
+    40% {
+        text-shadow: -1px 1px #ddd, -2px 2px #ddd, -3px 3px #fff, -4px 4px #fff,
+        -5px 5px #fff;
+    }
+    60% {
+        text-shadow: -1px 1px #ddd, -2px 2px #ddd, -3px 3px #ddd, -4px 4px #fff,
+        -5px 5px #fff;
+    }
+    80% {
+        text-shadow: -1px 1px #ddd, -2px 2px #ddd, -3px 3px #ddd, -4px 4px #ddd,
+        -5px 5px #fff;
+    }
+    100% {
+        text-shadow: -1px 1px #ddd, -2px 2px #ddd, -3px 3px #ddd, -4px 4px #ddd,
+        -5px 5px #ddd, -6px 6px #fff;
     }
 }

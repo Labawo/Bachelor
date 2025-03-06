@@ -13,9 +13,16 @@ const QuizPage = () => {
         <>
             <Title />
             <NavBar />
-            <div className='engine-holder-div'>
-                <Quiz questions={jsQuizz.questions} />
+            <div className='gameboy-carcass'>
+                <div className='gameboy-screen'>
+                    <div className='engine-holder-div'>
+                        <Quiz questions={jsQuizz.questions} />
+                    </div>                   
+                </div>
+                <div className='arrow-button'></div>
+                <div className='round-button'></div>
             </div>
+            
             <Footer />
         </>
         
