@@ -36,7 +36,11 @@ public class AuthController : ControllerBase
         {
             Email = registerUserDto.Email,
             UserName = registerUserDto.UserName,
-            TestTimer = new DateTime()
+            XP = 0,
+            PLevel = 0,
+            Skill = "Beginner",
+            WPM = 0,
+            WPM10 = 0
         };
 
         var createUserResult = await _userManager.CreateAsync(newUser, registerUserDto.Password);

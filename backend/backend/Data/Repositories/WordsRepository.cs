@@ -37,7 +37,7 @@ public class WordsRepository : IWordsRepository
 
     public async Task<PagedList <Word>> GetManyAsync(int levelId, WordSearchParameters wordSearchParameters)
     {
-        var queryable = _lsDbContext.Words.Where(o => o.level.Id == levelId).AsQueryable().OrderBy(o => o.Content);
+        var queryable = _lsDbContext.Words.Where(o => o.level.Id == levelId).AsQueryable().OrderBy(o => o.Id);
     
         return await PagedList<Word>.CreateAsync(queryable, wordSearchParameters.PageNumber, wordSearchParameters.PageSize);
     }

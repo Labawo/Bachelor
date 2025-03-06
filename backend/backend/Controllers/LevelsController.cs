@@ -62,7 +62,7 @@ public class LevelsController : ControllerBase
             Response.Headers.Add("Pagination", JsonSerializer.Serialize(paginationMetaData));
         }
 
-        return levels.Select(o => new LevelDto(o.Id, o.Name, o.DoctorName, o.OwnerId));
+        return levels.Select(o => new LevelDto(o.Id, o.Name, o.ItemCount, o.MinExperience, o.IsForWords));
     }
     
     [HttpGet("{LevelId}", Name = "GetLevel")]
@@ -78,7 +78,7 @@ public class LevelsController : ControllerBase
 
         var links = CreateLinksForLevels(levelId);
 
-        var levelDto = new LevelDto(level.Id, level.Name);
+        var levelDto = new LevelDto(level.Id, level.Name, level.ItemCount, level.MinExperience, level.IsForWords);
         
         return Ok(new { Resource = levelDto, Links = links});
     }
@@ -90,13 +90,17 @@ public class LevelsController : ControllerBase
         var level = new Level
         {
             Name = createLevelDto.Name,
+            MinExperience = createLevelDto.MinExperience,
+            IsForWords = createLevelDto.IsForWords,
             OwnerId = User.FindFirstValue(JwtRegisteredClaimNames.Sub)
         };
+
+        level.ItemCount = 0;
 
         await _levelsRepository.CreateAsync(level);
 
         //201
-        return Created("", new LevelDto(level.Id, level.Name, level.Description, level.OwnerId));
+        return Created("", new LevelDto(level.Id, level.Name, level.ItemCount, level.MinExperience, level.IsForWords));
     }
 
 
@@ -120,11 +124,11 @@ public class LevelsController : ControllerBase
         }
 
         level.Name = updateLevelDto.Name;
-        level.Description = updateLevelDto.Description; 
+        level.MinExperience = updateLevelDto.MinExperience; 
 
         await _levelsRepository.UpdateAsync(level);
 
-        return Ok(new LevelDto(level.Id, level.Name, level.Description, level.OwnerId));
+        return Ok(new LevelDto(level.Id, level.Name, level.ItemCount, level.MinExperience, level.IsForWords));
     }
 
 

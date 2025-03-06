@@ -13,9 +13,7 @@ const NavBar = () => {
 
 
     const canAccessAdmin = auth.roles.includes("Admin");
-    const canAccessDoctor = auth.roles.includes("Doctor") && !auth.roles.includes("Admin");
-    const canAccessPatient = auth.roles.includes("Patient") && !auth.roles.includes("Admin");
-    const canAccessPatientDoctor = (auth.roles.includes("Doctor") || auth.roles.includes("Patient")) && !auth.roles.includes("Admin");
+    const canAccessStudent = auth.roles.includes("Student") && !auth.roles.includes("Admin");
 
     return (
         <div className="navbar">
@@ -24,17 +22,17 @@ const NavBar = () => {
                     <span className={`nav-link-span ${isActiveLink('/') ? 'active-span' : ''}`}>
                         <Link to="/" className='nav-link'>Home</Link>
                     </span>
-                    <span className={`nav-link-span ${isActiveLink('/therapies') ? 'active-span' : ''}`}>
-                        <Link to="/therapies" className='nav-link'>Therapies</Link>
-                    </span>
                     <span className={canAccessAdmin ? `nav-link-span ${isActiveLink('/admin') ? 'active-span' : ''}` : 'hidden'}>
                         <Link to="/admin" className={canAccessAdmin ? 'nav-link' : 'hidden'}>Users</Link>
                     </span>
-                    <span className={canAccessPatient ? `nav-link-span ${isActiveLink('/myAppointments') ? 'active-span' : ''}` : 'hidden'}>
-                        <Link to="/myAppointments" className={canAccessPatient ? 'nav-link' : 'hidden'}>My Appointments</Link>
+                    <span className={canAccessStudent ? `nav-link-span ${isActiveLink('/training') ? 'active-span' : ''}` : 'hidden'}>
+                        <Link to="/training" className={canAccessStudent ? 'nav-link' : 'hidden'}>Treniruotė</Link>
                     </span>
-                    <span className={canAccessPatient ? `nav-link-span ${isActiveLink('/notes') ? 'active-span' : ''}` : 'hidden'}>
-                        <Link to="/notes" className={canAccessPatient ? 'nav-link' : 'hidden'}>Notes</Link>
+                    <span className={canAccessStudent ? `nav-link-span ${isActiveLink('/tests') ? 'active-span' : ''}` : 'hidden'}>
+                        <Link to="/tests" className={canAccessStudent ? 'nav-link' : 'hidden'}>Testai</Link>
+                    </span>
+                    <span className={canAccessStudent ? `nav-link-span ${isActiveLink('/speedTyping') ? 'active-span' : ''}` : 'hidden'}>
+                        <Link to="/speedTyping" className={canAccessStudent ? 'nav-link' : 'hidden'}>Spartus rašymas</Link>
                     </span>
                 </div>
             </div>

@@ -37,12 +37,10 @@ builder.Services.AddAuthentication(options =>
     
 builder.Services.AddDbContext<LS_DbContext>();
 
-builder.Services.AddTransient<ITherapiesRepository, TherapiesRepository>();
-builder.Services.AddTransient<IAppointmentsRepository, AppointmentsRepository>();
-builder.Services.AddTransient<IRecommendationsRepository, RecommendationsRepository>();
-builder.Services.AddTransient<ITestsRepository, TestsRepository>();
+builder.Services.AddTransient<ILevelsRepository, LevelsRepository>();
+builder.Services.AddTransient<IQuotesRepository, QuotesRepository>();
+builder.Services.AddTransient<IWordsRepository, WordsRepository>();
 builder.Services.AddTransient<INotesRepository, NotesRepository>();
-builder.Services.AddTransient<INotificationsRepository, NotificationsRepository>();
 builder.Services.AddTransient<IJwtTokenService, JwtTokenService>();
 builder.Services.AddScoped<AuthDbSeeder>();
 

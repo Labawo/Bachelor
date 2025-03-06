@@ -15,7 +15,7 @@ using backend.Data.Entities;
 namespace backend.Controllers;
 
 [ApiController]
-[Route("api/therapies/{therapyId}/appointments")]
+[Route("api/levels/{levelId}/words")]
 public class WordsController : ControllerBase
 {
     private readonly UserManager<SiteUser> _userManager;
@@ -41,12 +41,12 @@ public class WordsController : ControllerBase
         var words = await _wordsRepository.GetManyAsync(level.Id, searchParameters);
 
         var previousPageLink = words.HasPrevious
-            ? CreateLevelsResourceUri(searchParameters,
+            ? CreateWordsResourceUri(searchParameters,
                 RecourceUriType.PreviousPage)
             : null;
         
         var nextPageLink = words.HasNext
-            ? CreateLevelsResourceUri(searchParameters,
+            ? CreateWordsResourceUri(searchParameters,
                 RecourceUriType.NextPage)
             : null;
 
@@ -66,7 +66,7 @@ public class WordsController : ControllerBase
             Response.Headers.Add("Pagination", JsonSerializer.Serialize(paginationMetaData));
         }
 
-        return words.Select(o => new WordDto(o.Id, o.Name, o.DoctorName, o.OwnerId));
+        return words.Select(o => new WordDto(o.Id, o.Question, o.IsOpen, o.CorrectAnswer, o.Choices, o.ImageData));
     }
     
     [HttpGet("{wordId}", Name = "GetWord")]
@@ -80,7 +80,7 @@ public class WordsController : ControllerBase
 
         var links = CreateLinksForWords(wordId);
 
-        var wordDto = new WordDto(level.Id, level.Name);
+        var wordDto = new WordDto(word.Id, word.Question, word.IsOpen, word.CorrectAnswer, word.Choices, word.ImageData);
         
         return Ok(new { Resource = wordDto, Links = links});
     }
@@ -98,15 +98,28 @@ public class WordsController : ControllerBase
         {
             return Forbid();
         }
+        
+        var word = new Word { Question = wordDto.Question, IsOpen = wordDto.IsOpen, CorrectAnswer = wordDto.CorrectAnswer };
 
-        var word = new Word { Price = wordDto.Price };
-        word.level = level;
-        word.LevelId = level.Id;
+        if (!word.IsOpen)
+        {
+            if (wordDto.Choices == null)
+            {
+                return BadRequest();
+            }
+            
+            word.Choices = wordDto.Choices;
+        }
+
+        if (wordDto.ImageData != null)
+        {
+            word.ImageData = wordDto.ImageData;
+        }
 
         await _wordsRepository.CreateAsync(word);
 
         return Created("GetWord",
-            new WordDto(word.Id, word.Time));
+            new WordDto(word.Id, word.Question, word.IsOpen, word.CorrectAnswer, word.Choices, word.ImageData));
     }
 
     [HttpPut("{wordId}")]
@@ -129,11 +142,22 @@ public class WordsController : ControllerBase
         if (oldWord == null)
             return NotFound();
         
-        oldWord.Price = updateWordDto.Price;
+        oldWord.Question = updateWordDto.Question;
+        oldWord.CorrectAnswer = updateWordDto.CorrectAnswer;
+
+        if (oldWord.Choices != null)
+        {
+            oldWord.Choices = updateWordDto.Choices;
+        }
+        
+        if (oldWord.ImageData != null || updateWordDto.ImageData != null)
+        {
+            oldWord.ImageData = updateWordDto.ImageData;
+        }
 
         await _wordsRepository.UpdateAsync(oldWord);
 
-        return Ok(new WordDto(oldWord.Id, oldWord.Time));
+        return Ok(new WordDto(oldWord.Id, oldWord.Question, oldWord.IsOpen, oldWord.CorrectAnswer, oldWord.Choices, oldWord.ImageData));
     }
 
     [HttpDelete("{wordId}")]

@@ -12,7 +12,7 @@ const Home = () => {
             <Title />
             <NavBar />
             <section>                
-                <p className="greeting-note">Hello <i><b>{auth.user}</b></i>, we are glad you are here!</p>       
+                <p className="greeting-note">Hello <i><b>{auth.user}</b></i>, we are glad you are here! {auth.roles}</p>       
             </section>
             
             <Footer />
