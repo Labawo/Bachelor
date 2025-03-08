@@ -1,11 +1,4 @@
 .typing-test {
-    box-sizing: border-box;
-    min-height: 50vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-family: 'Noto Sans Mono', monospace;
-    background-color: #e7e9e9;
 }
 
 .container {
@@ -14,9 +7,8 @@
     max-height: 45vh;
     width: calc(100% - 10px);
     padding: 30px;
-    border-radius: 10px;
     box-sizing: border-box;
-    border: 1px solid #ced4da;
+    border: 5px double #c6c6cb;
     background: #fff;
     box-shadow: 0 0 6px rgba(0, 0, 0, 0.25);
 }
@@ -60,17 +52,21 @@ span.wrong {
 }
 
 button.btn {
-    padding: 5px;
-    outline: none;
-    border: 1px solid #ced4da;
-    border-radius: 4px;
+    padding: 0.25rem 0.75rem;
+    font-size: 1.3rem;
+    background: "transparent";
+    border-radius: 3px;
+    display: inline-block;
+    border: 2px solid #000;
     cursor: pointer;
-    background: #049c13;
-    color: #fff;
-    font-size: 15px;
-    transition: all 0.5s;
+    transition: 0.25s;
+    will-change: transform;
+    box-shadow: -1px 1px 0px #333,
+        -2px 2px 0px #333,
+        -3px 3px 0px #333,
+        -4px 4px 0px #333;
 }
 
 button.btn:hover {
-    background-color: #02500b;
+    background-color: #049715;
 }

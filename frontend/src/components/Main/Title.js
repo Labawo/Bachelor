@@ -22,6 +22,8 @@ const Title = () => {
         navigate('/resetPassword');
     }
 
+    const isAdmin = auth.roles.includes("Admin");
+
     return (
         <div className="title_div">
             <div className="logout-div">
@@ -42,7 +44,7 @@ const Title = () => {
                 </span>                      
             </div>   
             <div className="shortcut-div">
-                <h3>SRMS</h3>
+                <h3>SRMS<div className='title-admin-div'>{isAdmin ? <span className='title-admin-span'>/admin</span>:null}</div></h3>
             </div>           
         </div>
     );

@@ -12,7 +12,9 @@ const Home = () => {
             <Title />
             <NavBar />
             <section>                
-                <p className="greeting-note">Hello <i><b>{auth.user}</b></i>, we are glad you are here! {auth.roles}</p>       
+                <div className='content-holder-div'>
+                    <p className="greeting-note">Hello <i><b>{auth.user}</b></i>, we are glad you are here! {auth.roles}  100 - (mistakes/length * 100) </p>
+                </div>
             </section>
             
             <Footer />

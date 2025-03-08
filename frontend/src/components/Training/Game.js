@@ -204,12 +204,12 @@ const AnimatedHeader = styled.h1`
 
 const ViewContainer = styled.div`
   width: 100%;
-  max-height: 50vh;
+  max-height: 70vh;
   display: flex;
   overflow: hidden;
   align-items: center;
   justify-content: center;
-  background: #aab5c5;
+  background: #e0e3e9;
 `;
 
 const HealthBarContainer = styled.div`
@@ -600,10 +600,12 @@ class GameView extends Component {
 
     let containerStyles = {
       padding: "0 1rem",
-      height: "50vh",
+      height: "70vh",
       overflow: "hidden",
       position: "relative",
-      transition: ".5s"
+      transition: ".5s",
+      border: "5px double #c6c6cb",
+      marginLeft: "10px"
     };
 
     containerStyles.top = this.state.animatingOut ? "0" : "0";

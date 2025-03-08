@@ -104,3 +104,8 @@
     margin-top: 20px;
     box-sizing: border-box;
 }
+
+.timer-div-main {
+    position: relative;
+    width: 100%;
+}

@@ -95,38 +95,45 @@ const Quiz = ({ questions }) => {
     };
 
     return (
-        <div className="quiz-container">
-            {!showResult ? (<>
-                {showAnswerTimer && <AnswerTimer duration={5} onTimeUp={handleTimeUp}/>}
-                <span className="active-question-no">{currentQuestion + 1}</span>
-                <span className="total-questions">/{questions.length}</span>
-                <h2 className="quiz-question">{question}</h2>
-                {getAnswerUI()}
-                <div className='quiz-footer'>
-                    <button className="quiz-button" onClick={() => onClickNext(answer)} disabled={answerIdx === null && !inputAnswer}>
-                        {currentQuestion === questions.length - 1 ? "Finish" : "Next"}
-                    </button>
-                </div>
-            </>) : <div className='quiz-result'>
-                    <h3 className='quiz-h3'>Result</h3>
-                    <p className='quiz-p'>
-                        Total Questions: <span className='quiz-span'>{questions.length}</span>
-                    </p>
-                    <p className='quiz-p'>
-                        Total Score: <span className='quiz-span'>{result.score}</span>
-                    </p>
-                    <p className='quiz-p'>
-                        Correct Answers: <span className='quiz-span'>{result.correctAnswers}</span>
-                    </p>
-                    <p>
-                        Wrong Answers: <span className='quiz-span'>{result.wrongAnswers}</span>
-                    </p>
-                    <button onClick={onTryAgain} className="quiz-button">
-                        Try again
-                    </button>
-                </div>}
+        <div>
+            {!showResult ? (<div className='timer-div-main'>
+                {showAnswerTimer && <AnswerTimer duration={30} onTimeUp={handleTimeUp}/>}
+            </div>) : null}
             
+            <div className="quiz-container">
+                {!showResult ? (<>
+                    
+                    <span className="active-question-no">{currentQuestion + 1}</span>
+                    <span className="total-questions">/{questions.length}</span>
+                    <h2 className="quiz-question">{question}</h2>
+                    {getAnswerUI()}
+                    <div className='quiz-footer'>
+                        <button className="quiz-button" onClick={() => onClickNext(answer)} disabled={answerIdx === null && !inputAnswer}>
+                            {currentQuestion === questions.length - 1 ? "Finish" : "Next"}
+                        </button>
+                    </div>
+                </>) : <div className='quiz-result'>
+                        <h3 className='quiz-h3'>Result</h3>
+                        <p className='quiz-p'>
+                            Total Questions: <span className='quiz-span'>{questions.length}</span>
+                        </p>
+                        <p className='quiz-p'>
+                            Total Score: <span className='quiz-span'>{result.score}</span>
+                        </p>
+                        <p className='quiz-p'>
+                            Correct Answers: <span className='quiz-span'>{result.correctAnswers}</span>
+                        </p>
+                        <p>
+                            Wrong Answers: <span className='quiz-span'>{result.wrongAnswers}</span>
+                        </p>
+                        <button onClick={onTryAgain} className="quiz-button">
+                            Try again
+                        </button>
+                    </div>}
+                
+            </div>
         </div>
+        
     )
 };
 

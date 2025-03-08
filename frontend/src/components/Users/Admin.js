@@ -8,10 +8,10 @@ const Admin = () => {
         <>
             <Title />
             <NavBar />
-            <section>                
-                <br />
-                <Users />
-                <br />
+            <section>  
+                <div className='content-holder-div'>
+                    <Users />
+                </div>           
             </section>
             <Footer />
         </>

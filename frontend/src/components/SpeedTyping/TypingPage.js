@@ -12,15 +12,11 @@ const TypingPage = () => {
         <>
             <Title />
             <NavBar />
-            <div className='gameboy-carcass'>
-                <div className='gameboy-screen'>
-                    <div className='engine-holder-div'>
-                        <TypingTest />
-                    </div>                   
+            <section>
+                <div className='engine-holder-div'>
+                    <TypingTest />
                 </div>
-                <div className='arrow-button'></div>
-                <div className='round-button'></div>
-            </div>
+            </section>
                        
             <Footer />
         </>

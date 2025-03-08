@@ -7,7 +7,9 @@ import { faTrash, faKey } from '@fortawesome/free-solid-svg-icons';
 const Users = () => {
     const [users, setUsers] = useState([]);
     const [filteredUsers, setFilteredUsers] = useState([]);
+    const [secondFilter, setSecondFilter] = useState(false);
     const [filter, setFilter] = useState('');
+    const [emailFilter, setEmailFilter] = useState('');
     const [selectedUserId, setSelectedUserId] = useState(null);
     const [newPassword, setNewPassword] = useState('');
     const [repeatPassword, setRepeatPassword] = useState('');
@@ -44,8 +46,13 @@ const Users = () => {
     }, [axiosPrivate, navigate, location]);
 
     useEffect(() => {
-        setFilteredUsers(users.filter(user => user.userName.toLowerCase().includes(filter.toLowerCase())));
-    }, [users, filter]);
+        if(secondFilter){
+            setFilteredUsers(users.filter(user => user.userName.toLowerCase().includes(filter.toLowerCase())));
+        }
+        else {
+            setFilteredUsers(users.filter(user => user.email.toLowerCase().includes(emailFilter.toLowerCase())));
+        }       
+    }, [users, filter, emailFilter]);
 
     const validatePassword = (password) => {
         const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
@@ -112,8 +119,17 @@ const Users = () => {
                         <input
                             type="text"
                             value={filter}
+                            onClick={() => setSecondFilter(true)}
                             onChange={(e) => setFilter(e.target.value)}
                             placeholder="Filter by username"
+                            className="filter-container-input"
+                        />
+                        <input
+                            type="text"
+                            value={emailFilter}
+                            onClick={() =>setSecondFilter(false)}
+                            onChange={(e) => setEmailFilter(e.target.value)}
+                            placeholder="Filter by email"
                             className="filter-container-input"
                         />
                     </div>  
@@ -124,7 +140,7 @@ const Users = () => {
                             <tr>
                                 <th>Name</th>
                                 <th>Email</th>
-                                <th>Actions</th>
+                                <th></th>
                             </tr>
                         </thead>
                         <tbody>

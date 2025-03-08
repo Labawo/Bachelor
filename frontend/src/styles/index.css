@@ -14,7 +14,7 @@ html {
 
 body {
     min-height: 100vh;
-    background-color: white;
+    background-color: #e0e3e9;
     padding: 0;
     margin: 0;
 }
@@ -39,17 +39,18 @@ h3 {
 section {
     padding-top: 35px;
     width: 100vw; 
-    min-height: 85vh; 
+    min-height: 79vh; 
     max-width: 100%; 
     display: flex;
     flex-direction: column;
     justify-content: flex-start; 
-    background-color: #3AAFA9;
+    background-color: #e0e3e9;
 }
 
 .log-reg-sec {
     min-height: 100vh; 
     justify-content: center;
+    background-color: #3AAFA9;
 }
 
 form {
@@ -149,13 +150,14 @@ li {
 
 .title_div {
     background-color: #3AAFA9;
-    border-bottom: 1px solid #FEFFFF;
+    border-bottom: 1px solid #297975;
     width: 100%;
+    min-height: 8vh;
     padding-top: 5px;
     padding-bottom: 5px;
     margin: 0;
     font-size: 35px;
-    color: #FEFFFF
+    color: #043d3d
 }
 
 .title_div h3 {
@@ -164,29 +166,27 @@ li {
 
 .shortcut-div {
     margin-left: 20px;
-    width: 150px;
+    width: 200px;
 }
 
-.menu-icon {
-    position: absolute;
-    top: 5px;
-    left: 5px;
-    padding: 10px;
-    cursor: pointer;
+.title-admin-div {
+    display: inline;
 }
 
-.menu-icon:hover {
-    background-color: black;
-    color: white;
+.title-admin-span {
+    font-style: italic;
+    font-size: 20px;
+    font-weight: normal;
 }
 
 .footer {
     position: relative;
     width: 100%; 
+    min-height: 5vh;
     background-color: #3AAFA9;
     padding-top: 15px;
     padding-bottom: 0;
-    color:#FEFFFF;
+    color:#043d3d;
     font-size: 15px;
     font-weight: 250;
 }
@@ -199,13 +199,15 @@ li {
 }
 
 .navbar {
-    background-color: #3AAFA9;
+    background-color: #44afab83;
     width: 100%;
+    min-height: 7vh;
 }
 
 .nav-link-span {
     flex: 1;
     text-align: center;
+    min-height: 7vh;
 }
 
 .nav-link {
@@ -217,7 +219,7 @@ li {
     height: 100%;
     font-size: 25px;
     font-weight: bold;
-    color: white;
+    color: #043d3d;
 }
 
 .navbar-links {
@@ -228,17 +230,17 @@ li {
 
 .nav-link-span:hover {
     cursor: pointer;
-    color: #17252A;
     transition: background-color 0.3s, border 0.3s;
 }
 
 .nav-link-span:hover .nav-link {
-    color: #DEF2F1; 
+    color: #2f8a85; 
     transition: color 0.3s;
 }
 
 .active-span .nav-link{
-    color: #DEF2F1; 
+    color: #2f8a85;
+    background-color: #c8ced6; 
 }
 
 .hidden {
@@ -254,7 +256,7 @@ li {
 
 .logout-btn {
     background-color: #3AAFA9;
-    color: #FEFFFF;
+    color: #043d3d;
     border: none;
     text-align: center;
     margin-top: 0;
@@ -270,7 +272,7 @@ li {
 
 .password-btn {
     background-color: #3AAFA9;
-    color: #FEFFFF;
+    color: #043d3d;
     border: none;
     text-align: center;
     margin-top: 0;
@@ -286,7 +288,7 @@ li {
 
 .user-name-div {
     background-color: #3AAFA9;
-    color: #FEFFFF;
+    color: #043d3d;
     border: none;
     text-align: center;
     margin-top: 0;
@@ -366,7 +368,7 @@ li {
   
 
 .my-table {
-    width: 50%; 
+    width: 100%; 
     border-collapse: collapse;
     text-align: center;
 }
@@ -767,7 +769,7 @@ tbody tr {
 
 .animated-header {
   animation: header-animation 2s infinite linear;
-  font-family: "Bungee Shade", cursive;
+  font-family: "Times New Roman", Times, serif;
   text-align: center;
   font-size: 4rem;
 }
@@ -788,34 +790,57 @@ tbody tr {
     font-size: 25px;
 }
 
-.gameboy-carcass {
-    background-color: green;
-    width: 45%;
-    min-height: 78vh;
-    margin: auto;
-    padding-top: 5%;
-    margin-bottom: 0;
-    border-top-left-radius: 300px 60px;
-    border-top-right-radius: 300px 60px;
-}
-
-.gameboy-screen {
-    background-color: black;
-    width: 90%;
-    min-height: 57vh;
-    margin: auto;
-    padding-top: 3%;
-    margin-bottom: 0;
-    border-top-left-radius: 50px;
-    border-top-right-radius: 50px;
-    border-bottom-left-radius: 300px 60px;
-    border-bottom-right-radius: 300px 60px;
-}
-
 .engine-holder-div {
-    width: 75%;
+    width: 50%;
     margin: auto;
     color: black;
+}
+
+.training-engine-holder-div {
+    width: 50%;
+    margin: auto;
+    margin-left: 0;
+    color: black;
+    max-height: 70vh;
+    overflow: auto;
+}
+
+.keyboard-div {
+    position: absolute;
+    right: 10px;
+    overflow: auto;
+    max-height: 70vh;
+    min-height: 70vh;
+    overflow: auto;
+    background-color: white;
+    color: black;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    width: 48%;
+    margin: auto;
+    margin-right: 0;
+    border: 5px double #c6c6cb;
+    text-align: center;
+}
+
+.engine-page {
+    width: 100%;
+}
+
+.content-holder-div {
+    right: 10px;
+    overflow: auto;
+    max-height: 70vh;
+    overflow: auto;
+    background-color: white;
+    color: black;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    width: 80%;
+    margin: auto;
+    margin-top: 2%;
+    border: 5px double #c6c6cb;
+    text-align: center;
 }
 
 @keyframes header-animation {
