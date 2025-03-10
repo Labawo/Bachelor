@@ -18,3 +18,5 @@ public record RefreshAccessTokenDto(string RefreshToken);
 public record ChangePasswordDto([Required]string NewPassword);
 
 public record ResetPasswordDto([Required] string CurrentPassword, [Required] string NewPassword);
+
+public record UpdateProfileDto([Required] string Name, [Required] string LastName);

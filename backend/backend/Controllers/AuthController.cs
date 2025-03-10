@@ -6,6 +6,10 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using backend.Auth;
 using backend.Auth.Models;
+using MailKit.Net.Smtp;
+using MailKit.Security;
+using MimeKit;
+using MimeKit.Text;
 
 namespace backend.Controllers;
 
@@ -49,6 +53,24 @@ public class AuthController : ControllerBase
             return BadRequest("Could not create a user.");
 
         await _userManager.AddToRoleAsync(newUser, SiteRoles.Student);
+        
+        var token = await _userManager.GenerateEmailConfirmationTokenAsync(newUser);
+        
+        var confirmationLink = Url.Action("ConfirmEmail", "Account", new { userId = newUser.Id, token = token }, Request.Scheme);
+        
+        var email = new MimeMessage();
+        email.From.Add(MailboxAddress.Parse("hesm6150@gmail.com"));
+        email.To.Add(MailboxAddress.Parse(newUser.Email));
+        email.Subject = "Elektroninio pašto patvirtinimas";
+        email.Body = new TextPart(TextFormat.Html) { Text = confirmationLink };
+
+        using var smtp = new SmtpClient();
+        smtp.Connect("smtp.gmail.com", 587, SecureSocketOptions.StartTls);
+        smtp.Authenticate("hesm6150@gmail.com", "zqkulfficavlkbap");
+        smtp.Send(email);
+        smtp.Disconnect(true);
+            
+        return Ok("Password changed successfully.");
 
         return CreatedAtAction(nameof(Register), new UserDto(newUser.Id, newUser.UserName, newUser.Email));
     }
@@ -61,6 +83,11 @@ public class AuthController : ControllerBase
 
         if (user == null)
             return BadRequest("User with name or password does not exist.");
+
+        if (!user.EmailConfirmed)
+        {
+            return BadRequest("User needs to confirm email.");
+        }
 
         var isPasswordValid = await _userManager.CheckPasswordAsync(user, loginDto.Password);
         

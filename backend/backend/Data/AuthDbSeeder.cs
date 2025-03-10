@@ -25,7 +25,8 @@ public class AuthDbSeeder
         var newAdminUser = new SiteUser
         {
             UserName = "admin",
-            Email = "admin@admin.com"
+            Email = "admin@admin.com",
+            EmailConfirmed = true
         };
 
         var existingAdminUser = await _userManager.FindByNameAsync(newAdminUser.UserName);

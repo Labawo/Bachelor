@@ -11,6 +11,8 @@ import NotesPage from './components/Notes/NotesPage';
 import TrainingPage from './components/Training/TrainingPage';
 import QuizPage from './components/Quiz/QuizPage';
 import TypingPage from './components/SpeedTyping/TypingPage';
+import LevelsPage from './components/Levels/LevelsPage';
+import BadgesPage from './components/Badges/BadgesPage'
 import { Routes, Route } from 'react-router-dom';
 
 const ROLES = {
@@ -43,6 +45,8 @@ function App() {
         <Route element={<RequireAuth allowedRoles={[ROLES.Admin]} />}>
           <Route path="admin" element={<Admin />} />
           <Route path="/notes" element={<NotesPage />} />
+          <Route path="/levelsPage" element={<LevelsPage />} />
+          <Route path="/badgesPage" element={<BadgesPage />} />
         </Route>
 
         {/* catch all */}

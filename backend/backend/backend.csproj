@@ -21,4 +21,9 @@
       <PackageReference Include="Pomelo.EntityFrameworkCore.MySql" Version="7.0.0" />
     </ItemGroup>
 
+    <ItemGroup>
+      <Folder Include="Data\Dtos\BadgeNumbers\" />
+      <Folder Include="Data\Dtos\Badges\" />
+    </ItemGroup>
+
 </Project>

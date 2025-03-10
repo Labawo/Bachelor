@@ -10,3 +10,9 @@ export const axiosPrivate = axios.create({
     headers: { 'Conten-Type' : 'application/json' },
     withCredentials : true
 });
+
+export const axiosPrivateMP = axios.create({
+    baseURL: BASE_URL,
+    headers: { 'Conten-Type' : 'multipart/form-data' },
+    withCredentials : true
+});

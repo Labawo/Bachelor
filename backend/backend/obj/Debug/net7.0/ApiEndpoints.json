@@ -16,6 +16,27 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "backend.Controllers.UsersController",
+    "Method": "ChangePassword",
+    "RelativePath": "api/changePassword/{userId}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userId",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "changePasswordDto",
+        "Type": "backend.Auth.Models.ChangePasswordDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "backend.Controllers.LevelsController",
     "Method": "GetManyPaging",
     "RelativePath": "api/levels",
@@ -638,6 +659,43 @@
       {
         "Name": "resetPasswordDto",
         "Type": "backend.Auth.Models.ResetPasswordDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "backend.Controllers.UsersController",
+    "Method": "UpdateProfile",
+    "RelativePath": "api/updateProfile",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "updateProfileDto",
+        "Type": "backend.Auth.Models.UpdateProfileDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "backend.Controllers.UsersController",
+    "Method": "UpdateUser",
+    "RelativePath": "api/updateUser/{userId}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userId",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "updateProfileDto",
+        "Type": "backend.Auth.Models.UpdateProfileDto",
         "IsRequired": true
       }
     ],
