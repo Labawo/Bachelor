@@ -44,7 +44,8 @@ public class AuthController : ControllerBase
             PLevel = 0,
             Skill = "Beginner",
             WPM = 0,
-            WPM10 = 0
+            WPM10 = 0,
+            RegistrationDate = DateTime.Now
         };
 
         var createUserResult = await _userManager.CreateAsync(newUser, registerUserDto.Password);

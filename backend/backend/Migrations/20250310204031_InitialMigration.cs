@@ -7,7 +7,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace backend.Migrations
 {
     /// <inheritdoc />
-    public partial class InitialCreate : Migration
+    public partial class InitialMigration : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -53,6 +53,12 @@ namespace backend.Migrations
                     PLevel = table.Column<int>(type: "int", nullable: true),
                     ProfileImage = table.Column<string>(type: "longtext", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
+                    Blocked = table.Column<bool>(type: "tinyint(1)", nullable: true),
+                    QuizXp = table.Column<int>(type: "int", nullable: true),
+                    QuizDone = table.Column<int>(type: "int", nullable: true),
+                    OldBadgeCnt = table.Column<int>(type: "int", nullable: true),
+                    NewBadgeCnt = table.Column<int>(type: "int", nullable: true),
+                    RegistrationDate = table.Column<DateTime>(type: "datetime(6)", nullable: true),
                     ForceRelogin = table.Column<bool>(type: "tinyint(1)", nullable: false),
                     UserName = table.Column<string>(type: "varchar(256)", maxLength: 256, nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
@@ -80,6 +86,49 @@ namespace backend.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_AspNetUsers", x => x.Id);
+                })
+                .Annotation("MySql:CharSet", "utf8mb4");
+
+            migrationBuilder.CreateTable(
+                name: "Badges",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                    Name = table.Column<string>(type: "longtext", nullable: false)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    Descripotion = table.Column<string>(type: "longtext", nullable: false)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    Type = table.Column<int>(type: "int", nullable: false),
+                    QuizXp = table.Column<int>(type: "int", nullable: true),
+                    WPM = table.Column<int>(type: "int", nullable: true),
+                    TrainingXp = table.Column<int>(type: "int", nullable: true),
+                    TrainingType = table.Column<string>(type: "longtext", nullable: true)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    BadgeImage = table.Column<string>(type: "longtext", nullable: true)
+                        .Annotation("MySql:CharSet", "utf8mb4")
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Badges", x => x.Id);
+                })
+                .Annotation("MySql:CharSet", "utf8mb4");
+
+            migrationBuilder.CreateTable(
+                name: "Levels",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                    Name = table.Column<string>(type: "longtext", nullable: false)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    ItemCount = table.Column<int>(type: "int", nullable: false),
+                    MinExperience = table.Column<int>(type: "int", nullable: false),
+                    IsForWords = table.Column<bool>(type: "tinyint(1)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Levels", x => x.Id);
                 })
                 .Annotation("MySql:CharSet", "utf8mb4");
 
@@ -211,32 +260,6 @@ namespace backend.Migrations
                 .Annotation("MySql:CharSet", "utf8mb4");
 
             migrationBuilder.CreateTable(
-                name: "Levels",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    Name = table.Column<string>(type: "longtext", nullable: false)
-                        .Annotation("MySql:CharSet", "utf8mb4"),
-                    ItemCount = table.Column<int>(type: "int", nullable: false),
-                    MinExperience = table.Column<int>(type: "int", nullable: false),
-                    IsForWords = table.Column<bool>(type: "tinyint(1)", nullable: false),
-                    OwnerId = table.Column<string>(type: "varchar(255)", nullable: false)
-                        .Annotation("MySql:CharSet", "utf8mb4")
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Levels", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_Levels_AspNetUsers_OwnerId",
-                        column: x => x.OwnerId,
-                        principalTable: "AspNetUsers",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                })
-                .Annotation("MySql:CharSet", "utf8mb4");
-
-            migrationBuilder.CreateTable(
                 name: "Notes",
                 columns: table => new
                 {
@@ -257,6 +280,35 @@ namespace backend.Migrations
                         name: "FK_Notes_AspNetUsers_OwnerId",
                         column: x => x.OwnerId,
                         principalTable: "AspNetUsers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                })
+                .Annotation("MySql:CharSet", "utf8mb4");
+
+            migrationBuilder.CreateTable(
+                name: "BadgeNumbers",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                    EarnedBadges = table.Column<int>(type: "int", nullable: false),
+                    BadgeId = table.Column<int>(type: "int", nullable: false),
+                    OwnerId = table.Column<string>(type: "varchar(255)", nullable: false)
+                        .Annotation("MySql:CharSet", "utf8mb4")
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_BadgeNumbers", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_BadgeNumbers_AspNetUsers_OwnerId",
+                        column: x => x.OwnerId,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_BadgeNumbers_Badges_BadgeId",
+                        column: x => x.BadgeId,
+                        principalTable: "Badges",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 })
@@ -357,8 +409,13 @@ namespace backend.Migrations
                 unique: true);
 
             migrationBuilder.CreateIndex(
-                name: "IX_Levels_OwnerId",
-                table: "Levels",
+                name: "IX_BadgeNumbers_BadgeId",
+                table: "BadgeNumbers",
+                column: "BadgeId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_BadgeNumbers_OwnerId",
+                table: "BadgeNumbers",
                 column: "OwnerId");
 
             migrationBuilder.CreateIndex(
@@ -396,6 +453,9 @@ namespace backend.Migrations
                 name: "AspNetUserTokens");
 
             migrationBuilder.DropTable(
+                name: "BadgeNumbers");
+
+            migrationBuilder.DropTable(
                 name: "Notes");
 
             migrationBuilder.DropTable(
@@ -408,10 +468,13 @@ namespace backend.Migrations
                 name: "AspNetRoles");
 
             migrationBuilder.DropTable(
-                name: "Levels");
+                name: "Badges");
 
             migrationBuilder.DropTable(
                 name: "AspNetUsers");
+
+            migrationBuilder.DropTable(
+                name: "Levels");
         }
     }
 }

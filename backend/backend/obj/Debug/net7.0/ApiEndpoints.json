@@ -16,6 +16,128 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "backend.Controllers.BadgesController",
+    "Method": "GetMany",
+    "RelativePath": "api/badges",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[backend.Data.Dtos.Badges.BadgeDto, backend, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ],
+    "EndpointName": "GetBadges"
+  },
+  {
+    "ContainingType": "backend.Controllers.BadgesController",
+    "Method": "Create",
+    "RelativePath": "api/badges",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "createBadgeDto",
+        "Type": "backend.Data.Dtos.Badges.CreateBadgeDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "backend.Data.Entities.Badge",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "backend.Controllers.BadgesController",
+    "Method": "Get",
+    "RelativePath": "api/badges/{badgeId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "badgeId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "backend.Data.Dtos.Badges.BadgeDto",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ],
+    "EndpointName": "GetBadge"
+  },
+  {
+    "ContainingType": "backend.Controllers.BadgesController",
+    "Method": "Update",
+    "RelativePath": "api/badges/{badgeId}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "badgeId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "updateBadgeDto",
+        "Type": "backend.Data.Dtos.Badges.UpdateBadgeDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "backend.Data.Dtos.Badges.BadgeDto",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "backend.Controllers.BadgesController",
+    "Method": "Remove",
+    "RelativePath": "api/badges/{badgeId}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "badgeId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [],
+    "EndpointName": "DeleteBadge"
+  },
+  {
     "ContainingType": "backend.Controllers.UsersController",
     "Method": "ChangePassword",
     "RelativePath": "api/changePassword/{userId}",
@@ -96,6 +218,33 @@
   },
   {
     "ContainingType": "backend.Controllers.LevelsController",
+    "Method": "Get",
+    "RelativePath": "api/levels/{levelId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "levelId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "backend.Data.Dtos.Levels.LevelDto",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ],
+    "EndpointName": "GetLevel"
+  },
+  {
+    "ContainingType": "backend.Controllers.LevelsController",
     "Method": "Update",
     "RelativePath": "api/levels/{levelId}",
     "HttpMethod": "PUT",
@@ -141,33 +290,6 @@
     ],
     "ReturnTypes": [],
     "EndpointName": "DeleteLevel"
-  },
-  {
-    "ContainingType": "backend.Controllers.LevelsController",
-    "Method": "Get",
-    "RelativePath": "api/levels/{LevelId}",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "levelId",
-        "Type": "System.Int32",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": [
-      {
-        "Type": "backend.Data.Dtos.Levels.LevelDto",
-        "MediaTypes": [
-          "text/plain",
-          "application/json",
-          "text/json"
-        ],
-        "StatusCode": 200
-      }
-    ],
-    "EndpointName": "GetLevel"
   },
   {
     "ContainingType": "backend.Controllers.QuotesController",

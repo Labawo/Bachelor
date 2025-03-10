@@ -14,5 +14,11 @@ public class SiteUser : IdentityUser
     public string? Skill { get; set; }
     public int? PLevel { get; set; }
     public string? ProfileImage { get; set; }
+    public bool? Blocked { get; set; }
+    public int? QuizXp { get; set; }
+    public int? QuizDone { get; set; }
+    public int? OldBadgeCnt { get; set; }
+    public int? NewBadgeCnt { get; set; }
+    public DateTime? RegistrationDate { get; set; }
     public bool ForceRelogin { get; set; }
 }

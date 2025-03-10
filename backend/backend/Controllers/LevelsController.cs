@@ -65,7 +65,7 @@ public class LevelsController : ControllerBase
         return levels.Select(o => new LevelDto(o.Id, o.Name, o.ItemCount, o.MinExperience, o.IsForWords));
     }
     
-    [HttpGet("{LevelId}", Name = "GetLevel")]
+    [HttpGet("{levelId}", Name = "GetLevel")]
     public async Task<ActionResult<LevelDto>> Get(int levelId)
     {
         var level = await _levelsRepository.GetAsync(levelId);
@@ -92,7 +92,6 @@ public class LevelsController : ControllerBase
             Name = createLevelDto.Name,
             MinExperience = createLevelDto.MinExperience,
             IsForWords = createLevelDto.IsForWords,
-            OwnerId = User.FindFirstValue(JwtRegisteredClaimNames.Sub)
         };
 
         level.ItemCount = 0;

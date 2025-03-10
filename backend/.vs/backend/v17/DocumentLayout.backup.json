@@ -36,7 +36,7 @@
               "RelativeDocumentMoniker": "backend\\Controllers\\AuthController.cs",
               "ToolTip": "C:\\Users\\Laurynas\\Desktop\\Bachelor\\backend\\backend\\Controllers\\AuthController.cs",
               "RelativeToolTip": "backend\\Controllers\\AuthController.cs",
-              "ViewState": "AgIAAE4AAAAAAAAAAAAYwFgAAAA+AAAAAAAAAA==",
+              "ViewState": "AgIAAE4AAAAAAAAAAAAYwFgAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-03-09T23:52:39.795Z",
               "EditorCaption": ""
@@ -51,8 +51,7 @@
               "RelativeToolTip": "backend\\Controllers\\QuotesController.cs",
               "ViewState": "AgIAAEoAAAAAAAAAAAAgwFkAAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-05T22:26:12.31Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-05T22:26:12.31Z"
             },
             {
               "$type": "Document",

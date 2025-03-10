@@ -22,6 +22,8 @@ public class LS_DbContext : IdentityDbContext<SiteUser>
     }
     public DbSet<Level> Levels { get; set; }
     public DbSet<Note> Notes { get; set; }
-    public DbSet<Word> Words { get; set; }
+    public DbSet<Word> Words { get; set; } 
     public DbSet<Quote> Quotes { get; set; }
+    public DbSet<Badge> Badges { get; set; }
+    public DbSet<BadgeNumber> BadgeNumbers { get; set; }
 }

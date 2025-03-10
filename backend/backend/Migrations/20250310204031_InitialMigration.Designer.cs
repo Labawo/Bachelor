@@ -11,8 +11,8 @@ using backend.Data;
 namespace backend.Migrations
 {
     [DbContext(typeof(LS_DbContext))]
-    [Migration("20250305220450_InitialCreate")]
-    partial class InitialCreate
+    [Migration("20250310204031_InitialMigration")]
+    partial class InitialMigration
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -158,6 +158,9 @@ namespace backend.Migrations
                     b.Property<int>("AccessFailedCount")
                         .HasColumnType("int");
 
+                    b.Property<bool?>("Blocked")
+                        .HasColumnType("tinyint(1)");
+
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken()
                         .HasColumnType("longtext");
@@ -184,6 +187,9 @@ namespace backend.Migrations
                     b.Property<string>("Name")
                         .HasColumnType("longtext");
 
+                    b.Property<int?>("NewBadgeCnt")
+                        .HasColumnType("int");
+
                     b.Property<string>("NormalizedEmail")
                         .HasMaxLength(256)
                         .HasColumnType("varchar(256)");
@@ -191,6 +197,9 @@ namespace backend.Migrations
                     b.Property<string>("NormalizedUserName")
                         .HasMaxLength(256)
                         .HasColumnType("varchar(256)");
+
+                    b.Property<int?>("OldBadgeCnt")
+                        .HasColumnType("int");
 
                     b.Property<int?>("PLevel")
                         .HasColumnType("int");
@@ -209,6 +218,15 @@ namespace backend.Migrations
 
                     b.Property<string>("ProfileImage")
                         .HasColumnType("longtext");
+
+                    b.Property<int?>("QuizDone")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("QuizXp")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime?>("RegistrationDate")
+                        .HasColumnType("datetime(6)");
 
                     b.Property<string>("SecurityStamp")
                         .HasColumnType("longtext");
@@ -244,6 +262,68 @@ namespace backend.Migrations
                     b.ToTable("AspNetUsers", (string)null);
                 });
 
+            modelBuilder.Entity("backend.Data.Entities.Badge", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    b.Property<string>("BadgeImage")
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("Descripotion")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<int?>("QuizXp")
+                        .HasColumnType("int");
+
+                    b.Property<string>("TrainingType")
+                        .HasColumnType("longtext");
+
+                    b.Property<int?>("TrainingXp")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Type")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("WPM")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Badges");
+                });
+
+            modelBuilder.Entity("backend.Data.Entities.BadgeNumber", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    b.Property<int>("BadgeId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("EarnedBadges")
+                        .HasColumnType("int");
+
+                    b.Property<string>("OwnerId")
+                        .IsRequired()
+                        .HasColumnType("varchar(255)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("BadgeId");
+
+                    b.HasIndex("OwnerId");
+
+                    b.ToTable("BadgeNumbers");
+                });
+
             modelBuilder.Entity("backend.Data.Entities.Level", b =>
                 {
                     b.Property<int>("Id")
@@ -263,13 +343,7 @@ namespace backend.Migrations
                         .IsRequired()
                         .HasColumnType("longtext");
 
-                    b.Property<string>("OwnerId")
-                        .IsRequired()
-                        .HasColumnType("varchar(255)");
-
                     b.HasKey("Id");
-
-                    b.HasIndex("OwnerId");
 
                     b.ToTable("Levels");
                 });
@@ -420,8 +494,14 @@ namespace backend.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("backend.Data.Entities.Level", b =>
+            modelBuilder.Entity("backend.Data.Entities.BadgeNumber", b =>
                 {
+                    b.HasOne("backend.Data.Entities.Badge", "badge")
+                        .WithMany()
+                        .HasForeignKey("BadgeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.HasOne("backend.Auth.Models.SiteUser", "Owner")
                         .WithMany()
                         .HasForeignKey("OwnerId")
@@ -429,6 +509,8 @@ namespace backend.Migrations
                         .IsRequired();
 
                     b.Navigation("Owner");
+
+                    b.Navigation("badge");
                 });
 
             modelBuilder.Entity("backend.Data.Entities.Note", b =>
