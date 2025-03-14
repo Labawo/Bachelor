@@ -7,8 +7,9 @@ import Title from "../Main/Title";
 import useAuth from "../../hooks/UseAuth";
 import SuccessModal from "../Modals/SuccessModal";
 import ErrorModal from "../Modals/ErrorModal";
+import "./levelmodals.css";
 
-const CreateLevel = () => {
+const CreateLevel = ({ show, onClose }) => {
 
   const [name, setName] = useState('');
   const [minExperience, setMinExperience] = useState(0);
@@ -61,10 +62,9 @@ const CreateLevel = () => {
 
   return (
     <>
-      <Title />
-      <NavBar />
-      <section>
-        <div className="form-container">
+      <div className={`modal ${show ? "show" : ""}`}>
+      <div className="modal-content"> 
+      <div className="form-container">
           <h2>Create New Level</h2>
           <form onSubmit={handleSubmit} className = "input_form">
             <div className="form-group">
@@ -100,9 +100,13 @@ const CreateLevel = () => {
                     className="input-field"
                 />
             </div>
-            <button type="submit" className="auth_button">
-              Create
-            </button>
+            
+            <div className="modal-buttons">
+              <button className="primary-button" onClick={onClose}>Atšaukti</button>
+              <button type="submit" className="auth_button">
+                Create
+              </button>
+            </div>
           </form>
         </div>
         <SuccessModal
@@ -117,8 +121,8 @@ const CreateLevel = () => {
           onClose={() => setErrorMessage("")}
           message={errorMessage}
         />
-      </section>
-      <Footer />
+      </div>
+      </div>
     </>
     
   );

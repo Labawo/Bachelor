@@ -6,9 +6,13 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrash, faSearch, faEdit } from '@fortawesome/free-solid-svg-icons';
 import ConfirmationModal from "../Modals/ConfirmationModal";
 import ErrorModal from "../Modals/ErrorModal";
+import CreateLevel from "./CreateLevel";
+import EditLevel from "./EditLevel";
 
 const Levels = () => {
     const [levels, setLevels] = useState([]);
+    const [showCreate, setShowCreate] = useState(false);
+    const [editLevelId, setEditLevelId] = useState(0);
     const [page, setPage] = useState(1);
     const [isLoading, setIsLoading] = useState(false);
     const axiosPrivate = useAxiosPrivate();
@@ -54,18 +58,18 @@ const Levels = () => {
     }, []); 
 
     const createLevel = () => {
-        navigate(`/levels/createLevel`);
+        setShowCreate(true);
     };
 
     const updateLevel = (levelId) => {
-        navigate(`/levels/${levelId}/editLevel`);
+        setEditLevelId(levelId);
     };
 
     const removeLevel = async (levelId) => {
         try {
           await axiosPrivate.delete(`/levels/${levelId}`);
           setLevels(prevLevels =>
-            preLevels.filter(level => level.id !== levelId)
+            prevLevels.filter(level => level.id !== levelId)
           );
           setDeleteId("");
         } catch (error) {
@@ -78,61 +82,57 @@ const Levels = () => {
     return (
         <article className="therapies-container">
             <div className="table-container">
-                <h2 className="list-headers">Therapies List</h2>
-                {canAccessDoctor && (
-                    <div className="therapy-create-btn-div">
-                        <button onClick={createTherapy} className="therapy-create-btn"> Create Therapy </button>
-                    </div>                    
-                )}
-                {therapies.length ? (
-                    <div className="therapy-list">
-                        {therapies.map((therapy, i) => (
-                            <div key={i} className="therapy-row">
-                                <div className="therapy-info-name">
-                                    <p>{therapy?.name}</p> 
-                                </div>
-                                <div className="therapy-info">
-                                    <p>Psych. {therapy?.description}</p>
-                                </div>
-                                <div className="therapy-actions">
-                                    
-                                    {canAccessAdminOrCreator(therapy) ? (
-                                        <>
-                                            <button 
-                                                className="table-buttons-blue"
-                                                onClick={() => updateTherapy(therapy.id)}
-                                            >
-                                                <FontAwesomeIcon icon={faEdit} />
-                                            </button>
-                                        </>
-                                    ) : <button className="mock-button"></button>}
-                                    <button 
-                                        className="table-buttons-blue"
-                                        onClick={() => handleInspect(therapy.id)}
-                                    >
-                                        <FontAwesomeIcon icon={faSearch} />
-                                    </button>
-                                    {canAccessAdminOrCreator(therapy) && (
-                                        <>
-                                            <button
-                                                className="table-buttons-red"
-                                                onClick={() => setDeleteId(therapy.id)}
-                                            >
-                                                <FontAwesomeIcon icon={faTrash} />
-                                            </button>
-                                        </>
-                                    )}
-                                </div>
-                            </div>
-                        ))}
-                    </div>
+                <h2 className="list-headers">Levels List</h2>
+                <div className="therapy-create-btn-div">
+                    <button onClick={createLevel} className="therapy-create-btn"> Create Level </button>
+                </div>
+                {levels.length ? (
+                    <table className="my-table">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>MinExperience</th>
+                                <th>IsForWords</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {levels.map((level, i) => (
+                                <tr key={i}>
+                                    <td>{level?.name}</td>
+                                    <td>{level?.minExperience}</td>
+                                    <td>{level?.isForWords}</td>
+                                    <td>
+                                        <button 
+                                            className="table-buttons-blue"
+                                            onClick={() => updateLevel(level.id)}
+                                        >
+                                            <FontAwesomeIcon icon={faEdit} />
+                                        </button>
+                                        <button 
+                                            className="table-buttons-blue"
+                                            onClick={() => handleInspect(level.id)}
+                                        >
+                                            <FontAwesomeIcon icon={faSearch} />
+                                        </button>
+                                        <button
+                                            className="table-buttons-red"
+                                            onClick={() => setDeleteId(level.id)}
+                                        >
+                                            <FontAwesomeIcon icon={faTrash} />
+                                        </button>                                       
+                                    </td>    
+                                </tr>
+                            ))}
+                        </tbody>
+                    </table>
                 ) : (
-                    <p className="no-list-items-p">No therapies to display</p>
+                    <p className="no-list-items-p">No levels to display</p>
                 )}
                 {isLoading ? (
                     <p>Loading...</p>
-                ) : therapies.length > 1 ? (
-                    <button onClick={loadTherapies} className="load-button-v1">Load More</button>
+                ) : levels.length > 1 ? (
+                    <button onClick={loadLevels} className="load-button-v1">Load More</button>
                 ) : null}
             </div>
             <ErrorModal
@@ -143,8 +143,17 @@ const Levels = () => {
             <ConfirmationModal 
                 show={deleteId !== ""}
                 onClose={() => setDeleteId("")}
-                onConfirm={() => removeTherapy(deleteId)}
+                onConfirm={() => removeLevel(deleteId)}
                 message={"Are you sure you want to delete therapy?"}
+            />
+            <CreateLevel 
+                show={showCreate === true}
+                onClose={() => setShowCreate(false)}
+            />
+            <EditLevel
+                show={editLevelId !== 0}
+                onClose={() => setEditLevelId(0)}
+                levelId = {editLevelId} 
             />
         </article>
     );

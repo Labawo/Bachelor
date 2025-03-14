@@ -12,8 +12,8 @@ import TrainingPage from './components/Training/TrainingPage';
 import QuizPage from './components/Quiz/QuizPage';
 import TypingPage from './components/SpeedTyping/TypingPage';
 import LevelsPage from './components/Levels/LevelsPage';
+import LevelPage from './components/Levels/LevelPage';
 import BadgesPage from './components/Badges/BadgesPage';
-import CreateLevel from './components/Levels/CreateLevel';
 import { Routes, Route } from 'react-router-dom';
 
 const ROLES = {
@@ -48,7 +48,7 @@ function App() {
           <Route path="/notes" element={<NotesPage />} />
           <Route path="/levelsPage" element={<LevelsPage />} />
           <Route path="/badgesPage" element={<BadgesPage />} />
-          <Route path="/createLevel" element={<CreateLevel />} />
+          <Route path="/levels/:levelId" element={<LevelPage />} />
         </Route>
 
         {/* catch all */}

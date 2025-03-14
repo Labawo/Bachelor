@@ -1,6 +1,7 @@
 import NavBar from "../Main/NavBar";
 import Footer from "../Main/Footer";
 import Title from "../Main/Title";
+import Levels from "./Levels"
 import React, { useState } from 'react';
 
 const LevelPage = () => {
@@ -11,7 +12,7 @@ const LevelPage = () => {
             <NavBar />
             <section>                
                 <div className='content-holder-div'>
-                    <p className="greeting-note">Hello to level page</p>
+                    <Levels />
                 </div>
             </section>
             

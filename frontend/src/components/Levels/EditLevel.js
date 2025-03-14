@@ -6,138 +6,100 @@ import Footer from "../Main/Footer";
 import Title from "../Main/Title";
 import SuccessModal from "../Modals/SuccessModal";
 import ErrorModal from "../Modals/ErrorModal";
+import "./levelmodals.css";
 
-const EditTherapy = () => {
-  const { therapyId } = useParams();
-  const navigate = useNavigate();
+const EditLevel = ({ show, onClose, levelId }) => {
 
-  const [formData, setFormData] = useState({
-    name: "",
-    description: "",
-    imageData: null,
-  });
+  const [name, setName] = useState('');
+  const [minExperience, setMinExperience] = useState(0);
 
   const axiosPrivate = useAxiosPrivate();
 
-  const [isLoading, setIsLoading] = useState(true);
+  const [errors, setErrors] = useState({});
   const [successMessage, setSuccessMessage] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
 
   useEffect(() => {
-    const fetchTherapyData = async () => {
+    const fetchLevelData = async () => {
       try {
-        const response = await axiosPrivate.get(`/therapies/${therapyId}`);
-        const { name, description, imageData } = response.data.resource;
-        setFormData({ name, description, imageData });
-        setIsLoading(false);
+        const response = await axiosPrivate.get(`/levels/${levelId}`);
+        const { name, minExperience } = response.data.resource;
+        setName(name);
+        setMinExperience(minExperience);
       } catch (error) {
-        console.error("Error fetching therapy:", error);
-        if (error.response && error.response.status === 404) {
-          navigate(-1);
-        } else if (error.response && error.response.status === 403) {
-          navigate("/therapies");
+        console.error("Error fetching level:", error);
+        if (error.response && error.response.status === 403) {
+          onClose();
         }
       }
     };
 
-    fetchTherapyData();
-  }, [axiosPrivate, therapyId, navigate]);
-
-  const handleInputChange = (e) => {
-    const { name, value, files } = e.target;
-    const sanitizedValue = sanitizeInput(value);
-    
-    if (name === "image") {
-      const reader = new FileReader();
-      const file = files[0];
-      
-      reader.onloadend = () => {
-        setFormData({
-          ...formData,
-          imageData: reader.result,
-        });
-      };
-      
-      reader.readAsDataURL(file);
-    } else {
-      setFormData({
-        ...formData,
-        [name]: sanitizedValue,
-      });
-    }
-  };
+    fetchLevelData();
+  }, [axiosPrivate, levelId]);
 
   const sanitizeInput = (value) => {
     return value.replace(/(<([^>]+)>)/gi, "");
   };
 
+  const checkNumberInput = (value) => {
+    return value < 0 || isNaN(value) ? 0 : value;
+  }
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      let formDataToSend = { ...formData };
-      
-      if (formDataToSend.imageData instanceof File) {
-        const imageDataBase64 = await readFileAsBase64(formDataToSend.imageData);
-        formDataToSend = {
-          ...formDataToSend,
-          imageData: imageDataBase64,
-        };
-      }
+      const levelData = {
+        name: sanitizeInput(name),
+        minExperience: checkNumberInput(minExperience),
+      };
 
-      const response = await axiosPrivate.put(`/therapies/${therapyId}`, formDataToSend);
-      setSuccessMessage("Therapy updated successfully!");
+      console.log(levelData);
+
+      const response = await axiosPrivate.put(`/levels/${levelId}`, levelData);
+
+      setSuccessMessage("Level created successfully!");
     } catch (error) {
-      console.error("Error updating therapy:", error);
-      setErrorMessage("Failed to update therapy. Please try again.");
+      console.error("Error creating level:", error);
+      setErrorMessage("Failed to create level. Please try again.");
     }
   };
 
-  const readFileAsBase64 = (file) => {
-    return new Promise((resolve, reject) => {
-      const reader = new FileReader();
-      reader.readAsDataURL(file);
-      reader.onload = () => resolve(reader.result);
-      reader.onerror = (error) => reject(error);
-    });
-  };
-
-  if (isLoading) {
-    return <p>Loading...</p>;
-  }
-
   return (
     <>
-      <Title />
-      <NavBar />
-      <section>     
-        <div className="form-container">
-          <h2>Edit Therapy</h2>
-          <form onSubmit={handleSubmit} className="input_form">            
+      <div className={`modal ${show ? "show" : ""}`}>
+      <div className="modal-content"> 
+      <div className="form-container">
+          <h2>Create New Level</h2>
+          <form onSubmit={handleSubmit} className = "input_form">
             <div className="form-group">
-              <label htmlFor="description">Description:</label><br />
-              <textarea
-                id="description"
-                name="description"
-                value={formData.description}
-                onChange={handleInputChange}
-                required
-                className="textarea-field"
-              />
+              <label htmlFor="name">Pavadinimas:</label><br/>
+                <input
+                    type="text"
+                    id="name"
+                    value={name}
+                    onChange={(e) => setName(e.target.value)}
+                    className="input-field"
+                    required
+                />
             </div>
             <div className="form-group">
-              <label htmlFor="image">Image:</label><br />
-              <input
-                type="file"
-                id="image"
-                name="image"
-                onChange={handleInputChange}
-                accept="image/*"
-                className="input-field"
-              />
+              <label htmlFor="minExperience">Minimalus XP skaičius:</label><br/>
+                <input
+                    type="number"
+                    id="minExperience"
+                    value={minExperience}
+                    onChange={(e) => setMinExperience(e.target.value)}
+                    required
+                    className="input-field"
+                />
             </div>
-            <button type="submit" className="auth_button">
-              Update
-            </button>
+            
+            <div className="modal-buttons">
+              <button className="primary-button" onClick={onClose}>Atšaukti</button>
+              <button type="submit" className="auth_button">
+                Create
+              </button>
+            </div>
           </form>
         </div>
         <SuccessModal
@@ -152,11 +114,11 @@ const EditTherapy = () => {
           onClose={() => setErrorMessage("")}
           message={errorMessage}
         />
-      </section>
-      <Footer />
+      </div>
+      </div>
     </>
     
   );
 };
 
-export default EditTherapy;
+export default EditLevel;

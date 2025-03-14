@@ -7,6 +7,8 @@ public record RegisterUserDto([Required] string UserName, [EmailAddress][Require
 public record LoginDto(string UserName, string Password);
 public record UserDto(string Id, string? UserName, string? Email);
 
+public record UserWithConfimationLinkDto(string Id, string? UserName, string? Email, string? ConfimationLink);
+
 public record PatientDto(string Id, string? UserName, string? Email, DateTime? TestTimer);
 
 public record UserForTestDto(DateTime? Timer);

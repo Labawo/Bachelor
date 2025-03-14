@@ -115,13 +115,6 @@ public class LevelsController : ControllerBase
             return NotFound();
         }
 
-        var authorizationResult = await _authorizationService.AuthorizeAsync(User, level, PolicyNames.ResourceOwner);
-
-        if (!authorizationResult.Succeeded)
-        {
-            return Forbid();
-        }
-
         level.Name = updateLevelDto.Name;
         level.MinExperience = updateLevelDto.MinExperience; 
 

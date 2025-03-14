@@ -26,7 +26,15 @@ public class AuthController : ControllerBase
         _userManager = userManager;
         _jwtTokenService = jwtTokenService;
     }
-    
+
+    [HttpGet]
+    [Route("test")]
+    public async Task<IActionResult> TestingRoute()
+    {
+        return Ok(Request.Host);
+    }
+
+
     [HttpPost]
     [Route("register")]
     public async Task<IActionResult> Register(RegisterUserDto registerUserDto)
@@ -42,8 +50,8 @@ public class AuthController : ControllerBase
             UserName = registerUserDto.UserName,
             XP = 0,
             PLevel = 0,
-            Skill = "Beginner",
             WPM = 0,
+            Skill = "Beginner",
             WPM10 = 0,
             RegistrationDate = DateTime.Now
         };
@@ -57,9 +65,9 @@ public class AuthController : ControllerBase
         
         var token = await _userManager.GenerateEmailConfirmationTokenAsync(newUser);
         
-        var confirmationLink = Url.Action("ConfirmEmail", "Account", new { userId = newUser.Id, token = token }, Request.Scheme);
-        
-        var email = new MimeMessage();
+        var confirmationLink = Url.Action("ConfirmEmail", "api", new { userId = newUser.Id, token = token }, Request.Scheme);
+
+        /*var email = new MimeMessage();
         email.From.Add(MailboxAddress.Parse("hesm6150@gmail.com"));
         email.To.Add(MailboxAddress.Parse(newUser.Email));
         email.Subject = "Elektroninio pašto patvirtinimas";
@@ -69,11 +77,36 @@ public class AuthController : ControllerBase
         smtp.Connect("smtp.gmail.com", 587, SecureSocketOptions.StartTls);
         smtp.Authenticate("hesm6150@gmail.com", "zqkulfficavlkbap");
         smtp.Send(email);
-        smtp.Disconnect(true);
-            
-        return Ok("Password changed successfully.");
+        smtp.Disconnect(true);*/
 
-        return CreatedAtAction(nameof(Register), new UserDto(newUser.Id, newUser.UserName, newUser.Email));
+        string? route = Request.Host.Value + Request.Path.Value.Replace("register", "ConfirmEmail") + "?userId=" + newUser.Id + "&token=" + token;
+
+        return CreatedAtAction(nameof(Register), new UserWithConfimationLinkDto(newUser.Id, newUser.UserName, token, route));
+    }
+
+    [HttpGet]
+    [Route("ConfirmEmail")]
+    [AllowAnonymous]
+    public async Task<IActionResult> ConfirmEmail(string userId, string token)
+    {
+        if (userId == null || token == null)
+        {
+            return BadRequest();
+        }
+
+        var user = await _userManager.FindByIdAsync(userId);
+
+        if (user == null)
+            return BadRequest("User does not exist.");
+
+        var result = await _userManager.ConfirmEmailAsync(user, token);
+
+        if(result.Succeeded)
+        {
+            return Ok();
+        }
+
+        return BadRequest();
     }
     
     [HttpPost]

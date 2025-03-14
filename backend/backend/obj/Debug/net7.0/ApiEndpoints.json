@@ -159,6 +159,27 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "backend.Controllers.AuthController",
+    "Method": "ConfirmEmail",
+    "RelativePath": "api/ConfirmEmail",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userId",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "token",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "backend.Controllers.LevelsController",
     "Method": "GetManyPaging",
     "RelativePath": "api/levels",
@@ -784,6 +805,16 @@
         "IsRequired": true
       }
     ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "backend.Controllers.AuthController",
+    "Method": "TestingRoute",
+    "RelativePath": "api/test",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
     "ReturnTypes": []
   },
   {
