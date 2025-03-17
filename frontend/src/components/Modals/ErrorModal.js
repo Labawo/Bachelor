@@ -10,10 +10,10 @@ const ErrorModal = ({ show, onClose, message }) => {
           &times;
         </span>
         
-        <h2 className="error-header"><FiAlertTriangle /> Error</h2>
+        <h2 className="error-header"><FiAlertTriangle /> Klaida</h2>
         <p>{message}</p>
         <div className="modal-buttons single">
-          <button className="primary-button" onClick={onClose}>OK</button>
+          <button className="primary-button" onClick={onClose}>Uždaryti</button>
         </div>
       </div>
     </div>

@@ -8,34 +8,25 @@ import ErrorModal from "../Modals/ErrorModal";
 import SuccessSelectModal from "../Modals/SuccessSelectModal";
 import ConfirmationModal from "../Modals/ConfirmationModal";
 
-const Appointments = () => {
-    const [appointments, setAppointments] = useState([]);
+const Words = ({ levelId }) => {
+    const [words, setWords] = useState([]);
     const axiosPrivate = useAxiosPrivate();
     const navigate = useNavigate();
     const location = useLocation();
     const { auth } = useAuth();
-    const { therapyId } = useParams();
     const [errorMessage, setErrorMessage] = useState("");
     const [successMessage, setSuccessMessage] = useState("");
     const [startDate, setStartDate] = useState("");
     const [deleteId, setDeleteId] = useState("");
-
-    const endDate = startDate ? new Date(new Date(startDate).getTime() + 7 * 24 * 60 * 60 * 1000).toISOString().split('T')[0] : "";
-
-    const handleInspect = (appintmentId) => {
-        navigate(`/therapies/${therapyId}/appointments/${appintmentId}`);
-    };
-
-    const [therapy, setTherapy] = useState(null);
     
 
     useEffect(() => {
         let isMounted = true;
         const controller = new AbortController();
 
-        const getTherapyAndAppointments = async () => {
+        const getLevelAndWords = async () => {
             try {
-                const [therapyResponse, appointmentsResponse] = await Promise.all([
+                const [levelResponse, wordsResponse] = await Promise.all([
                     axiosPrivate.get(`/therapies/${therapyId}`, {
                         signal: controller.signal,
                     }),
@@ -139,22 +130,8 @@ const Appointments = () => {
                                     <td>{appointment?.time.split('T')[1].slice(0, 5)}</td>
                                     <td>{appointment?.price}€</td>
                                     <td>
-                                        {canSelectAppointment && appointment.patientId === null && (
-                                            <button 
-                                                className="table-buttons-green"
-                                                onClick={() => selectAppointment(appointment.id)}
-                                            >
-                                                <FontAwesomeIcon icon={faCheck} />
-                                            </button>
-                                        )}
                                         {canEditDelete && (
                                             <>
-                                                <button 
-                                                    className="table-buttons-blue"
-                                                    onClick={() => handleInspect(appointment.id)}
-                                                >
-                                                    <FontAwesomeIcon icon={faSearch} />
-                                                </button>
                                                 <button 
                                                     className="table-buttons-blue"
                                                     onClick={() => updateAppointment(appointment.id)}
@@ -198,4 +175,4 @@ const Appointments = () => {
     );
 };
 
-export default Appointments;
+export default Words;

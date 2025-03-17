@@ -41,6 +41,7 @@ builder.Services.AddTransient<ILevelsRepository, LevelsRepository>();
 builder.Services.AddTransient<IQuotesRepository, QuotesRepository>();
 builder.Services.AddTransient<IWordsRepository, WordsRepository>();
 builder.Services.AddTransient<INotesRepository, NotesRepository>();
+builder.Services.AddTransient<IBadgesRepository, BadgesRepository>();
 builder.Services.AddTransient<IJwtTokenService, JwtTokenService>();
 builder.Services.AddScoped<AuthDbSeeder>();
 

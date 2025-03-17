@@ -9,11 +9,11 @@ const ConfirmationModal = ({ show, onClose, onConfirm, message }) => {
         <span className="close" onClick={onClose}>
           &times;
         </span>
-        <h2 className="confirmation-header"><FiAlertCircle /> Confirmation</h2>
+        <h2 className="confirmation-header"><FiAlertCircle /> Sutikimas</h2>
         <p>{message}</p>
         <div className="modal-buttons">
-          <button className="secondary-button" onClick={onClose}>Cancel</button>
-          <button className="primary-button" onClick={onConfirm}>Confirm</button>         
+          <button className="secondary-button" onClick={onClose}>Atšaukti</button>
+          <button className="primary-button" onClick={onConfirm}>Sutikti</button>         
         </div>
       </div>
     </div>

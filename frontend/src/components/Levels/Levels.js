@@ -13,6 +13,7 @@ const Levels = () => {
     const [levels, setLevels] = useState([]);
     const [showCreate, setShowCreate] = useState(false);
     const [editLevelId, setEditLevelId] = useState(0);
+    const [isNextPage, setIsNextPage] = useState(false);
     const [page, setPage] = useState(1);
     const [isLoading, setIsLoading] = useState(false);
     const axiosPrivate = useAxiosPrivate();
@@ -24,10 +25,7 @@ const Levels = () => {
 
     const handleInspect = (levelId) => {
         navigate(`/levels/${levelId}`);
-    };
-
-    const canAccessAdmin = auth.roles.includes("Admin");
-    
+    };   
 
     const fetchLevels = useCallback(async (pageNumber) => {
         try {
@@ -42,20 +40,19 @@ const Levels = () => {
         }
     }, [axiosPrivate, navigate, location]);
 
-    const loadLevels = async () => {
+    const loadLevels = async (page) => {
         if (isLoading) return;
 
         setIsLoading(true);
         const data = await fetchLevels(page);
         console.log(data)
-        setLevels(prevLevels => [...prevLevels, ...data]);
-        setPage(prevPage => prevPage + 1);
+        setLevels([...data]);
         setIsLoading(false);
     };
 
     useEffect(() => {
-        loadLevels();
-    }, []); 
+        loadLevels(page);
+    }, [page]); 
 
     const createLevel = () => {
         setShowCreate(true);
@@ -73,26 +70,27 @@ const Levels = () => {
           );
           setDeleteId("");
         } catch (error) {
-          console.error(`Error removing level ${levelId}:`, error);
-          setErrorMessage("Error removing level.")
+          console.error(`Klaida trinant lygį ${levelId}:`, error);
+          setErrorMessage("Klaida trinant lygį.")
           setDeleteId("");
         }
     };
 
     return (
-        <article className="therapies-container">
+        <article className="list-article">
             <div className="table-container">
-                <h2 className="list-headers">Levels List</h2>
-                <div className="therapy-create-btn-div">
-                    <button onClick={createLevel} className="therapy-create-btn"> Create Level </button>
+                <h2 className="list-headers">Lygių sąrašas</h2>
+                <div className="create-btn-div">
+                    <button onClick={createLevel} className="create-btn"> Sukurti Lygį </button>
                 </div>
                 {levels.length ? (
                     <table className="my-table">
                         <thead>
                             <tr>
-                                <th>Name</th>
-                                <th>MinExperience</th>
-                                <th>IsForWords</th>
+                                <th>Pavadinimas</th>
+                                <th>Patirtis</th>
+                                <th>Skirtas testams?</th>
+                                <th>Įrašų skaičius</th>
                                 <th></th>
                             </tr>
                         </thead>
@@ -101,7 +99,8 @@ const Levels = () => {
                                 <tr key={i}>
                                     <td>{level?.name}</td>
                                     <td>{level?.minExperience}</td>
-                                    <td>{level?.isForWords}</td>
+                                    <td>{level?.isForWords ? "TAIP" : "NE"}</td>
+                                    <td>{level?.itemCount}</td>
                                     <td>
                                         <button 
                                             className="table-buttons-blue"
@@ -127,12 +126,15 @@ const Levels = () => {
                         </tbody>
                     </table>
                 ) : (
-                    <p className="no-list-items-p">No levels to display</p>
+                    <p className="no-list-items-p">Lygių nėra</p>
                 )}
                 {isLoading ? (
                     <p>Loading...</p>
-                ) : levels.length > 1 ? (
-                    <button onClick={loadLevels} className="load-button-v1">Load More</button>
+                ) : levels.length >= 0 ? (
+                    <div className="pagination-buttons">
+                        <button onClick={() => setPage(page === 1 ? page : page - 1)} className="load-button-v1">Ankstesnis puslapis</button>
+                        <button onClick={() => setPage(levels.length === 0 ? page : page + 1)} className="load-button-v1">Kitas puslapis</button>
+                    </div>                    
                 ) : null}
             </div>
             <ErrorModal
@@ -144,7 +146,7 @@ const Levels = () => {
                 show={deleteId !== ""}
                 onClose={() => setDeleteId("")}
                 onConfirm={() => removeLevel(deleteId)}
-                message={"Are you sure you want to delete therapy?"}
+                message={"Ar tikrai norite pašalinti lygį?"}
             />
             <CreateLevel 
                 show={showCreate === true}

@@ -303,13 +303,6 @@ li {
     align-items: center; 
 }
 
-.therapy-image {
-    max-width: 100%; 
-    height: auto; 
-    display: block; 
-    margin: 0 auto; 
-}
-
 .password-reset-container {
     max-width: 90%; 
     overflow-x: hidden; 
@@ -373,83 +366,6 @@ li {
     text-align: center;
 }
 
-.create-button-v1,
-.related-button,
-.load-button-v1, 
-.therapy-create-btn {
-    background-color: #3066be;
-    border: none;
-    cursor: pointer;
-    color: white;
-    transition: background-color 0.3s; 
-    width: 10%;
-}
-
-.table-buttons-blue {
-    background-color: #3066be;
-    border: none;
-    cursor: pointer;
-    color: white;
-    padding-left: 15px;
-    padding-right: 35px;
-    transition: background-color 0.3s; 
-    width: 0;
-}
-
-.mock-button {
-    background-color: white;
-    border: none;
-    color: white;
-    padding-left: 15px;
-    padding-right: 35px; 
-    width: 0;
-}
-
-.create-button-v1,
-.related-button {
-    width: 20%;
-}
-
-.therapy-create-btn {
-    width: 90%;
-}
-
-.related-button {
-    margin-left: 40%;
-}
-
-.table-buttons-red {
-    background-color: #f44336;
-    border: none;
-    cursor: pointer;
-    color: white;
-    padding-left: 15px;
-    padding-right: 30px;
-    transition: background-color 0.3s; 
-    width: 0;
-}
-
-.table-buttons-green {
-    background-color: #75975e;
-    border: none;
-    cursor: pointer;
-    color: white;
-    padding-left: 15px;
-    padding-right: 30px;
-    transition: background-color 0.3s; 
-    width: 0;
-}
-
-.table-buttons-gold {
-    background-color: #ffd700;
-    border: none;
-    cursor: pointer;
-    padding-left: 15px;
-    padding-right: 30px;
-    transition: background-color 0.3s; 
-    width: 0;
-}
-
 .allowance {
     width: 15%;
     padding-left: 0;
@@ -460,34 +376,6 @@ li {
     width: 15%;
     padding-left: 0;
     padding-right: 0;
-}
-
-.create-button-v1:hover,
-.table-buttons-blue:hover,
-.related-button:hover,
-.load-button-v1:hover,
-.therapy-create-btn:hover {
-    background-color: #28559e; 
-}
-
-.table-buttons-red:hover {
-    background-color: #d32f2f; 
-}
-
-.table-buttons-green:hover {
-    background-color: #5a784b; 
-}
-
-.table-buttons-gold:hover {
-    background-color: #cca000; 
-}
-
-.create-button-v1  {
-    float: right;
-}
-
-.load-button-v1 {
-    margin-left: 45%;
 }
 
 .no-list-items-p {
@@ -574,45 +462,6 @@ li {
     padding-bottom: 40px;   
 }
 
-.therapy-row {
-    border: 1px solid black;
-    width: 47.5%;
-    margin: 1.25%;
-    display: inline-block;
-}
-
-.therapy-create-btn-div {
-    padding-bottom: 0px;
-    width: 25%;
-    margin-left: auto;
-}
-
-.therapy-create-btn {
-    margin-right: auto;
-}
-
-.therapy-info-name {
-    background-color: #5DADE2;
-    border-bottom: 1px solid black;
-    padding-left: 10px;
-    font-size: 35px;
-    font-weight: bold;
-    padding-bottom: 10px;
-    padding-top: 10px;
-}
-
-.therapy-info {
-    font-style: italic;
-    padding-left: 15px;
-    padding-bottom: 10px;
-    padding-top: 10px;
-}
-
-.therapy-actions {
-    width: 62.5%;
-    margin-left: auto;
-}
-
 tbody tr {
     border-bottom: 1px solid black;
 }
@@ -633,19 +482,6 @@ tbody tr {
 
 .green {
     color: green;
-}
-
-.red-button {
-    width: 135px;
-    cursor: pointer;
-    color: white;
-    background-color: #f44336;
-    font-weight: bold;
-    border: none;
-}
-
-.red-button:hover {
-    background-color: red;
 }
 
 .error-message {
@@ -670,7 +506,7 @@ tbody tr {
         max-width: 100%;
     }
 
-    .load-button-v1, .related-button {
+    .related-button {
         margin-left: 0;
     }
 
@@ -698,22 +534,6 @@ tbody tr {
 
     .logout-div {
         width: 40%;
-    }
-
-    .therapy-row {
-        border: 1px solid black;
-        width: 95%;
-        margin: 10px;
-        display: inline-block;
-    }
-
-    .therapy-create-btn-div {
-        width: 100%;
-    }
-
-    .therapy-actions {
-        width: 90%;
-        margin-left: auto;
     }
 
     .allowance {

@@ -27,14 +27,17 @@ const EditLevel = ({ show, onClose, levelId }) => {
         setName(name);
         setMinExperience(minExperience);
       } catch (error) {
-        console.error("Error fetching level:", error);
+        console.error("Klaida gaunant lygį:", error);
         if (error.response && error.response.status === 403) {
           onClose();
         }
       }
     };
 
-    fetchLevelData();
+    if (levelId !== 0) {
+      fetchLevelData();
+    }
+    
   }, [axiosPrivate, levelId]);
 
   const sanitizeInput = (value) => {

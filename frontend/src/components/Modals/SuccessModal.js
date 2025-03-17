@@ -17,10 +17,10 @@ const SuccessModal = ({ show, onClose, message, buttonText, destination }) => {
         <span className="close" onClick={onClose}>
           &times;
         </span>
-        <h2 className="success-header"><FiCheckCircle /> Success!</h2>
+        <h2 className="success-header"><FiCheckCircle /> Užklausa sėkminga!</h2>
         <p>{message}</p>
         <div className="modal-buttons">
-          <button className="primary-button" onClick={onClose}>Stay</button>
+          <button className="primary-button" onClick={onClose}>Pasilikti</button>
           <button className="secondary-button" onClick={handleNavigation}>{buttonText}</button>
         </div>
       </div>

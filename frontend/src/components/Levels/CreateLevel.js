@@ -97,6 +97,7 @@ const CreateLevel = ({ show, onClose }) => {
                     value={isForWords}
                     checked={isForWords}
                     onClick={changeFlagValue}
+                    onChange={() => {}}
                     className="input-field"
                 />
             </div>

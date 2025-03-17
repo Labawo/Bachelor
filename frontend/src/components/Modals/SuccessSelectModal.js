@@ -10,10 +10,10 @@ const SuccessSelectModal = ({ show, onClose, message }) => {
           &times;
         </span>
         
-        <h2 className="success-header"><FiCheckCircle /> Success!</h2>
+        <h2 className="success-header"><FiCheckCircle /> Užklausa sėkminga!</h2>
         <p>{message}</p>
         <div className="modal-buttons single">
-          <button className="primary-button" onClick={onClose}>OK</button>
+          <button className="primary-button" onClick={onClose}>Uždaryti</button>
         </div>
       </div>
     </div>

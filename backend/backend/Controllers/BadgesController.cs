@@ -44,7 +44,7 @@ public class BadgesController : ControllerBase
             return NotFound();
         }
 
-        var badgeDto = new BadgeDto(badge.Id, badge.Name, badge.Descripotion);
+        var badgeDto = new BadgeImageDto(badge.Id, badge.Name, badge.Descripotion, badge.BadgeImage);
         
         return Ok(badgeDto);
     }
@@ -58,6 +58,11 @@ public class BadgesController : ControllerBase
             Name = createBadgeDto.Name,
             Descripotion = createBadgeDto.Description,
         };
+
+        if (badge.Name.Length == 0)
+        {
+            return BadRequest();
+        }
 
         BadgeType badgeType;
 
@@ -104,6 +109,12 @@ public class BadgesController : ControllerBase
         }
 
         badge.Name = updateBadgeDto.Name;
+
+        if(badge.Name.Length == 0)
+        {
+            return BadRequest();
+        }
+
         badge.Descripotion = updateBadgeDto.Description;
         badge.BadgeImage = updateBadgeDto.BadgeImage; 
 
