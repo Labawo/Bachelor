@@ -11,6 +11,9 @@ using backend.Data.Dtos.Levels;
 using backend.Data.Dtos.Words;
 using backend.Data.Repositories;
 using backend.Data.Entities;
+using System.Text.Json.Nodes;
+using Newtonsoft.Json;
+using System.Text.Json.Serialization;
 
 namespace backend.Controllers;
 
@@ -63,7 +66,7 @@ public class WordsController : ControllerBase
         if (paginationMetaData != null && !Response.Headers.ContainsKey("Pagination"))
         {
             // Add pagination metadata to response header
-            Response.Headers.Add("Pagination", JsonSerializer.Serialize(paginationMetaData));
+            Response.Headers.Add("Pagination", System.Text.Json.JsonSerializer.Serialize(paginationMetaData));
         }
 
         return words.Select(o => new WordDto(o.Id, o.Question, o.IsOpen, o.CorrectAnswer, o.Choices, o.ImageData));
@@ -120,6 +123,28 @@ public class WordsController : ControllerBase
 
         return Created("GetWord",
             new WordDto(word.Id, word.Question, word.IsOpen, word.CorrectAnswer, word.Choices, word.ImageData));
+    }
+
+    [HttpPost("array")]
+    [Authorize(Roles = SiteRoles.Admin)]
+    public async Task<ActionResult> CreateArray(int levelId, JsonArray array)
+    {
+        var level = await _levelsRepository.GetAsync(levelId);
+        if (level == null) return NotFound($"Couldn't find a level with id of {levelId}");
+        List<Word> words = new List<Word>();
+
+        foreach (var node in array)
+        {
+            var obj = node?.AsObject();
+
+            if (obj != null && obj.ContainsKey("question") && obj.ContainsKey("correctAnswer"))
+            {
+                Word word = new Word { Question = (string)obj["question"], CorrectAnswer = (string)obj["correctAnswer"], LevelId = levelId, IsOpen = true };
+                words.Add(word);
+            }
+        }
+
+        return Ok(words.Count);
     }
 
     [HttpPut("{wordId}")]

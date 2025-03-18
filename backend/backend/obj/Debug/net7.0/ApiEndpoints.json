@@ -627,6 +627,27 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "backend.Controllers.WordsController",
+    "Method": "CreateArray",
+    "RelativePath": "api/levels/{levelId}/words/array",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "levelId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "array",
+        "Type": "System.Text.Json.Nodes.JsonArray",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "backend.Controllers.AuthController",
     "Method": "Login",
     "RelativePath": "api/login",

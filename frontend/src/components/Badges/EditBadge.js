@@ -1,11 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
 import useAxiosPrivate from "../../hooks/UseAxiosPrivate";
-import NavBar from "../Main/NavBar";
-import Footer from "../Main/Footer";
-import Title from "../Main/Title";
-import useAuth from "../../hooks/UseAuth";
-import SuccessModal from "../Modals/SuccessModal";
+import SuccessSelectModal from "../Modals/SuccessSelectModal";
 import ErrorModal from "../Modals/ErrorModal";
 import "../Levels/levelmodals.css";
 
@@ -72,17 +67,17 @@ const EditBadge = ({ show, onClose, badgeId }) => {
 
       const response = await axiosPrivate.put(`/badges/${badgeId}`, badgeData);
 
-      setSuccessMessage("+enkliukas s4kmingai atnaujintas!");
+      setSuccessMessage("Ženkliukas sėkmingai atnaujintas!");
       clearImage();
     } catch (error) {
-      console.error("Error creating badge:", error);
-      setErrorMessage("Failed to create badge. Please try again.");
+      console.error("Klaida atnaujinant ženkliuką:", error);
+      setErrorMessage("Klaida atnaujinant ženkliuką.");
     }
   };
 
   const clearImage = () => {
     setImage([]);
-    document.getElementById("image").value = "";
+    document.getElementById("image2").value = "";
   }
 
   const handleImageFile = (e) => {
@@ -107,7 +102,7 @@ const EditBadge = ({ show, onClose, badgeId }) => {
       <div className={`modal ${show ? "show" : ""}`}>
       <div className="modal-content"> 
       <div className="form-container">
-          <h2>Sukurti naują ženkliuką</h2>
+          <h2>Atnaujinti ženkliuką</h2>
           <form onSubmit={handleSubmit} className = "input_form">
             <div className="form-group">
               <label htmlFor="name">Pavadinimas:</label><br/>
@@ -137,10 +132,10 @@ const EditBadge = ({ show, onClose, badgeId }) => {
             </div>
 
             <div className="form-group">
-              <label htmlFor="image">Paveikslėlis:</label><br />
+              <label htmlFor="image2">Paveikslėlis:</label><br />
               <input
                 type="file"
-                id="image"
+                id="image2"
                 name="image"
                 onChange={handleImageFile}
                 accept="image/*"
@@ -151,18 +146,16 @@ const EditBadge = ({ show, onClose, badgeId }) => {
             <div className="modal-buttons">
               
               <button type="submit" className="auth_button">
-                Create
+                Atnaujinti
               </button>
             </div>
           </form>
           <button className="primary-button" onClick={onClose}>Atšaukti</button>
         </div>
-        <SuccessModal
+        <SuccessSelectModal
           show={successMessage !== ""}
           onClose={() => setSuccessMessage("")}
           message={successMessage}
-          buttonText="Go to Therapy List"
-          destination="/therapies"
         />
         <ErrorModal
           show={errorMessage !== ""} 

@@ -99,3 +99,4 @@ C:\Users\Laurynas\Desktop\Bachelor\backend\backend\bin\Debug\net7.0\runtimes\win
 C:\Users\Laurynas\Desktop\Bachelor\backend\backend\bin\Debug\net7.0\runtimes\win\lib\net7.0\System.Text.Encoding.CodePages.dll
 C:\Users\Laurynas\Desktop\Bachelor\backend\backend\bin\Debug\net7.0\runtimes\browser\lib\net7.0\System.Text.Encodings.Web.dll
 C:\Users\Laurynas\Desktop\Bachelor\backend\backend\obj\Debug\net7.0\backend.csproj.Up2Date
+C:\Users\Laurynas\Desktop\Bachelor\backend\backend\bin\Debug\net7.0\Newtonsoft.Json.dll

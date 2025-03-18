@@ -1,10 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { useParams, useNavigate } from "react-router-dom";
 import useAxiosPrivate from "../../hooks/UseAxiosPrivate";
-import NavBar from "../Main/NavBar";
-import Footer from "../Main/Footer";
-import Title from "../Main/Title";
-import SuccessModal from "../Modals/SuccessModal";
+import SuccessSelectModal from "../Modals/SuccessSelectModal";
 import ErrorModal from "../Modals/ErrorModal";
 import "./levelmodals.css";
 
@@ -98,19 +94,17 @@ const EditLevel = ({ show, onClose, levelId }) => {
             </div>
             
             <div className="modal-buttons">
-              <button className="primary-button" onClick={onClose}>Atšaukti</button>
               <button type="submit" className="auth_button">
                 Create
               </button>
             </div>
           </form>
+          <button className="primary-button" onClick={onClose}>Atšaukti</button>
         </div>
-        <SuccessModal
+        <SuccessSelectModal
           show={successMessage !== ""}
           onClose={() => setSuccessMessage("")}
           message={successMessage}
-          buttonText="Go to Therapy List"
-          destination="/therapies"
         />
         <ErrorModal
           show={errorMessage !== ""}

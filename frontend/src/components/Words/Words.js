@@ -1,175 +1,149 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import useAxiosPrivate from "../../hooks/UseAxiosPrivate";
-import { useNavigate, useLocation, useParams  } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import useAuth from "../../hooks/UseAuth";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faTrash, faSearch, faEdit, faCheck } from '@fortawesome/free-solid-svg-icons';
-import ErrorModal from "../Modals/ErrorModal";
-import SuccessSelectModal from "../Modals/SuccessSelectModal";
+import { faTrash, faEdit } from '@fortawesome/free-solid-svg-icons';
 import ConfirmationModal from "../Modals/ConfirmationModal";
+import ErrorModal from "../Modals/ErrorModal";
+import CreateWord from "./CreateWord";
+import EditWord from "./EditWord";
 
 const Words = ({ levelId }) => {
     const [words, setWords] = useState([]);
+    const [showCreate, setShowCreate] = useState(false);
+    const [editWordId, setEditWordId] = useState(0);
+    const [isNextPage, setIsNextPage] = useState(false);
+    const [page, setPage] = useState(1);
+    const [isLoading, setIsLoading] = useState(false);
     const axiosPrivate = useAxiosPrivate();
     const navigate = useNavigate();
     const location = useLocation();
     const { auth } = useAuth();
-    const [errorMessage, setErrorMessage] = useState("");
-    const [successMessage, setSuccessMessage] = useState("");
-    const [startDate, setStartDate] = useState("");
     const [deleteId, setDeleteId] = useState("");
-    
+    const [errorMessage, setErrorMessage] = useState("");  
+
+    const fetchWords = useCallback(async (pageNumber) => {
+        try {
+            const response = await axiosPrivate.get(`/levels/${levelId}/words`, {
+                params: { pageNumber : pageNumber }, 
+            });
+            return response.data;
+        } catch (err) {
+            console.error(err);
+            navigate('/login', { state: { from: location }, replace: true });
+            return [];
+        }
+    }, [axiosPrivate, navigate, location]);
+
+    const loadWords = async (page) => {
+        if (isLoading) return;
+
+        setIsLoading(true);
+        const data = await fetchWords(page);
+        console.log(data)
+        setWords([...data]);
+        setIsLoading(false);
+    };
 
     useEffect(() => {
-        let isMounted = true;
-        const controller = new AbortController();
+        loadWords(page);
+    }, [page]); 
 
-        const getLevelAndWords = async () => {
-            try {
-                const [levelResponse, wordsResponse] = await Promise.all([
-                    axiosPrivate.get(`/therapies/${therapyId}`, {
-                        signal: controller.signal,
-                    }),
-                    axiosPrivate.get(`/therapies/${therapyId}/appointments`, {
-                        signal: controller.signal,
-                    }),
-                ]);
-                isMounted && setTherapy(therapyResponse.data.resource);
-                isMounted && setAppointments(appointmentsResponse.data);
-            } catch (err) {
-                console.error(err);
-                navigate('/login', { state: { from: location }, replace: true });
-            }
-        };
-
-        getTherapyAndAppointments();
-
-        return () => {
-            isMounted = false;
-            controller.abort();
-        };
-    }, [axiosPrivate, navigate, location, therapyId]);
-
-    const createAppointment = () => {
-        navigate(`/therapies/${therapyId}/appointments/createAppointment`);
+    const createWord = () => {
+        setShowCreate(true);
     };
 
-    const updateAppointment = (apponitmentId) => {
-        navigate(`/therapies/${therapyId}/appointments/${apponitmentId}/editAppointment`);
+    const updateWord = (wordId) => {
+        setEditWordId(wordId);
     };
 
-    const deleteAppointment = async (appointmentId) => {
+    const removeWord = async (wordId) => {
         try {
-            await axiosPrivate.delete(`/therapies/${therapyId}/appointments/${appointmentId}`);
-            setAppointments(prevAppointments =>
-            prevAppointments.filter(appointment => appointment.id !== appointmentId)
-            );
-            setDeleteId("");
+          await axiosPrivate.delete(`/levels/${levelId}/words/${wordId}`);
+          setWords(prevWords =>
+            prevWords.filter(word => word.id !== wordId)
+          );
+          setDeleteId("");
         } catch (error) {
-            console.error(`Error deleting appointment ${appointmentId}:`, error);
+          console.error(`Klaida trinant klaisimą ${wordId}:`, error);
+          setErrorMessage("Klaida trinant klaisimą.")
+          setDeleteId("");
         }
     };
-
-    const doctorId = therapy ? therapy.doctorId : null;
-    const userId = auth.id;
-    const canEditDelete = userId === doctorId || auth.roles.includes("Admin");
-
-    const selectAppointment = async (appointmentId) => {
-        try {
-            await axiosPrivate.put(`/therapies/${therapyId}/appointments/${appointmentId}/select`);
-            const updatedAppointmentsResponse = await axiosPrivate.get(`/therapies/${therapyId}/appointments`);
-            setAppointments(updatedAppointmentsResponse.data);
-            setSuccessMessage("Appointment selected successfully");
-        } catch (error) {
-            console.error(`Error selecting appointment ${appointmentId}:`, error);
-            if (error.response.status === 409) {
-                setErrorMessage("Appointment time overlaps or you have reached appointment limit.");
-            }
-        }
-    };
-
-    const canSelectAppointment = auth.roles.includes("Patient") && !auth.roles.includes("Admin");
-
-    const filteredAppointments = appointments.filter(appointment => {
-        if (startDate) {
-            const appointmentDate = new Date(appointment.time.split('T')[0]);
-            return appointmentDate >= new Date(startDate) && appointmentDate <= new Date(endDate);
-        }
-        return true;
-    });
 
     return (
-        <article>
+        <article className="list-article">
             <div className="table-container">
-                <h2 className="list-headers">Appointments List</h2>
-                <div className="filter-container">
-                    <label htmlFor="startDate">Start Date:</label>
-                    <input 
-                        type="date" 
-                        id="startDate" 
-                        value={startDate} 
-                        onChange={(e) => setStartDate(e.target.value)} 
-                    />
+                <h2 className="list-headers">Klausimų sąrašas</h2>
+                <div className="create-btn-div">
+                    <button onClick={createWord} className="create-btn"> Sukurti Klausimą </button>
                 </div>
-                {canEditDelete && (
-                    <button onClick={createAppointment} className="create-button-v1"> Create Appointment </button>
-                )}
-                {filteredAppointments.length ? (
+                {words.length ? (
                     <table className="my-table">
                         <thead>
                             <tr>
-                                <th>Date</th>
-                                <th>Time</th>
-                                <th>Price</th>
+                                <th>Klausimas</th>
+                                <th>Atsakymas</th>
+                                <th></th>
                             </tr>
                         </thead>
                         <tbody>
-                            {filteredAppointments.map((appointment, i) => (
+                            {words.map((word, i) => (
                                 <tr key={i}>
-                                    <td>{appointment?.time.split('T')[0]}</td>
-                                    <td>{appointment?.time.split('T')[1].slice(0, 5)}</td>
-                                    <td>{appointment?.price}€</td>
+                                    <td>{word?.question}</td>
+                                    <td>{word?.correctAnswer}</td>
                                     <td>
-                                        {canEditDelete && (
-                                            <>
-                                                <button 
-                                                    className="table-buttons-blue"
-                                                    onClick={() => updateAppointment(appointment.id)}
-                                                >
-                                                    <FontAwesomeIcon icon={faEdit} />
-                                                </button>
-                                                <button
-                                                    className="table-buttons-red"
-                                                    onClick={() => setDeleteId(appointment.id)}
-                                                >
-                                                    <FontAwesomeIcon icon={faTrash} />
-                                                </button>
-                                            </>
-                                        )}
-                                    </td>
+                                        <button 
+                                            className="table-buttons-blue"
+                                            onClick={() => updateWord(word.id)}
+                                        >
+                                            <FontAwesomeIcon icon={faEdit} />
+                                        </button>
+                                        <button
+                                            className="table-buttons-red"
+                                            onClick={() => setDeleteId(word.id)}
+                                        >
+                                            <FontAwesomeIcon icon={faTrash} />
+                                        </button>                                       
+                                    </td>    
                                 </tr>
                             ))}
                         </tbody>
                     </table>
                 ) : (
-                    <p className="no-list-items-p">No appointments to display</p>
+                    <p className="no-list-items-p">Citatų nėra</p>
                 )}
+                {isLoading ? (
+                    <p>Kraunasi...</p>
+                ) : words.length >= 0 ? (
+                    <div className="pagination-buttons">
+                        <button onClick={() => setPage(page === 1 ? page : page - 1)} className="load-button-v1">Ankstesnis puslapis</button>
+                        <button onClick={() => setPage(words.length === 0 ? page : page + 1)} className="load-button-v1">Kitas puslapis</button>
+                    </div>                    
+                ) : null}
             </div>
             <ErrorModal
                 show={errorMessage !== ""}
                 onClose={() => setErrorMessage("")}
                 message={errorMessage}
             />
-            <SuccessSelectModal
-                show={successMessage !== ""}
-                onClose={() => setSuccessMessage("")}
-                message={successMessage}
-            />
             <ConfirmationModal 
                 show={deleteId !== ""}
                 onClose={() => setDeleteId("")}
-                onConfirm={() => deleteAppointment(deleteId)}
-                message={"Are you sure you want to delete appointment?"}
+                onConfirm={() => removeWord(deleteId)}
+                message={"Ar tikrai norite pašalinti citatą?"}
+            />
+            <CreateWord
+                show={showCreate === true}
+                onClose={() => setShowCreate(false)}
+                levelId={levelId}
+            />
+            <EditWord
+                show={editWordId !== 0}
+                onClose={() => setEditWordId(0)}
+                levelId = {levelId} 
+                wordId = {editWordId}
             />
         </article>
     );
