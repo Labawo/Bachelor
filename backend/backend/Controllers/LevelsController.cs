@@ -9,6 +9,9 @@ using backend.Data;
 using backend.Data.Dtos.Levels;
 using backend.Data.Entities;
 using backend.Data.Repositories;
+using backend.Data.Dtos.Badges;
+using backend.Data.Dtos.Quotes;
+using backend.Data.Dtos.Words;
 
 namespace backend.Controllers;
 
@@ -64,7 +67,128 @@ public class LevelsController : ControllerBase
 
         return levels.Select(o => new LevelDto(o.Id, o.Name, o.ItemCount, o.MinExperience, o.IsForWords));
     }
-    
+
+    [HttpGet("test/{testId}")]
+    public async Task<ActionResult<LevelDto>> GetTestId(int testId)
+    {
+        return Ok(testId);
+    }
+
+    [HttpGet("quizes")]
+    public async Task<IEnumerable<LevelDto>> GetManyUserQuizPaging([FromQuery] LevelSearchParameters searchParameters)
+    {
+        var userId = User.FindFirstValue(JwtRegisteredClaimNames.Sub);
+        var user = await _userManager.FindByIdAsync(userId);
+
+        if (user == null)
+        {
+            return new List<LevelDto>();
+        }
+
+        int userScore = user.QuizXp == null ? 0 : (int)user.QuizXp;
+
+        var levels = await _levelsRepository.GetManyQuizAsync(searchParameters, userScore);
+
+        var previousPageLink = levels.HasPrevious
+            ? CreateLevelsResourceUri(searchParameters,
+                RecourceUriType.PreviousPage)
+            : null;
+
+        var nextPageLink = levels.HasNext
+            ? CreateLevelsResourceUri(searchParameters,
+                RecourceUriType.NextPage)
+            : null;
+
+        var paginationMetaData = new
+        {
+            totalCount = levels.TotalCount,
+            pageSize = levels.PageSize,
+            currentPage = levels.CurrentPage,
+            totalPages = levels.TotalPages,
+            previousPageLink,
+            nextPageLink
+        };
+
+        if (paginationMetaData != null && !Response.Headers.ContainsKey("Pagination"))
+        {
+            // Add pagination metadata to response header
+            Response.Headers.Add("Pagination", JsonSerializer.Serialize(paginationMetaData));
+        }
+
+        return levels.Select(o => new LevelDto(o.Id, o.Name, o.ItemCount, o.MinExperience, o.IsForWords));
+    }
+
+    [HttpGet("quotes")]
+    public async Task<IEnumerable<LevelDto>> GetManyUserQuotesPaging([FromQuery] LevelSearchParameters searchParameters)
+    {
+        var levels = await _levelsRepository.GetManyAsync(searchParameters);
+
+        var previousPageLink = levels.HasPrevious
+            ? CreateLevelsResourceUri(searchParameters,
+                RecourceUriType.PreviousPage)
+            : null;
+
+        var nextPageLink = levels.HasNext
+            ? CreateLevelsResourceUri(searchParameters,
+                RecourceUriType.NextPage)
+            : null;
+
+        var paginationMetaData = new
+        {
+            totalCount = levels.TotalCount,
+            pageSize = levels.PageSize,
+            currentPage = levels.CurrentPage,
+            totalPages = levels.TotalPages,
+            previousPageLink,
+            nextPageLink
+        };
+
+        if (paginationMetaData != null && !Response.Headers.ContainsKey("Pagination"))
+        {
+            // Add pagination metadata to response header
+            Response.Headers.Add("Pagination", JsonSerializer.Serialize(paginationMetaData));
+        }
+
+        return levels.Select(o => new LevelDto(o.Id, o.Name, o.ItemCount, o.MinExperience, o.IsForWords));
+    }
+
+    [HttpGet("quotes/{quoteId}/randomQuote")]
+    public async Task<ActionResult<QuoteDto>> GetUserQuote(int quoteId)
+    {
+        var level = await _levelsRepository.GetAsync(quoteId);
+
+        if(level == null)
+        {
+            return BadRequest();
+        }
+
+        var quote = await _quotesRepository.GetRandomAsync(level.Id);
+        if (quote == null) return NotFound();
+
+        var quoteDto = new QuoteDto(quote.Id, quote.Content, quote.Source, quote.Author, quote.TimeToComplete);
+
+        return Ok(quoteDto);
+    }
+
+    [HttpGet("quizes/{quizId}")]
+    public async Task<IEnumerable<WordDto>> GetUserQuiz(int quizId)
+    {
+        var level = await _levelsRepository.GetAsync(quizId);
+
+        if (level == null)
+        {
+            return new List<WordDto>();
+        }
+
+        var quiz = await _wordsRepository.GetManyAsync(level.Id);
+
+        var random = new Random();
+
+        var randomLevels = quiz.OrderBy(o => random.Next(quiz.Count()));
+
+        return randomLevels.Select(o => new WordDto(o.Id, o.Question, o.IsOpen, o.CorrectAnswer, o.Choices, o.ImageData));
+    }
+
     [HttpGet("{levelId}", Name = "GetLevel")]
     public async Task<ActionResult<LevelDto>> Get(int levelId)
     {

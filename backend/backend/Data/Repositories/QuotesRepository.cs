@@ -8,6 +8,7 @@ namespace backend.Data.Repositories;
 public interface IQuotesRepository
 {
     Task<Quote?> GetAsync(int levelId, int quoteId);
+    Task<Quote?> GetRandomAsync(int levelId);
     Task<IReadOnlyList<Quote>> GetManyAsync(int levelId);
     Task<PagedList<Quote>> GetManyAsync(int levelId, QuoteSearchParameters quoteSearchParameters);
     Task CreateAsync(Quote quote);
@@ -27,6 +28,14 @@ public class QuotesRepository : IQuotesRepository
     public async Task<Quote?> GetAsync(int levelId, int quoteId)
     {
         return await _lsDbContext.Quotes.FirstOrDefaultAsync(o => o.Id == quoteId && o.level.Id == levelId);
+    }
+
+    public async Task<Quote?> GetRandomAsync(int levelId)
+    {
+        Random random = new Random();
+        int toSkip = random.Next(_lsDbContext.Quotes.Where(o => o.level.Id == levelId).Count());
+
+        return await _lsDbContext.Quotes.Skip(toSkip).Take(1).FirstOrDefaultAsync();
     }
 
     public async Task<IReadOnlyList<Quote>> GetManyAsync(int levelId)
