@@ -134,8 +134,6 @@ public class LevelsController : ControllerBase
         {
             return NotFound();
         }
-        
-        var authorizationResult = await _authorizationService.AuthorizeAsync(User, level, PolicyNames.ResourceOwner);
 
         switch (level.IsForWords)
         {
@@ -143,7 +141,7 @@ public class LevelsController : ControllerBase
             {
                 var words = await _wordsRepository.GetManyAsync(levelId);
 
-                if (!authorizationResult.Succeeded || words.Count > 0)
+                if (words.Count > 0)
                 {
                     return Forbid();
                 }
@@ -154,7 +152,7 @@ public class LevelsController : ControllerBase
             {
                 var quotes = await _quotesRepository.GetManyAsync(levelId);
 
-                if (!authorizationResult.Succeeded || quotes.Count > 0)
+                if (quotes.Count > 0)
                 {
                     return Forbid();
                 }
