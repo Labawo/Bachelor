@@ -1,6 +1,6 @@
 import { useNavigate, Link, useLocation } from "react-router-dom";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSignOutAlt, faArchive } from '@fortawesome/free-solid-svg-icons';
+import { faSignOutAlt, faArchive, faTrophy, faUser } from '@fortawesome/free-solid-svg-icons';
 import { useContext, useState } from "react";
 import AuthContext from "../../context/AuthProvider";
 import useAuth from "../../hooks/UseAuth";
@@ -22,14 +22,24 @@ const Title = () => {
         navigate('/resetPassword');
     }
 
+    const userBadges = async () => {
+        navigate('/userBadges');
+    }
+
     const isAdmin = auth.roles.includes("Admin");
+    const canAccessStudent = auth.roles.includes("Student") && !auth.roles.includes("Admin");
 
     return (
         <div className="title_div">
             <div className="logout-div">
                 <span>
+                    <button onClick={userBadges} className="password-btn">
+                        <FontAwesomeIcon icon={isAdmin ? faArchive : faTrophy} />
+                    </button>
+                </span>
+                <span>
                     <button onClick={changePassword} className="password-btn">
-                        <FontAwesomeIcon icon={faArchive} />
+                        <FontAwesomeIcon icon={faUser} />
                     </button>
                 </span>
                 <span>
