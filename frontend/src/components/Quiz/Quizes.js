@@ -5,6 +5,7 @@ import useAuth from "../../hooks/UseAuth";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrash, faSearch, faEdit } from '@fortawesome/free-solid-svg-icons';
 import ErrorModal from "../Modals/ErrorModal";
+import QuizEngine from "./QuizEngine";
 
 const Quizes = () => {
     const [levels, setLevels] = useState([]);
@@ -15,6 +16,11 @@ const Quizes = () => {
     const location = useLocation();
     const { auth } = useAuth();
     const [errorMessage, setErrorMessage] = useState("");
+    const [showPlay, setShowPlay] = useState(false);
+
+    const playQuiz = (levelId) => {
+        setShowPlay(true);
+    };
 
     const fetchLevels = useCallback(async (pageNumber) => {
         try {
@@ -68,7 +74,7 @@ const Quizes = () => {
                                     <td>
                                         <button 
                                             className="table-buttons-blue"
-                                            onClick={() => {}}
+                                            onClick={() => playQuiz(level.id)}
                                         >
                                             <FontAwesomeIcon icon={faEdit} />
                                         </button>                                   
@@ -93,6 +99,10 @@ const Quizes = () => {
                 show={errorMessage !== ""}
                 onClose={() => setErrorMessage("")}
                 message={errorMessage}
+            />
+            <QuizEngine
+                show={showPlay}
+                onClose={() => setShowPlay(false)}
             />
         </article>
     );

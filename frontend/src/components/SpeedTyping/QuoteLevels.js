@@ -5,6 +5,7 @@ import useAuth from "../../hooks/UseAuth";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrash, faSearch, faEdit } from '@fortawesome/free-solid-svg-icons';
 import ErrorModal from "../Modals/ErrorModal";
+import QuoteEngine from "./QuoteEngine";
 
 const QuoteLevels = () => {
     const [levels, setLevels] = useState([]);
@@ -15,6 +16,7 @@ const QuoteLevels = () => {
     const location = useLocation();
     const { auth } = useAuth();
     const [errorMessage, setErrorMessage] = useState("");
+    const [showPlay, setShowPlay] = useState(false);
 
     const fetchLevels = useCallback(async (pageNumber) => {
         try {
@@ -43,6 +45,10 @@ const QuoteLevels = () => {
         loadLevels(page);
     }, [page]); 
 
+    const playQuote = (levelId) => {
+        setShowPlay(true);
+    };
+
     return (
         <article className="list-article">
             <div className="table-container">
@@ -68,7 +74,7 @@ const QuoteLevels = () => {
                                     <td>
                                         <button 
                                             className="table-buttons-blue"
-                                            onClick={() => {}}
+                                            onClick={() => playQuote(level.id)}
                                         >
                                             <FontAwesomeIcon icon={faEdit} />
                                         </button>                                   
@@ -93,6 +99,10 @@ const QuoteLevels = () => {
                 show={errorMessage !== ""}
                 onClose={() => setErrorMessage("")}
                 message={errorMessage}
+            />
+            <QuoteEngine
+                show={showPlay}
+                onClose={() => setShowPlay(false)}
             />
         </article>
     );

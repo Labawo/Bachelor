@@ -99,7 +99,7 @@ const CreateLevel = ({ show, onClose }) => {
             
             <div className="modal-buttons">
               <button type="submit" className="auth_button">
-                Create
+                Sukurti
               </button>
             </div>
           </form>
