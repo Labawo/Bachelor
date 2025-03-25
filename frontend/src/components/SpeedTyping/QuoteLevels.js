@@ -16,7 +16,7 @@ const QuoteLevels = () => {
     const location = useLocation();
     const { auth } = useAuth();
     const [errorMessage, setErrorMessage] = useState("");
-    const [showPlay, setShowPlay] = useState(false);
+    const [gameId, setGameId] = useState(0);
 
     const fetchLevels = useCallback(async (pageNumber) => {
         try {
@@ -46,7 +46,7 @@ const QuoteLevels = () => {
     }, [page]); 
 
     const playQuote = (levelId) => {
-        setShowPlay(true);
+        setGameId(levelId);
     };
 
     return (
@@ -101,8 +101,9 @@ const QuoteLevels = () => {
                 message={errorMessage}
             />
             <QuoteEngine
-                show={showPlay}
-                onClose={() => setShowPlay(false)}
+                show={gameId !== 0}
+                onClose={() => setGameId(0)}
+                levelId={gameId}
             />
         </article>
     );

@@ -3,8 +3,8 @@ import './quiz.css'
 import { resultInitialState } from "./constants"
 import AnswerTimer from "../QuizTimer/AnswerTimer"
 
-const Quiz = ({ questions }) => {
-    const [currentQuestion, setCurrentQuestion] = useState(0);
+const Quiz = ({ questions, currQuestion }) => {
+    const [currentQuestion, setCurrentQuestion] = useState(currQuestion);
     const [answerIdx, setAnswerIdx] = useState(null);
     const [answer, setAnswer] = useState(null);
     const [result, setResult] = useState(resultInitialState);
@@ -12,7 +12,7 @@ const Quiz = ({ questions }) => {
     const [showAnswerTimer, setShowAnswerTimer] = useState(true);
     const [inputAnswer, setInputAnswer] = useState('');
 
-    const { question, choices, correctAnswer, type } = questions[currentQuestion];
+    const { question, choices, correctAnswer, isOpen } = questions[currentQuestion];
 
     const onAnswerClick = (answer, index) => {
         setAnswerIdx(index);
@@ -75,7 +75,7 @@ const Quiz = ({ questions }) => {
 
     const getAnswerUI = () => {
 
-        if(type === "FIB") {
+        if(isOpen) {
             return <input className = 'quiz-input' value={inputAnswer} onChange={handleInputChange}/>
         }
 

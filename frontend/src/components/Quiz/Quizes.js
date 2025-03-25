@@ -16,11 +16,7 @@ const Quizes = () => {
     const location = useLocation();
     const { auth } = useAuth();
     const [errorMessage, setErrorMessage] = useState("");
-    const [showPlay, setShowPlay] = useState(false);
-
-    const playQuiz = (levelId) => {
-        setShowPlay(true);
-    };
+    const [playId, setPlayId] = useState(0);
 
     const fetchLevels = useCallback(async (pageNumber) => {
         try {
@@ -43,6 +39,10 @@ const Quizes = () => {
         console.log(data)
         setLevels([...data]);
         setIsLoading(false);
+    };
+
+    const playQuiz = (levelId) => {
+        setPlayId(levelId);
     };
 
     useEffect(() => {
@@ -101,8 +101,9 @@ const Quizes = () => {
                 message={errorMessage}
             />
             <QuizEngine
-                show={showPlay}
-                onClose={() => setShowPlay(false)}
+                show={playId !== 0}
+                onClose={() => setPlayId(0)}
+                levelId={playId}
             />
         </article>
     );

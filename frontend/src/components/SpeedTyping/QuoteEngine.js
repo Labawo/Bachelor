@@ -1,24 +1,55 @@
+import React, { useState, useEffect } from 'react';
 import TypingTest from "./TypingTest";
-import "../Quiz/enginemodals.css";
+import useAxiosPrivate from "../../hooks/UseAxiosPrivate";
+import "../Quiz/engineModal.css";
 
-const QuoteEngine = ({ show, onClose }) => {
+const QuoteEngine = ({ show, onClose, levelId }) => {
 
-  return (
-    <>
-        <div className={`modal ${show ? "show" : ""}`}>
-            <div className="modal-content">
-                <div className='close-button-div'>
-                    <button className="primary-button" onClick={onClose}>X</button>
+    const [content, setContent] = useState('');
+    const [timeToComplete, setTimeToComplete] = useState(0);
+
+    const axiosPrivate = useAxiosPrivate();
+
+    useEffect(() => {
+        const fetchLevelData = async () => {
+            try {
+            const response = await axiosPrivate.get(`/levels/quotes/${levelId}/randomQuote`);
+            const { content, timeToComplete } = response.data;
+            setContent(content.length > 500 ? content.substring(0, content.indexOf(' ', 475)) : content);
+            setTimeToComplete(timeToComplete);
+            } catch (error) {
+            console.error("Klaida gaunant citatą:", error);
+            onClose();
+            if (error.response && error.response.status === 403) {
+                onClose();
+            }
+            }
+        };
+
+        if (levelId !== 0) {
+            fetchLevelData();
+        } else {
+            setContent('');
+            setTimeToComplete(0);
+        }
+    }, [axiosPrivate, levelId]);
+
+    return (
+        <>
+            <div className={`modal-game ${show ? "show" : ""}`}>
+                <div className="modal-content-game">
+                    <div className='close-button-div-game'>
+                        <button className="primary-button-game" onClick={onClose}>X</button>
+                    </div>
+                    
+                    <div className='engine-holder-div'>
+                        <TypingTest content={content} timeToComplete={timeToComplete}/>
+                    </div>                
                 </div>
-                
-                <div className='engine-holder-div'>
-                    <TypingTest />
-                </div>                
             </div>
-        </div>
-    </>
-    
-  );
+        </>
+        
+    );
 };
 
 export default QuoteEngine;

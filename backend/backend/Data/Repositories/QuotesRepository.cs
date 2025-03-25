@@ -35,7 +35,7 @@ public class QuotesRepository : IQuotesRepository
         Random random = new Random();
         int toSkip = random.Next(_lsDbContext.Quotes.Where(o => o.level.Id == levelId).Count());
 
-        return await _lsDbContext.Quotes.Skip(toSkip).Take(1).FirstOrDefaultAsync();
+        return await _lsDbContext.Quotes.Where(o => o.level.Id == levelId).Skip(toSkip).Take(1).FirstOrDefaultAsync();
     }
 
     public async Task<IReadOnlyList<Quote>> GetManyAsync(int levelId)

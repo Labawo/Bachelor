@@ -1,12 +1,9 @@
-import React, { useState, useRef, useEffect } from 'react'
+import React, { useState, useRef, useEffect } from 'react';
 import './typingtest.css';
 
-const TypingTest = () => {
+const TypingTest = ({ content, timeToComplete }) => {
 
-    const paragraphfull = `I love you baby when it is quite alright, I need you baby...I love you baby when it is quite alright, I need you baby...I love you baby when it is quite alright, I need you baby...I love you baby when it is quite alright, I need you baby...I love you baby when it is quite alright, I need you baby...I love you baby when it is quite alright, I need you baby...I love you baby when it is quite alright, I need you baby...I love you baby when it is quite alright, I need you baby...I love you baby when it is quite alright, I need you baby...I love you baby when it is quite alright, I need you baby...I love you baby when it is quite alright, I need you baby...I love you baby when it is quite alright, I need you baby...I love you baby when it is quite alright, I need you baby...I love you baby when it is quite alright, I need you baby...I love you baby when it is quite alright, I need you baby...I love you baby when it is quite alright, I need you baby...I love you baby when it is quite alright, I need you baby...I love you baby when it is quite alright, I need you baby...`;
-    const paragraph = paragraphfull.length > 250 ? paragraphfull.substring(0, paragraphfull.indexOf(' ', 250)) : paragraphfull;
-    const maxTime = 60;
-    const [timeLeft, setTimeLeft] = useState(maxTime);
+    const [timeLeft, setTimeLeft] = useState(timeToComplete);
     const [mistakes, setMistakes] = useState(0);
     const [charIndex, setCharIndex] = useState(0);
     const [isTyping, setIsTyping] = useState(false);
@@ -18,8 +15,9 @@ const TypingTest = () => {
 
     useEffect(() => {
         inputRef.current.focus();
-        setCorrectWrong(Array(charRefs.current.length).fill(''))
-    }, []);
+        setCorrectWrong(Array(charRefs.current.length).fill(''));
+        setTimeLeft(0);
+    }, [content]);
 
     useEffect(() => {
         let interval;
@@ -28,7 +26,7 @@ const TypingTest = () => {
 
                 setTimeLeft(timeLeft - 1);
                 let correctChars = charIndex - mistakes;
-                let totalTime = maxTime - timeLeft;
+                let totalTime = timeToComplete - timeLeft;
 
                 let cpm = correctChars * (60 / totalTime);
                 cpm = cpm < 0 || !cpm || cpm === Infinity ? 0 : cpm;
@@ -50,7 +48,7 @@ const TypingTest = () => {
 
     const resetGame = () => {
         setIsTyping(false);
-        setTimeLeft(maxTime);
+        setTimeLeft(timeToComplete);
         setCharIndex(0);
         setMistakes(0);
         setCPM(0);
@@ -91,7 +89,7 @@ const TypingTest = () => {
                 <div className='test'>
                     <input type='text' className='speed-input-field' ref={inputRef} onChange={handleChange}/>
                     {
-                        paragraph.split("").map((char, index) => (
+                        content.split("").map((char, index) => (
                             <span className={`char ${index === charIndex ? " active" : ""} ${correctWrong[index]}`} 
                             ref={(e) => charRefs.current[index] = e}>
                                 {char}
@@ -100,13 +98,13 @@ const TypingTest = () => {
                     }
                 </div>
 
-                <div className='result'>
-                    <p>Time Left: <strong>{timeLeft}</strong> </p>
-                    <p>Mistakes: <strong>{mistakes}</strong></p>
-                    <p>WPM: <strong>{WPM}</strong> </p>
-                    <p>CPM: <strong>{CPM}</strong> </p>
-                    <button className='btn' onClick={resetGame}>Try Again</button>
-                </div>
+                {timeLeft !== 0 ? (
+                    <div className='result'>
+                        <p>Likęs laikas: <strong>{timeLeft}</strong> </p>
+                        <p>Klaidos: <strong>{mistakes}</strong></p>
+                        <p>Žodžiai/min: <strong>{WPM}</strong> </p>
+                        <button className='btn' onClick={resetGame}>Bandyti iš naujo</button>
+                    </div>) : <button className='btn' onClick={resetGame}>Pradėti</button>}
             </div>
         </div>
         

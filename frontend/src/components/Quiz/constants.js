@@ -3,7 +3,7 @@ export const jsQuizz = {
       {
         question:
           "______ provide a way to pass data from one component to the other.",
-        type: "FIB",
+        isOpen: true,
         correctAnswer: "props",
       },
       {
@@ -15,7 +15,7 @@ export const jsQuizz = {
           "Both A and B",
           "None of the above",
         ],
-        type: "MCQs",
+        isOpen: false,
         correctAnswer: "Virtual DOM",
       },
       {
@@ -26,20 +26,20 @@ export const jsQuizz = {
           "both a and b",
           "None of the above",
         ],
-        type: "MCQs",
+        isOpen: false,
         correctAnswer: "User Interface framework",
       },
       {
         question:
           "Identify the one which is used to pass data to components from outside",
         choices: ["Render with arguments", "setState", "PropTypes", "props"],
-        type: "MCQs",
+        isOpen: false,
         correctAnswer: "props",
       },
       {
         question: "In which language is React.js written?",
         choices: ["Python", "Java", "C#", "JavaScript"],
-        type: "MCQs",
+        isOpen: false,
         correctAnswer: "JavaScript",
       },
       {
@@ -50,7 +50,7 @@ export const jsQuizz = {
           "JavaScript compiler",
           "None of the above",
         ],
-        type: "MCQs",
+        isOpen: false,
         correctAnswer: "JavaScript compiler",
       },
     ],
