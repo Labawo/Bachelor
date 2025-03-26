@@ -75,7 +75,7 @@ public class BadgeNumbersController : ControllerBase
     }
 
     [HttpPost]
-    [Route("training")]
+    [Route("quiz")]
     public async Task<ActionResult<Badge>> CreateQuiz(CreateQuizDto requestDto)
     {
         var user = await _userManager.FindByIdAsync(requestDto.OwnerId);

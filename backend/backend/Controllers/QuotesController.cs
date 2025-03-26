@@ -91,13 +91,6 @@ public class QuotesController : ControllerBase
         var level = await _levelsRepository.GetAsync(levelId);
         if (level == null) return NotFound($"Couldn't find a level with id of {levelId}");
 
-        var authorizationResult = await _authorizationService.AuthorizeAsync(User, level, PolicyNames.ResourceOwner);
-
-        if (!authorizationResult.Succeeded)
-        {
-            return Forbid();
-        }
-
         var quote = new Quote { Content = quoteDto.Content, Author = quoteDto.Author, Source = quoteDto.Source };
         quote.TimeToComplete = quoteDto.TimeToComplete;
         quote.ItemNumber = 0;
@@ -117,13 +110,6 @@ public class QuotesController : ControllerBase
     {
         var level = await _levelsRepository.GetAsync(levelId);
         if (level == null) return NotFound($"Couldn't find a level with id of {levelId}");
-
-        var authorizationResult = await _authorizationService.AuthorizeAsync(User, level, PolicyNames.ResourceOwner);
-
-        if (!authorizationResult.Succeeded)
-        {
-            return Forbid();
-        }
 
         var oldQuote = await _quotesRepository.GetAsync(levelId, quoteId);
         
@@ -146,13 +132,6 @@ public class QuotesController : ControllerBase
     {
         var level = await _levelsRepository.GetAsync(quoteId);
         if (level == null) return NotFound($"Couldn't find a level with id of {quoteId}");
-
-        var authorizationResult = await _authorizationService.AuthorizeAsync(User, level, PolicyNames.ResourceOwner);
-
-        if (!authorizationResult.Succeeded)
-        {
-            return Forbid();
-        }
 
         var quote = await _quotesRepository.GetAsync(levelId, quoteId);
         

@@ -282,7 +282,7 @@ li {
     padding: 0;
 }
 
-.password-btn:hover{
+.password-btn:hover {
     background-color: #bcbbb7;
 }
 
@@ -560,7 +560,7 @@ tbody tr {
     border: 5px double #c6c6cb;
 }
 
-.auth_button {
+.auth_button, .load-button-v1, .play-button, .create-button {
   padding: 0.25rem 0.75rem;
   font-size: 1.3rem;
   background: "transparent";
@@ -576,15 +576,40 @@ tbody tr {
     -4px 4px 0px #333;
 }
 
-.auth_button:hover {
+.load-button-v1 {
+    width: 50px;
+}
+
+.create-button {
+    width: 25%;
+}
+
+.auth_button:hover, .load-button-v1:hover, .play-button:hover, .create-button:hover {
     transform: scale(1.05);
     box-shadow: -1px 1px 0px #333, -2px 2px 0px #333, -3px 3px 0px #333,
       -4px 4px 0px #333, -5px 5px 0px #333, -6px 6px 0px #333;
 }
 
-.auth_button:active {
+.auth_button:active, .load-button-v1:active, .play-button:active, .create-button:active {
     transform: scale(0.95);
     box-shadow: -1px 1px 0px #222, -2px 2px 0px #222;
+}
+
+.create-btn-div {
+    padding-bottom: 15px;
+}
+
+.import-file-div {
+    margin:auto;
+    width: 25%;
+}
+
+#csvFileInput {
+    width: 100%;
+}
+
+#file-bth {
+    width: 95%;
 }
 
 .animated-header {

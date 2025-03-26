@@ -89,12 +89,13 @@ const ResetPassword = () => {
         <>
             <Title />
             <NavBar />
-            <section>                  
+            <section>
+                <div className="login-full-div">
                     <p ref={errRef} className={errMsg ? "errmsg" : "offscreen"} aria-live="assertive">{errMsg}</p>
-                    <h1>Change password</h1>
+                    <h1>Slaptažodžio keitimas</h1>
                     <form onSubmit={handleSubmit} className = "input_form">
                         <label htmlFor="currentpassword">
-                            Current password:
+                            Dabartinis slaptažodis:
                             <FontAwesomeIcon icon={faCheck} className={validcPwd ? "valid" : "hide"} />
                             <FontAwesomeIcon icon={faTimes} className={validcPwd || !cpwd ? "hide" : "invalid"} />
                         </label>
@@ -111,13 +112,13 @@ const ResetPassword = () => {
                         />
                         <p id="cpwdnote" className={cpwdFocus && !validcPwd ? "instructions" : "offscreen"}>
                             <FontAwesomeIcon icon={faInfoCircle} />
-                            8 to 24 characters.<br />
-                            Must include uppercase and lowercase letters, a number and a special character.<br />
-                            Allowed special characters: <span aria-label="exclamation mark">!</span> <span aria-label="at symbol">@</span> <span aria-label="hashtag">#</span> <span aria-label="dollar sign">$</span> <span aria-label="percent">%</span>
+                            nuo 8 iki 24 simbolių.<br />
+                            Didžiosios, mažosios raidės skaičiai ir simboliai.<br />
+                            Leistini simboliai: <span aria-label="exclamation mark">!</span> <span aria-label="at symbol">@</span> <span aria-label="hashtag">#</span> <span aria-label="dollar sign">$</span> <span aria-label="percent">%</span>
                         </p>
 
                         <label htmlFor="password">
-                            Password:
+                            Slaptažodis:
                             <FontAwesomeIcon icon={faCheck} className={validPwd ? "valid" : "hide"} />
                             <FontAwesomeIcon icon={faTimes} className={validPwd || !pwd ? "hide" : "invalid"} />
                         </label>
@@ -134,12 +135,12 @@ const ResetPassword = () => {
                         />
                         <p id="pwdnote" className={pwdFocus && !validPwd ? "instructions" : "offscreen"}>
                             <FontAwesomeIcon icon={faInfoCircle} />
-                            8 to 24 characters.<br />
-                            Must include uppercase and lowercase letters, a number and a special character.<br />
-                            Allowed special characters: <span aria-label="exclamation mark">!</span> <span aria-label="at symbol">@</span> <span aria-label="hashtag">#</span> <span aria-label="dollar sign">$</span> <span aria-label="percent">%</span>
+                            nuo 8 iki 24 simbolių.<br />
+                            Didžiosios, mažosios raidės, simboliai ir skaičiai.<br />
+                            Leistini simboliai: <span aria-label="exclamation mark">!</span> <span aria-label="at symbol">@</span> <span aria-label="hashtag">#</span> <span aria-label="dollar sign">$</span> <span aria-label="percent">%</span>
                         </p>
                         <label htmlFor="confirm_pwd">
-                            Confirm Password:
+                            Patvirtinti slaptažodį:
                             <FontAwesomeIcon icon={faCheck} className={validMatch && matchPwd ? "valid" : "hide"} />
                             <FontAwesomeIcon icon={faTimes} className={validMatch || !matchPwd ? "hide" : "invalid"} />
                         </label>
@@ -156,18 +157,20 @@ const ResetPassword = () => {
                         />
                         <p id="confirmnote" className={matchFocus && !validMatch ? "instructions" : "offscreen"}>
                             <FontAwesomeIcon icon={faInfoCircle} />
-                            Must match the first password input field.
+                            Turi sutapti su slaptažodžiu.
                         </p>
 
-                        <button disabled={!validcPwd || !validPwd || !validMatch ? true : false} className="auth_button">Change Password</button>
+                        <button disabled={!validcPwd || !validPwd || !validMatch ? true : false} className="auth_button">Pakeisti slaptažodį</button>
                     </form>
-                </section>
-                <SuccessSelectModal
-                    show={successMsg !== ""}
-                    onClose={() => setSuccessMsg("")}
-                    message={successMsg}
-                />
-                <Footer />
+                </div>                  
+                    
+            </section>
+            <SuccessSelectModal
+                show={successMsg !== ""}
+                onClose={() => setSuccessMsg("")}
+                message={successMsg}
+            />
+            <Footer />
         </>
     )
 }

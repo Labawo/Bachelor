@@ -59,7 +59,6 @@ const QuoteLevels = () => {
                             <tr>
                                 <th>Pavadinimas</th>
                                 <th>Patirtis</th>
-                                <th>Skirtas testams?</th>
                                 <th>Įrašų skaičius</th>
                                 <th></th>
                             </tr>
@@ -69,14 +68,13 @@ const QuoteLevels = () => {
                                 <tr key={i}>
                                     <td>{level?.name}</td>
                                     <td>{level?.minExperience}</td>
-                                    <td>{level?.isForWords ? "TAIP" : "NE"}</td>
                                     <td>{level?.itemCount}</td>
                                     <td>
                                         <button 
-                                            className="table-buttons-blue"
+                                            className="play-button"
                                             onClick={() => playQuote(level.id)}
                                         >
-                                            <FontAwesomeIcon icon={faEdit} />
+                                            Žaisti
                                         </button>                                   
                                     </td>    
                                 </tr>
@@ -90,8 +88,9 @@ const QuoteLevels = () => {
                     <p>Loading...</p>
                 ) : levels.length >= 0 ? (
                     <div className="pagination-buttons">
-                        <button onClick={() => setPage(page === 1 ? page : page - 1)} className="load-button-v1">Ankstesnis puslapis</button>
-                        <button onClick={() => setPage(levels.length === 0 ? page : page + 1)} className="load-button-v1">Kitas puslapis</button>
+                        <button onClick={() => setPage(page === 1 ? page : page - 1)} className="load-button-v1">-</button>
+                        <button onClick={() => setPage(levels.length === 0 ? page : page + 1)} className="load-button-v1">+</button>
+                        <div className='page-number-div'><p>{page}</p></div>
                     </div>                    
                 ) : null}
             </div>

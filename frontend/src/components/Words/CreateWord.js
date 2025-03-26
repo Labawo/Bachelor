@@ -48,42 +48,47 @@ const CreateWord = ({ show, onClose, levelId }) => {
 
   return (
     <>
-      <div className={`modal ${show ? "show" : ""}`}>
-      <div className="modal-content"> 
-      <div className="form-container">
-          <h2>Sukurti naują klausimą</h2>
-          <form onSubmit={handleSubmit} className = "input_form">
-            <div className="form-group">
-              <label htmlFor="question">Klausimas:</label><br/>
-                <input
-                    type="text"
-                    id="question"
-                    value={question}
-                    onChange={(e) => setQuestion(e.target.value)}
-                    className="input-field"
-                    required
-                />
-            </div>
-            <div className="form-group">
-              <label htmlFor="correctAnswer">Teisingas atsakymas:</label><br/>
-                <input
-                    type="text"
-                    id="correctAnswer"
-                    value={correctAnswer}
-                    onChange={(e) => setCorrectAnswer(e.target.value)}
-                    className="input-field"
-                    required
-                />
-            </div>
-            
-            <div className="modal-buttons">
-              <button type="submit" className="auth_button">
-                Sukurti
-              </button>
-            </div>
-          </form>
-          <button className="primary-button" onClick={onClose}>Atšaukti</button>
+      <div className={`modal-form ${show ? "show" : ""}`}>
+      <div className="modal-content-form"> 
+        <div className='close-button-div-form'>
+          <button className="primary-button-form" onClick={onClose}>X</button>
         </div>
+        <div className="outer-form-div">
+          <div className="form-container">
+            <h2>Sukurti naują klausimą</h2>
+            <form onSubmit={handleSubmit} className = "input_form">
+              <div className="form-group">
+                <label htmlFor="question">Klausimas:</label><br/>
+                  <input
+                      type="text"
+                      id="question"
+                      value={question}
+                      onChange={(e) => setQuestion(e.target.value)}
+                      className="input-field"
+                      required
+                  />
+              </div>
+              <div className="form-group">
+                <label htmlFor="correctAnswer">Teisingas atsakymas:</label><br/>
+                  <input
+                      type="text"
+                      id="correctAnswer"
+                      value={correctAnswer}
+                      onChange={(e) => setCorrectAnswer(e.target.value)}
+                      className="input-field"
+                      required
+                  />
+              </div>
+              
+              <div className="modal-buttons-form">
+                <button type="submit" className="auth_button">
+                  Sukurti
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      
         <SuccessSelectModal
           show={successMessage !== ""}
           onClose={() => setSuccessMessage("")}

@@ -37,7 +37,6 @@ const QuizEngine = ({ show, onClose, levelId }) => {
     useEffect(() => {
         if(levelId !== 0) {
             loadQuiz(levelId);
-            console.log(words);
         }       
     }, [levelId]);
 

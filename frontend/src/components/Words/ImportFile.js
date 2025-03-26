@@ -76,6 +76,8 @@ const ImportFile = ({ levelId }) => {
                 />
 
                 <button
+                className="create-button"
+                id='file-bth'
                 onClick={(e) => {
                     e.persist();
                     handleOnSubmit(e);

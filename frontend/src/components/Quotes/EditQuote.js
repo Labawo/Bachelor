@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import useAxiosPrivate from "../../hooks/UseAxiosPrivate";
 import SuccessSelectModal from "../Modals/SuccessSelectModal";
 import ErrorModal from "../Modals/ErrorModal";
@@ -71,68 +71,73 @@ const EditQuote = ({ show, onClose, levelId, quoteId }) => {
 
   return (
     <>
-      <div className={`modal ${show ? "show" : ""}`}>
-      <div className="modal-content"> 
-      <div className="form-container">
-          <h2>Atnaujinti citatą</h2>
-          <form onSubmit={handleSubmit} className = "input_form">
-            <div className="form-group">
-              <label htmlFor="source">Šaltinis:</label><br/>
-                <input
-                    type="text"
-                    id="source"
-                    value={source}
-                    onChange={(e) => setSource(e.target.value)}
-                    className="input-field"
-                    required
-                />
-            </div>
-            <div className="form-group">
-              <label htmlFor="author">Autorius:</label><br/>
-                <input
-                    type="text"
-                    id="author"
-                    value={author}
-                    onChange={(e) => setAuthor(e.target.value)}
-                    className="input-field"
-                    required
-                />
-            </div>
-            <div className="form-group">
-              <label htmlFor="content">Citata:</label><br/>
-              <textarea
-                id="content"
-                name="content"
-                value={content}
-                onChange={(e) => setContent(e.target.value)}
-                placeholder="Įveskite citatą"
-                required
-                className="textarea-field"
-              />
-              {errors.description && (
-                <span className="error-message">{errors.description}</span>
-              )}
-            </div>
-            <div className="form-group">
-              <label htmlFor="minExperience">Laikas perrašymui sekundėmis:</label><br/>
-                <input
-                    type="number"
-                    id="minExperience"
-                    value={minExperience}
-                    onChange={(e) => setMinExperience(e.target.value)}
-                    required
-                    className="input-field"
-                />
-            </div>
-            
-            <div className="modal-buttons">
-              <button type="submit" className="auth_button">
-                Atnaujinti
-              </button>
-            </div>
-          </form>
-          <button className="primary-button" onClick={onClose}>Atšaukti</button>
+      <div className={`modal-form ${show ? "show" : ""}`}>
+      <div className="modal-content-form"> 
+        <div className='close-button-div-form'>
+          <button className="primary-button-form" onClick={onClose}>X</button>
         </div>
+        <div className="outer-form-div">
+          <div className="form-container">
+            <h2>Atnaujinti citatą</h2>
+            <form onSubmit={handleSubmit} className = "input_form">
+              <div className="form-group">
+                <label htmlFor="source">Šaltinis:</label><br/>
+                  <input
+                      type="text"
+                      id="source"
+                      value={source}
+                      onChange={(e) => setSource(e.target.value)}
+                      className="input-field"
+                      required
+                  />
+              </div>
+              <div className="form-group">
+                <label htmlFor="author">Autorius:</label><br/>
+                  <input
+                      type="text"
+                      id="author"
+                      value={author}
+                      onChange={(e) => setAuthor(e.target.value)}
+                      className="input-field"
+                      required
+                  />
+              </div>
+              <div className="form-group">
+                <label htmlFor="content">Citata:</label><br/>
+                <textarea
+                  id="content"
+                  name="content"
+                  value={content}
+                  onChange={(e) => setContent(e.target.value)}
+                  placeholder="Įveskite citatą"
+                  required
+                  className="textarea-field"
+                />
+                {errors.description && (
+                  <span className="error-message">{errors.description}</span>
+                )}
+              </div>
+              <div className="form-group">
+                <label htmlFor="timeToComplete">Laikas perrašymui sekundėmis:</label><br/>
+                  <input
+                      type="number"
+                      id="timeToComplete"
+                      value={timeToComplete}
+                      onChange={(e) => setTimeToComplete(e.target.value)}
+                      required
+                      className="input-field"
+                  />
+              </div>
+              
+              <div className="modal-buttons-form">
+                <button type="submit" className="auth_button">
+                  Atnaujinti
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      
         <SuccessSelectModal
           show={successMessage !== ""}
           onClose={() => setSuccessMessage("")}

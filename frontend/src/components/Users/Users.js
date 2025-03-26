@@ -150,13 +150,13 @@ const Users = () => {
                                     <td>{user?.email}</td>
                                     <td>
                                         <button
-                                            className="table-buttons-red"
+                                            className="load-button-v1"
                                             onClick={() => deleteUser(user.id)}
                                         >
                                             <FontAwesomeIcon icon={faTrash} />
                                         </button>
                                         <button
-                                            className="table-buttons-gold"
+                                            className="load-button-v1"
                                             onClick={() => {
                                                 setSelectedUserId(user.id);
                                                 setShowResetPassword({ ...showResetPassword, [user.id]: !showResetPassword[user.id] }); // Toggle visibility of reset password div

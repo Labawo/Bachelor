@@ -81,7 +81,7 @@ const Levels = () => {
             <div className="table-container">
                 <h2 className="list-headers">Lygių sąrašas</h2>
                 <div className="create-btn-div">
-                    <button onClick={createLevel} className="create-btn"> Sukurti Lygį </button>
+                    <button onClick={createLevel} className="create-button"> Sukurti Lygį </button>
                 </div>
                 {levels.length ? (
                     <table className="my-table">
@@ -103,19 +103,19 @@ const Levels = () => {
                                     <td>{level?.itemCount}</td>
                                     <td>
                                         <button 
-                                            className="table-buttons-blue"
+                                            className="load-button-v1"
                                             onClick={() => updateLevel(level.id)}
                                         >
                                             <FontAwesomeIcon icon={faEdit} />
                                         </button>
                                         <button 
-                                            className="table-buttons-blue"
+                                            className="load-button-v1"
                                             onClick={() => handleInspect(level.id)}
                                         >
                                             <FontAwesomeIcon icon={faSearch} />
                                         </button>
                                         <button
-                                            className="table-buttons-red"
+                                            className="load-button-v1"
                                             onClick={() => setDeleteId(level.id)}
                                         >
                                             <FontAwesomeIcon icon={faTrash} />
@@ -132,8 +132,9 @@ const Levels = () => {
                     <p>Loading...</p>
                 ) : levels.length >= 0 ? (
                     <div className="pagination-buttons">
-                        <button onClick={() => setPage(page === 1 ? page : page - 1)} className="load-button-v1">Ankstesnis puslapis</button>
-                        <button onClick={() => setPage(levels.length === 0 ? page : page + 1)} className="load-button-v1">Kitas puslapis</button>
+                        <button onClick={() => setPage(page === 1 ? page : page - 1)} className="load-button-v1">-</button>
+                        <button onClick={() => setPage(levels.length === 0 ? page : page + 1)} className="load-button-v1">+</button>
+                        <div className='page-number-div'><p>{page}</p></div>
                     </div>                    
                 ) : null}
             </div>

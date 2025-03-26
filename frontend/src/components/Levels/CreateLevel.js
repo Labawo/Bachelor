@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import useAxiosPrivate from "../../hooks/UseAxiosPrivate";
 import SuccessSelectModal from "../Modals/SuccessSelectModal";
 import ErrorModal from "../Modals/ErrorModal";
@@ -55,19 +55,27 @@ const CreateLevel = ({ show, onClose }) => {
     setMinExperience(0);
   };
 
+  useEffect(() => {
+    
+    
+  }, []);
+
   return (
     <>
-      <div className={`modal ${show ? "show" : ""}`}>
-      <div className="modal-content"> 
-      <div className="form-container">
-          <h2>Create New Level</h2>
+      <div className={`modal-form ${show ? "show" : ""}`}>
+      <div className="modal-content-form"> 
+        <div className='close-button-div-form'>
+          <button className="primary-button-form" onClick={onClose}>X</button>
+        </div>
+        <div className="outer-form-div">
+        <div className="form-container">
+          <h2>Sukurti lygį</h2>
           <form onSubmit={handleSubmit} className = "input_form">
             <div className="form-group">
               <label htmlFor="name">Pavadinimas:</label><br/>
                 <input
                     type="text"
                     id="name"
-                    value={name}
                     onChange={(e) => setName(e.target.value)}
                     className="input-field"
                     required
@@ -78,7 +86,6 @@ const CreateLevel = ({ show, onClose }) => {
                 <input
                     type="number"
                     id="minExperience"
-                    value={minExperience}
                     onChange={(e) => setMinExperience(e.target.value)}
                     required
                     className="input-field"
@@ -97,14 +104,15 @@ const CreateLevel = ({ show, onClose }) => {
                 />
             </div>
             
-            <div className="modal-buttons">
+            <div className="modal-buttons-form">
               <button type="submit" className="auth_button">
                 Sukurti
               </button>
             </div>
           </form>
-          <button className="primary-button" onClick={onClose}>Atšaukti</button>
         </div>
+        </div>
+        
         <SuccessSelectModal
           show={successMessage !== ""}
           onClose={() => setSuccessMessage("")}

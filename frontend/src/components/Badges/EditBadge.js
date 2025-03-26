@@ -99,59 +99,64 @@ const EditBadge = ({ show, onClose, badgeId }) => {
 
   return (
     <>
-      <div className={`modal ${show ? "show" : ""}`}>
-      <div className="modal-content"> 
-      <div className="form-container">
-          <h2>Atnaujinti ženkliuką</h2>
-          <form onSubmit={handleSubmit} className = "input_form">
-            <div className="form-group">
-              <label htmlFor="name">Pavadinimas:</label><br/>
-                <input
-                    type="text"
-                    id="name"
-                    value={name}
-                    onChange={(e) => setName(e.target.value)}
-                    className="input-field"
-                    required
-                />
-            </div>
-            <div className="form-group">
-              <label htmlFor="description">Apibūdinimas:</label><br/>
-              <textarea
-                id="description"
-                name="description"
-                value={description}
-                onChange={(e) => setDescription(e.target.value)}
-                placeholder="Įveskite ženkliuko apibūdinimą"
-                required
-                className="textarea-field"
-              />
-              {errors.description && (
-                <span className="error-message">{errors.description}</span>
-              )}
-            </div>
-
-            <div className="form-group">
-              <label htmlFor="image2">Paveikslėlis:</label><br />
-              <input
-                type="file"
-                id="image2"
-                name="image"
-                onChange={handleImageFile}
-                accept="image/*"
-                className="input-field"
-              />
-            </div>
-            
-            <div className="modal-buttons">
-              
-              <button type="submit" className="auth_button">
-                Atnaujinti
-              </button>
-            </div>
-          </form>
-          <button className="primary-button" onClick={onClose}>Atšaukti</button>
+      <div className={`modal-form ${show ? "show" : ""}`}>
+      <div className="modal-content-form"> 
+      <div className='close-button-div-form'>
+          <button className="primary-button-form" onClick={onClose}>X</button>
         </div>
+          <div className="outer-form-div">
+            <div className="form-container">
+              <h2>Atnaujinti ženkliuką</h2>
+              <form onSubmit={handleSubmit} className = "input_form">
+                <div className="form-group">
+                  <label htmlFor="name">Pavadinimas:</label><br/>
+                    <input
+                        type="text"
+                        id="name"
+                        value={name}
+                        onChange={(e) => setName(e.target.value)}
+                        className="input-field"
+                        required
+                    />
+                </div>
+                <div className="form-group">
+                  <label htmlFor="description">Apibūdinimas:</label><br/>
+                  <textarea
+                    id="description"
+                    name="description"
+                    value={description}
+                    onChange={(e) => setDescription(e.target.value)}
+                    placeholder="Įveskite ženkliuko apibūdinimą"
+                    required
+                    className="textarea-field"
+                  />
+                  {errors.description && (
+                    <span className="error-message">{errors.description}</span>
+                  )}
+                </div>
+
+                <div className="form-group">
+                  <label htmlFor="image2">Paveikslėlis:</label><br />
+                  <input
+                    type="file"
+                    id="image2"
+                    name="image"
+                    onChange={handleImageFile}
+                    accept="image/*"
+                    className="input-field"
+                  />
+                </div>
+                
+                <div className="modal-buttons-form">
+                  
+                  <button type="submit" className="auth_button">
+                    Atnaujinti
+                  </button>
+                </div>
+              </form>
+          </div>
+        </div>
+      
         <SuccessSelectModal
           show={successMessage !== ""}
           onClose={() => setSuccessMessage("")}

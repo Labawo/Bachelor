@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import useAxiosPrivate from "../../hooks/UseAxiosPrivate";
 import SuccessSelectModal from "../Modals/SuccessSelectModal";
 import ErrorModal from "../Modals/ErrorModal";
@@ -61,42 +61,47 @@ const EditWord = ({ show, onClose, levelId, wordId }) => {
 
   return (
     <>
-      <div className={`modal ${show ? "show" : ""}`}>
-      <div className="modal-content"> 
-      <div className="form-container">
-          <h2>Atnaujinti klausimą</h2>
-          <form onSubmit={handleSubmit} className = "input_form">
-            <div className="form-group">
-              <label htmlFor="question">Klausimas:</label><br/>
-                <input
-                    type="text"
-                    id="question"
-                    value={question}
-                    onChange={(e) => setQuestion(e.target.value)}
-                    className="input-field"
-                    required
-                />
-            </div>
-            <div className="form-group">
-              <label htmlFor="correctAnswer">Atsakymas:</label><br/>
-                <input
-                    type="text"
-                    id="correctAnswer"
-                    value={author}
-                    onChange={(e) => setCorrectAnswer(e.target.value)}
-                    className="input-field"
-                    required
-                />
-            </div>
-            
-            <div className="modal-buttons">
-              <button type="submit" className="auth_button">
-                Atnaujinti
-              </button>
-            </div>
-          </form>
-          <button className="primary-button" onClick={onClose}>Atšaukti</button>
+      <div className={`modal-form ${show ? "show" : ""}`}>
+      <div className="modal-content-form">
+        <div className='close-button-div-form'>
+          <button className="primary-button-form" onClick={onClose}>X</button>
         </div>
+        <div className="outer-form-div">
+          <div className="form-container">
+            <h2>Atnaujinti klausimą</h2>
+            <form onSubmit={handleSubmit} className = "input_form">
+              <div className="form-group">
+                <label htmlFor="question">Klausimas:</label><br/>
+                  <input
+                      type="text"
+                      id="question"
+                      value={question}
+                      onChange={(e) => setQuestion(e.target.value)}
+                      className="input-field"
+                      required
+                  />
+              </div>
+              <div className="form-group">
+                <label htmlFor="correctAnswer">Atsakymas:</label><br/>
+                  <input
+                      type="text"
+                      id="correctAnswer"
+                      value={correctAnswer}
+                      onChange={(e) => setCorrectAnswer(e.target.value)}
+                      className="input-field"
+                      required
+                  />
+              </div>
+              
+              <div className="modal-buttons-form">
+                <button type="submit" className="auth_button">
+                  Atnaujinti
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      
         <SuccessSelectModal
           show={successMessage !== ""}
           onClose={() => setSuccessMessage("")}

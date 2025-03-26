@@ -94,15 +94,11 @@ public class WordsController : ControllerBase
     {
         var level = await _levelsRepository.GetAsync(levelId);
         if (level == null) return NotFound($"Couldn't find a level with id of {levelId}");
-
-        var authorizationResult = await _authorizationService.AuthorizeAsync(User, level, PolicyNames.ResourceOwner);
-
-        if (!authorizationResult.Succeeded)
-        {
-            return Forbid();
-        }
         
         var word = new Word { Question = wordDto.Question, IsOpen = wordDto.IsOpen, CorrectAnswer = wordDto.CorrectAnswer };
+
+        word.level = level;
+        word.LevelId = level.Id;
 
         if (!word.IsOpen)
         {
@@ -155,13 +151,6 @@ public class WordsController : ControllerBase
         var level = await _levelsRepository.GetAsync(levelId);
         if (level == null) return NotFound($"Couldn't find a level with id of {levelId}");
 
-        var authorizationResult = await _authorizationService.AuthorizeAsync(User, level, PolicyNames.ResourceOwner);
-
-        if (!authorizationResult.Succeeded)
-        {
-            return Forbid();
-        }
-
         var oldWord = await _wordsRepository.GetAsync(levelId, wordId);
         
         if (oldWord == null)
@@ -191,13 +180,6 @@ public class WordsController : ControllerBase
     {
         var level = await _levelsRepository.GetAsync(levelId);
         if (level == null) return NotFound($"Couldn't find a level with id of {levelId}");
-
-        var authorizationResult = await _authorizationService.AuthorizeAsync(User, level, PolicyNames.ResourceOwner);
-
-        if (!authorizationResult.Succeeded)
-        {
-            return Forbid();
-        }
 
         var word = await _wordsRepository.GetAsync(levelId, wordId);
         

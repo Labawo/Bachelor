@@ -65,10 +65,14 @@ const EditLevel = ({ show, onClose, levelId }) => {
 
   return (
     <>
-      <div className={`modal ${show ? "show" : ""}`}>
-      <div className="modal-content"> 
-      <div className="form-container">
-          <h2>Create New Level</h2>
+      <div className={`modal-form ${show ? "show" : ""}`}>
+      <div className="modal-content-form"> 
+      <div className='close-button-div-form'>
+          <button className="primary-button-form" onClick={onClose}>X</button>
+        </div>
+        <div className="outer-form-div">
+        <div className="form-container">
+          <h2>Redaguoti lygį</h2>
           <form onSubmit={handleSubmit} className = "input_form">
             <div className="form-group">
               <label htmlFor="name">Pavadinimas:</label><br/>
@@ -93,14 +97,16 @@ const EditLevel = ({ show, onClose, levelId }) => {
                 />
             </div>
             
-            <div className="modal-buttons">
+            <div className="modal-buttons-form">
               <button type="submit" className="auth_button">
-                Create
+                Redaguoti
               </button>
             </div>
           </form>
-          <button className="primary-button" onClick={onClose}>Atšaukti</button>
+          
+      </div>
         </div>
+      
         <SuccessSelectModal
           show={successMessage !== ""}
           onClose={() => setSuccessMessage("")}

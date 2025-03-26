@@ -185,6 +185,32 @@
   },
   {
     "ContainingType": "backend.Controllers.BadgeNumbersController",
+    "Method": "CreateQuiz",
+    "RelativePath": "api/badgesnumber/quiz",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "requestDto",
+        "Type": "backend.Data.Dtos.BadgeNumbers.CreateQuizDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "backend.Data.Entities.Badge",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "backend.Controllers.BadgeNumbersController",
     "Method": "CreateQuote",
     "RelativePath": "api/badgesnumber/quote",
     "HttpMethod": "POST",
@@ -220,32 +246,6 @@
       {
         "Name": "requestDto",
         "Type": "backend.Data.Dtos.BadgeNumbers.CreateTrainingDto",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": [
-      {
-        "Type": "backend.Data.Entities.Badge",
-        "MediaTypes": [
-          "text/plain",
-          "application/json",
-          "text/json"
-        ],
-        "StatusCode": 200
-      }
-    ]
-  },
-  {
-    "ContainingType": "backend.Controllers.BadgeNumbersController",
-    "Method": "CreateQuiz",
-    "RelativePath": "api/badgesnumber/training",
-    "HttpMethod": "POST",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "requestDto",
-        "Type": "backend.Data.Dtos.BadgeNumbers.CreateQuizDto",
         "IsRequired": true
       }
     ],

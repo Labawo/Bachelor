@@ -98,8 +98,12 @@ const CreateBadge = ({ show, onClose }) => {
 
   return (
     <>
-      <div className={`modal ${show ? "show" : ""}`}>
-      <div className="modal-content"> 
+      <div className={`modal-form ${show ? "show" : ""}`}>
+      <div className="modal-content-form"> 
+      <div className='close-button-div-form'>
+          <button className="primary-button-form" onClick={onClose}>X</button>
+        </div>
+      <div className="outer-form-div">
       <div className="form-container">
           <h2>Sukurti naują ženkliuką</h2>
           <form onSubmit={handleSubmit} className = "input_form">
@@ -235,15 +239,15 @@ const CreateBadge = ({ show, onClose }) => {
               </div>
             )}
             
-            <div className="modal-buttons">
-              
+            <div className="modal-buttons-form">
               <button type="submit" className="auth_button">
                 Sukurti
               </button>
             </div>
           </form>
-          <button className="primary-button" onClick={onClose}>Atšaukti</button>
-        </div>
+      </div>
+      </div>
+      
         <SuccessSelectModal
           show={successMessage !== ""}
           onClose={() => setSuccessMessage("")}

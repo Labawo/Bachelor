@@ -8,6 +8,7 @@ import ConfirmationModal from "../Modals/ConfirmationModal";
 import ErrorModal from "../Modals/ErrorModal";
 import CreateWord from "./CreateWord";
 import EditWord from "./EditWord";
+import ImportFile from "./ImportFile";
 
 const Words = ({ levelId }) => {
     const [words, setWords] = useState([]);
@@ -31,7 +32,7 @@ const Words = ({ levelId }) => {
             return response.data;
         } catch (err) {
             console.error(err);
-            navigate('/login', { state: { from: location }, replace: true });
+            //navigate('/login', { state: { from: location }, replace: true });
             return [];
         }
     }, [axiosPrivate, navigate, location]);
@@ -77,7 +78,11 @@ const Words = ({ levelId }) => {
             <div className="table-container">
                 <h2 className="list-headers">Klausimų sąrašas</h2>
                 <div className="create-btn-div">
-                    <button onClick={createWord} className="create-btn"> Sukurti Klausimą </button>
+                    <button onClick={createWord} className="create-button"> Sukurti Klausimą </button>
+                    <p style={{borderBottom: "2px solid black", borderTop: "2px solid black", fontWeight: "bold", fontSize:"20px", paddingTop: "10px", paddingBottom: "10px"}}> ARBA </p>
+                    <div className="outer-import-file-div">
+                        <ImportFile levelId={levelId}/>
+                    </div>                    
                 </div>
                 {words.length ? (
                     <table className="my-table">
@@ -95,13 +100,13 @@ const Words = ({ levelId }) => {
                                     <td>{word?.correctAnswer}</td>
                                     <td>
                                         <button 
-                                            className="table-buttons-blue"
+                                            className="load-button-v1"
                                             onClick={() => updateWord(word.id)}
                                         >
                                             <FontAwesomeIcon icon={faEdit} />
                                         </button>
                                         <button
-                                            className="table-buttons-red"
+                                            className="load-button-v1"
                                             onClick={() => setDeleteId(word.id)}
                                         >
                                             <FontAwesomeIcon icon={faTrash} />
@@ -112,14 +117,15 @@ const Words = ({ levelId }) => {
                         </tbody>
                     </table>
                 ) : (
-                    <p className="no-list-items-p">Citatų nėra</p>
+                    <p className="no-list-items-p" style={{marginTop: "10px"}}>Klausimų nėra</p>
                 )}
                 {isLoading ? (
                     <p>Kraunasi...</p>
                 ) : words.length >= 0 ? (
                     <div className="pagination-buttons">
-                        <button onClick={() => setPage(page === 1 ? page : page - 1)} className="load-button-v1">Ankstesnis puslapis</button>
-                        <button onClick={() => setPage(words.length === 0 ? page : page + 1)} className="load-button-v1">Kitas puslapis</button>
+                        <button onClick={() => setPage(page === 1 ? page : page - 1)} className="load-button-v1">-</button>
+                        <button onClick={() => setPage(words.length === 0 ? page : page + 1)} className="load-button-v1">+</button>
+                        <div className='page-number-div'><p>{page}</p></div>
                     </div>                    
                 ) : null}
             </div>

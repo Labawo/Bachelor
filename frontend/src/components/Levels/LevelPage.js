@@ -4,6 +4,8 @@ import useAxiosPrivate from "../../hooks/UseAxiosPrivate";
 import NavBar from "../Main/NavBar";
 import Footer from "../Main/Footer";
 import Title from "../Main/Title";
+import Words from "../Words/Words";
+import Quotes from "../Quotes/Quotes";
 
 const LevelPage = () => {
     const { levelId } = useParams();
@@ -31,15 +33,16 @@ const LevelPage = () => {
         <>
             <Title />
             <NavBar />
-            <section className="therapy-page">
+            <section>
                 
                 {level ? (
                     <div className='content-holder-div'>
                         <h2>{level.name}</h2>
-                        <p>Description: {level.minExperience}</p>
+                        <p style={{paddingBottom: "10px"}}>Patirtis: {level.minExperience}</p>
+                        {level.isForWords ? <Words levelId={level.id}/> : <Quotes levelId={level.id} /> }
                     </div>
                 ) : (
-                    <p>Loading level details...</p>
+                    <p>Kraunamas lygių apibųdinimas</p>
                 )}
             </section>
             <Footer />

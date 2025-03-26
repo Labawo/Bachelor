@@ -31,7 +31,7 @@ const Quotes = ({ levelId }) => {
             return response.data;
         } catch (err) {
             console.error(err);
-            navigate('/login', { state: { from: location }, replace: true });
+            //navigate('/login', { state: { from: location }, replace: true });
             return [];
         }
     }, [axiosPrivate, navigate, location]);
@@ -75,9 +75,9 @@ const Quotes = ({ levelId }) => {
     return (
         <article className="list-article">
             <div className="table-container">
-                <h2 className="list-headers">Posakių sąrašas</h2>
+                <h2 className="list-headers">Citatų sąrašas</h2>
                 <div className="create-btn-div">
-                    <button onClick={createQuote} className="create-btn"> Sukurti Posakį </button>
+                    <button onClick={createQuote} className="create-button"> Sukurti Citatą </button>
                 </div>
                 {quotes.length ? (
                     <table className="my-table">
@@ -99,13 +99,13 @@ const Quotes = ({ levelId }) => {
                                     <td>{quote?.timeToComplete}</td>
                                     <td>
                                         <button 
-                                            className="table-buttons-blue"
+                                            className="load-button-v1"
                                             onClick={() => updateQuote(quote.id)}
                                         >
                                             <FontAwesomeIcon icon={faEdit} />
                                         </button>
                                         <button
-                                            className="table-buttons-red"
+                                            className="load-button-v1"
                                             onClick={() => setDeleteId(quote.id)}
                                         >
                                             <FontAwesomeIcon icon={faTrash} />
@@ -122,8 +122,9 @@ const Quotes = ({ levelId }) => {
                     <p>Kraunasi...</p>
                 ) : quotes.length >= 0 ? (
                     <div className="pagination-buttons">
-                        <button onClick={() => setPage(page === 1 ? page : page - 1)} className="load-button-v1">Ankstesnis puslapis</button>
-                        <button onClick={() => setPage(quotes.length === 0 ? page : page + 1)} className="load-button-v1">Kitas puslapis</button>
+                        <button onClick={() => setPage(page === 1 ? page : page - 1)} className="load-button-v1">-</button>
+                        <button onClick={() => setPage(quotes.length === 0 ? page : page + 1)} className="load-button-v1">+</button>
+                        <div className='page-number-div'><p>{page}</p></div>
                     </div>                    
                 ) : null}
             </div>
