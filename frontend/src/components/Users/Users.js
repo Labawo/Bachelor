@@ -3,6 +3,7 @@ import useAxiosPrivate from "../../hooks/UseAxiosPrivate";
 import { useNavigate, useLocation } from "react-router-dom";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrash, faKey } from '@fortawesome/free-solid-svg-icons';
+import EditUser from "./EditUser";
 
 const Users = () => {
     const [users, setUsers] = useState([]);
@@ -11,10 +12,6 @@ const Users = () => {
     const [filter, setFilter] = useState('');
     const [emailFilter, setEmailFilter] = useState('');
     const [selectedUserId, setSelectedUserId] = useState(null);
-    const [newPassword, setNewPassword] = useState('');
-    const [repeatPassword, setRepeatPassword] = useState('');
-    const [passwordError, setPasswordError] = useState('');
-    const [showResetPassword, setShowResetPassword] = useState({});
     const axiosPrivate = useAxiosPrivate();
     const navigate = useNavigate();
     const location = useLocation();
@@ -27,11 +24,6 @@ const Users = () => {
                     signal: controller.signal
                 });
                 setUsers(response.data);
-                const initialShowResetPassword = {};
-                response.data.forEach(user => {
-                    initialShowResetPassword[user.id] = false;
-                });
-                setShowResetPassword(initialShowResetPassword);
             } catch (err) {
                 console.error(err);
                 navigate('/login', { state: { from: location }, replace: true });
@@ -52,51 +44,7 @@ const Users = () => {
         else {
             setFilteredUsers(users.filter(user => user.email.toLowerCase().includes(emailFilter.toLowerCase())));
         }       
-    }, [users, filter, emailFilter]);
-
-    const validatePassword = (password) => {
-        const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
-        return passwordRegex.test(password);
-    };
-
-    const handlePasswordChange = (e) => {
-        setNewPassword(e.target.value);
-        if (repeatPassword && e.target.value !== repeatPassword) {
-            setPasswordError("Passwords do not match");
-        } else {
-            setPasswordError("");
-        }
-    };
-
-    const handleRepeatPasswordChange = (e) => {
-        setRepeatPassword(e.target.value);
-        if (newPassword && e.target.value !== newPassword) {
-            setPasswordError("Passwords do not match");
-        } else {
-            setPasswordError("");
-        }
-    };
-
-    const resetPassword = async () => {
-        if (newPassword !== repeatPassword) {
-            setPasswordError("Passwords do not match");
-            return;
-        }
-        if (!validatePassword(newPassword)) {
-            setPasswordError("Password must contain at least 8 characters, including uppercase, lowercase, number, and special symbol.");
-            return;
-        }
-        try {
-            await axiosPrivate.put(`/changePassword/${selectedUserId}`, { newPassword });
-            alert("Password changed successfully.");
-            setShowResetPassword({ ...showResetPassword, [selectedUserId]: false });
-            setNewPassword('');
-            setRepeatPassword('');
-        } catch (error) {
-            console.error(`Error resetting password for user ${selectedUserId}:`, error);
-            alert("Error changing password. Please try again.");
-        }
-    };    
+    }, [users, filter, emailFilter]); 
 
     const deleteUser = async (userId) => {
         const confirmDelete = window.confirm("Are you sure you want to delete this user?");
@@ -159,36 +107,10 @@ const Users = () => {
                                             className="load-button-v1"
                                             onClick={() => {
                                                 setSelectedUserId(user.id);
-                                                setShowResetPassword({ ...showResetPassword, [user.id]: !showResetPassword[user.id] }); // Toggle visibility of reset password div
                                             }}
                                         >
                                             <FontAwesomeIcon icon={faKey} />
-                                        </button>
-
-                                        {showResetPassword[user.id] && (
-                                            <div className="password-reset-container">
-                                                <input
-                                                    type="password"
-                                                    value={newPassword}
-                                                    onChange={handlePasswordChange}
-                                                    placeholder="New Password"
-                                                /> <br />
-                                                <input
-                                                    type="password"
-                                                    value={repeatPassword}
-                                                    onChange={handleRepeatPasswordChange}
-                                                    placeholder="Repeat Password"
-                                                /> <br />
-                                                <button
-                                                    className="had-test-create-btn"
-                                                    onClick={resetPassword}
-                                                >
-                                                    Submit
-                                                </button>
-                                                {passwordError && <p className="error-message">{passwordError}</p>}
-                                            </div>
-                                        )}
-                                        
+                                        </button>                                        
                                     </td>    
                                 </tr>
                             ))}
@@ -196,6 +118,11 @@ const Users = () => {
                     </table>
                 ) : <p>No users to display</p>}
             </div>
+            <EditUser 
+                show={selectedUserId != ''}
+                onClose={() => setSelectedUserId('')}
+                userId={selectedUserId}
+            />
         </article>
     );
 };
