@@ -55,11 +55,6 @@ const CreateLevel = ({ show, onClose }) => {
     setMinExperience(0);
   };
 
-  useEffect(() => {
-    
-    
-  }, []);
-
   return (
     <>
       <div className={`modal-form ${show ? "show" : ""}`}>

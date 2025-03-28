@@ -12,6 +12,9 @@ const TypingTest = ({ content, timeToComplete }) => {
     const inputRef = useRef(null);
     const charRefs = useRef([]);
     const [correctWrong, setCorrectWrong] = useState([]);
+    const [errors, setErrors] = useState({});
+    const [successMessage, setSuccessMessage] = useState("");
+    const [errorMessage, setErrorMessage] = useState("");
 
     useEffect(() => {
         inputRef.current.focus();
@@ -82,6 +85,25 @@ const TypingTest = ({ content, timeToComplete }) => {
             }
         }
     }
+
+    const handleEnding = async (cpm, wpm, mistakes, time) => {
+        try {
+          const speedData = {
+            cpm: cpm,
+            wpm: wpm,
+            mistakes: mistakes,
+            time: time,
+          };
+    
+          const response = await axiosPrivate.post("/badgesnumber/quote", speedData);
+    
+          setSuccessMessage("Pabaiga, surinktas ženklelių skaičius!");
+          clearForm();
+        } catch (error) {
+          console.error("Klaida išsiunčiant rezultatus:", error);
+          setErrorMessage("Klaida išsiunčiant rezultatus.");
+        }
+    };
 
     return (
         <div className='typing-test'>
