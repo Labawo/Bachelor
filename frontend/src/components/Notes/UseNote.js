@@ -33,7 +33,14 @@ export const UseNote = () => {
 
             this.hubConnection.on('ReceiveNote', note => {
                 runInAction(() => {
-                    this.notes.unshift(note);
+                    //this.notes.unshift(note);
+                    this.notes.splice(0, 0, note);
+                })
+            })
+
+            this.hubConnection.on('RemoveNote', note => {
+                runInAction(() => {
+                    this.notes.splice(this.notes.findIndex(n => n.id === note.id), 1);
                 })
             })
         },

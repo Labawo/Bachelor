@@ -6,6 +6,8 @@ import Title from "../Main/Title";
 import { UseNote } from "./UseNote";
 import { observer } from "mobx-react-lite";
 import useAuth from "../../hooks/UseAuth";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faTrash } from '@fortawesome/free-solid-svg-icons';
 
 const NotesPage = observer(() => {
 
@@ -84,7 +86,7 @@ const NotesPage = observer(() => {
           };
       
           //const response = await axiosPrivate.post("/notes", noteData);
-          await noteStore.hubConnection?.invoke('SendNote', formData.content, formData.name, auth.id)
+          await noteStore.hubConnection?.invoke('SendNote', formData.content, formData.name, auth.accessToken)
       
           setSuccessMessage("Note created successfully!");
           setFormData({ name: "", content: "" });
@@ -94,6 +96,18 @@ const NotesPage = observer(() => {
         }
     };
 
+    const deleteNote = async (noteId) => {
+      try {    
+        //const response = await axiosPrivate.post("/notes", noteData);
+        await noteStore.hubConnection?.invoke('DeleteNote', noteId, auth.accessToken);
+    
+        setSuccessMessage("Note Deleted successfully!");
+      } catch (error) {
+        console.error("Error deleting note:", error);
+        setErrorMessage("Failed to delete note");
+      }
+  };
+
     return (
         <>
             <Title />
@@ -102,7 +116,14 @@ const NotesPage = observer(() => {
                 <div className='content-holder-div'>
                     {form()}
                     {noteStore.notes.map(note => (
-                        <div>{note.content}</div>
+                        <div>
+                          {note.content}
+                          <button
+                              onClick={() => deleteNote(note.id)}
+                          >
+                              <FontAwesomeIcon icon={faTrash} />
+                          </button>
+                        </div>
                     ))}
                 </div>
             </section>
