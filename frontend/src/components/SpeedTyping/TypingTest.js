@@ -1,4 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
+import useAxiosPrivate from "../../hooks/UseAxiosPrivate";
 import './typingtest.css';
 
 const TypingTest = ({ content, timeToComplete }) => {
@@ -11,6 +12,9 @@ const TypingTest = ({ content, timeToComplete }) => {
     const [CPM, setCPM] = useState(0);
     const inputRef = useRef(null);
     const charRefs = useRef([]);
+
+    const axiosPrivate = useAxiosPrivate();
+
     const [correctWrong, setCorrectWrong] = useState([]);
     const [errors, setErrors] = useState({});
     const [successMessage, setSuccessMessage] = useState("");
@@ -98,7 +102,6 @@ const TypingTest = ({ content, timeToComplete }) => {
           const response = await axiosPrivate.post("/badgesnumber/quote", speedData);
     
           setSuccessMessage("Pabaiga, surinktas ženklelių skaičius!");
-          clearForm();
         } catch (error) {
           console.error("Klaida išsiunčiant rezultatus:", error);
           setErrorMessage("Klaida išsiunčiant rezultatus.");

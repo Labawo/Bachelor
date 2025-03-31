@@ -10,6 +10,7 @@ using backend.Auth.Models;
 using backend.Data;
 using backend.Data.Repositories;
 using backend.Helpers;
+using backend.SignalR;
 
 var builder = WebApplication.CreateBuilder(args);
 JwtSecurityTokenHandler.DefaultInboundClaimTypeMap.Clear();
@@ -19,6 +20,8 @@ builder.Services.AddControllers();
 builder.Services.AddIdentity<SiteUser, IdentityRole>()
     .AddEntityFrameworkStores<LS_DbContext>()
     .AddDefaultTokenProviders();
+
+builder.Services.AddSignalR();
 
 builder.Services.AddAuthentication(options =>
     {
@@ -42,6 +45,7 @@ builder.Services.AddTransient<IQuotesRepository, QuotesRepository>();
 builder.Services.AddTransient<IWordsRepository, WordsRepository>();
 builder.Services.AddTransient<INotesRepository, NotesRepository>();
 builder.Services.AddTransient<IBadgesRepository, BadgesRepository>();
+builder.Services.AddTransient<IBadgeNumbersRepository, BadgeNumbersRepository>();
 builder.Services.AddTransient<IJwtTokenService, JwtTokenService>();
 builder.Services.AddScoped<AuthDbSeeder>();
 
@@ -65,6 +69,7 @@ app.UseCors(options =>
 });
 
 app.MapControllers();
+app.MapHub<NoteHub>("/notesHub");
 app.UseAuthentication();
 app.UseAuthorization();
 

@@ -3,6 +3,7 @@ import Footer from "../Main/Footer";
 import Title from "../Main/Title";
 import React, { useState } from 'react';
 import UserBadges from "./UserBadges";
+import NotesPage from "../Notes/NotesPage";
 
 const UserBadgesPage = () => {
 

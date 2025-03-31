@@ -42,12 +42,13 @@ function App() {
         <Route element={<RequireAuth allowedRoles={[ROLES.User]} />}>
           <Route path="/" element={<Home />} />
           <Route path="/resetPassword" element={<ResetPassword />} /> 
-          <Route path="/userBadges" element={<UserBadgesPage />} />         
+          <Route path="/userBadges" element={<UserBadgesPage />} /> 
+          <Route path="/notes" element={<NotesPage />} />        
         </Route>
 
         <Route element={<RequireAuth allowedRoles={[ROLES.Admin]} />}>
           <Route path="admin" element={<Admin />} />
-          <Route path="/notes" element={<NotesPage />} />
+          {/*Cia notes tures buti */}
           <Route path="/levelsPage" element={<LevelsPage />} />
           <Route path="/badgesPage" element={<BadgesPage />} />
           <Route path="/levels/:levelId" element={<LevelPage />} />

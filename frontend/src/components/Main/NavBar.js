@@ -40,6 +40,9 @@ const NavBar = () => {
                     <span className={canAccessStudent ? `nav-link-span ${isActiveLink('/speedTyping') ? 'active-span' : ''}` : 'hidden'}>
                         <Link to="/speedTyping" className={canAccessStudent ? 'nav-link' : 'hidden'}>Spartus rašymas</Link>
                     </span>
+                    <span className={`nav-link-span ${isActiveLink('/notes') ? 'active-span' : ''}`}>
+                        <Link to="/notes" className='nav-link'>Užrašai</Link>
+                    </span>
                 </div>
             </div>
         </div>

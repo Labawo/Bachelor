@@ -9,6 +9,7 @@ public interface INotesRepository
 {
     Task<Note?> GetAsync(int noteId);
     Task<PagedList<Note>> GetManyAsync(NoteSearchParameters noteSearchParameters, string ownerId);
+    Task<IReadOnlyList<Note>> GetManyAsync();
     Task CreateAsync(Note note);
     Task UpdateAsync(Note note);
     Task RemoveAsync(Note note);
@@ -33,6 +34,11 @@ public class NotesRepository : INotesRepository
         var queryable = _lsDbContext.Notes.AsQueryable().Where(o => o.OwnerId == ownerId).OrderByDescending(o => o.Time);
         
         return await PagedList<Note>.CreateAsync(queryable, noteSearchParameters.PageNumber, noteSearchParameters.PageSize);
+    }
+
+    public async Task<IReadOnlyList<Note>> GetManyAsync()
+    {
+        return await _lsDbContext.Notes.ToListAsync();
     }
 
     public async Task CreateAsync(Note note)
