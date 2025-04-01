@@ -63,7 +63,7 @@ const CreateLevel = ({ show, onClose }) => {
           <button className="primary-button-form" onClick={onClose}>X</button>
         </div>
         <div className="outer-form-div">
-        <div className="form-container">
+        <div className="form-container" style={{color: "black"}}>
           <h2>Sukurti lygį</h2>
           <form onSubmit={handleSubmit} className = "input_form">
             <div className="form-group">

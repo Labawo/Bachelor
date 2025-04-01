@@ -124,6 +124,10 @@ public class QuotesController : ControllerBase
 
         await _quotesRepository.CreateAsync(quote);
 
+        level.ItemCount += 1;
+        
+        await _levelsRepository.UpdateAsync(level);
+
         return Created("GetQuote",
             new QuoteDto(quote.Id, quote.Content, quote.Source, quote.Author, quote.TimeToComplete));
     }
@@ -189,6 +193,10 @@ public class QuotesController : ControllerBase
             return NotFound();
 
         await _quotesRepository.RemoveAsync(quote);
+        
+        level.ItemCount -= 1;
+        
+        await _levelsRepository.UpdateAsync(level);
 
         // 204
         return NoContent();

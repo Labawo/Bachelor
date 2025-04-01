@@ -693,16 +693,37 @@ tbody tr {
     text-align: center;
 }
 
+.inline-chd{
+    color:black;
+    margin-top: 0;
+    width: 92%;
+}
+
 .left-chd {
     display: inline-block;
-    width: 45%;
-    margin: 2.5%;
+    width: 46%;
+    margin: 1%;
+    min-height: 450px;
 }
 
 .right-chd {
     display: inline-block;
-    width: 45%;
-    margin: 2.5%;
+    width: 46%;
+    margin: 1%;
+    min-height: 450px;
+}
+
+.badge-div{
+    margin:20px auto;
+    width: 90%;
+    display: grid;
+    grid-gap: 10px;
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.badge-span{
+    height: 150px;
+    background: green;
 }
 
 @keyframes header-animation {

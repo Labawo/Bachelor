@@ -12,7 +12,7 @@ const BadgesPage = () => {
             <Title />
             <NavBar />
             <section>                
-                <div className='content-holder-div'>
+                <div className='content-holder-div' style={{marginTop: "10px"}}>
                     <Badges />
                 </div>
             </section>

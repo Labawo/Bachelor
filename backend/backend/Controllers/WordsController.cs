@@ -136,6 +136,10 @@ public class WordsController : ControllerBase
         }
 
         await _wordsRepository.CreateAsync(word);
+        
+        level.ItemCount += 1;
+        
+        await _levelsRepository.UpdateAsync(level);
 
         return Created("GetWord",
             new WordDto(word.Id, word.Question, word.IsOpen, word.CorrectAnswer, word.Choices, word.ImageData));
@@ -184,6 +188,10 @@ public class WordsController : ControllerBase
         }
         
         await _wordsRepository.CreateManyAsync(notInRepoWords);
+        
+        level.ItemCount += notInRepoWords.Count;
+        
+        await _levelsRepository.UpdateAsync(level);
 
         return Ok(words.Count);
     }
@@ -252,6 +260,10 @@ public class WordsController : ControllerBase
             return NotFound();
 
         await _wordsRepository.RemoveAsync(word);
+        
+        level.ItemCount -= 1;
+        
+        await _levelsRepository.UpdateAsync(level);
 
         // 204
         return NoContent();

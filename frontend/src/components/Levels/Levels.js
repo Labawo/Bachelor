@@ -6,12 +6,10 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrash, faSearch, faEdit } from '@fortawesome/free-solid-svg-icons';
 import ConfirmationModal from "../Modals/ConfirmationModal";
 import ErrorModal from "../Modals/ErrorModal";
-import CreateLevel from "./CreateLevel";
 import EditLevel from "./EditLevel";
 
-const Levels = () => {
+const Levels = ({ urlApi, header }) => {
     const [levels, setLevels] = useState([]);
-    const [showCreate, setShowCreate] = useState(false);
     const [editLevelId, setEditLevelId] = useState(0);
     const [isNextPage, setIsNextPage] = useState(false);
     const [page, setPage] = useState(1);
@@ -29,7 +27,7 @@ const Levels = () => {
 
     const fetchLevels = useCallback(async (pageNumber) => {
         try {
-            const response = await axiosPrivate.get('/levels', {
+            const response = await axiosPrivate.get(`/levels/${urlApi}`, {
                 params: { pageNumber : pageNumber }, 
             });
             return response.data;
@@ -54,9 +52,7 @@ const Levels = () => {
         loadLevels(page);
     }, [page]); 
 
-    const createLevel = () => {
-        setShowCreate(true);
-    };
+    
 
     const updateLevel = (levelId) => {
         setEditLevelId(levelId);
@@ -79,10 +75,7 @@ const Levels = () => {
     return (
         <article className="list-article">
             <div className="table-container">
-                <h2 className="list-headers">Lygių sąrašas</h2>
-                <div className="create-btn-div">
-                    <button onClick={createLevel} className="create-button"> Sukurti Lygį </button>
-                </div>
+                <h2 className="list-headers">{header}</h2>
                 {levels.length ? (
                     <table className="my-table">
                         <thead>
@@ -148,10 +141,6 @@ const Levels = () => {
                 onClose={() => setDeleteId("")}
                 onConfirm={() => removeLevel(deleteId)}
                 message={"Ar tikrai norite pašalinti lygį?"}
-            />
-            <CreateLevel 
-                show={showCreate === true}
-                onClose={() => setShowCreate(false)}
             />
             <EditLevel
                 show={editLevelId !== 0}

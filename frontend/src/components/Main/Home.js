@@ -12,7 +12,7 @@ const Home = () => {
             <Title />
             <NavBar />
             <section>                
-                <div className='content-holder-div'>
+                <div className='content-holder-div' style={{marginTop: "10px"}}>
                     <p className="greeting-note">Hello <i><b>{auth.user}</b></i>, we are glad you are here! {auth.roles}  100 - (mistakes/length * 100) </p>
                     <h3>{auth.id}</h3>
                 </div>

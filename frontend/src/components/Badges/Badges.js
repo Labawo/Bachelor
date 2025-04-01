@@ -86,39 +86,29 @@ const Badges = () => {
                     <button onClick={createBadge} className="create-button"> Sukurti Ženklelį </button>
                 </div>
                 {badges.length ? (
-                    <table className="my-table">
-                        <thead>
-                            <tr>
-                                <th>Pavadinimas</th>
-                                <th>Aprašymas</th>
-                                <th>Tipas</th>
-                                <th></th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {badges.map((badge, i) => (
-                                <tr key={i}>
-                                    <td>{badge?.name}</td>
-                                    <td>{badge?.description}</td>
-                                    <td>{badge?.type}</td>
-                                    <td>
-                                        <button 
-                                            className="load-button-v1"
-                                            onClick={() => updateBadge(badge.id)}
-                                        >
-                                            <FontAwesomeIcon icon={faEdit} />
-                                        </button>
-                                        <button
-                                            className="load-button-v1"
-                                            onClick={() => setDeleteId(badge.id)}
-                                        >
-                                            <FontAwesomeIcon icon={faTrash} />
-                                        </button>                                       
-                                    </td>    
-                                </tr>
-                            ))}
-                        </tbody>
-                    </table>
+                    <div className='badge-div'>
+                        {badges.map((badge, i) => (
+                            <span key={i} className='badge-span'>
+                                <p>{badge?.name}</p>
+                                <p>{badge?.description}</p>
+                                <p>{badge?.type}</p>
+                                <div>
+                                    <button 
+                                        className="load-button-v1"
+                                        onClick={() => updateBadge(badge.id)}
+                                    >
+                                        <FontAwesomeIcon icon={faEdit} />
+                                    </button>
+                                    <button
+                                        className="load-button-v1"
+                                        onClick={() => setDeleteId(badge.id)}
+                                    >
+                                        <FontAwesomeIcon icon={faTrash} />
+                                    </button>                                       
+                                </div>    
+                            </span>
+                        ))}
+                    </div>
                 ) : (
                     <p className="no-list-items-p">Ženklelių nėra</p>
                 )}
