@@ -67,6 +67,75 @@ public class LevelsController : ControllerBase
 
         return levels.Select(o => new LevelDto(o.Id, o.Name, o.ItemCount, o.MinExperience, o.IsForWords));
     }
+    
+    
+    [HttpGet("forWords")]
+    public async Task<IEnumerable<LevelDto>> GetManyPagingForWords([FromQuery] LevelSearchParameters searchParameters)
+    {
+        var levels = await _levelsRepository.GetManyForWordsAsync(searchParameters);
+
+        var previousPageLink = levels.HasPrevious
+            ? CreateLevelsResourceUri(searchParameters,
+                RecourceUriType.PreviousPage)
+            : null;
+        
+        var nextPageLink = levels.HasNext
+            ? CreateLevelsResourceUri(searchParameters,
+                RecourceUriType.NextPage)
+            : null;
+
+        var paginationMetaData = new
+        {
+            totalCount = levels.TotalCount,
+            pageSize = levels.PageSize,
+            currentPage = levels.CurrentPage,
+            totalPages = levels.TotalPages,
+            previousPageLink,
+            nextPageLink
+        };
+
+        if (paginationMetaData != null && !Response.Headers.ContainsKey("Pagination"))
+        {
+            // Add pagination metadata to response header
+            Response.Headers.Add("Pagination", JsonSerializer.Serialize(paginationMetaData));
+        }
+
+        return levels.Select(o => new LevelDto(o.Id, o.Name, o.ItemCount, o.MinExperience, o.IsForWords));
+    }
+    
+    [HttpGet("notForWords")]
+    public async Task<IEnumerable<LevelDto>> GetManyPagingNotForWords([FromQuery] LevelSearchParameters searchParameters)
+    {
+        var levels = await _levelsRepository.GetManyNotForWordsAsync(searchParameters);
+
+        var previousPageLink = levels.HasPrevious
+            ? CreateLevelsResourceUri(searchParameters,
+                RecourceUriType.PreviousPage)
+            : null;
+        
+        var nextPageLink = levels.HasNext
+            ? CreateLevelsResourceUri(searchParameters,
+                RecourceUriType.NextPage)
+            : null;
+
+        var paginationMetaData = new
+        {
+            totalCount = levels.TotalCount,
+            pageSize = levels.PageSize,
+            currentPage = levels.CurrentPage,
+            totalPages = levels.TotalPages,
+            previousPageLink,
+            nextPageLink
+        };
+
+        if (paginationMetaData != null && !Response.Headers.ContainsKey("Pagination"))
+        {
+            // Add pagination metadata to response header
+            Response.Headers.Add("Pagination", JsonSerializer.Serialize(paginationMetaData));
+        }
+
+        return levels.Select(o => new LevelDto(o.Id, o.Name, o.ItemCount, o.MinExperience, o.IsForWords));
+    }
 
     [HttpGet("test/{testId}")]
     public async Task<ActionResult<LevelDto>> GetTestId(int testId)

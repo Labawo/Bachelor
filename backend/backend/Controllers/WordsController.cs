@@ -172,7 +172,7 @@ public class WordsController : ControllerBase
 
         foreach (var word in words)
         {
-            if (!wordsRepo.Contains(word))
+            if (!wordsRepo.Any(wr => wr.Question == word.Question && wr.CorrectAnswer == word.CorrectAnswer))
             {
                 notInRepoWords.Add(word);
             }

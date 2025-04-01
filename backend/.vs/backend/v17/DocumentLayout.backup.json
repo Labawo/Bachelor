@@ -42,8 +42,7 @@
               "RelativeToolTip": "backend\\appsettings.json",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAwAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2025-03-31T21:10:30.626Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-31T21:10:30.626Z"
             },
             {
               "$type": "Document",
@@ -55,8 +54,7 @@
               "RelativeToolTip": "backend\\Program.cs",
               "ViewState": "AgIAAAgAAAAAAAAAAAAQwEcAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-31T21:09:49.34Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-31T21:09:49.34Z"
             },
             {
               "$type": "Document",
@@ -68,8 +66,7 @@
               "RelativeToolTip": "backend\\Auth\\JwtTokenService.cs",
               "ViewState": "AgIAAEAAAAAAAAAAAAAwwAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-31T21:00:17.898Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-31T21:00:17.898Z"
             },
             {
               "$type": "Document",
@@ -81,8 +78,7 @@
               "RelativeToolTip": "backend\\Controllers\\NotesController.cs",
               "ViewState": "AgIAAIEAAAAAAAAAAAAowIoAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-30T19:22:55.341Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-30T19:22:55.341Z"
             },
             {
               "$type": "Document",
@@ -92,7 +88,7 @@
               "RelativeDocumentMoniker": "backend\\SignalR\\NoteHub.cs",
               "ToolTip": "C:\\Users\\Laurynas\\Desktop\\Bachelor\\backend\\backend\\SignalR\\NoteHub.cs",
               "RelativeToolTip": "backend\\SignalR\\NoteHub.cs",
-              "ViewState": "AgIAAD8AAAAAAAAAAAAiwFEAAAA1AAAAAAAAAA==",
+              "ViewState": "AgIAACUAAAAAAAAAAAAcwFAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-03-30T19:01:19.442Z",
               "EditorCaption": ""

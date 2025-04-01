@@ -10,10 +10,16 @@ const LevelPage = () => {
         <>
             <Title />
             <NavBar />
-            <section>                
-                <div className='content-holder-div'>
-                    <Levels />
+            <section>    
+                <div className='content-holder-div inline-chd'>
+                    <div className='content-holder-div left-chd'>
+                        <Levels />
+                    </div>
+                    <div className='content-holder-div right-chd'>
+                        <Levels />
+                    </div>
                 </div>
+                
             </section>
             
             <Footer />

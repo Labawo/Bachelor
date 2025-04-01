@@ -8,6 +8,7 @@ using Microsoft.IdentityModel.JsonWebTokens;
 using Microsoft.AspNetCore.Mvc;
 using System.Security.Claims;
 using backend.Data.Dtos.Badges;
+using Microsoft.IdentityModel.Tokens;
 
 namespace backend.Controllers;
 
@@ -146,9 +147,9 @@ public class BadgeNumbersController : ControllerBase
         var badgenumbers = await _badgeNumbersRepository.GetManyUserAsync(requestDto.OwnerId);
         var numbers = new List<BadgeNumber>();
 
-        if (badges.Count() > 0)
+        if (!badges.IsNullOrEmpty())
         {
-            if (badgenumbers.Count() == 0)
+            if (badgenumbers.IsNullOrEmpty())
             {
                 foreach (var badge in badges)
                 {

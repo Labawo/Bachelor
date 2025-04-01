@@ -37,8 +37,8 @@ const LevelPage = () => {
                 
                 {level ? (
                     <div className='content-holder-div'>
-                        <h2>{level.name}</h2>
-                        <p style={{paddingBottom: "10px"}}>Patirtis: {level.minExperience}</p>
+                        <h2> Lygio pavadinimas: {level.name}</h2>
+                        <h2 style={{paddingBottom: "10px"}}>Patirtis: {level.minExperience}</h2>
                         {level.isForWords ? <Words levelId={level.id}/> : <Quotes levelId={level.id} /> }
                     </div>
                 ) : (

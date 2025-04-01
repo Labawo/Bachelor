@@ -11,7 +11,7 @@ const Users = () => {
     const [secondFilter, setSecondFilter] = useState(false);
     const [filter, setFilter] = useState('');
     const [emailFilter, setEmailFilter] = useState('');
-    const [selectedUserId, setSelectedUserId] = useState(null);
+    const [selectedUserId, setSelectedUserId] = useState('');
     const axiosPrivate = useAxiosPrivate();
     const navigate = useNavigate();
     const location = useLocation();
@@ -47,13 +47,13 @@ const Users = () => {
     }, [users, filter, emailFilter]); 
 
     const deleteUser = async (userId) => {
-        const confirmDelete = window.confirm("Are you sure you want to delete this user?");
+        const confirmDelete = window.confirm("Ar tikrai norite ištrinti naudotoją?");
         if (confirmDelete) {
             try {
                 await axiosPrivate.delete(`/users/${userId}`);
                 setUsers(prevUsers => prevUsers.filter(user => user.id !== userId));
             } catch (error) {
-                console.error(`Error deleting user ${userId}:`, error);
+                console.error(`Klaida trinant naudotoją ${userId}:`, error);
             }
         }
     };
@@ -61,7 +61,7 @@ const Users = () => {
     return (
         <article>
             <div className="table-container">
-                <h2 className="list-headers">Users List</h2>
+                <h2 className="list-headers">Naudotojų sąrašas</h2>
                 <div className="filter-container">
                     <div className="filter-container-inside">
                         <input
@@ -69,7 +69,7 @@ const Users = () => {
                             value={filter}
                             onClick={() => setSecondFilter(true)}
                             onChange={(e) => setFilter(e.target.value)}
-                            placeholder="Filter by username"
+                            placeholder="Filtruoti pagal vardą"
                             className="filter-container-input"
                         />
                         <input
@@ -77,7 +77,7 @@ const Users = () => {
                             value={emailFilter}
                             onClick={() =>setSecondFilter(false)}
                             onChange={(e) => setEmailFilter(e.target.value)}
-                            placeholder="Filter by email"
+                            placeholder="Filtruoti pagal el paštą"
                             className="filter-container-input"
                         />
                     </div>  
@@ -86,8 +86,8 @@ const Users = () => {
                     <table className="my-table">
                         <thead>
                             <tr>
-                                <th>Name</th>
-                                <th>Email</th>
+                                <th>Vardas</th>
+                                <th>El. paštas</th>
                                 <th></th>
                             </tr>
                         </thead>

@@ -693,6 +693,18 @@ tbody tr {
     text-align: center;
 }
 
+.left-chd {
+    display: inline-block;
+    width: 45%;
+    margin: 2.5%;
+}
+
+.right-chd {
+    display: inline-block;
+    width: 45%;
+    margin: 2.5%;
+}
+
 @keyframes header-animation {
     0% {
       text-shadow: -1px 1px #ddd, -2px 2px #ddd, -3px 3px #ddd, -4px 4px #ddd,

@@ -193,7 +193,7 @@
     "Parameters": [
       {
         "Name": "requestDto",
-        "Type": "backend.Data.Dtos.BadgeNumbers.CreateQuizDto",
+        "Type": "backend.Data.Dtos.BadgeNumbers.CreateQuizResultDto",
         "IsRequired": true
       }
     ],
@@ -219,7 +219,7 @@
     "Parameters": [
       {
         "Name": "requestDto",
-        "Type": "backend.Data.Dtos.BadgeNumbers.CreateQuoteDto",
+        "Type": "backend.Data.Dtos.BadgeNumbers.CreateQuoteResultDto",
         "IsRequired": true
       }
     ],
@@ -245,7 +245,7 @@
     "Parameters": [
       {
         "Name": "requestDto",
-        "Type": "backend.Data.Dtos.BadgeNumbers.CreateTrainingDto",
+        "Type": "backend.Data.Dtos.BadgeNumbers.CreateTrainingResultDto",
         "IsRequired": true
       }
     ],
@@ -958,107 +958,6 @@
       }
     ],
     "EndpointName": "GetNotes"
-  },
-  {
-    "ContainingType": "backend.Controllers.NotesController",
-    "Method": "Create",
-    "RelativePath": "api/notes",
-    "HttpMethod": "POST",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "createNoteDto",
-        "Type": "backend.Data.Dtos.Notes.CreateNoteDto",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": [
-      {
-        "Type": "backend.Data.Dtos.Notes.NoteDto",
-        "MediaTypes": [
-          "text/plain",
-          "application/json",
-          "text/json"
-        ],
-        "StatusCode": 200
-      }
-    ]
-  },
-  {
-    "ContainingType": "backend.Controllers.NotesController",
-    "Method": "Get",
-    "RelativePath": "api/notes/{noteId}",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "noteId",
-        "Type": "System.Int32",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": [
-      {
-        "Type": "backend.Data.Dtos.Notes.NoteDto",
-        "MediaTypes": [
-          "text/plain",
-          "application/json",
-          "text/json"
-        ],
-        "StatusCode": 200
-      }
-    ],
-    "EndpointName": "GetNote"
-  },
-  {
-    "ContainingType": "backend.Controllers.NotesController",
-    "Method": "Update",
-    "RelativePath": "api/notes/{noteId}",
-    "HttpMethod": "PUT",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "noteId",
-        "Type": "System.Int32",
-        "IsRequired": true
-      },
-      {
-        "Name": "updateNoteDto",
-        "Type": "backend.Data.Dtos.Notes.UpdateNoteDto",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": [
-      {
-        "Type": "backend.Data.Dtos.Notes.NoteDto",
-        "MediaTypes": [
-          "text/plain",
-          "application/json",
-          "text/json"
-        ],
-        "StatusCode": 200
-      }
-    ]
-  },
-  {
-    "ContainingType": "backend.Controllers.NotesController",
-    "Method": "Remove",
-    "RelativePath": "api/notes/{noteId}",
-    "HttpMethod": "DELETE",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "noteId",
-        "Type": "System.Int32",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": [],
-    "EndpointName": "DeleteNote"
   },
   {
     "ContainingType": "backend.Controllers.AuthController",

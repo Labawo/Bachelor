@@ -4,6 +4,7 @@ using backend.Data.Entities;
 using backend.Helpers;
 using System.Linq;
 using System;
+using Microsoft.EntityFrameworkCore.Internal;
 
 namespace backend.Data.Repositories;
 
@@ -13,6 +14,8 @@ public interface ILevelsRepository
     Task<Level?> GetRandomAsync();
     Task<IReadOnlyList<Level>> GetManyAsync();
     Task<PagedList<Level>> GetManyAsync(LevelSearchParameters levelSearchParameters);
+    Task<PagedList<Level>> GetManyForWordsAsync(LevelSearchParameters levelSearchParameters);
+    Task<PagedList<Level>> GetManyNotForWordsAsync(LevelSearchParameters levelSearchParameters);
     Task<PagedList<Level>> GetManyQuizAsync(LevelSearchParameters levelSearchParameters, int score);
     Task<PagedList<Level>> GetManyQuoteAsync(LevelSearchParameters levelSearchParameters, int score);
     Task CreateAsync(Level level);
@@ -50,6 +53,20 @@ public class LevelsRepository : ILevelsRepository
     public async Task<PagedList <Level>> GetManyAsync(LevelSearchParameters levelSearchParameters)
     {
         var queryable = _lsDbContext.Levels.AsQueryable().OrderBy(o => o.Name);
+
+        return await PagedList<Level>.CreateAsync(queryable, levelSearchParameters.PageNumber, levelSearchParameters.PageSize);
+    }
+    
+    public async Task<PagedList <Level>> GetManyForWordsAsync(LevelSearchParameters levelSearchParameters)
+    {
+        var queryable = _lsDbContext.Levels.Where(o => o.IsForWords == true).AsQueryable().OrderBy(o => o.Name);
+
+        return await PagedList<Level>.CreateAsync(queryable, levelSearchParameters.PageNumber, levelSearchParameters.PageSize);
+    }
+    
+    public async Task<PagedList <Level>> GetManyNotForWordsAsync(LevelSearchParameters levelSearchParameters)
+    {
+        var queryable = _lsDbContext.Levels.Where(o => o.IsForWords == false).AsQueryable().OrderBy(o => o.Name);
 
         return await PagedList<Level>.CreateAsync(queryable, levelSearchParameters.PageNumber, levelSearchParameters.PageSize);
     }
