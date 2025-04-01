@@ -76,7 +76,7 @@ public class WordsController : ControllerBase
     public async Task<ActionResult<WordDto>> Get(int levelId, int wordId)
     {
         var level = await _levelsRepository.GetAsync(levelId);
-        if (level == null) return NotFound($"Couldn't find a level with id of {levelId}");
+        if (level == null) return NotFound($"Nerastas lygis kurio Id {levelId}");
 
         var word = await _wordsRepository.GetAsync(level.Id, wordId);
         if (word == null) return NotFound();
@@ -93,7 +93,27 @@ public class WordsController : ControllerBase
     public async Task<ActionResult<WordDto>> Create(int levelId, CreateWordDto wordDto)
     {
         var level = await _levelsRepository.GetAsync(levelId);
-        if (level == null) return NotFound($"Couldn't find a level with id of {levelId}");
+        if (level == null) return NotFound($"Nerastas lygis kurio Id {levelId}");
+        
+        if (wordDto.Question.Length == 0)
+        {
+            return BadRequest("Klausimas negalimi būti tuščias.");
+        }
+        
+        if (wordDto.CorrectAnswer.Length == 0)
+        {
+            return BadRequest("Atsakymas negalimi būti tuščias.");
+        }
+        
+        if (wordDto.Question.IndexOfAny("*&#<>/".ToCharArray()) != -1)
+        {
+            return BadRequest("Įvesti negalimi simboliai.");
+        }
+        
+        if (wordDto.CorrectAnswer.IndexOfAny("*&#<>/".ToCharArray()) != -1)
+        {
+            return BadRequest("Įvesti negalimi simboliai.");
+        }
         
         var word = new Word { Question = wordDto.Question, IsOpen = wordDto.IsOpen, CorrectAnswer = wordDto.CorrectAnswer };
 
@@ -126,8 +146,9 @@ public class WordsController : ControllerBase
     public async Task<ActionResult> CreateArray(int levelId, JsonArray array)
     {
         var level = await _levelsRepository.GetAsync(levelId);
-        if (level == null) return NotFound($"Couldn't find a level with id of {levelId}");
+        if (level == null) return NotFound($"Nerastas lygis kurio Id {levelId}");
         List<Word> words = new List<Word>();
+        List<Word> notInRepoWords = new List<Word>();
 
         foreach (var node in array)
         {
@@ -136,9 +157,33 @@ public class WordsController : ControllerBase
             if (obj != null && obj.ContainsKey("question") && obj.ContainsKey("correctAnswer"))
             {
                 Word word = new Word { Question = (string)obj["question"], CorrectAnswer = (string)obj["correctAnswer"], LevelId = levelId, IsOpen = true };
-                words.Add(word);
+                
+                if (word.Question is not null && word.CorrectAnswer is not null)
+                {
+                    if (word.Question.Length > 0 && word.CorrectAnswer.Length > 0)
+                    {
+                        words.Add(word);
+                    }
+                }
             }
         }
+
+        var wordsRepo = await _wordsRepository.GetManyAsync(level.Id);
+
+        foreach (var word in words)
+        {
+            if (!wordsRepo.Contains(word))
+            {
+                notInRepoWords.Add(word);
+            }
+        }
+
+        if (notInRepoWords.Count == 0)
+        {
+            return BadRequest("Nerasta klausimų kuriuos galima pridėti.");
+        }
+        
+        await _wordsRepository.CreateManyAsync(notInRepoWords);
 
         return Ok(words.Count);
     }
@@ -149,12 +194,32 @@ public class WordsController : ControllerBase
         UpdateWordDto updateWordDto)
     {
         var level = await _levelsRepository.GetAsync(levelId);
-        if (level == null) return NotFound($"Couldn't find a level with id of {levelId}");
+        if (level == null) return NotFound($"Nerastas lygis kurio Id {levelId}");
 
         var oldWord = await _wordsRepository.GetAsync(levelId, wordId);
         
         if (oldWord == null)
             return NotFound();
+        
+        if (updateWordDto.Question.Length == 0)
+        {
+            return BadRequest("Klausimas negalimi būti tuščias.");
+        }
+        
+        if (updateWordDto.CorrectAnswer.Length == 0)
+        {
+            return BadRequest("Atsakymas negalimi būti tuščias.");
+        }
+        
+        if (updateWordDto.Question.IndexOfAny("*&#<>/".ToCharArray()) != -1)
+        {
+            return BadRequest("Įvesti negalimi simboliai.");
+        }
+        
+        if (updateWordDto.CorrectAnswer.IndexOfAny("*&#<>/".ToCharArray()) != -1)
+        {
+            return BadRequest("Įvesti negalimi simboliai.");
+        }
         
         oldWord.Question = updateWordDto.Question;
         oldWord.CorrectAnswer = updateWordDto.CorrectAnswer;
@@ -179,7 +244,7 @@ public class WordsController : ControllerBase
     public async Task<ActionResult> Remove(int levelId, int wordId)
     {
         var level = await _levelsRepository.GetAsync(levelId);
-        if (level == null) return NotFound($"Couldn't find a level with id of {levelId}");
+        if (level == null) return NotFound($"Nerastas lygis kurio Id {levelId}");
 
         var word = await _wordsRepository.GetAsync(levelId, wordId);
         

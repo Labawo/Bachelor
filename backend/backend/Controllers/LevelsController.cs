@@ -121,7 +121,17 @@ public class LevelsController : ControllerBase
     [HttpGet("quotes")]
     public async Task<IEnumerable<LevelDto>> GetManyUserQuotesPaging([FromQuery] LevelSearchParameters searchParameters)
     {
-        var levels = await _levelsRepository.GetManyAsync(searchParameters);
+        var userId = User.FindFirstValue(JwtRegisteredClaimNames.Sub);
+        var user = await _userManager.FindByIdAsync(userId);
+
+        if (user == null)
+        {
+            return new List<LevelDto>();
+        }
+
+        int userScore = user.XP == null ? 0 : (int)user.XP;
+        
+        var levels = await _levelsRepository.GetManyQuoteAsync(searchParameters, userScore);
 
         var previousPageLink = levels.HasPrevious
             ? CreateLevelsResourceUri(searchParameters,
@@ -211,6 +221,21 @@ public class LevelsController : ControllerBase
     [Authorize(Roles = SiteRoles.Admin)]
     public async Task<ActionResult<LevelDto>> Create(CreateLevelDto createLevelDto)
     {
+        if (createLevelDto.Name.Length == 0)
+        {
+            return BadRequest("Lygio pavadinimas negali būti tuščias.");
+        }
+        
+        if (createLevelDto.Name.IndexOfAny("*&#<>/".ToCharArray()) != -1)
+        {
+            return BadRequest("Įvesti negalimi simboliai.");
+        }
+
+        if (createLevelDto.MinExperience < 0)
+        {
+            return BadRequest("Negalima patirtis mažiau nulio.");
+        }
+        
         var level = new Level
         {
             Name = createLevelDto.Name,
@@ -238,7 +263,22 @@ public class LevelsController : ControllerBase
         {
             return NotFound();
         }
+        
+        if (updateLevelDto.Name.Length == 0)
+        {
+            return BadRequest("Lygio pavadinimas negali būti tuščias.");
+        }
+        
+        if (updateLevelDto.Name.IndexOfAny("*&#<>/".ToCharArray()) != -1)
+        {
+            return BadRequest("Įvesti negalimi simboliai.");
+        }
 
+        if (updateLevelDto.MinExperience < 0)
+        {
+            return BadRequest("Negalima patirtis mažiau nulio.");
+        }
+        
         level.Name = updateLevelDto.Name;
         level.MinExperience = updateLevelDto.MinExperience; 
 

@@ -42,7 +42,7 @@ public class AuthController : ControllerBase
         var user = await _userManager.FindByNameAsync(registerUserDto.UserName);
 
         if (user != null)
-            return BadRequest("This user already exists.");
+            return BadRequest("Šis naudotojas jau egzistuoja.");
 
         var newUser = new SiteUser
         {
@@ -59,7 +59,7 @@ public class AuthController : ControllerBase
         var createUserResult = await _userManager.CreateAsync(newUser, registerUserDto.Password);
 
         if (!createUserResult.Succeeded)
-            return BadRequest("Could not create a user.");
+            return BadRequest("Negalima sukurti naudotojo.");
 
         await _userManager.AddToRoleAsync(newUser, SiteRoles.Student);
         
@@ -97,7 +97,7 @@ public class AuthController : ControllerBase
         var user = await _userManager.FindByIdAsync(userId);
 
         if (user == null)
-            return BadRequest("User does not exist.");
+            return BadRequest("Naudotojas neegzistuoja.");
 
         var result = await _userManager.ConfirmEmailAsync(user, token);
 
@@ -116,17 +116,17 @@ public class AuthController : ControllerBase
         var user = await _userManager.FindByNameAsync(loginDto.UserName);
 
         if (user == null)
-            return BadRequest("User with name or password does not exist.");
+            return BadRequest("Naudotojas su vardu ar slaptažodžiu neegzistuoja.");
 
         if (!user.EmailConfirmed)
         {
-            return BadRequest("User needs to confirm email.");
+            return BadRequest("Naudotojui reikia patvirtinti slaptažodį.");
         }
 
         var isPasswordValid = await _userManager.CheckPasswordAsync(user, loginDto.Password);
         
         if (!isPasswordValid)
-            return BadRequest("User with name or password does not exist.");
+            return BadRequest("Naudotojas su vardu ar slaptažodžiu neegzistuoja.");
 
         user.ForceRelogin = false;
         await _userManager.UpdateAsync(user);
@@ -153,7 +153,7 @@ public class AuthController : ControllerBase
         var user = await _userManager.FindByIdAsync(userId);
         if (user == null)
         {
-            return BadRequest("Invalid token");
+            return BadRequest("Netinkamas žetonas");
         }
 
         if (user.ForceRelogin)

@@ -53,6 +53,46 @@ public class BadgesController : ControllerBase
     [Authorize(Roles = SiteRoles.Admin)]
     public async Task<ActionResult<Badge>> Create(CreateBadgeDto createBadgeDto)
     {
+        if(createBadgeDto.Name.Length == 0 || createBadgeDto.Description.Length == 0 || createBadgeDto.Type.Length == 0)
+        {
+            return BadRequest();
+        }
+        
+        if (createBadgeDto.Name.IndexOfAny("*&#<>/".ToCharArray()) != -1)
+        {
+            return BadRequest("Įvesti negalimi simboliai.");
+        }
+        
+        if (createBadgeDto.Description.IndexOfAny("*&#<>/".ToCharArray()) != -1)
+        {
+            return BadRequest("Įvesti negalimi simboliai.");
+        }
+        
+        if (createBadgeDto.Type.IndexOfAny("*&#<>/".ToCharArray()) != -1)
+        {
+            return BadRequest("Įvesti negalimi simboliai.");
+        }
+        
+        if (createBadgeDto.TrainingType != null && createBadgeDto.TrainingType.IndexOfAny("*&#<>/".ToCharArray()) != -1)
+        {
+            return BadRequest("Įvesti negalimi simboliai.");
+        }
+
+        if (createBadgeDto.TrainingXp != null && createBadgeDto.TrainingXp < 0)
+        {
+            return BadRequest("Įvesti neigiamas skaičius treniruotės rezultatui.");
+        }
+        
+        if (createBadgeDto.QuizXp != null && createBadgeDto.TrainingXp < 0)
+        {
+            return BadRequest("Įvesti neigiamas skaičius klausimų rezultatui.");
+        }
+        
+        if (createBadgeDto.WPM != null && createBadgeDto.TrainingXp < 0)
+        {
+            return BadRequest("Įvesti neigiamas skaičius žodžiams per minutę.");
+        }
+        
         var badge = new Badge
         {
             Name = createBadgeDto.Name,
@@ -108,13 +148,22 @@ public class BadgesController : ControllerBase
             return NotFound();
         }
 
-        badge.Name = updateBadgeDto.Name;
-
-        if(badge.Name.Length == 0)
+        if(updateBadgeDto.Name.Length == 0 || updateBadgeDto.Description.Length == 0)
         {
             return BadRequest();
         }
+        
+        if (updateBadgeDto.Name.IndexOfAny("*&#<>/".ToCharArray()) != -1)
+        {
+            return BadRequest("Įvesti negalimi simboliai.");
+        }
+        
+        if (updateBadgeDto.Description.IndexOfAny("*&#<>/".ToCharArray()) != -1)
+        {
+            return BadRequest("Įvesti negalimi simboliai.");
+        }
 
+        badge.Name = updateBadgeDto.Name;
         badge.Descripotion = updateBadgeDto.Description;
         badge.BadgeImage = updateBadgeDto.BadgeImage; 
 

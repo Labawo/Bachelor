@@ -49,7 +49,7 @@ public class UsersController : ControllerBase
 
         if (user == null)
         {
-            return NotFound("User not found.");
+            return NotFound("Naudotojas nerastas.");
         }
 
         var result = await _userManager.DeleteAsync(user);
@@ -73,7 +73,7 @@ public class UsersController : ControllerBase
 
         if (user == null)
         {
-            return NotFound("User not found.");
+            return NotFound("Naudotojas nerastas.");
         }
 
         if (user.PasswordReset > DateTime.UtcNow)
@@ -107,7 +107,7 @@ public class UsersController : ControllerBase
             smtp.Send(email);
             smtp.Disconnect(true);
             
-            return Ok("Password changed successfully.");
+            return Ok("Slaptažodis atnaujintas sėkmingai.");
         }
         return BadRequest(result.Errors);
     }
@@ -121,14 +121,14 @@ public class UsersController : ControllerBase
 
         if (user == null)
         {
-            return NotFound("User not found.");
+            return NotFound("Naudotojas nerastas.");
         }
 
         var result = await _userManager.ChangePasswordAsync(user, resetPasswordDto.CurrentPassword, resetPasswordDto.NewPassword);
 
         if (result.Succeeded)
         {
-            return Ok("Password changed successfully.");
+            return Ok("Slaptažodis atnaujintas sėkmingai.");
         }
         return BadRequest(result.Errors);
     }
@@ -142,7 +142,7 @@ public class UsersController : ControllerBase
 
         if (user == null)
         {
-            return NotFound("User not found.");
+            return NotFound("Naudotojas nerastas.");
         }
 
         user.Name = updateProfileDto.Name;
@@ -152,7 +152,7 @@ public class UsersController : ControllerBase
 
         if (result.Succeeded)
         {
-            return Ok("Profile changed successfully.");
+            return Ok("Profilis atnaujintas sėkmingai.");
         }
         return BadRequest(result.Errors);
     }
@@ -166,7 +166,7 @@ public class UsersController : ControllerBase
 
         if (user == null)
         {
-            return NotFound("User not found.");
+            return NotFound("Naudotojas nerastas.");
         }
 
         user.Name = updateProfileDto.Name;
@@ -176,7 +176,7 @@ public class UsersController : ControllerBase
 
         if (result.Succeeded)
         {
-            return Ok("Profile changed successfully.");
+            return Ok("Profilis atnaujintas sėkmingai.");
         }
         return BadRequest(result.Errors);
     }

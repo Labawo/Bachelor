@@ -72,7 +72,7 @@ public class QuotesController : ControllerBase
     public async Task<ActionResult<QuoteDto>> Get(int levelId, int quoteId)
     {
         var level = await _levelsRepository.GetAsync(levelId);
-        if (level == null) return NotFound($"Couldn't find a level with id of {levelId}");
+        if (level == null) return NotFound($"Nerastas lygis kurio Id {levelId}");
 
         var quote = await _quotesRepository.GetAsync(level.Id, quoteId);
         if (quote == null) return NotFound();
@@ -89,7 +89,32 @@ public class QuotesController : ControllerBase
     public async Task<ActionResult<QuoteDto>> Create(int levelId, CreateQuoteDto quoteDto)
     {
         var level = await _levelsRepository.GetAsync(levelId);
-        if (level == null) return NotFound($"Couldn't find a level with id of {levelId}");
+        if (level == null) return NotFound($"Nerastas lygis kurio Id {levelId}");
+        
+        if (quoteDto.Content.IndexOfAny("*&#<>/".ToCharArray()) != -1)
+        {
+            return BadRequest("Įvesti negalimi simboliai.");
+        }
+        
+        if (quoteDto.Source.IndexOfAny("*&#<>/".ToCharArray()) != -1)
+        {
+            return BadRequest("Įvesti negalimi simboliai.");
+        }
+        
+        if (quoteDto.Author.IndexOfAny("*&#<>/".ToCharArray()) != -1)
+        {
+            return BadRequest("Įvesti negalimi simboliai.");
+        }
+        
+        if (quoteDto.TimeToComplete < 30)
+        {
+            return BadRequest("Įvestas per mažas laikas");
+        }
+        
+        if (quoteDto.TimeToComplete > 900)
+        {
+            return BadRequest("Įvestas per didelis laikas");
+        }
 
         var quote = new Quote { Content = quoteDto.Content, Author = quoteDto.Author, Source = quoteDto.Source };
         quote.TimeToComplete = quoteDto.TimeToComplete;
@@ -109,12 +134,37 @@ public class QuotesController : ControllerBase
         UpdateQuoteDto updateQuoteDto)
     {
         var level = await _levelsRepository.GetAsync(levelId);
-        if (level == null) return NotFound($"Couldn't find a level with id of {levelId}");
+        if (level == null) return NotFound($"Nerastas lygis kurio Id {levelId}");
 
         var oldQuote = await _quotesRepository.GetAsync(levelId, quoteId);
         
         if (oldQuote == null)
             return NotFound();
+        
+        if (updateQuoteDto.Content.IndexOfAny("*&#<>/".ToCharArray()) != -1)
+        {
+            return BadRequest("Įvesti negalimi simboliai.");
+        }
+        
+        if (updateQuoteDto.Source.IndexOfAny("*&#<>/".ToCharArray()) != -1)
+        {
+            return BadRequest("Įvesti negalimi simboliai.");
+        }
+        
+        if (updateQuoteDto.Author.IndexOfAny("*&#<>/".ToCharArray()) != -1)
+        {
+            return BadRequest("Įvesti negalimi simboliai.");
+        }
+        
+        if (updateQuoteDto.TimeToComplete < 30)
+        {
+            return BadRequest("Įvestas per mažas laikas");
+        }
+        
+        if (updateQuoteDto.TimeToComplete > 900)
+        {
+            return BadRequest("Įvestas per didelis laikas");
+        }
         
         oldQuote.Content = updateQuoteDto.Content;
         oldQuote.Source = updateQuoteDto.Source;
@@ -131,7 +181,7 @@ public class QuotesController : ControllerBase
     public async Task<ActionResult> Remove(int levelId, int quoteId)
     {
         var level = await _levelsRepository.GetAsync(quoteId);
-        if (level == null) return NotFound($"Couldn't find a level with id of {quoteId}");
+        if (level == null) return NotFound($"Nerastas lygis kurio Id {quoteId}");
 
         var quote = await _quotesRepository.GetAsync(levelId, quoteId);
         

@@ -28,7 +28,7 @@ public class BadgeNumbersController : ControllerBase
 
     [HttpPost]
     [Route("training")]
-    public async Task<ActionResult<Badge>> CreateTraining(CreateTrainingDto requestDto)
+    public async Task<ActionResult<Badge>> CreateTraining(CreateTrainingResultDto requestDto)
     {
         var user = await _userManager.FindByIdAsync(requestDto.OwnerId);
 
@@ -38,12 +38,12 @@ public class BadgeNumbersController : ControllerBase
         }
 
         var badges = await _badgesRepository.GetManyTrainingAsync(requestDto.Points, requestDto.TrainingType);
-        var badgenumbers = await _badgeNumbersRepository.GetManyUserAsync(requestDto.OwnerId);
+        var badgeNumbers = await _badgeNumbersRepository.GetManyUserAsync(requestDto.OwnerId);
         var numbers = new List<BadgeNumber>();
 
         if(badges.Count() > 0)
         {
-            if(badgenumbers.Count() == 0)
+            if(badgeNumbers.Count() == 0)
             {
                 foreach(var badge in badges)
                 {
@@ -51,11 +51,12 @@ public class BadgeNumbersController : ControllerBase
 
                     numbers.Add(number);
                 }
-            } else
+            } 
+            else
             {
                 foreach (var badge in badges)
                 {
-                    if(badgenumbers.Where(o => o.BadgeId == badge.Id) == null)
+                    if(badgeNumbers.Where(o => o.BadgeId == badge.Id).Count() == 0)
                     {
                         BadgeNumber number = new BadgeNumber { OwnerId = requestDto.OwnerId, BadgeId = badge.Id, EarnedBadges = 0 };
 
@@ -76,7 +77,7 @@ public class BadgeNumbersController : ControllerBase
 
     [HttpPost]
     [Route("quiz")]
-    public async Task<ActionResult<Badge>> CreateQuiz(CreateQuizDto requestDto)
+    public async Task<ActionResult<Badge>> CreateQuiz(CreateQuizResultDto requestDto)
     {
         var user = await _userManager.FindByIdAsync(requestDto.OwnerId);
 
@@ -104,7 +105,7 @@ public class BadgeNumbersController : ControllerBase
             {
                 foreach (var badge in badges)
                 {
-                    if (badgenumbers.Where(o => o.BadgeId == badge.Id) == null)
+                    if (badgenumbers.Where(o => o.BadgeId == badge.Id).Count() == 0)
                     {
                         BadgeNumber number = new BadgeNumber { OwnerId = requestDto.OwnerId, BadgeId = badge.Id, EarnedBadges = 0 };
 
@@ -116,6 +117,8 @@ public class BadgeNumbersController : ControllerBase
 
         await _badgeNumbersRepository.CreateRangeAsync(numbers);
 
+        user.XP += 10;
+        user.QuizDone += 1;
         user.NewBadgeCnt = user.NewBadgeCnt + numbers.Count();
 
         await _userManager.UpdateAsync(user);
@@ -125,8 +128,13 @@ public class BadgeNumbersController : ControllerBase
 
     [HttpPost]
     [Route("quote")]
-    public async Task<ActionResult<Badge>> CreateQuote(CreateQuoteDto requestDto)
+    public async Task<ActionResult<Badge>> CreateQuote(CreateQuoteResultDto requestDto)
     {
+        if (requestDto.WPM > 200)
+        {
+            return BadRequest();
+        }
+        
         var user = await _userManager.FindByIdAsync(requestDto.OwnerId);
 
         if (user == null)
@@ -153,7 +161,7 @@ public class BadgeNumbersController : ControllerBase
             {
                 foreach (var badge in badges)
                 {
-                    if (badgenumbers.Where(o => o.BadgeId == badge.Id) == null)
+                    if (badgenumbers.Where(o => o.BadgeId == badge.Id).Count() == 0)
                     {
                         BadgeNumber number = new BadgeNumber { OwnerId = requestDto.OwnerId, BadgeId = badge.Id, EarnedBadges = 0 };
 
@@ -165,7 +173,18 @@ public class BadgeNumbersController : ControllerBase
 
         await _badgeNumbersRepository.CreateRangeAsync(numbers);
 
-        user.NewBadgeCnt = user.NewBadgeCnt + numbers.Count();
+        user.NewBadgeCnt += numbers.Count();
+
+        if (requestDto.Single)
+        {
+            user.XP += 1;
+        }
+        else
+        {
+            user.XP += 10;
+            user.WPM += requestDto.WPM;
+            user.WPM10 += 1;
+        }
 
         await _userManager.UpdateAsync(user);
 
@@ -234,6 +253,8 @@ public class BadgeNumbersController : ControllerBase
         {
             return BadRequest();
         }
+
+        badgenumber.EarnedBadges = 1;
 
         await _badgeNumbersRepository.UpdateAsync(badgenumber);
 

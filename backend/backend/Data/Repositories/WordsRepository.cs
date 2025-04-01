@@ -12,6 +12,7 @@ public interface IWordsRepository
     Task<IReadOnlyList<Word>> GetManyAsync(int levelId);
     Task<PagedList<Word>> GetManyAsync(int levelId, WordSearchParameters wordSearchParameters);
     Task CreateAsync(Word word);
+    Task CreateManyAsync(List<Word> words);
     Task UpdateAsync(Word word);
     Task RemoveAsync(Word word);
 }
@@ -45,6 +46,12 @@ public class WordsRepository : IWordsRepository
     public async Task CreateAsync(Word word)
     {
         _lsDbContext.Words.Add(word);
+        await _lsDbContext.SaveChangesAsync();
+    }
+    
+    public async Task CreateManyAsync(List<Word> words)
+    {
+        _lsDbContext.Words.AddRange(words);
         await _lsDbContext.SaveChangesAsync();
     }
 
