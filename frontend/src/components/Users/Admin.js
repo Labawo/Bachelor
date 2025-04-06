@@ -1,13 +1,11 @@
 import Users from './Users';
-import NavBar from "../Main/NavBar";
+import NavBarNew from "../Main/NavBarNew";
 import Footer from "../Main/Footer";
-import Title from "../Main/Title";
 
 const Admin = () => {
     return (
         <>
-            <Title />
-            <NavBar />
+            <NavBarNew />
             <section>  
                 <div className='content-holder-div' style={{marginTop: "10px"}}>
                     <Users />

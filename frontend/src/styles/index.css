@@ -39,7 +39,7 @@ h3 {
 section {
     padding-top: 35px;
     width: 100vw; 
-    min-height: 79vh; 
+    min-height: 85vh; 
     max-width: 100%; 
     display: flex;
     flex-direction: column;
@@ -50,7 +50,7 @@ section {
 .log-reg-sec {
     min-height: 100vh; 
     justify-content: center;
-    background-color: #3AAFA9;
+    background-color: #3E8DA8;
 }
 
 form {
@@ -154,7 +154,7 @@ li {
 }
 
 .title_div {
-    background-color: #3AAFA9;
+    background-color: #3E8DA8;
     border-bottom: 1px solid #297975;
     width: 100%;
     min-height: 8vh;
@@ -185,13 +185,14 @@ li {
 }
 
 .footer {
-    position: relative;
+    position: fixed;
+    bottom: 0;
     width: 100%; 
     min-height: 5vh;
-    background-color: #3AAFA9;
+    background-color: #3E8DA8;
     padding-top: 15px;
     padding-bottom: 0;
-    color:#043d3d;
+    color:#fff;
     font-size: 15px;
     font-weight: 250;
 }
@@ -204,7 +205,7 @@ li {
 }
 
 .navbar {
-    background-color: #44afab83;
+    background-color: #3E8DA8;
     width: 100%;
     min-height: 7vh;
 }

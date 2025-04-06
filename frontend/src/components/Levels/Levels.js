@@ -7,6 +7,7 @@ import { faTrash, faSearch, faEdit } from '@fortawesome/free-solid-svg-icons';
 import ConfirmationModal from "../Modals/ConfirmationModal";
 import ErrorModal from "../Modals/ErrorModal";
 import EditLevel from "./EditLevel";
+import CreateLevel from "./CreateLevel";
 
 const Levels = ({ urlApi, header }) => {
     const [levels, setLevels] = useState([]);
@@ -20,6 +21,8 @@ const Levels = ({ urlApi, header }) => {
     const { auth } = useAuth();
     const [deleteId, setDeleteId] = useState("");
     const [errorMessage, setErrorMessage] = useState("");
+    const [showCreate, setShowCreate] = useState(false);
+    
 
     const handleInspect = (levelId) => {
         navigate(`/levels/${levelId}`);
@@ -72,10 +75,17 @@ const Levels = ({ urlApi, header }) => {
         }
     };
 
+    const createLevel = () => {
+        setShowCreate(true);
+    };
+
     return (
         <article className="list-article">
             <div className="table-container">
                 <h2 className="list-headers">{header}</h2>
+                <div className="create-btn-div">
+                    <button onClick={createLevel} className="create-button"> Sukurti Lygį </button>
+                </div>
                 {levels.length ? (
                     <table className="my-table">
                         <thead>
@@ -146,6 +156,10 @@ const Levels = ({ urlApi, header }) => {
                 show={editLevelId !== 0}
                 onClose={() => setEditLevelId(0)}
                 levelId = {editLevelId} 
+            />
+            <CreateLevel 
+                show={showCreate === true}
+                onClose={() => setShowCreate(false)}
             />
         </article>
     );

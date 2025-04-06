@@ -2,8 +2,7 @@ import { useRef, useState, useEffect } from "react";
 import { faCheck, faTimes, faInfoCircle } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import useAxiosPrivate from "../../hooks/UseAxiosPrivate";
-import NavBar from "../Main/NavBar";
-import Title from "../Main/Title";
+import NavBarNew from "../Main/NavBarNew";
 import Footer from "../Main/Footer";
 import SuccessSelectModal from "../Modals/SuccessSelectModal";
 
@@ -87,8 +86,7 @@ const ResetPassword = () => {
 
     return (
         <>
-            <Title />
-            <NavBar />
+            <NavBarNew />
             <section>
                 <div className="login-full-div">
                     <p ref={errRef} className={errMsg ? "errmsg" : "offscreen"} aria-live="assertive">{errMsg}</p>

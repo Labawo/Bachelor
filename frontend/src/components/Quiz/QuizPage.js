@@ -1,6 +1,5 @@
-import NavBar from "../Main/NavBar";
+import NavBarNew from "../Main/NavBarNew";
 import Footer from "../Main/Footer";
-import Title from "../Main/Title";
 import Quizes from "./Quizes";
 import useAuth from "../../hooks/UseAuth";
 import React, { useState } from 'react';
@@ -10,8 +9,7 @@ const QuizPage = () => {
 
     return (
         <>
-            <Title />
-            <NavBar />
+            <NavBarNew />
             <section>
                 <div className='content-holder-div'>
                     <Quizes />

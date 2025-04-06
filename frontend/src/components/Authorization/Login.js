@@ -8,7 +8,7 @@ import { jwtDecode } from 'jwt-decode';
 const LOGIN_URL = '/login';
 
 const Login = () => {
-    const { setAuth } = useAuth();
+    const { setAuth, auth } = useAuth();
 
     const navigate = useNavigate();
     const location = useLocation();
@@ -23,6 +23,7 @@ const Login = () => {
 
     useEffect(() => {
         userRef.current.focus();
+        console.log(auth);
     }, [])
 
     useEffect(() => {

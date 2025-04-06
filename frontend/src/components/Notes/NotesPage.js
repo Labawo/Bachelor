@@ -1,8 +1,6 @@
-import Notes from './Notes';
 import React, { useState } from 'react';
 import Footer from "../Main/Footer";
-import NavBar from "../Main/NavBar";
-import Title from "../Main/Title";
+import NavBarNew from "../Main/NavBarNew";
 import { UseNote } from "./UseNote";
 import { observer } from "mobx-react-lite";
 import useAuth from "../../hooks/UseAuth";
@@ -110,8 +108,7 @@ const NotesPage = observer(() => {
 
     return (
         <>
-            <Title />
-            <NavBar />
+            <NavBarNew />
             <section>  
                 <div className='content-holder-div' style={{marginTop: "10px"}}>
                     {form()}

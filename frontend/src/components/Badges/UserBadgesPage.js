@@ -1,16 +1,13 @@
-import NavBar from "../Main/NavBar";
+import NavBarNew from "../Main/NavBarNew";
 import Footer from "../Main/Footer";
-import Title from "../Main/Title";
 import React, { useState } from 'react';
 import UserBadges from "./UserBadges";
-import NotesPage from "../Notes/NotesPage";
 
 const UserBadgesPage = () => {
 
     return (
         <>
-            <Title />
-            <NavBar />
+            <NavBarNew />
             <section>                
                 <div className='content-holder-div'>
                     <UserBadges />

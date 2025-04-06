@@ -1,6 +1,6 @@
 import { axiosPrivate, axiosPrivateMP } from "../api/axios";
 import { useEffect } from "react";
-import useRefreshToken from "./userRefreshToken";
+import useRefreshToken from "./useRefreshToken";
 import useAuth from "./UseAuth";
 
 const useAxiosPrivate = (flag = true) => {

@@ -3,14 +3,14 @@ import Footer from "./Footer";
 import Title from "./Title";
 import useAuth from "../../hooks/UseAuth";
 import React, { useState } from 'react';
+import NavBarNew from '../Main/NavBarNew';
 
 const Home = () => {
     const { auth } = useAuth();
 
     return (
         <>
-            <Title />
-            <NavBar />
+            <NavBarNew />
             <section>                
                 <div className='content-holder-div' style={{marginTop: "10px"}}>
                     <p className="greeting-note">Hello <i><b>{auth.user}</b></i>, we are glad you are here! {auth.roles}  100 - (mistakes/length * 100) </p>
