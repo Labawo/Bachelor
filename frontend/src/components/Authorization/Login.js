@@ -49,6 +49,7 @@ const Login = () => {
             setAuth({ user, roles, id, accessToken, refreshToken });
             setUser('');
             setPwd('');
+            localStorage.setItem("refreshToken", JSON.stringify(refreshToken));
             navigate(from, { replace: true });
         } catch (err) {
             if (!err?.response) {

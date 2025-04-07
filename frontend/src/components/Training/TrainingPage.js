@@ -2,7 +2,7 @@ import NavBarNew from "../Main/NavBarNew";
 import Footer from "../Main/Footer";
 import Keyboard from "./Keyboard";
 import useAuth from "../../hooks/UseAuth";
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from "react-router-dom";
 import logo from "./fingeries.png";
 
@@ -13,7 +13,8 @@ const TrainingPage = () => {
     const navigate = useNavigate();
 
     const createLevel = () => {
-        navigate('/gameModal');
+        window.open(window.location.origin + "/gameModal", '_blank', 'toolbar=0, location=0, menubar=0');
+        //navigate('/gameModal');
     };
 
     return (

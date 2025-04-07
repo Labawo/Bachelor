@@ -13,7 +13,7 @@ const RequireAuth = ({ allowedRoles, doNotPassAdmin = false }) => {
         userRoles && (userRoles.includes(allowedRoles) || userRoles.some(role => allowedRoles.includes(role))) &&
         allowAdminToPass
             ? <Outlet />
-            : auth?.user
+            : auth?.accessToken
                 ? <Navigate to="/unauthorized" state={{ from: location }} replace />
                 : <Navigate to="/login" state={{ from: location }} replace />
     );

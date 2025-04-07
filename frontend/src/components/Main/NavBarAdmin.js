@@ -26,6 +26,7 @@ const NavBarAdmin = () => {
 
     const logout = async () => {
         setAuth({});
+        localStorage.setItem('refreshToken', 'null');
         navigate('/login');
     }
 

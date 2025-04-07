@@ -10,14 +10,15 @@ const GameModal = () => {
   const navigate = useNavigate();
 
   const onClose = () => {
-    navigate(-1);
+    //navigate('/training');
+    console.log(window.location.origin);
   }
 
   return (
     <>
-      <div style={{color: 'black'}}>
-        <div className='close-button-div-form'>
-            <button className="primary-button-form" onClick={onClose}>X</button>
+      <div className="training-engine-holder-div" style={{color: 'black'}}>
+        <div className='close-training-button-div'>
+            <button className="" onClick={onClose}>Gryžti atgal</button>
         </div>
         <Game />
       </div>
