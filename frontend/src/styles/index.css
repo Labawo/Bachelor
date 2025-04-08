@@ -47,12 +47,6 @@ section {
     background-color: #e0e3e9;
 }
 
-.log-reg-sec {
-    min-height: 100vh; 
-    justify-content: center;
-    background-color: #3E8DA8;
-}
-
 form {
     display: flex;
     flex-direction: column;
@@ -73,11 +67,11 @@ button,
 select,
 textarea {
   font-family: 'Nunito', sans-serif;
-  font-size: 18px;
+  font-size: 12px;
   padding: 0.25rem;
   border-radius: 0.5rem;
   margin: 10px;
-  width: 50%;
+  width: 60%;
 }
 
 label,
@@ -100,8 +94,8 @@ li {
     width: 51%;
     color: #fff;
     padding: 0.25rem;
-    position: relative;
-    bottom: -10px;
+    position: absolute;
+    bottom: +100%;
 }
 
 .instructions > svg {
@@ -138,8 +132,9 @@ li {
     font-weight: bold;
     padding: 0.5rem;
     margin-bottom: 0.5rem;
-    width: 35%;
+    width: 30%;
     margin: auto;
+    position: absolute;
 }
 
 .line {
@@ -189,6 +184,7 @@ li {
     bottom: 0;
     width: 100%; 
     min-height: 5vh;
+    height: 5vh;
     background-color: #3E8DA8;
     padding-top: 15px;
     padding-bottom: 0;
@@ -551,21 +547,6 @@ tbody tr {
     }
 }
 
-
-.login_footer {
-    text-align: center;
-}
-
-.login-full-div {
-    background-color: white;
-    color: black;
-    padding-top: 20px;
-    padding-bottom: 20px;
-    width: 70%;
-    margin: auto;
-    border: 5px double #c6c6cb;
-}
-
 .auth_button, .load-button-v1, .play-button, .create-button {
   padding: 0.25rem 0.75rem;
   font-size: 1.3rem;
@@ -728,89 +709,4 @@ tbody tr {
 .badge-span{
     height: 150px;
     background: green;
-}
-
-@keyframes header-animation {
-    0% {
-      text-shadow: -1px 1px #ddd, -2px 2px #ddd, -3px 3px #ddd, -4px 4px #ddd,
-        -5px 5px #ddd, -6px 6px #fff, -7px 7px #fff, -8px 8px #fff,
-        -9px 9px #fff, -10px 10px #fff;
-    }
-    10% {
-      text-shadow: -1px 1px #fff, -2px 2px #ddd, -3px 3px #ddd, -4px 4px #ddd,
-        -5px 5px #ddd, -6px 6px #ddd, -7px 7px #fff, -8px 8px #fff,
-        -9px 9px #fff, -10px 10px #fff;
-    }
-    20% {
-      text-shadow: -1px 1px #fff, -2px 2px #fff, -3px 3px #ddd, -4px 4px #ddd,
-        -5px 5px #ddd, -6px 6px #ddd, -7px 7px #ddd, -8px 8px #fff,
-        -9px 9px #fff, -10px 10px #fff;
-    }
-    30% {
-      text-shadow: -1px 1px #fff, -2px 2px #fff, -3px 3px #fff, -4px 4px #ddd,
-        -5px 5px #ddd, -6px 6px #ddd, -7px 7px #ddd, -8px 8px #ddd,
-        -9px 9px #fff, -10px 10px #fff;
-    }
-    40% {
-      text-shadow: -1px 1px #fff, -2px 2px #fff, -3px 3px #fff, -4px 4px #fff,
-        -5px 5px #ddd, -6px 6px #ddd, -7px 7px #ddd, -8px 8px #ddd,
-        -9px 9px #ddd, -10px 10px #fff;
-    }
-    50% {
-      text-shadow: -1px 1px #fff, -2px 2px #fff, -3px 3px #fff, -4px 4px #fff,
-        -5px 5px #fff, -6px 6px #ddd, -7px 7px #ddd, -8px 8px #ddd,
-        -9px 9px #ddd, -10px 10px #ddd;
-    }
-    60% {
-      text-shadow: -1px 1px #ddd, -2px 2px #fff, -3px 3px #fff, -4px 4px #fff,
-        -5px 5px #fff, -6px 6px #fff, -7px 7px #ddd, -8px 8px #ddd,
-        -9px 9px #ddd, -10px 10px #ddd;
-    }
-    70% {
-      text-shadow: -1px 1px #ddd, -2px 2px #ddd, -3px 3px #fff, -4px 4px #fff,
-        -5px 5px #fff, -6px 6px #fff, -7px 7px #fff, -8px 8px #ddd,
-        -9px 9px #ddd, -10px 10px #ddd;
-    }
-    80% {
-      text-shadow: -1px 1px #ddd, -2px 2px #ddd, -3px 3px #ddd, -4px 4px #fff,
-        -5px 5px #fff, -6px 6px #fff, -7px 7px #fff, -8px 8px #fff,
-        -9px 9px #ddd, -10px 10px #ddd;
-    }
-    90% {
-      text-shadow: -1px 1px #ddd, -2px 2px #ddd, -3px 3px #ddd, -4px 4px #ddd,
-        -5px 5px #fff, -6px 6px #fff, -7px 7px #fff, -8px 8px #fff,
-        -9px 9px #fff, -10px 10px #ddd;
-    }
-    100% {
-      text-shadow: -1px 1px #ddd, -2px 2px #ddd, -3px 3px #ddd, -4px 4px #ddd,
-        -5px 5px #ddd, -6px 6px #fff, -7px 7px #fff, -8px 8px #fff,
-        -9px 9px #fff, -10px 10px #fff;
-    }
-}
-
-@keyframes header-animation-2 {
-    0% {
-        text-shadow: -1px 1px #fff, -2px 2px #fff, -3px 3px #fff, -4px 4px #fff,
-        -5px 5px #fff;
-    }
-    20% {
-        text-shadow: -1px 1px #ddd, -2px 2px #fff, -3px 3px #fff, -4px 4px #fff,
-        -5px 5px #fff;
-    }
-    40% {
-        text-shadow: -1px 1px #ddd, -2px 2px #ddd, -3px 3px #fff, -4px 4px #fff,
-        -5px 5px #fff;
-    }
-    60% {
-        text-shadow: -1px 1px #ddd, -2px 2px #ddd, -3px 3px #ddd, -4px 4px #fff,
-        -5px 5px #fff;
-    }
-    80% {
-        text-shadow: -1px 1px #ddd, -2px 2px #ddd, -3px 3px #ddd, -4px 4px #ddd,
-        -5px 5px #fff;
-    }
-    100% {
-        text-shadow: -1px 1px #ddd, -2px 2px #ddd, -3px 3px #ddd, -4px 4px #ddd,
-        -5px 5px #ddd, -6px 6px #fff;
-    }
 }

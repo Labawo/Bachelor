@@ -1,9 +1,13 @@
 import { useRef, useState, useEffect } from 'react';
 import useAuth from '../../hooks/UseAuth';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
-
+import LoginNavBar from '../Main/LoginNavBar';
+import Footer from '../Main/Footer';
+import '../../styles/login.css';
 import axios from '../../api/axios';
 import { jwtDecode } from 'jwt-decode';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faSignOutAlt, faArchive, faLock, faUser } from '@fortawesome/free-solid-svg-icons';
 
 const LOGIN_URL = '/login';
 
@@ -67,42 +71,52 @@ const Login = () => {
 
     return (
         <section className='log-reg-sec'>
-            <div className='login-full-div'>
-                <div className='login-div'>
+            <LoginNavBar />
+            <div className='login-div'>
+                <div className='wrapper'>
+                    <div className='title-login'><span className='title-span'>Prisijungimas</span></div>
                     <p ref={errRef} className={errMsg ? "errmsg" : "offscreen"} aria-live="assertive">{errMsg}</p>
-                    <h1 className='animated-header'>SRMS Prisijungimas</h1>
-                    <form onSubmit={handleSubmit} className = "input_form">
-                        <label htmlFor="username">Vartotojo vardas:</label>
-                        <input
-                            type="text"
-                            id="username"
-                            ref={userRef}
-                            autoComplete="off"
-                            onChange={(e) => setUser(e.target.value)}
-                            value={user}
-                            required
-                            className="input-field"
-                        />
+                    <form onSubmit={handleSubmit}>
+                        <div className="row">
+                            <i><FontAwesomeIcon icon={faUser} /></i>
+                            
+                            <input
+                                placeholder="Naudotojo vardas"
+                                type="text"
+                                id="username"
+                                ref={userRef}
+                                autoComplete="off"
+                                onChange={(e) => setUser(e.target.value)}
+                                value={user}
+                                required
+                                className="input-field"
+                            />
+                        </div>
 
-                        <label htmlFor="password">Slaptažodis:</label>
-                        <input
-                            type="password"
-                            id="password"
-                            onChange={(e) => setPwd(e.target.value)}
-                            value={pwd}
-                            required
-                        />
-                        <button className="auth_button">Prisijungti</button>
+                        <div className="row">
+                            <i><FontAwesomeIcon icon={faLock} /></i>
+                            <input
+                                placeholder="Slaptažodis"
+                                type="password"
+                                id="password"
+                                onChange={(e) => setPwd(e.target.value)}
+                                value={pwd}
+                                required
+                            />
+                        </div>
+
+                        <div className="row button">
+                            <button>Prisijungti</button>
+                        </div>
+
+                        <div className="signup-link">
+                            Nesate registruotas? <Link to="/register">Registruotis</Link>
+                        </div>
                     </form>
                 </div>
-                
-                <p className='login_footer'>
-                    Nesate registruotas?<br />
-                    <span className="line">
-                        <Link to="/register">Registruotis</Link>
-                    </span>
-                </p>
-            </div>            
+            </div>
+            
+            <Footer />            
         </section>
     )
 }

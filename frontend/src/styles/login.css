@@ -1,0 +1,291 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
+
+.log-reg-sec {
+    min-height: 90vh;
+    height: 90vh;
+    justify-content: center;
+    background-color: #fff;
+    color: black;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+.login-div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 15px;
+}
+
+input[type="text"],
+input[type="password"],
+input[type="email"] {
+    margin: 0;
+}
+
+.wrapper {
+    max-width: 600px;
+    width: 100%;
+    background: #fff;
+    border-radius: 5px;
+    box-shadow: 0px 4px 10px 1px rgba(0, 0, 0, 0.1);
+    max-height: 70vh;
+    overflow: auto;
+}
+
+.wrapper .title-login {
+    height: 120px;
+    background: #3E8DA8;
+    border-radius: 5px 5px 0 0;
+    color: #fff;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.wrapper .title-span {
+    font-size: 40px;
+    font-weight: 600;
+}
+
+.wrapper form {
+    padding: 25px 35px;
+}
+
+.wrapper form .row {
+    height: 60px;
+    margin-top: 15px;
+    position: relative;
+}
+.wrapper form .row input {
+    height: 100%;
+    width: 100%;
+    outline: none;
+    padding-left: 70px;
+    border-radius: 5px;
+    border: 1px solid lightgrey;
+    font-size: 18px;
+    transition: all 0.3s ease;
+}
+
+form .row input:focus {
+    border-color: #3E8DA8;
+}
+
+form .row input::placeholder {
+color: #999;
+}
+
+.wrapper form .row i {
+    position: absolute;
+    width: 55px;
+    height: 100%;
+    color: #fff;
+    font-size: 22px;
+    background: #3E8DA8;
+    border: 1px solid #3E8DA8;
+    border-radius: 5px 0 0 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.wrapper form .row .check-i {
+    position: absolute;
+    right:0;
+    top:0;
+    width: 50px;
+    margin-top: 5px;
+    margin-right: 5px;
+    height: 80%;
+    color: #fff;
+    font-size: 22px;
+    background-color: #fff;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.wrapper form .pass {
+    margin-top: 12px;
+}
+
+.wrapper form .pass a {
+    color: #3E8DA8;
+    font-size: 17px;
+    text-decoration: none;
+}
+
+.wrapper form .pass a:hover {
+    text-decoration: underline;
+}
+
+.wrapper form button {
+    width: 100%;
+    margin-left: 0;
+    height: 60px;
+    margin-top: 20px;
+    color: #fff;
+    font-size: 20px;
+    font-weight: 600;
+    padding-left: 0px;
+    background: #3E8DA8;
+    border: 1px solid #3E8DA8;
+    cursor: pointer;
+}
+
+form button:hover {
+    background: #387d94;
+}
+
+.wrapper form .signup-link {
+    text-align: center;
+    margin-top: 45px;
+    font-size: 17px;
+}
+
+.wrapper form .signup-link a {
+    color: #3E8DA8;
+    text-decoration: none;
+}
+
+form .signup-link a:hover {
+    text-decoration: underline;
+}
+
+
+.wrapper-reg {
+    max-width: 600px;
+    width: 100%;
+    background: #fff;
+    border-radius: 5px;
+    box-shadow: 0px 4px 10px 1px rgba(0, 0, 0, 0.1);
+    max-height: 70vh;
+    overflow: auto;
+}
+
+.wrapper-reg .title-login {
+    height: 100px;
+    background: #3E8DA8;
+    border-radius: 5px 5px 0 0;
+    color: #fff;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.wrapper-reg .title-span {
+    font-size: 35px;
+    font-weight: 600;
+}
+
+.wrapper-reg form {
+    padding: 25px 35px;
+}
+
+.wrapper-reg form .row {
+    height: 45px;
+    margin-top: 10px;
+    position: relative;
+}
+.wrapper-reg form .row input {
+    height: 100%;
+    width: 100%;
+    outline: none;
+    padding-left: 70px;
+    border-radius: 5px;
+    border: 1px solid lightgrey;
+    font-size: 15px;
+    transition: all 0.3s ease;
+}
+
+form .row input:focus {
+    border-color: #3E8DA8;
+}
+
+form .row input::placeholder {
+color: #999;
+}
+
+.wrapper-reg form .row i {
+    position: absolute;
+    width: 55px;
+    height: 100%;
+    color: #fff;
+    font-size: 22px;
+    background: #3E8DA8;
+    border: 1px solid #3E8DA8;
+    border-radius: 5px 0 0 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.wrapper-reg form .row .check-i {
+    position: absolute;
+    right:0;
+    top:0;
+    width: 50px;
+    margin-top: 5px;
+    margin-right: 5px;
+    height: 80%;
+    color: #fff;
+    font-size: 19px;
+    background-color: #fff;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.wrapper-reg form .pass {
+    margin-top: 12px;
+}
+
+.wrapper-reg form .pass a {
+    color: #3E8DA8;
+    font-size: 12px;
+    text-decoration: none;
+}
+
+.wrapper-reg form .pass a:hover {
+    text-decoration: underline;
+}
+
+.wrapper-reg form button {
+    width: 100%;
+    margin-left: 0;
+    height: 50px;
+    margin-top: 20px;
+    color: #fff;
+    font-size: 17px;
+    font-weight: 600;
+    padding-left: 0px;
+    background: #3E8DA8;
+    border: 1px solid #3E8DA8;
+    cursor: pointer;
+}
+
+form button:hover {
+    background: #387d94;
+}
+
+.wrapper-reg form .signup-link {
+    text-align: center;
+    margin-top: 45px;
+    font-size: 15px;
+}
+
+.wrapper-reg form .signup-link a {
+    color: #3E8DA8;
+    text-decoration: none;
+}
+
+form .signup-link a:hover {
+    text-decoration: underline;
+}

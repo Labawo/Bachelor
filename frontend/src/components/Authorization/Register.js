@@ -1,8 +1,11 @@
 import { useRef, useState, useEffect } from "react";
-import { faCheck, faTimes, faInfoCircle } from "@fortawesome/free-solid-svg-icons";
+import { faCheck, faTimes, faInfoCircle, faUser, faLock, faEnvelope } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import axios from '../../api/axios';
 import { Link } from "react-router-dom";
+import LoginNavBar from '../Main/LoginNavBar';
+import Footer from '../Main/Footer';
+import '../../styles/login.css';
 
 const USER_REGEX = /^[A-z][A-z0-9-_]{3,23}$/;
 const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/;
@@ -96,128 +99,162 @@ const Register = () => {
         <>
             {success ? (
                 <section className='log-reg-sec'>
+                    <LoginNavBar />
                     <div className='reg-succ-div'>
-                        <h1 className='animated-header'>Registracija sėkminga!</h1>
+                        <h1>Registracija sėkminga!</h1>
                         <p>
                             <Link to="/">Prisijungti</Link>
                         </p>
                     </div>
-                    
+                    <Footer />
                 </section>
             ) : (
                 <section className='log-reg-sec'>
-                    <div className='login-full-div'>
-                        <p ref={errRef} className={errMsg ? "errmsg" : "offscreen"} aria-live="assertive">{errMsg}</p>
-                        <h1 className='animated-header'>SRMS Registracija</h1>
-                        <form onSubmit={handleSubmit} className = "input_form">
-                            <label htmlFor="username">
-                                Naudotojo vardas:
-                                <FontAwesomeIcon icon={faCheck} className={validName ? "valid" : "hide"} />
-                                <FontAwesomeIcon icon={faTimes} className={validName || !user ? "hide" : "invalid"} />
-                            </label>
-                            <input
-                                type="text"
-                                id="username"
-                                ref={userRef}
-                                autoComplete="off"
-                                onChange={(e) => setUser(e.target.value)}
-                                value={user}
-                                required
-                                aria-invalid={validName ? "false" : "true"}
-                                aria-describedby="uidnote"
-                                onFocus={() => setUserFocus(true)}
-                                onBlur={() => setUserFocus(false)}
-                            />
-                            <p id="uidnote" className={userFocus && user && !validName ? "instructions" : "offscreen"}>
-                                <FontAwesomeIcon icon={faInfoCircle} />
-                                nuo 4 iki 24 simbolių.<br />
-                                Privalo prasidėti raide.<br />
-                                Raidės, skaičiai ir simboliai yra leistini.
-                            </p>
+                    <LoginNavBar />
+                    <div className='login-div'>
+                        <div className='wrapper-reg'>
+                            <div className='title-login'><span className='title-span'>Registracija</span></div>
+                            <p ref={errRef} className={errMsg ? "errmsg" : "offscreen"} aria-live="assertive">{errMsg}</p>
+                            <form onSubmit={handleSubmit}>
+                                <div className="row">
+                                    <i><FontAwesomeIcon icon={faUser} /></i>
+                                    <input
+                                        placeholder="Naudotojo vardas"
+                                        type="text"
+                                        id="username"
+                                        ref={userRef}
+                                        autoComplete="off"
+                                        onChange={(e) => setUser(e.target.value)}
+                                        value={user}
+                                        required
+                                        aria-invalid={validName ? "false" : "true"}
+                                        aria-describedby="uidnote"
+                                        onFocus={() => setUserFocus(true)}
+                                        onBlur={() => setUserFocus(false)}
+                                    />
 
-                            <label htmlFor="email">
-                                El. paštas:
-                                <span className={validEmail ? "valid" : "hide"}>
-                                    <FontAwesomeIcon icon={faCheck} />
-                                </span>
-                                <span className={validEmail || !email ? "hide" : "invalid"}>
-                                    <FontAwesomeIcon icon={faTimes} />
-                                </span>
-                            </label>
-                            <input 
-                                type="email"
-                                id="email"
-                                ref={emailRef}
-                                autoComplete="off"
-                                onChange={(e) => setEmail(e.target.value)}
-                                required
-                                aria-invalid={validEmail ? "false" : "true"}
-                                aria-describedby="eidnote"
-                                onFocus={() => setEmailFocus(true)}
-                                onBlur={() => setEmailFocus(false)}
-                            />
-                            <p id="eidnote" className={emailFocus && email && !validEmail ? "instructions" : "offscreen"}>
-                                <FontAwesomeIcon icon={faInfoCircle} />
-                                Privalo prasidėti raide. <br />
-                                privalo turėti @ simbolį.
-                            </p>
+                                    <i className='check-i'>
+                                        <span className={validName ? "valid" : "hide"}>
+                                            <FontAwesomeIcon icon={faCheck} />
+                                        </span>
+                                        <span className={validName || !user ? "hide" : "invalid"}>
+                                            <FontAwesomeIcon icon={faTimes} />
+                                        </span>
+                                    </i>
 
+                                    <p id="uidnote" className={userFocus && user && !validName ? "instructions" : "offscreen"}>
+                                        <FontAwesomeIcon icon={faInfoCircle} />
+                                        nuo 4 iki 24 simbolių.<br />
+                                        Privalo prasidėti raide.<br />
+                                        Raidės, skaičiai ir simboliai yra leistini.
+                                    </p>
+                                </div>
 
-                            <label htmlFor="password">
-                                Slaptažodis:
-                                <FontAwesomeIcon icon={faCheck} className={validPwd ? "valid" : "hide"} />
-                                <FontAwesomeIcon icon={faTimes} className={validPwd || !pwd ? "hide" : "invalid"} />
-                            </label>
-                            <input
-                                type="password"
-                                id="password"
-                                onChange={(e) => setPwd(e.target.value)}
-                                value={pwd}
-                                required
-                                aria-invalid={validPwd ? "false" : "true"}
-                                aria-describedby="pwdnote"
-                                onFocus={() => setPwdFocus(true)}
-                                onBlur={() => setPwdFocus(false)}
-                            />
-                            <p id="pwdnote" className={pwdFocus && !validPwd ? "instructions" : "offscreen"}>
-                                <FontAwesomeIcon icon={faInfoCircle} />
-                                nuo 8 iki 24 simbolių.<br />
-                                Privalo turėti didžiąsias, mažąsias raides, skaičius ir simbolius.<br />
-                                Galimi simboliai: <span aria-label="exclamation mark">!</span> <span aria-label="at symbol">@</span> <span aria-label="hashtag">#</span> <span aria-label="dollar sign">$</span> <span aria-label="percent">%</span>
-                            </p>
+                                <div className="row">
+                                    <i><FontAwesomeIcon icon={faEnvelope} /></i>
+                                    <input 
+                                        placeholder="El. paštas"
+                                        type="email"
+                                        id="email"
+                                        ref={emailRef}
+                                        autoComplete="off"
+                                        onChange={(e) => setEmail(e.target.value)}
+                                        required
+                                        aria-invalid={validEmail ? "false" : "true"}
+                                        aria-describedby="eidnote"
+                                        onFocus={() => setEmailFocus(true)}
+                                        onBlur={() => setEmailFocus(false)}
+                                    />
 
+                                    <i className='check-i'>
+                                        <span className={validEmail ? "valid" : "hide"}>
+                                            <FontAwesomeIcon icon={faCheck} />
+                                        </span>
+                                        <span className={validEmail || !email ? "hide" : "invalid"}>
+                                            <FontAwesomeIcon icon={faTimes} />
+                                        </span>
+                                    </i>
 
-                            <label htmlFor="confirm_pwd">
-                                Patvirtinti slaptažodi:
-                                <FontAwesomeIcon icon={faCheck} className={validMatch && matchPwd ? "valid" : "hide"} />
-                                <FontAwesomeIcon icon={faTimes} className={validMatch || !matchPwd ? "hide" : "invalid"} />
-                            </label>
-                            <input
-                                type="password"
-                                id="confirm_pwd"
-                                onChange={(e) => setMatchPwd(e.target.value)}
-                                value={matchPwd}
-                                required
-                                aria-invalid={validMatch ? "false" : "true"}
-                                aria-describedby="confirmnote"
-                                onFocus={() => setMatchFocus(true)}
-                                onBlur={() => setMatchFocus(false)}
-                            />
-                            <p id="confirmnote" className={matchFocus && !validMatch ? "instructions" : "offscreen"}>
-                                <FontAwesomeIcon icon={faInfoCircle} />
-                                Privalo sutapti su įvestu slaptažodžiu.
-                            </p>
+                                    <p id="eidnote" className={emailFocus && email && !validEmail ? "instructions" : "offscreen"}>
+                                        <FontAwesomeIcon icon={faInfoCircle} />
+                                        Privalo prasidėti raide. <br />
+                                        privalo turėti @ simbolį.
+                                    </p>
+                                </div>
 
-                            <button disabled={!validName || !validPwd ||!validEmail || !validMatch ? true : false} className="auth_button">Registruotis</button>
-                        </form>
-                        <p className='login_footer'>
-                            Jau registravotės?<br />
-                            <span className="line">
-                                <Link to="/">Prisijungti</Link>
-                            </span>
-                        </p>
+                                <div className="row">
+                                    <i><FontAwesomeIcon icon={faLock} /></i>
+                                    <input
+                                        placeholder="Slaptažodis"
+                                        type="password"
+                                        id="password"
+                                        onChange={(e) => setPwd(e.target.value)}
+                                        value={pwd}
+                                        required
+                                        aria-invalid={validPwd ? "false" : "true"}
+                                        aria-describedby="pwdnote"
+                                        onFocus={() => setPwdFocus(true)}
+                                        onBlur={() => setPwdFocus(false)}
+                                    />
+
+                                    <i className='check-i'>
+                                        <span className={validPwd ? "valid" : "hide"}>
+                                            <FontAwesomeIcon icon={faCheck} />
+                                        </span>
+                                        <span className={validPwd || !pwd ? "hide" : "invalid"}>
+                                            <FontAwesomeIcon icon={faTimes} />
+                                        </span>
+                                    </i>
+
+                                    <p id="pwdnote" className={pwdFocus && !validPwd ? "instructions" : "offscreen"}>
+                                        <FontAwesomeIcon icon={faInfoCircle} />
+                                        nuo 8 iki 24 simbolių.<br />
+                                        Privalo turėti didžiąsias, mažąsias raides, skaičius ir simbolius.<br />
+                                        Galimi simboliai: <span aria-label="exclamation mark">!</span> <span aria-label="at symbol">@</span> <span aria-label="hashtag">#</span> <span aria-label="dollar sign">$</span> <span aria-label="percent">%</span>
+                                    </p>
+                                </div>
+
+                                <div className="row">
+                                    <i><FontAwesomeIcon icon={faLock} /></i>
+                                    <input
+                                        placeholder="Pakartoti slaptažodį"
+                                        type="password"
+                                        id="confirm_pwd"
+                                        onChange={(e) => setMatchPwd(e.target.value)}
+                                        value={matchPwd}
+                                        required
+                                        aria-invalid={validMatch ? "false" : "true"}
+                                        aria-describedby="confirmnote"
+                                        onFocus={() => setMatchFocus(true)}
+                                        onBlur={() => setMatchFocus(false)}
+                                    />
+
+                                    <i className='check-i'>
+                                        <span className={validMatch && matchPwd ? "valid" : "hide"}>
+                                            <FontAwesomeIcon icon={faCheck} />
+                                        </span>
+                                        <span className={validMatch || !matchPwd ? "hide" : "invalid"}>
+                                            <FontAwesomeIcon icon={faTimes} />
+                                        </span>
+                                    </i>
+
+                                    <p id="confirmnote" className={matchFocus && !validMatch ? "instructions" : "offscreen"}>
+                                        <FontAwesomeIcon icon={faInfoCircle} />
+                                        Privalo sutapti su įvestu slaptažodžiu.
+                                    </p>
+                                </div>
+
+                                <div className="row button">
+                                    <button disabled={!validName || !validPwd ||!validEmail || !validMatch ? true : false}>Registruotis</button>
+                                </div>
+
+                                <div className="signup-link">
+                                    Jau registravotės? <Link to="/">Prisijungti</Link>
+                                </div>
+                            </form>
+                        </div>
                     </div>
-                    
+                    <Footer />
                 </section>
             )}
         </>

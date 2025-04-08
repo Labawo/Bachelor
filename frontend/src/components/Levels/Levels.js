@@ -53,7 +53,7 @@ const Levels = ({ urlApi, header }) => {
 
     useEffect(() => {
         loadLevels(page);
-    }, [page]); 
+    }, [page, urlApi]); 
 
     
 
