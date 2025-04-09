@@ -1,10 +1,11 @@
 import { useRef, useState, useEffect } from "react";
-import { faCheck, faTimes, faInfoCircle } from "@fortawesome/free-solid-svg-icons";
+import { faCheck, faTimes, faInfoCircle, faLock } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import useAxiosPrivate from "../../hooks/UseAxiosPrivate";
 import NavBarNew from "../Main/NavBarNew";
 import Footer from "../Main/Footer";
 import SuccessSelectModal from "../Modals/SuccessSelectModal";
+import '../../styles/login.css';
 
 const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/;
 const REGISTER_URL = '/resetPassword';
@@ -87,79 +88,111 @@ const ResetPassword = () => {
     return (
         <>
             <NavBarNew />
-            <section>
-                <div className="login-full-div">
-                    <p ref={errRef} className={errMsg ? "errmsg" : "offscreen"} aria-live="assertive">{errMsg}</p>
-                    <h1>Slaptažodžio keitimas</h1>
-                    <form onSubmit={handleSubmit} className = "input_form">
-                        <label htmlFor="currentpassword">
-                            Dabartinis slaptažodis:
-                            <FontAwesomeIcon icon={faCheck} className={validcPwd ? "valid" : "hide"} />
-                            <FontAwesomeIcon icon={faTimes} className={validcPwd || !cpwd ? "hide" : "invalid"} />
-                        </label>
-                        <input
-                            type="password"
-                            id="currentpassword"
-                            onChange={(e) => setcPwd(e.target.value)}
-                            value={cpwd}
-                            required
-                            aria-invalid={validcPwd ? "false" : "true"}
-                            aria-describedby="cpwdnote"
-                            onFocus={() => setcPwdFocus(true)}
-                            onBlur={() => setcPwdFocus(false)}
-                        />
-                        <p id="cpwdnote" className={cpwdFocus && !validcPwd ? "instructions" : "offscreen"}>
-                            <FontAwesomeIcon icon={faInfoCircle} />
-                            nuo 8 iki 24 simbolių.<br />
-                            Didžiosios, mažosios raidės skaičiai ir simboliai.<br />
-                            Leistini simboliai: <span aria-label="exclamation mark">!</span> <span aria-label="at symbol">@</span> <span aria-label="hashtag">#</span> <span aria-label="dollar sign">$</span> <span aria-label="percent">%</span>
-                        </p>
+            <section className='log-reg-sec'>
+                <div className="login-div">
+                    <div className="wrapper-reg" style={{ height: '400px'}}>
+                        <div className='title-login'><span className='title-span'>Slaptažodžio keitimas</span></div>
+                        <p ref={errRef} className={errMsg ? "errmsg" : "offscreen"} aria-live="assertive">{errMsg}</p>
+                        <form onSubmit={handleSubmit}>
+                            <div className="row">
+                                <i><FontAwesomeIcon icon={faLock} /></i>
+                                <input
+                                    placeholder="Dabartinis slaptažodis"
+                                    type="password"
+                                    id="currentpassword"
+                                    onChange={(e) => setcPwd(e.target.value)}
+                                    value={cpwd}
+                                    required
+                                    aria-invalid={validcPwd ? "false" : "true"}
+                                    aria-describedby="cpwdnote"
+                                    onFocus={() => setcPwdFocus(true)}
+                                    onBlur={() => setcPwdFocus(false)}
+                                />
 
-                        <label htmlFor="password">
-                            Slaptažodis:
-                            <FontAwesomeIcon icon={faCheck} className={validPwd ? "valid" : "hide"} />
-                            <FontAwesomeIcon icon={faTimes} className={validPwd || !pwd ? "hide" : "invalid"} />
-                        </label>
-                        <input
-                            type="password"
-                            id="password"
-                            onChange={(e) => setPwd(e.target.value)}
-                            value={pwd}
-                            required
-                            aria-invalid={validPwd ? "false" : "true"}
-                            aria-describedby="pwdnote"
-                            onFocus={() => setPwdFocus(true)}
-                            onBlur={() => setPwdFocus(false)}
-                        />
-                        <p id="pwdnote" className={pwdFocus && !validPwd ? "instructions" : "offscreen"}>
-                            <FontAwesomeIcon icon={faInfoCircle} />
-                            nuo 8 iki 24 simbolių.<br />
-                            Didžiosios, mažosios raidės, simboliai ir skaičiai.<br />
-                            Leistini simboliai: <span aria-label="exclamation mark">!</span> <span aria-label="at symbol">@</span> <span aria-label="hashtag">#</span> <span aria-label="dollar sign">$</span> <span aria-label="percent">%</span>
-                        </p>
-                        <label htmlFor="confirm_pwd">
-                            Patvirtinti slaptažodį:
-                            <FontAwesomeIcon icon={faCheck} className={validMatch && matchPwd ? "valid" : "hide"} />
-                            <FontAwesomeIcon icon={faTimes} className={validMatch || !matchPwd ? "hide" : "invalid"} />
-                        </label>
-                        <input
-                            type="password"
-                            id="confirm_pwd"
-                            onChange={(e) => setMatchPwd(e.target.value)}
-                            value={matchPwd}
-                            required
-                            aria-invalid={validMatch ? "false" : "true"}
-                            aria-describedby="confirmnote"
-                            onFocus={() => setMatchFocus(true)}
-                            onBlur={() => setMatchFocus(false)}
-                        />
-                        <p id="confirmnote" className={matchFocus && !validMatch ? "instructions" : "offscreen"}>
-                            <FontAwesomeIcon icon={faInfoCircle} />
-                            Turi sutapti su slaptažodžiu.
-                        </p>
+                                <i className='check-i'>
+                                    <span className={validcPwd ? "valid" : "hide"}>
+                                        <FontAwesomeIcon icon={faCheck} />
+                                    </span>
+                                    <span className={validcPwd || !cpwd ? "hide" : "invalid"}>
+                                        <FontAwesomeIcon icon={faTimes} />
+                                    </span>
+                                </i>
 
-                        <button disabled={!validcPwd || !validPwd || !validMatch ? true : false} className="auth_button">Pakeisti slaptažodį</button>
-                    </form>
+                                <p id="cpwdnote" className={cpwdFocus && !validcPwd ? "instructions" : "offscreen"}>
+                                    <FontAwesomeIcon icon={faInfoCircle} />
+                                    nuo 8 iki 24 simbolių.<br />
+                                    Didžiosios, mažosios raidės skaičiai ir simboliai.<br />
+                                    Leistini simboliai: <span aria-label="exclamation mark">!</span> <span aria-label="at symbol">@</span> <span aria-label="hashtag">#</span> <span aria-label="dollar sign">$</span> <span aria-label="percent">%</span>
+                                </p>
+                            </div>
+
+                            <div className='row'>
+                                <i><FontAwesomeIcon icon={faLock} /></i>
+                                <input
+                                    placeholder="Naujas slaptažodis"
+                                    type="password"
+                                    id="password"
+                                    onChange={(e) => setPwd(e.target.value)}
+                                    value={pwd}
+                                    required
+                                    aria-invalid={validPwd ? "false" : "true"}
+                                    aria-describedby="pwdnote"
+                                    onFocus={() => setPwdFocus(true)}
+                                    onBlur={() => setPwdFocus(false)}
+                                />
+
+                                <i className='check-i'>
+                                    <span className={validPwd ? "valid" : "hide"}>
+                                        <FontAwesomeIcon icon={faCheck} />
+                                    </span>
+                                    <span className={validPwd || !pwd ? "hide" : "invalid"}>
+                                        <FontAwesomeIcon icon={faTimes} />
+                                    </span>
+                                </i>
+
+                                <p id="pwdnote" className={pwdFocus && !validPwd ? "instructions" : "offscreen"}>
+                                    <FontAwesomeIcon icon={faInfoCircle} />
+                                    nuo 8 iki 24 simbolių.<br />
+                                    Didžiosios, mažosios raidės, simboliai ir skaičiai.<br />
+                                    Leistini simboliai: <span aria-label="exclamation mark">!</span> <span aria-label="at symbol">@</span> <span aria-label="hashtag">#</span> <span aria-label="dollar sign">$</span> <span aria-label="percent">%</span>
+                                </p>
+                            </div>
+
+                            <div className='row'>
+                            <i><FontAwesomeIcon icon={faLock} /></i>
+                                <input
+                                    placeholder="Pakartoti slaptažodį"
+                                    type="password"
+                                    id="confirm_pwd"
+                                    onChange={(e) => setMatchPwd(e.target.value)}
+                                    value={matchPwd}
+                                    required
+                                    aria-invalid={validMatch ? "false" : "true"}
+                                    aria-describedby="confirmnote"
+                                    onFocus={() => setMatchFocus(true)}
+                                    onBlur={() => setMatchFocus(false)}
+                                />
+
+                                <i className='check-i'>
+                                    <span className={validMatch && matchPwd? "valid" : "hide"}>
+                                        <FontAwesomeIcon icon={faCheck} />
+                                    </span>
+                                    <span className={validMatch || !matchPwd ? "hide" : "invalid"}>
+                                        <FontAwesomeIcon icon={faTimes} />
+                                    </span>
+                                </i>
+
+                                <p id="confirmnote" className={matchFocus && !validMatch ? "instructions" : "offscreen"}>
+                                    <FontAwesomeIcon icon={faInfoCircle} />
+                                    Turi sutapti su slaptažodžiu.
+                                </p>
+                            </div>
+                            
+                            <div className="row button">
+                                <button disabled={!validcPwd || !validPwd || !validMatch ? true : false}>Pakeisti slaptažodį</button>
+                            </div>
+                        </form>
+                    </div>
                 </div>                  
                     
             </section>

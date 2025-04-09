@@ -18,7 +18,7 @@
     background-color: #fefefe;
     margin: 10% auto;
     padding: 0;
-    border: 5px double #c6c6cb;
+    border-radius: 10px;
     width: 80%;
     max-width: 800px;
 }
@@ -83,23 +83,59 @@
     transition: background-color 0.3s ease;
 }
 
+.form-header-div {
+    background-color: #3E8DA8;
+    border-radius: 10px 10px 0 0;
+    margin-bottom: 20px;
+}
+
+.form-header-text {
+    display: inline-block;
+    width: 70%;
+    text-align: start;
+    justify-content: center;
+    font-size: 30px;
+    font-weight: 600;
+    color: white;
+    padding-left: 10px;
+    margin-bottom: 0;
+}
+
+.form-header-text p {
+    padding-top: 10px;
+    position: relative;
+    height: 70px;
+}
+
 .close-button-div-form {
+    display: inline-block;
+    height: 50px;
     text-align: end;
+    width: 30%;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
 }
 
 .primary-button-form {
     border:none;
-    background-color: #fefefe;
-    width: 70px;
+    background-color: #3E8DA8;
     margin: 0;
     font-weight: bold;
-    border-radius: 0;
-    border-bottom: 5px double #c6c6cb;
-    border-left: 5px double #c6c6cb;
+    border-radius: 0 10px 0 0;
 }
 
 .primary-button-form:hover {
     background-color: red;
+}
+
+.form-container form{
+    width: 90%;
+    margin: auto;
+    background-color: red;
+}
+
+input {
+    width: 90%;
 }
 
 @media only screen and (max-width: 600px) {
@@ -108,3 +144,4 @@
         margin: 20% auto;
     }
 }
+

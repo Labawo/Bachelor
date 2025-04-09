@@ -5,7 +5,7 @@ import { UseNote } from "./UseNote";
 import { observer } from "mobx-react-lite";
 import useAuth from "../../hooks/UseAuth";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faTrash } from '@fortawesome/free-solid-svg-icons';
+import { faTrash, faPlus } from '@fortawesome/free-solid-svg-icons';
 
 const NotesPage = observer(() => {
 
@@ -25,9 +25,8 @@ const NotesPage = observer(() => {
         return (
         <div className="form-container-notes">
             <h2>Sukurti įrašą</h2>
-            <form onSubmit={handleSubmit} className = "input_form">
+            <form onSubmit={handleSubmit} className = "create-note">
               <div className="form-group">
-                <label htmlFor="name">Pavadinimas:</label><br />
                 <input
                   type="text"
                   id="name"
@@ -41,8 +40,8 @@ const NotesPage = observer(() => {
                 {errors.name && <span className="error-message">{errors.name}</span>}
               </div>
               <div className="form-group">
-                <label htmlFor="content">Aprašymas:</label><br />
                 <textarea
+                  style={{margin: '0'}}
                   id="content"
                   name="content"
                   value={formData.content}
@@ -55,8 +54,8 @@ const NotesPage = observer(() => {
                   <span className="error-message">{errors.content}</span>
                 )}
               </div>
-              <button type="submit" className="auth_button">
-                Sukurti
+              <button type="submit">
+                <FontAwesomeIcon icon={faPlus} />
               </button>
             </form>
           </div>);
@@ -112,16 +111,23 @@ const NotesPage = observer(() => {
             <section>  
                 <div className='content-holder-div' style={{marginTop: "10px"}}>
                     {form()}
-                    {noteStore.notes.map(note => (
-                        <div>
-                          {note.content}
-                          <button
-                              onClick={() => deleteNote(note.id)}
-                          >
-                              <FontAwesomeIcon icon={faTrash} />
-                          </button>
-                        </div>
+                    <div className='note-div'>
+                    {noteStore.notes.map((note, i) => (
+                        
+                          <span key={i} className='note-span'>
+                            <h2>{note.name}</h2>
+                            {note.content}
+                            <button
+                                onClick={() => deleteNote(note.id)}
+                                style={{width: '90%', background: 'red', cursor: 'pointer'}}
+                            >
+                                <FontAwesomeIcon icon={faTrash} />
+                            </button>
+                          </span>
+                          
+                        
                     ))}
+                    </div>
                 </div>
             </section>
             <Footer />

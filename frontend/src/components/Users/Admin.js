@@ -6,10 +6,8 @@ const Admin = () => {
     return (
         <>
             <NavBarNew />
-            <section>  
-                <div className='content-holder-div' style={{marginTop: "10px"}}>
-                    <Users />
-                </div>           
+            <section className='admin-section'>  
+                <Users />           
             </section>
             <Footer />
         </>

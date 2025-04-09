@@ -100,13 +100,19 @@ const CreateBadge = ({ show, onClose }) => {
     <>
       <div className={`modal-form ${show ? "show" : ""}`}>
       <div className="modal-content-form"> 
-      <div className='close-button-div-form'>
-          <button className="primary-button-form" onClick={onClose}>X</button>
+        <div className='form-header-div'>
+          <div className='form-header-text'>
+            <p>Sukurti naują ženkliuką</p>
+          </div>
+          <div className='close-button-div-form'>
+            <button className="primary-button-form" onClick={onClose}>X</button>
+          </div>
         </div>
+      
       <div className="outer-form-div">
       <div className="form-container">
-          <h2>Sukurti naują ženkliuką</h2>
-          <form onSubmit={handleSubmit} className = "input_form">
+          
+          <form onSubmit={handleSubmit}>
             <div className="form-group">
               <label htmlFor="name">Pavadinimas:</label><br/>
                 <input

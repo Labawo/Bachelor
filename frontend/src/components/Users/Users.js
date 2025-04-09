@@ -61,27 +61,37 @@ const Users = () => {
     return (
         <article>
             <div className="table-container">
-                <h2 className="list-headers">Naudotojų sąrašas</h2>
-                <div className="filter-container">
-                    <div className="filter-container-inside">
-                        <input
-                            type="text"
-                            value={filter}
-                            onClick={() => setSecondFilter(true)}
-                            onChange={(e) => setFilter(e.target.value)}
-                            placeholder="Filtruoti pagal vardą"
-                            className="filter-container-input"
-                        />
-                        <input
-                            type="text"
-                            value={emailFilter}
-                            onClick={() =>setSecondFilter(false)}
-                            onChange={(e) => setEmailFilter(e.target.value)}
-                            placeholder="Filtruoti pagal el paštą"
-                            className="filter-container-input"
-                        />
-                    </div>  
+                <div className='users-list-div'>
+                    <span className='users-list-span times-two'>
+                        <div className='users-list-header'>
+                            <p>Naudotojų sąrašas</p>
+                        </div>
+                    </span>
+                    <span className='users-list-span'>
+                        <div className="filter-container">
+                            <div className="filter-container-inside">
+                                <input
+                                    type="text"
+                                    value={filter}
+                                    onClick={() => setSecondFilter(true)}
+                                    onChange={(e) => setFilter(e.target.value)}
+                                    placeholder="Filtruoti pagal vardą"
+                                    className="filter-container-input"
+                                />
+                                <input
+                                    type="text"
+                                    value={emailFilter}
+                                    onClick={() =>setSecondFilter(false)}
+                                    onChange={(e) => setEmailFilter(e.target.value)}
+                                    placeholder="Filtruoti pagal el paštą"
+                                    className="filter-container-input"
+                                />
+                            </div>  
+                        </div>
+                    </span>
                 </div>
+                
+                
                 {filteredUsers.length ? (
                     <table className="my-table">
                         <thead>
