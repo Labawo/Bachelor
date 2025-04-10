@@ -127,11 +127,33 @@ form.create-note textarea {
   font-family: inherit;
   resize: none;
 }
+
+form.create-note input {
+    height: 50px;
+    margin-bottom: 0;
+}
+
 form.create-note textarea {
   margin-top: 5px;
   border-top: 1px solid rgb(196, 190, 190);
   border-radius: 0;
+  height: 130px;
 }
+
+.delete-note-button {
+    width: 90%;
+    background-color: rgb(206, 37, 60);
+    color: #fff;
+    cursor: pointer;
+    border: none;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+.delete-note-button:hover {
+    background-color: #d32f2f;
+    transition: color 0.3s;
+}
+
 form.create-note button {
   position: absolute;
   right: 18px;
@@ -394,13 +416,61 @@ form.create-note button {
 
 .table-container {
     overflow-x: auto; 
-  }
+}
   
 
 .my-table {
     width: 100%; 
     border-collapse: collapse;
     text-align: center;
+}
+
+.my-table button {
+    width: 20%;
+}
+
+.blue-button {
+    background: rgb(37, 167, 206);
+    color: #fff;
+    border: none;
+    width: 36px;
+    height: 36px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+    cursor: pointer;
+    outline: none;
+}
+
+.red-button {
+    background: rgb(206, 37, 60);
+    color: #fff;
+    border: none;
+    width: 36px;
+    height: 36px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+    cursor: pointer;
+    outline: none;
+}
+
+.gold-button {
+    background: rgb(203, 206, 37);
+    color: #fff;
+    border: none;
+    width: 36px;
+    height: 36px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+    cursor: pointer;
+    outline: none;
+}
+
+.green-button {
+    background: rgb(37, 206, 60);
+    color: #fff;
+    border: none;
+    width: 36px;
+    height: 36px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+    cursor: pointer;
+    outline: none;
 }
 
 .allowance {
@@ -736,13 +806,23 @@ tbody tr {
     width: 90%;
     display: grid;
     grid-gap: 10px;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(5, 1fr);
 }
 
 .badge-span {
-    height: 150px;
+    padding: 15px;
+    border-radius: 7px;
+    box-shadow: 0 1px 5px rgb(138, 137, 137);
+    height: 250px;
     overflow: auto;
-    background: green;
+    background: #fff;
+    text-align: center;
+}
+
+.badge-span button{
+    width: 30%;
+    position: relative;
+    bottom: -50px
 }
 
 .note-div {
@@ -794,4 +874,6 @@ tbody tr {
 .admin-section {
     color: black;
     background-color: #fff;
+    overflow: auto;
+    max-height: 90vh;
 }

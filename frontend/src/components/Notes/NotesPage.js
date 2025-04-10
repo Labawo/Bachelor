@@ -26,7 +26,7 @@ const NotesPage = observer(() => {
         <div className="form-container-notes">
             <h2>Sukurti įrašą</h2>
             <form onSubmit={handleSubmit} className = "create-note">
-              <div className="form-group">
+              <div className="form-group note-name-input">
                 <input
                   type="text"
                   id="name"
@@ -37,7 +37,6 @@ const NotesPage = observer(() => {
                   required
                   className="input-field"
                 />
-                {errors.name && <span className="error-message">{errors.name}</span>}
               </div>
               <div className="form-group">
                 <textarea
@@ -109,7 +108,7 @@ const NotesPage = observer(() => {
         <>
             <NavBarNew />
             <section>  
-                <div className='content-holder-div' style={{marginTop: "10px"}}>
+                <div style={{marginTop: "10px", color:"black", overflow:'auto', maxHeight:'85vh'}}>
                     {form()}
                     <div className='note-div'>
                     {noteStore.notes.map((note, i) => (
@@ -119,7 +118,7 @@ const NotesPage = observer(() => {
                             {note.content}
                             <button
                                 onClick={() => deleteNote(note.id)}
-                                style={{width: '90%', background: 'red', cursor: 'pointer'}}
+                                className='delete-note-button'
                             >
                                 <FontAwesomeIcon icon={faTrash} />
                             </button>

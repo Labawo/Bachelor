@@ -9,7 +9,7 @@ const BadgesPage = () => {
         <>
             <NavBarNew />
             <section>                
-                <div className='content-holder-div' style={{marginTop: "10px"}}>
+                <div style={{marginTop: "20px", color:"black", overflow:'auto', maxHeight:'85vh'}}>
                     <Badges />
                 </div>
             </section>

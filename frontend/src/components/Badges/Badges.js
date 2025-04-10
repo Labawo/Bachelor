@@ -82,8 +82,8 @@ const Badges = () => {
         <article className="list-article">
             <div className="table-container">
                 <h2 className="list-headers">Ženklelių sąrašas</h2>
-                <div className="create-btn-div">
-                    <button onClick={createBadge} className="create-button"> Sukurti Ženklelį </button>
+                <div style={{textAligh: 'center'}}>
+                    <button onClick={createBadge} style={{marginLeft: '40%', width: '20%'}}> Sukurti Ženklelį </button>
                 </div>
                 {badges.length ? (
                     <div className='badge-div'>
@@ -94,13 +94,11 @@ const Badges = () => {
                                 <p>{badge?.type}</p>
                                 <div>
                                     <button 
-                                        className="load-button-v1"
                                         onClick={() => updateBadge(badge.id)}
                                     >
                                         <FontAwesomeIcon icon={faEdit} />
                                     </button>
                                     <button
-                                        className="load-button-v1"
                                         onClick={() => setDeleteId(badge.id)}
                                     >
                                         <FontAwesomeIcon icon={faTrash} />

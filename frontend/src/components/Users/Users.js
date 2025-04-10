@@ -4,6 +4,7 @@ import { useNavigate, useLocation } from "react-router-dom";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrash, faKey } from '@fortawesome/free-solid-svg-icons';
 import EditUser from "./EditUser";
+import ReactApexChart  from "react-apexcharts";
 
 const Users = () => {
     const [users, setUsers] = useState([]);
@@ -15,6 +16,79 @@ const Users = () => {
     const axiosPrivate = useAxiosPrivate();
     const navigate = useNavigate();
     const location = useLocation();
+
+    const [graph, setGraph] = useState({
+          
+        series: [
+          {
+            name: "Naudotojai",
+            data: [28, 29, 33, 36, 32, 32, 33, 1, 1, 3, 0]
+          }
+        ],
+        options: {
+          chart: {
+            height: 350,
+            type: 'line',
+            dropShadow: {
+              enabled: true,
+              color: '#000',
+              top: 18,
+              left: 7,
+              blur: 10,
+              opacity: 0.5
+            },
+            zoom: {
+              enabled: false
+            },
+            toolbar: {
+              show: false
+            }
+          },
+          colors: ['#77B6EA', '#545454'],
+          dataLabels: {
+            enabled: true,
+          },
+          stroke: {
+            curve: 'smooth'
+          },
+          title: {
+            text: 'Naudotojų skaičius',
+            align: 'center'
+          },
+          grid: {
+            borderColor: '#e7e7e7',
+            row: {
+              colors: ['#f3f3f3', 'transparent'], // takes an array which will be repeated on columns
+              opacity: 0.5
+            },
+          },
+          markers: {
+            size: 1
+          },
+          xaxis: {
+            categories: ['Sausis', 'Vasaris', 'Kovas', 'Balandis', 'Gegužė', 'Birželis', 'Liepa', 'Rugpjutis', 'Rugsėjis', 'Spalis', 'Lapkritis', 'Gruodis'],
+            title: {
+              text: 'Mėnuo'
+            }
+          },
+          yaxis: {
+            title: {
+              text: 'Naudotojai'
+            },
+            min: 0,
+            max: 40
+          },
+          legend: {
+            position: 'top',
+            horizontalAlign: 'right',
+            floating: true,
+            offsetY: -25,
+            offsetX: -5
+          }
+        },
+      
+      
+    });
 
     useEffect(() => {
         const controller = new AbortController();
@@ -60,8 +134,11 @@ const Users = () => {
 
     return (
         <article>
-            <div className="table-container">
-                <div className='users-list-div'>
+            <ReactApexChart options={graph.options} series={graph.series} type="line" height={350} width={'100%'} style={{width: '95%', margin: 'auto', marginTop : '15pxb '}} />
+            <div className="table-container" style={{borderTop : '2px solid black'}}>
+                <div className='users-list-div' style={{background : 'lightgrey', width : '100%', 
+                    marginTop: '0', paddingLeft: '10px', 
+                    paddingRight: '20px', paddingTop: '15px', paddingBottom: '10px'}}>
                     <span className='users-list-span times-two'>
                         <div className='users-list-header'>
                             <p>Naudotojų sąrašas</p>
@@ -107,14 +184,14 @@ const Users = () => {
                                     <td>{user?.userName}</td>
                                     <td>{user?.email}</td>
                                     <td>
-                                        <button
-                                            className="load-button-v1"
+                                        <button 
+                                            className='red-button'
                                             onClick={() => deleteUser(user.id)}
                                         >
                                             <FontAwesomeIcon icon={faTrash} />
                                         </button>
                                         <button
-                                            className="load-button-v1"
+                                            className='gold-button'
                                             onClick={() => {
                                                 setSelectedUserId(user.id);
                                             }}

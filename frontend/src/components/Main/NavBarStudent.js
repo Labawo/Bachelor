@@ -2,7 +2,7 @@ import React, { useState, useContext } from 'react';
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import AuthContext from "../../context/AuthProvider";
-import { faSignOutAlt, faArchive, faTrophy, faUser } from '@fortawesome/free-solid-svg-icons';
+import { faSignOutAlt, faArchive, faTrophy, faUser, faHome, faCheckSquare, faDumbbell, faCar } from '@fortawesome/free-solid-svg-icons';
 import '../../styles/NavBarNew.css'; // Import your CSS file
 import useAuth from "../../hooks/UseAuth";
 
@@ -72,13 +72,13 @@ const NavBarStudent = () => {
             <i className='bx bx-x' onClick={toggleSidebar}></i>
           </div>
           <ul className="links">
-            <li><Link to="/">PAGRINDINIS</Link></li>
-            <li><Link to="/training" className={canAccessStudent ? '' : 'hidden'}>TRENIRUOTĖ</Link></li>
-            <li><Link to="/tests" className={canAccessStudent ? '' : 'hidden'}>TESTAI</Link></li>
-            <li><Link to="/speedTyping" className={canAccessStudent ? '' : 'hidden'}>SPARTUS RAŠYMAS</Link></li>
-            <li><Link to="/userBadges" className={canAccessStudent ? '' : 'hidden'}>ŽENKLELIAI</Link></li>
+            <li><Link to="/"><FontAwesomeIcon icon={faHome} /> PAGRINDINIS</Link></li>
+            <li><Link to="/training" className={canAccessStudent ? '' : 'hidden'}><FontAwesomeIcon icon={faDumbbell} /> TRENIRUOTĖ</Link></li>
+            <li><Link to="/tests" className={canAccessStudent ? '' : 'hidden'}><FontAwesomeIcon icon={faCheckSquare} /> TESTAI</Link></li>
+            <li><Link to="/speedTyping" className={canAccessStudent ? '' : 'hidden'}><FontAwesomeIcon icon={faCar} /> SPARTUS RAŠYMAS</Link></li>
+            <li><Link to="/userBadges" className={canAccessStudent ? '' : 'hidden'}><FontAwesomeIcon icon={faTrophy} /> ŽENKLELIAI</Link></li>
             <li>
-              <a href="#" onClick={toggleJsSubMenu}>PROFILIS</a>
+              <a href="#" onClick={toggleJsSubMenu}><FontAwesomeIcon icon={faUser} /> {auth.user.toUpperCase()}</a>
               <i className={`bx bxs-chevron-down js-arrow arrow ${showJsSubMenu ? 'rotated' : ''}`} />
               <ul className={`js-sub-menu sub-menu ${showJsSubMenu ? 'show' : ''}`}>
                 <li>
