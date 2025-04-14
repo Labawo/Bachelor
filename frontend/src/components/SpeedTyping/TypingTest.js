@@ -93,7 +93,6 @@ const TypingTest = ({ content, timeToComplete }) => {
     const handleEnding = async (cpm, wpm, mistakes, time) => {
         try {
           const speedData = {
-            cpm: cpm,
             wpm: wpm,
             mistakes: mistakes,
             time: time,

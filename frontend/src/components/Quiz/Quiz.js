@@ -11,6 +11,11 @@ const Quiz = ({ questions, currQuestion }) => {
     const [showResult, setShowResult] = useState(false);
     const [showAnswerTimer, setShowAnswerTimer] = useState(true);
     const [inputAnswer, setInputAnswer] = useState('');
+    const axiosPrivate = useAxiosPrivate();
+
+    const [errors, setErrors] = useState({});
+    const [successMessage, setSuccessMessage] = useState("");
+    const [errorMessage, setErrorMessage] = useState("");
 
     const { question, choices, correctAnswer, isOpen } = questions[currentQuestion];
 
@@ -40,7 +45,7 @@ const Quiz = ({ questions, currQuestion }) => {
         );
 
         if (currentQuestion !== questions.length - 1) {
-            setCurrentQuestion((prev) => prev + 1);
+            setCurrentQuestion((prev) => prev + 1); 
         } else {
             setCurrentQuestion(0);
             setShowResult(true);
@@ -51,6 +56,21 @@ const Quiz = ({ questions, currQuestion }) => {
         setTimeout(() => {
             setShowAnswerTimer(true);
         });
+    };
+
+    const handleEnding = async (score) => {
+        try {
+          const speedData = {
+            points: score
+          };
+    
+          const response = await axiosPrivate.post("/badgesnumber/quiz", speedData);
+    
+          setSuccessMessage("Pabaiga, surinktas ženklelių skaičius!");
+        } catch (error) {
+          console.error("Klaida išsiunčiant rezultatus:", error);
+          setErrorMessage("Klaida išsiunčiant rezultatus.");
+        }
     };
 
     const onTryAgain = () => {

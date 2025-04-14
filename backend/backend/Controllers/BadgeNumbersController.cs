@@ -31,7 +31,8 @@ public class BadgeNumbersController : ControllerBase
     [Route("training")]
     public async Task<ActionResult<Badge>> CreateTraining(CreateTrainingResultDto requestDto)
     {
-        var user = await _userManager.FindByIdAsync(requestDto.OwnerId);
+        var userId = User.FindFirstValue(JwtRegisteredClaimNames.Sub);
+        var user = await _userManager.FindByIdAsync(userId);
 
         if(user == null)
         {
@@ -39,7 +40,7 @@ public class BadgeNumbersController : ControllerBase
         }
 
         var badges = await _badgesRepository.GetManyTrainingAsync(requestDto.Points, requestDto.TrainingType);
-        var badgeNumbers = await _badgeNumbersRepository.GetManyUserAsync(requestDto.OwnerId);
+        var badgeNumbers = await _badgeNumbersRepository.GetManyUserAsync(userId);
         var numbers = new List<BadgeNumber>();
 
         if(badges.Count() > 0)
@@ -48,7 +49,7 @@ public class BadgeNumbersController : ControllerBase
             {
                 foreach(var badge in badges)
                 {
-                    BadgeNumber number = new BadgeNumber { OwnerId = requestDto.OwnerId, BadgeId = badge.Id, EarnedBadges =  0};
+                    BadgeNumber number = new BadgeNumber { OwnerId = userId, BadgeId = badge.Id, EarnedBadges =  0};
 
                     numbers.Add(number);
                 }
@@ -59,7 +60,7 @@ public class BadgeNumbersController : ControllerBase
                 {
                     if(badgeNumbers.Where(o => o.BadgeId == badge.Id).Count() == 0)
                     {
-                        BadgeNumber number = new BadgeNumber { OwnerId = requestDto.OwnerId, BadgeId = badge.Id, EarnedBadges = 0 };
+                        BadgeNumber number = new BadgeNumber { OwnerId = userId, BadgeId = badge.Id, EarnedBadges = 0 };
 
                         numbers.Add(number);
                     }                   
@@ -80,7 +81,8 @@ public class BadgeNumbersController : ControllerBase
     [Route("quiz")]
     public async Task<ActionResult<Badge>> CreateQuiz(CreateQuizResultDto requestDto)
     {
-        var user = await _userManager.FindByIdAsync(requestDto.OwnerId);
+        var userId = User.FindFirstValue(JwtRegisteredClaimNames.Sub);
+        var user = await _userManager.FindByIdAsync(userId);
 
         if (user == null)
         {
@@ -88,7 +90,7 @@ public class BadgeNumbersController : ControllerBase
         }
 
         var badges = await _badgesRepository.GetManyQuizAsync(requestDto.Points);
-        var badgenumbers = await _badgeNumbersRepository.GetManyUserAsync(requestDto.OwnerId);
+        var badgenumbers = await _badgeNumbersRepository.GetManyUserAsync(userId);
         var numbers = new List<BadgeNumber>();
 
         if (badges.Count() > 0)
@@ -97,7 +99,7 @@ public class BadgeNumbersController : ControllerBase
             {
                 foreach (var badge in badges)
                 {
-                    BadgeNumber number = new BadgeNumber { OwnerId = requestDto.OwnerId, BadgeId = badge.Id, EarnedBadges = 0 };
+                    BadgeNumber number = new BadgeNumber { OwnerId = userId, BadgeId = badge.Id, EarnedBadges = 0 };
 
                     numbers.Add(number);
                 }
@@ -108,7 +110,7 @@ public class BadgeNumbersController : ControllerBase
                 {
                     if (badgenumbers.Where(o => o.BadgeId == badge.Id).Count() == 0)
                     {
-                        BadgeNumber number = new BadgeNumber { OwnerId = requestDto.OwnerId, BadgeId = badge.Id, EarnedBadges = 0 };
+                        BadgeNumber number = new BadgeNumber { OwnerId = userId, BadgeId = badge.Id, EarnedBadges = 0 };
 
                         numbers.Add(number);
                     }
@@ -136,7 +138,8 @@ public class BadgeNumbersController : ControllerBase
             return BadRequest();
         }
         
-        var user = await _userManager.FindByIdAsync(requestDto.OwnerId);
+        var userId = User.FindFirstValue(JwtRegisteredClaimNames.Sub);
+        var user = await _userManager.FindByIdAsync(userId);
 
         if (user == null)
         {
@@ -144,7 +147,7 @@ public class BadgeNumbersController : ControllerBase
         }
 
         var badges = await _badgesRepository.GetManyQuotesAsync(requestDto.Points);
-        var badgenumbers = await _badgeNumbersRepository.GetManyUserAsync(requestDto.OwnerId);
+        var badgenumbers = await _badgeNumbersRepository.GetManyUserAsync(userId);
         var numbers = new List<BadgeNumber>();
 
         if (!badges.IsNullOrEmpty())
@@ -153,7 +156,7 @@ public class BadgeNumbersController : ControllerBase
             {
                 foreach (var badge in badges)
                 {
-                    BadgeNumber number = new BadgeNumber { OwnerId = requestDto.OwnerId, BadgeId = badge.Id, EarnedBadges = 0 };
+                    BadgeNumber number = new BadgeNumber { OwnerId = userId, BadgeId = badge.Id, EarnedBadges = 0 };
 
                     numbers.Add(number);
                 }
@@ -164,7 +167,7 @@ public class BadgeNumbersController : ControllerBase
                 {
                     if (badgenumbers.Where(o => o.BadgeId == badge.Id).Count() == 0)
                     {
-                        BadgeNumber number = new BadgeNumber { OwnerId = requestDto.OwnerId, BadgeId = badge.Id, EarnedBadges = 0 };
+                        BadgeNumber number = new BadgeNumber { OwnerId = userId, BadgeId = badge.Id, EarnedBadges = 0 };
 
                         numbers.Add(number);
                     }
