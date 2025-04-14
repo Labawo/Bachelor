@@ -13,6 +13,8 @@ const Levels = ({ urlApi, header }) => {
     const [levels, setLevels] = useState([]);
     const [editLevelId, setEditLevelId] = useState(0);
     const [isNextPage, setIsNextPage] = useState(false);
+    const [filter, setFilter] = useState('');
+    const [filteredLevels, setFilteredLevels] = useState([]);
     const [page, setPage] = useState(1);
     const [isLoading, setIsLoading] = useState(false);
     const axiosPrivate = useAxiosPrivate();
@@ -55,7 +57,9 @@ const Levels = ({ urlApi, header }) => {
         loadLevels(page);
     }, [page, urlApi]); 
 
-    
+    useEffect(() => {
+        setFilteredLevels(levels.filter(level => level.name.toLowerCase().includes(filter.toLowerCase())));       
+    }, [levels, filter]); 
 
     const updateLevel = (levelId) => {
         setEditLevelId(levelId);
@@ -81,12 +85,33 @@ const Levels = ({ urlApi, header }) => {
 
     return (
         <article className="list-article">
-            <div className="table-container">
-                <h2 className="list-headers">{header}</h2>
-                <div className="create-btn-div">
-                    <button onClick={createLevel} className="create-button"> Sukurti Lygį </button>
+            <div className="table-container" >
+                <div className='users-list-div' style={{background : 'lightgrey', width : '100%', 
+                    marginTop: '0', paddingLeft: '10px', 
+                    paddingRight: '20px', paddingTop: '15px', paddingBottom: '10px'}}>
+                    <span className='users-list-span times-two'>
+                        <div className='users-list-header'>
+                            <p>{header}</p>
+                        </div>
+                    </span>
+                    <span className='users-list-span'>
+                        <div className="filter-container">
+                            <div className="filter-container-inside">
+                                <input
+                                    type="text"
+                                    value={filter}
+                                    onChange={(e) => setFilter(e.target.value)}
+                                    placeholder="Filtruoti pagal pavadinimą"
+                                    className="filter-container-input"
+                                />
+                            </div>  
+                        </div>
+                    </span>
                 </div>
-                {levels.length ? (
+                {/*<div className="create-btn-div">
+                    <button onClick={createLevel}> Sukurti Lygį </button>
+                </div>*/}
+                {filteredLevels.length ? (
                     <table className="my-table">
                         <thead>
                             <tr>
@@ -98,7 +123,7 @@ const Levels = ({ urlApi, header }) => {
                             </tr>
                         </thead>
                         <tbody>
-                            {levels.map((level, i) => (
+                            {filteredLevels.map((level, i) => (
                                 <tr key={i}>
                                     <td>{level?.name}</td>
                                     <td>{level?.minExperience}</td>
@@ -133,7 +158,7 @@ const Levels = ({ urlApi, header }) => {
                 )}
                 {isLoading ? (
                     <p>Loading...</p>
-                ) : levels.length >= 0 ? (
+                ) : levels.length >= 0 && filter === '' ? (
                     <div className="pagination-buttons">
                         <button onClick={() => setPage(page === 1 ? page : page - 1)} className="load-button-v1">-</button>
                         <button onClick={() => setPage(levels.length === 0 ? page : page + 1)} className="load-button-v1">+</button>

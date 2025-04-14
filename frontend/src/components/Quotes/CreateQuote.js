@@ -66,10 +66,10 @@ const CreateQuote = ({ show, onClose, levelId }) => {
             <h2>Sukurti naują citatą</h2>
             <form onSubmit={handleSubmit} className = "input_form">
               <div className="form-group">
-                <label htmlFor="source">Šaltinis:</label><br/>
                   <input
                       type="text"
                       id="source"
+                      placeholder="Šaltinis:"
                       value={source}
                       onChange={(e) => setSource(e.target.value)}
                       className="input-field"
@@ -77,10 +77,10 @@ const CreateQuote = ({ show, onClose, levelId }) => {
                   />
               </div>
               <div className="form-group">
-                <label htmlFor="author">Autorius:</label><br/>
                   <input
                       type="text"
                       id="author"
+                      placeholder="Autorius:"
                       value={author}
                       onChange={(e) => setAuthor(e.target.value)}
                       className="input-field"
@@ -88,7 +88,6 @@ const CreateQuote = ({ show, onClose, levelId }) => {
                   />
               </div>
               <div className="form-group">
-                <label htmlFor="content">Citata:</label><br/>
                 <textarea
                   id="content"
                   name="content"
@@ -103,11 +102,11 @@ const CreateQuote = ({ show, onClose, levelId }) => {
                 )}
               </div>
               <div className="form-group">
-                <label htmlFor="timeForCitation">Laikas perrašymui sekundėmis:</label><br/>
                   <input
                       type="number"
                       id="timeForCitation"
-                      value={timeToComplete}
+                      placeholder="Laikas įveikti"
+                      value={timeToComplete <= 30 ? '' : timeToComplete}
                       onChange={(e) => setTimeToComplete(e.target.value)}
                       required
                       className="input-field"
@@ -115,7 +114,7 @@ const CreateQuote = ({ show, onClose, levelId }) => {
               </div>
               
               <div className="modal-buttons-form">
-                <button type="submit" className="auth_button">
+                <button type="submit" className="create-form-button">
                   Sukurti
                 </button>
               </div>

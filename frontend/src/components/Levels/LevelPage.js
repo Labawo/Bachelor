@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { useParams, Link, useNavigate } from "react-router-dom";
 import useAxiosPrivate from "../../hooks/UseAxiosPrivate";
-import NavBar from "../Main/NavBar";
+import NavBarAdmin from "../Main/NavBarAdmin";
 import Footer from "../Main/Footer";
-import Title from "../Main/Title";
 import Words from "../Words/Words";
 import Quotes from "../Quotes/Quotes";
 
@@ -31,8 +30,7 @@ const LevelPage = () => {
 
     return (
         <>
-            <Title />
-            <NavBar />
+            <NavBarAdmin />
             <section>
                 
                 {level ? (

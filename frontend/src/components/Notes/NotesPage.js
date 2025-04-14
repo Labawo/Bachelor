@@ -6,6 +6,7 @@ import { observer } from "mobx-react-lite";
 import useAuth from "../../hooks/UseAuth";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrash, faPlus } from '@fortawesome/free-solid-svg-icons';
+import logo from "./keyboard-image.png";
 
 const NotesPage = observer(() => {
 
@@ -24,6 +25,7 @@ const NotesPage = observer(() => {
     const form = () => {
         return (
         <div className="form-container-notes">
+            <img src={logo} alt="Logo" width='100%' height='200px'/>
             <h2>Sukurti įrašą</h2>
             <form onSubmit={handleSubmit} className = "create-note">
               <div className="form-group note-name-input">
@@ -107,15 +109,15 @@ const NotesPage = observer(() => {
     return (
         <>
             <NavBarNew />
-            <section>  
-                <div style={{marginTop: "10px", color:"black", overflow:'auto', maxHeight:'85vh'}}>
+            <section style={{paddingTop: '0'}}>  
+                <div style={{marginTop: "0", color:"black", overflow:'auto', maxHeight:'85vh'}}>
                     {form()}
                     <div className='note-div'>
                     {noteStore.notes.map((note, i) => (
                         
                           <span key={i} className='note-span'>
-                            <h2>{note.name}</h2>
-                            {note.content}
+                            <h2 style={{fontSize: '20px'}}>{note.name}</h2>
+                            <p style={{fontSize: '12px'}}>{note.content}</p>
                             <button
                                 onClick={() => deleteNote(note.id)}
                                 className='delete-note-button'

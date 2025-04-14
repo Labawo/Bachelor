@@ -7,7 +7,7 @@
 }
 
 html {
-    font-family: "Times New Roman", Times, serif;
+    font-family: "Poppins", sans-serif;
     font-size: 15px;
     color: #fff;
 }
@@ -830,7 +830,7 @@ tbody tr {
     width: 90%;
     display: grid;
     grid-gap: 10px;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(4, 1fr);
 }
 
 .note-span {
@@ -849,6 +849,16 @@ tbody tr {
     grid-gap: 10px;
     grid-template-columns: repeat(4, 1fr);
     
+}
+
+.items-list-div {
+    display: grid;
+    grid-gap: 10px;
+    grid-template-columns: repeat(4, 1fr);
+    height: 70vh;
+    min-height: 70vh;
+    overflow: auto;
+    background-color: red;
 }
 
 .users-list-span{
@@ -875,5 +885,5 @@ tbody tr {
     color: black;
     background-color: #fff;
     overflow: auto;
-    max-height: 90vh;
+    max-height: 80vh;
 }

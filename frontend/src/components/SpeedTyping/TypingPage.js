@@ -3,6 +3,7 @@ import Footer from "../Main/Footer";
 import QuoteLevels from "./QuoteLevels";
 import useAuth from "../../hooks/UseAuth";
 import React, { useState } from 'react';
+import logo1 from "../Levels/quote-image.png";
 
 const TypingPage = () => {
     const { auth } = useAuth();
@@ -10,10 +11,9 @@ const TypingPage = () => {
     return (
         <>
             <NavBarNew />
-            <section>
-                <div className='content-holder-div'>
-                    <QuoteLevels /> 
-                </div>
+            <section style={{color: 'black'}}>
+                <img src={logo1} alt="Logo" width='100%' height='150px'/>
+                <QuoteLevels /> 
             </section>
                        
             <Footer />

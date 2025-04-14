@@ -67,27 +67,28 @@ const CreateLevel = ({ show, onClose }) => {
           <h2>Sukurti lygį</h2>
           <form onSubmit={handleSubmit} className = "input_form">
             <div className="form-group">
-              <label htmlFor="name">Pavadinimas:</label><br/>
                 <input
                     type="text"
                     id="name"
                     onChange={(e) => setName(e.target.value)}
+                    placeholder='Pavadinimas:'
                     className="input-field"
                     required
                 />
             </div>
             <div className="form-group">
-              <label htmlFor="minExperience">Minimalus XP skaičius:</label><br/>
                 <input
                     type="number"
                     id="minExperience"
                     onChange={(e) => setMinExperience(e.target.value)}
+                    placeholder='Minimalus XP skaičius:'
                     required
                     className="input-field"
                 />
             </div>
             <div className="form-group">
-              <label htmlFor="isForWords">Skirtas žodžiams? :</label><br/>
+              <label htmlFor="isForWords" style={{color:'grey', fontSize: '12px'}}>Skirtas žodžiams? </label>
+              <span>
                 <input
                     type="checkbox"
                     id="isForWords"
@@ -97,10 +98,12 @@ const CreateLevel = ({ show, onClose }) => {
                     onChange={() => {}}
                     className="input-field"
                 />
+              </span>
+                
             </div>
             
             <div className="modal-buttons-form">
-              <button type="submit" className="auth_button">
+              <button type="submit" className="create-form-button">
                 Sukurti
               </button>
             </div>

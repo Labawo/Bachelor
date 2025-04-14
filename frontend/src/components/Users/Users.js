@@ -134,7 +134,7 @@ const Users = () => {
 
     return (
         <article>
-            <ReactApexChart options={graph.options} series={graph.series} type="line" height={350} width={'100%'} style={{width: '95%', margin: 'auto', marginTop : '15pxb '}} />
+            <ReactApexChart options={graph.options} series={graph.series} type="line" height={350} width={'100%'} style={{width: '95%', margin: 'auto', marginTop : '15px'}} />
             <div className="table-container" style={{borderTop : '2px solid black'}}>
                 <div className='users-list-div' style={{background : 'lightgrey', width : '100%', 
                     marginTop: '0', paddingLeft: '10px', 

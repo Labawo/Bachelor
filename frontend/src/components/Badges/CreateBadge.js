@@ -100,32 +100,26 @@ const CreateBadge = ({ show, onClose }) => {
     <>
       <div className={`modal-form ${show ? "show" : ""}`}>
       <div className="modal-content-form"> 
-        <div className='form-header-div'>
-          <div className='form-header-text'>
-            <p>Sukurti naują ženkliuką</p>
-          </div>
-          <div className='close-button-div-form'>
-            <button className="primary-button-form" onClick={onClose}>X</button>
-          </div>
+        <div className='close-button-div-form'>
+          <button className="primary-button-form" onClick={onClose}>X</button>
         </div>
       
       <div className="outer-form-div">
       <div className="form-container">
-          
+          <h2>Sukurti ženklelį</h2>
           <form onSubmit={handleSubmit}>
             <div className="form-group">
-              <label htmlFor="name">Pavadinimas:</label><br/>
                 <input
                     type="text"
                     id="name"
                     value={name}
                     onChange={(e) => setName(e.target.value)}
                     className="input-field"
+                    placeholder="Įrašyti pavadinimą"
                     required
                 />
             </div>
             <div className="form-group">
-              <label htmlFor="description">Apibūdinimas:</label><br/>
               <textarea
                 id="description"
                 name="description"
@@ -140,19 +134,19 @@ const CreateBadge = ({ show, onClose }) => {
               )}
             </div>
             <div className="form-group">
-                <label htmlFor="badgeType">Tipas:</label><br />
                 <select
                   id="badgeType"
                   name="badgeType"
                   value={badgeType}
                   onChange={(e) => setBadgeType(e.target.value)}
                   className="select-field"
+                  style = {{color: badgeType !== '' ?  'black' : 'grey'}}
                   required
                 >
-                  <option value="">Pasirinkti ženkliuko tipą</option>
-                  <option key="Training" value="Training">
+                  <option value="" >Pasirinkti ženkliuko tipą</option>
+                  {/*<option key="Training" value="Training">
                     Treniruotei
-                  </option>
+                  </option>*/}
                   <option key="Quiz" value="Quiz">
                     Testams
                   </option>
@@ -163,8 +157,8 @@ const CreateBadge = ({ show, onClose }) => {
             </div>
 
             <div className="form-group">
-              <label htmlFor="image">Paveikslelis:</label><br />
               <input
+                style={{color: 'grey'}}
                 type="file"
                 id="image"
                 name="image"
@@ -219,12 +213,12 @@ const CreateBadge = ({ show, onClose }) => {
 
             {badgeType === "Quiz" && (
               <div className="form-group">
-              <label htmlFor="quizXp">Minimalus XP skaičius:</label><br/>
                 <input
                     type="number"
                     id="quizXp"
-                    value={quizXp}
+                    value={quizXp === 0 ? '' : quizXp}
                     onChange={(e) => setQuizXp(e.target.value)}
+                    placeholder="Minimalus XP skaičius:"
                     required
                     className="input-field"
                 />
@@ -233,12 +227,13 @@ const CreateBadge = ({ show, onClose }) => {
 
             {badgeType === "Quote" && (
               <div className="form-group">
-              <label htmlFor="wpm">Minimalus žodžių per minutę skaičius:</label><br/>
+              <label htmlFor="wpm"></label><br/>
                 <input
                     type="number"
                     id="wpm"
-                    value={wpm}
+                    value={wpm === 0 ? '' : wpm}
                     onChange={(e) => setWpm(e.target.value)}
+                    placeholder="Minimalus žodžių per minutę skaičius:"
                     required
                     className="input-field"
                 />
@@ -246,7 +241,7 @@ const CreateBadge = ({ show, onClose }) => {
             )}
             
             <div className="modal-buttons-form">
-              <button type="submit" className="auth_button">
+              <button type="submit" className="create-form-button">
                 Sukurti
               </button>
             </div>

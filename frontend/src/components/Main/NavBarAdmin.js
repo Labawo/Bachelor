@@ -5,6 +5,7 @@ import AuthContext from "../../context/AuthProvider";
 import { faSignOutAlt, faArchive, faTrophy, faUsers, faUser, faHome, faBook, faRocket } from '@fortawesome/free-solid-svg-icons';
 import '../../styles/NavBarNew.css'; // Import your CSS file
 import useAuth from "../../hooks/UseAuth";
+import CreateLevel from "../Levels/CreateLevel";
 
 const NavBarAdmin = () => {
   // States to control visibility of the search box and submenus
@@ -13,6 +14,7 @@ const NavBarAdmin = () => {
     const [showHtmlCssSubMenu, setShowHtmlCssSubMenu] = useState(false);
     const [showJsSubMenu, setShowJsSubMenu] = useState(false);
     const [showMoreSubMenu, setShowMoreSubMenu] = useState(false);
+    const [showCreate, setShowCreate] = useState(false);
 
     const navigate = useNavigate();
 
@@ -61,11 +63,15 @@ const NavBarAdmin = () => {
         setShowMoreSubMenu(!showMoreSubMenu);
     };
 
+    const createLevel = () => {
+        setShowCreate(true);
+    };
+
   return (
     <nav>
       <div className="navbar">
         <i className='bx bx-menu' onClick={toggleSidebar}></i>
-        <div className="logo"><a href="#">SRMS {canAccessAdmin ? '/ADMIN' : ''}</a></div>
+        <div className="logo"><a href="#">SRMS {canAccessAdmin ? (<span>/ADMIN</span>) : ''}</a></div>
         <div className={`nav-links ${showSidebar ? 'showSidebar' : ''}`}>
           <div className="sidebar-logo">
             <span className="logo-name">SRMS</span>
@@ -80,12 +86,13 @@ const NavBarAdmin = () => {
               <ul className={`htmlCss-sub-menu sub-menu ${showHtmlCssSubMenu ? 'show' : ''}`}>
                 <li><Link to="/levelsQuotesPage" className={!canAccessAdmin ? 'hidden' : ''}>Citatų</Link></li>
                 <li><Link to="/levelsQuizPage" className={!canAccessAdmin ? 'hidden' : ''}>Klausimų</Link></li>
+                <li><a onClick={createLevel} style={{cursor : 'pointer'}}>Sukurti</a></li>
               </ul>
             </li>
             <li><Link to="/badgesPage" className={canAccessAdmin ? '' : 'hidden'}><FontAwesomeIcon icon={faTrophy} /> ŽENKLELIAI</Link></li>
             <li><Link to="/notes" className={canAccessAdmin ? '' : 'hidden'}><FontAwesomeIcon icon={faBook} /> UŽRAŠAI</Link></li>
             <li>
-              <a href="#" onClick={toggleJsSubMenu}><FontAwesomeIcon icon={faUser} /> {auth.user.toUpperCase()}</a>
+              <a href="#" onClick={toggleJsSubMenu}><FontAwesomeIcon icon={faUser} /> {auth.user ? auth.user.toUpperCase() : null}</a>
               <i className={`bx bxs-chevron-down js-arrow arrow ${showJsSubMenu ? 'rotated' : ''}`} />
               <ul className={`js-sub-menu sub-menu ${showJsSubMenu ? 'show' : ''}`}>
               <li>
@@ -114,6 +121,10 @@ const NavBarAdmin = () => {
           </div>
         </div>
       </div>
+      <CreateLevel 
+          show={showCreate === true}
+          onClose={() => setShowCreate(false)}
+      />
     </nav>
   );
 };

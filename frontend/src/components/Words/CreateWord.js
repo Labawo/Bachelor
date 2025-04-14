@@ -58,10 +58,10 @@ const CreateWord = ({ show, onClose, levelId }) => {
             <h2>Sukurti naują klausimą</h2>
             <form onSubmit={handleSubmit} className = "input_form">
               <div className="form-group">
-                <label htmlFor="question">Klausimas:</label><br/>
                   <input
                       type="text"
                       id="question"
+                      placeholder="Klausimas:"
                       value={question}
                       onChange={(e) => setQuestion(e.target.value)}
                       className="input-field"
@@ -69,10 +69,10 @@ const CreateWord = ({ show, onClose, levelId }) => {
                   />
               </div>
               <div className="form-group">
-                <label htmlFor="correctAnswer">Teisingas atsakymas:</label><br/>
                   <input
                       type="text"
                       id="correctAnswer"
+                      placeholder="Teisingas atsakymas:"
                       value={correctAnswer}
                       onChange={(e) => setCorrectAnswer(e.target.value)}
                       className="input-field"
@@ -81,7 +81,7 @@ const CreateWord = ({ show, onClose, levelId }) => {
               </div>
               
               <div className="modal-buttons-form">
-                <button type="submit" className="auth_button">
+                <button type="submit" className="create-form-button">
                   Sukurti
                 </button>
               </div>

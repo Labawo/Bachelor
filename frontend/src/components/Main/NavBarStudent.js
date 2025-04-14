@@ -78,7 +78,7 @@ const NavBarStudent = () => {
             <li><Link to="/speedTyping" className={canAccessStudent ? '' : 'hidden'}><FontAwesomeIcon icon={faCar} /> SPARTUS RAŠYMAS</Link></li>
             <li><Link to="/userBadges" className={canAccessStudent ? '' : 'hidden'}><FontAwesomeIcon icon={faTrophy} /> ŽENKLELIAI</Link></li>
             <li>
-              <a href="#" onClick={toggleJsSubMenu}><FontAwesomeIcon icon={faUser} /> {auth.user.toUpperCase()}</a>
+              <a href="#" onClick={toggleJsSubMenu}><FontAwesomeIcon icon={faUser} /> {auth.user ? auth.user.toUpperCase() : null}</a>
               <i className={`bx bxs-chevron-down js-arrow arrow ${showJsSubMenu ? 'rotated' : ''}`} />
               <ul className={`js-sub-menu sub-menu ${showJsSubMenu ? 'show' : ''}`}>
                 <li>

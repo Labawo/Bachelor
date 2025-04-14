@@ -2,16 +2,18 @@ import NavBarNew from "../Main/NavBarNew";
 import Footer from "../Main/Footer";
 import Levels from "./Levels";
 import React, { useState } from 'react';
+import logo1 from "./quiz-image.png";
+import logo2 from "./quote-image.png";
 
-const LevelPage = ({ urlApiName, headerName }) => {
+const LevelPage = ({ urlApiName, headerName, flag }) => {
 
     return (
         <>
             <NavBarNew />
-            <section>    
-                <div className='content-holder-div'>
-                    <Levels urlApi={urlApiName} header={headerName}/>
-                </div>
+            
+            <section className='admin-section' style={{paddingTop: '0'}}>    
+                {flag ? (<img src={logo1} alt="Logo" width='100%' height='200px'/>  ) : (<img src={logo2} alt="Logo" width='100%' height='200px'/>)}
+                <Levels urlApi={urlApiName} header={headerName}/>
             </section>
             
             <Footer />

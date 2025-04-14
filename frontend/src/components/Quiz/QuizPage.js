@@ -3,6 +3,7 @@ import Footer from "../Main/Footer";
 import Quizes from "./Quizes";
 import useAuth from "../../hooks/UseAuth";
 import React, { useState } from 'react';
+import logo1 from "../Levels/quiz-image.png";
 
 const QuizPage = () => {
     const { auth } = useAuth();
@@ -10,12 +11,10 @@ const QuizPage = () => {
     return (
         <>
             <NavBarNew />
-            <section>
-                <div className='content-holder-div'>
-                    <Quizes />
-                </div>
+            <section style={{color: 'black'}}>
+                <img src={logo1} alt="Logo" width='100%' height='150px'/> 
+                <Quizes />
             </section>
-            
             <Footer />
         </>
         

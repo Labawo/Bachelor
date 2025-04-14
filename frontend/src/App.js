@@ -54,8 +54,8 @@ function App() {
           <Route element={<RequireAuth allowedRoles={[ROLES.Admin]} />}>
             <Route path="admin" element={<Admin />} />
             {/*Cia notes tures buti */}
-            <Route path="/levelsQuizPage" element={<LevelsPage urlApiName={'forWords'} headerName={'Testų lygiai'}/>} />
-            <Route path="/levelsQuotesPage" element={<LevelsPage urlApiName={'notForWords'} headerName={'Citatų lygiai'}/>} />
+            <Route path="/levelsQuizPage" element={<LevelsPage urlApiName={'forWords'} headerName={'Testų lygiai'} flag={true}/>} />
+            <Route path="/levelsQuotesPage" element={<LevelsPage urlApiName={'notForWords'} headerName={'Citatų lygiai'} flag={false}/>} />
             <Route path="/badgesPage" element={<BadgesPage />} />
             <Route path="/levels/:levelId" element={<LevelPage />} />
           </Route>

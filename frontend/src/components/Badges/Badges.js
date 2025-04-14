@@ -15,6 +15,8 @@ const Badges = () => {
     const [editBadgeId, setEditBadgeId] = useState(0);
     const [isLoading, setIsLoading] = useState(false);
     const axiosPrivate = useAxiosPrivate();
+    const [filter, setFilter] = useState('');
+    const [filteredBadges, setFilteredBadges] = useState([]);
     const navigate = useNavigate();
     const location = useLocation();
     const [deleteId, setDeleteId] = useState("");
@@ -44,6 +46,10 @@ const Badges = () => {
     useEffect(() => {
         loadBadges();
     }, [loadBadgesFlag]); 
+
+    useEffect(() => {
+        setFilteredBadges(badges.filter(badge => badge.name.toLowerCase().includes(filter.toLowerCase())));       
+    }, [badges, filter]); 
 
     const createBadge = () => {
         setShowCreate(true);
@@ -81,13 +87,34 @@ const Badges = () => {
     return (
         <article className="list-article">
             <div className="table-container">
-                <h2 className="list-headers">Ženklelių sąrašas</h2>
+                <div className='users-list-div' style={{background : 'lightgrey', width : '100%', 
+                    marginTop: '0', paddingLeft: '10px', 
+                    paddingRight: '20px', paddingTop: '15px', paddingBottom: '10px'}}>
+                    <span className='users-list-span times-two'>
+                        <div className='users-list-header'>
+                            <p>Ženklelių sąrašas</p>
+                        </div>
+                    </span>
+                    <span className='users-list-span'>
+                        <div className="filter-container">
+                            <div className="filter-container-inside">
+                                <input
+                                    type="text"
+                                    value={filter}
+                                    onChange={(e) => setFilter(e.target.value)}
+                                    placeholder="Filtruoti pagal pavadinimą"
+                                    className="filter-container-input"
+                                />
+                            </div>  
+                        </div>
+                    </span>
+                </div>
                 <div style={{textAligh: 'center'}}>
                     <button onClick={createBadge} style={{marginLeft: '40%', width: '20%'}}> Sukurti Ženklelį </button>
                 </div>
-                {badges.length ? (
+                {filteredBadges.length ? (
                     <div className='badge-div'>
-                        {badges.map((badge, i) => (
+                        {filteredBadges.map((badge, i) => (
                             <span key={i} className='badge-span'>
                                 <p>{badge?.name}</p>
                                 <p>{badge?.description}</p>
