@@ -34,8 +34,23 @@ public class UsersController : ControllerBase
 
         var nonAdminUsers = allUsers
             .Where(u => !_userManager.IsInRoleAsync(u, SiteRoles.Admin).Result) // Filter out Admin users
-            .Select(u => new UserDto(u.Id, u.UserName, u.Email))
+            .Select(u => new UserDto(u.Id, u.UserName, u.Email, u.RegistrationDate, u.EmailConfirmed))
             .ToList();
+
+        return Ok(nonAdminUsers);
+    }
+    
+    [HttpGet]
+    [Route("topUsers")]
+    [Authorize]
+    public IActionResult GetUsersBadges()
+    {
+        var allUsers =  _userManager.Users.ToList(); 
+
+        var nonAdminUsers = allUsers
+            .Where(u => !_userManager.IsInRoleAsync(u, SiteRoles.Admin).Result) // Filter out Admin users
+            .Select(u => new UserTopDto(u.UserName, u.NewBadgeCnt, u.RegistrationDate?.Year))
+            .OrderByDescending(u => u.BadgeCount).Take(10).ToList();
 
         return Ok(nonAdminUsers);
     }

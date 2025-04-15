@@ -281,7 +281,7 @@ public class LevelsController : ControllerBase
 
         var links = CreateLinksForLevels(levelId);
 
-        var levelDto = new LevelDto(level.Id, level.Name, level.ItemCount, level.MinExperience, level.IsForWords);
+        var levelDto = new LevelWithDescriptionDto(level.Id, level.Name, level.Description, level.ItemCount, level.MinExperience, level.IsForWords);
         
         return Ok(new { Resource = levelDto, Links = links});
     }
@@ -299,6 +299,11 @@ public class LevelsController : ControllerBase
         {
             return BadRequest("Įvesti negalimi simboliai.");
         }
+        
+        if (createLevelDto.Description?.IndexOfAny("*&#<>/".ToCharArray()) != -1)
+        {
+            return BadRequest("Įvesti negalimi simboliai.");
+        }
 
         if (createLevelDto.MinExperience < 0)
         {
@@ -310,6 +315,7 @@ public class LevelsController : ControllerBase
             Name = createLevelDto.Name,
             MinExperience = createLevelDto.MinExperience,
             IsForWords = createLevelDto.IsForWords,
+            Description = createLevelDto.Description,
         };
 
         level.ItemCount = 0;
@@ -342,6 +348,11 @@ public class LevelsController : ControllerBase
         {
             return BadRequest("Įvesti negalimi simboliai.");
         }
+        
+        if (updateLevelDto.Description?.IndexOfAny("*&#<>/".ToCharArray()) != -1)
+        {
+            return BadRequest("Įvesti negalimi simboliai.");
+        }
 
         if (updateLevelDto.MinExperience < 0)
         {
@@ -349,6 +360,7 @@ public class LevelsController : ControllerBase
         }
         
         level.Name = updateLevelDto.Name;
+        level.Description = updateLevelDto.Description;
         level.MinExperience = updateLevelDto.MinExperience; 
 
         await _levelsRepository.UpdateAsync(level);

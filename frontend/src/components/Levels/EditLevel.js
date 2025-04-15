@@ -7,6 +7,7 @@ import "./levelmodals.css";
 const EditLevel = ({ show, onClose, levelId }) => {
 
   const [name, setName] = useState('');
+  const [description, setDescription] = useState('');
   const [minExperience, setMinExperience] = useState(0);
 
   const axiosPrivate = useAxiosPrivate();
@@ -19,7 +20,7 @@ const EditLevel = ({ show, onClose, levelId }) => {
     const fetchLevelData = async () => {
       try {
         const response = await axiosPrivate.get(`/levels/${levelId}`);
-        const { name, minExperience } = response.data.resource;
+        const { name, description, minExperience } = response.data.resource;
         setName(name);
         setMinExperience(minExperience);
       } catch (error) {
@@ -49,6 +50,7 @@ const EditLevel = ({ show, onClose, levelId }) => {
     try {
       const levelData = {
         name: sanitizeInput(name),
+        description: sanitizeInput(description),
         minExperience: checkNumberInput(minExperience),
       };
 
@@ -84,6 +86,21 @@ const EditLevel = ({ show, onClose, levelId }) => {
                     className="input-field"
                     required
                 />
+            </div>
+            <div className="form-group">
+              <label htmlFor="description">Apibūdinimas:</label><br/>
+              <textarea
+                id="description"
+                name="description"
+                value={description}
+                onChange={(e) => setDescription(e.target.value)}
+                placeholder="Įveskite ženkliuko apibūdinimą"
+                required
+                className="textarea-field"
+              />
+              {errors.description && (
+                <span className="error-message">{errors.description}</span>
+              )}
             </div>
             <div className="form-group">
               <label htmlFor="minExperience">Minimalus XP skaičius:</label><br/>

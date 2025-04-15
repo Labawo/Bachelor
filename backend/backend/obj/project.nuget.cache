@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "E4kUev/IAnw=",
+  "dgSpecHash": "iV4Q118H/7IuTEDErQTDiQ9OpkZ8aBkfeFn4+w6TNtbmGZTGabT7ojgHOl3VMhcUSfEzP/rNHyNCExD0lHvS6Q==",
   "success": true,
   "projectFilePath": "C:\\Users\\Laurynas\\Desktop\\Bachelor\\backend\\backend\\backend.csproj",
   "expectedPackageFiles": [
@@ -121,16 +121,5 @@
     "C:\\Users\\Laurynas\\.nuget\\packages\\system.threading.tasks.extensions\\4.5.4\\system.threading.tasks.extensions.4.5.4.nupkg.sha512",
     "C:\\Users\\Laurynas\\.nuget\\packages\\system.windows.extensions\\5.0.0\\system.windows.extensions.5.0.0.nupkg.sha512"
   ],
-  "logs": [
-    {
-      "code": "NU1903",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "Package 'Microsoft.AspNetCore.Identity' 2.3.0 has a known high severity vulnerability, https://github.com/advisories/GHSA-2865-hh9g-w894",
-      "libraryId": "Microsoft.AspNetCore.Identity",
-      "targetGraphs": [
-        "net7.0"
-      ]
-    }
-  ]
+  "logs": []
 }

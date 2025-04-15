@@ -7,6 +7,7 @@ import "./levelmodals.css";
 const CreateLevel = ({ show, onClose }) => {
 
   const [name, setName] = useState('');
+  const [description, setDescription] = useState('');
   const [minExperience, setMinExperience] = useState(0);
   const [isForWords, setIsForWords] = useState(false);
 
@@ -33,6 +34,7 @@ const CreateLevel = ({ show, onClose }) => {
     try {
       const levelData = {
         name: sanitizeInput(name),
+        description: sanitizeInput(description),
         minExperience: checkNumberInput(minExperience),
         isForWords: isForWords,
       };
@@ -75,6 +77,20 @@ const CreateLevel = ({ show, onClose }) => {
                     className="input-field"
                     required
                 />
+            </div>
+            <div className="form-group">
+              <textarea
+                id="description"
+                name="description"
+                value={description}
+                onChange={(e) => setDescription(e.target.value)}
+                placeholder="Įveskite lygio apibūdinimą"
+                required
+                className="textarea-field"
+              />
+              {errors.description && (
+                <span className="error-message">{errors.description}</span>
+              )}
             </div>
             <div className="form-group">
                 <input
