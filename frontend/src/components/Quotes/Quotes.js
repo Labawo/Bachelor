@@ -22,6 +22,8 @@ const Quotes = ({ levelId }) => {
     const { auth } = useAuth();
     const [deleteId, setDeleteId] = useState("");
     const [errorMessage, setErrorMessage] = useState("");  
+    const [filter, setFilter] = useState('');
+    const [filteredQuotes, setFilteredQuotes] = useState([]);
 
     const fetchQuotes = useCallback(async (pageNumber) => {
         try {
@@ -72,14 +74,39 @@ const Quotes = ({ levelId }) => {
         }
     };
 
+    useEffect(() => {
+        setFilteredQuotes(quotes.filter(quote => quote.source.toLowerCase().includes(filter.toLowerCase())));       
+    }, [quotes, filter]); 
+
     return (
         <article className="list-article">
             <div className="table-container">
-                <h2 className="list-headers">Citatų sąrašas</h2>
-                <div className="create-btn-div">
-                    <button onClick={createQuote} className="create-button"> Sukurti Citatą </button>
+                <div className='users-list-div' style={{background : 'black', color: '#fff', width : '100%', 
+                    marginTop: '0', paddingLeft: '10px', 
+                    paddingRight: '20px', paddingTop: '15px', paddingBottom: '10px'}}>
+                    <span className='users-list-span times-two'>
+                        <div className='users-list-header'>
+                            <p>Citatų sąrašas</p>
+                        </div>
+                    </span>
+                    <span className='users-list-span'>
+                        <div className="filter-container">
+                            <div className="filter-container-inside">
+                                <input
+                                    type="text"
+                                    value={filter}
+                                    onChange={(e) => setFilter(e.target.value)}
+                                    placeholder="Filtruoti pagal šaltinį"
+                                    className="filter-container-input"
+                                />
+                            </div>  
+                        </div>
+                    </span>
                 </div>
-                {quotes.length ? (
+                <div className="create-btn-div" style={{width: '20%', margin: 'auto'}}>
+                    <button onClick={createQuote} className="blue-button" style={{width : '100%', fontWeight: '600', fontSize: '16px'}}> Sukurti Citatą </button>
+                </div>
+                {filteredQuotes.length ? (
                     <table className="my-table">
                         <thead>
                             <tr>
@@ -91,21 +118,23 @@ const Quotes = ({ levelId }) => {
                             </tr>
                         </thead>
                         <tbody>
-                            {quotes.map((quote, i) => (
+                            {filteredQuotes.map((quote, i) => (
                                 <tr key={i}>
                                     <td>{quote?.author}</td>
                                     <td>{quote?.source}</td>
-                                    <td>{quote?.content}</td>
+                                    <td>{quote?.content.substring(0, 20)}...</td>
                                     <td>{quote?.timeToComplete}</td>
                                     <td>
                                         <button 
-                                            className="load-button-v1"
+                                            className="green-button"
+                                            style={{width: '30%'}}
                                             onClick={() => updateQuote(quote.id)}
                                         >
                                             <FontAwesomeIcon icon={faEdit} />
                                         </button>
                                         <button
-                                            className="load-button-v1"
+                                            className="red-button"
+                                            style={{width: '30%'}}
                                             onClick={() => setDeleteId(quote.id)}
                                         >
                                             <FontAwesomeIcon icon={faTrash} />
@@ -120,12 +149,12 @@ const Quotes = ({ levelId }) => {
                 )}
                 {isLoading ? (
                     <p>Kraunasi...</p>
-                ) : quotes.length >= 0 ? (
+                ) : quotes.length >= 0 && filter === '' ? (
                     <div className="pagination-buttons">
-                        <button onClick={() => setPage(page === 1 ? page : page - 1)} className="load-button-v1">-</button>
-                        <button onClick={() => setPage(quotes.length === 0 ? page : page + 1)} className="load-button-v1">+</button>
-                        <div className='page-number-div'><p>{page}</p></div>
-                    </div>                    
+                        <span className="pagination-buttons-span"><button className='pagination-btn' onClick={() => setPage(page === 1 ? page : page - 1)}>-</button></span>
+                        <span className="pagination-buttons-span" style={{height: '50%', marginTop: 'auto', marginBottom:'auto'}}>{page}</span>
+                        <span className="pagination-buttons-span"><button className='pagination-btn' onClick={() => setPage(quotes.length === 0 ? page : page + 1)}>+</button></span>
+                    </div>
                 ) : null}
             </div>
             <ErrorModal

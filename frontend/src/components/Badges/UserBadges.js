@@ -4,6 +4,7 @@ import { useNavigate, useLocation } from "react-router-dom";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrash, faSearch, faEdit } from '@fortawesome/free-solid-svg-icons';
 import ErrorModal from "../Modals/ErrorModal";
+import logo from "./badge-default.png";
 
 const UserBadges = () => {
     const [badges, setBadges] = useState([]);
@@ -13,6 +14,8 @@ const UserBadges = () => {
     const location = useLocation();
     const [errorMessage, setErrorMessage] = useState("");
     const [loadBadgesFlag, setLoadBadgesFlag] = useState(false);
+    const [filter, setFilter] = useState('');
+    const [filteredBadges, setFilteredBadges] = useState([]);
 
     const fetchBadges = useCallback(async () => {
         try {
@@ -38,32 +41,52 @@ const UserBadges = () => {
         loadBadges();
     }, [loadBadgesFlag]); 
 
+    useEffect(() => {
+        setFilteredBadges(badges.filter(badge => badge.name.toLowerCase().includes(filter.toLowerCase())));       
+    }, [badges, filter]);
+
     return (
         <article className="list-article">
             <div className="table-container">
-                <h2 className="list-headers">Mano ženkleliai</h2>
-                {badges.length ? (
-                    <table className="my-table">
-                        <thead>
-                            <tr>
-                                <th>Pavadinimas</th>
-                                <th>Aprašymas</th>
-                                <th>Tipas</th>
-                                <th></th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {badges.map((badge, i) => (
-                                <tr key={i}>
-                                    <td>{badge?.name}</td>
-                                    <td>{badge?.description}</td>
-                                    <td>{badge?.type}</td>
-                                    <td>                                      
-                                    </td>    
-                                </tr>
-                            ))}
-                        </tbody>
-                    </table>
+                <div className='users-list-div' style={{background : 'black', color:'#fff', width : '100%', 
+                    marginTop: '0', paddingLeft: '10px', 
+                    paddingRight: '20px', paddingTop: '15px', paddingBottom: '10px'}}>
+                    <span className='users-list-span times-two'>
+                        <div className='users-list-header'>
+                            <p>Mano ženklelių sąrašas</p>
+                        </div>
+                    </span>
+                    <span className='users-list-span'>
+                        <div className="filter-container">
+                            <div className="filter-container-inside">
+                                <input
+                                    type="text"
+                                    value={filter}
+                                    onChange={(e) => setFilter(e.target.value)}
+                                    placeholder="Filtruoti pagal pavadinimą"
+                                    className="filter-container-input"
+                                />
+                            </div>  
+                        </div>
+                    </span>
+                </div>
+                {filteredBadges.length ? (
+                    <div className='badge-div'>
+                        {filteredBadges.map((badge, i) => (
+                            <span key={i} className='badge-span'>
+                                <img src={logo} alt="Logo" width='80%' height='120px'/>
+                                <p style={{fontWeight : '600'}}>{badge?.name}</p>
+                                <p>{badge?.type}</p>
+                                <div>
+                                    <button
+                                        className = 'red-button'
+                                    >
+                                        Peržiūrėti
+                                    </button>                                       
+                                </div>    
+                            </span>
+                        ))}
+                    </div>
                 ) : (
                     <p className="no-list-items-p">Ženklelių nėra</p>
                 )}

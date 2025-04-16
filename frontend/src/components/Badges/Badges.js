@@ -8,6 +8,7 @@ import ConfirmationModal from "../Modals/ConfirmationModal";
 import ErrorModal from "../Modals/ErrorModal";
 import CreateBadge from "./CreateBadge";
 import EditBadge from "./EditBadge";
+import logo from "./badge-default.png";
 
 const Badges = () => {
     const [badges, setBadges] = useState([]);
@@ -87,7 +88,7 @@ const Badges = () => {
     return (
         <article className="list-article">
             <div className="table-container">
-                <div className='users-list-div' style={{background : 'lightgrey', width : '100%', 
+                <div className='users-list-div' style={{background : 'black', color:'#fff', width : '100%', 
                     marginTop: '0', paddingLeft: '10px', 
                     paddingRight: '20px', paddingTop: '15px', paddingBottom: '10px'}}>
                     <span className='users-list-span times-two'>
@@ -110,22 +111,24 @@ const Badges = () => {
                     </span>
                 </div>
                 <div style={{textAligh: 'center'}}>
-                    <button onClick={createBadge} style={{marginLeft: '40%', width: '20%'}}> Sukurti Ženklelį </button>
+                    <button className = 'blue-button' onClick={createBadge} style={{marginLeft: '40%', width: '20%', fontWeight: '600'}}> Sukurti Ženklelį </button>
                 </div>
                 {filteredBadges.length ? (
                     <div className='badge-div'>
                         {filteredBadges.map((badge, i) => (
                             <span key={i} className='badge-span'>
-                                <p>{badge?.name}</p>
-                                <p>{badge?.description}</p>
+                                <img src={logo} alt="Logo" width='80%' height='120px'/>
+                                <p style={{fontWeight : '600'}}>{badge?.name}</p>
                                 <p>{badge?.type}</p>
                                 <div>
                                     <button 
+                                        className = 'green-button'
                                         onClick={() => updateBadge(badge.id)}
                                     >
                                         <FontAwesomeIcon icon={faEdit} />
                                     </button>
                                     <button
+                                        className = 'red-button'
                                         onClick={() => setDeleteId(badge.id)}
                                     >
                                         <FontAwesomeIcon icon={faTrash} />

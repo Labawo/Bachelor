@@ -17,6 +17,11 @@ const Quizes = () => {
     const { auth } = useAuth();
     const [errorMessage, setErrorMessage] = useState("");
     const [playId, setPlayId] = useState(0);
+    const [selectedLevelId, setSelectedLevelId] = useState('');
+    const [selectedLevelName, setSelectedLevelName] = useState('');
+    const [selectedLevelDescription, setSelectedLevelDescription] = useState('');
+    const [selectedLevelExperience, setSelectedLevelExperience] = useState(0);
+    const [selectedLevelRecords, setSelectedLevelRecords] = useState(0);
 
     const fetchLevels = useCallback(async (pageNumber) => {
         try {
@@ -45,6 +50,14 @@ const Quizes = () => {
         setPlayId(levelId);
     };
 
+    const setLevelData = (levelId, levelName, levelDescription, levelXp, levelRecords) => {
+        setSelectedLevelId(levelId);
+        setSelectedLevelName(levelName);
+        setSelectedLevelDescription(levelDescription);
+        setSelectedLevelExperience(levelXp);
+        setSelectedLevelRecords(levelRecords);
+    };
+
     useEffect(() => {
         loadLevels(page);
     }, [page]); 
@@ -52,9 +65,9 @@ const Quizes = () => {
     return (
         <article className="list-article">
             <div className='items-list-div' >
-                <span className='items-list-span times-two'>
-                    <div className="table-container">
-                        <h2 className="list-headers">Testų sąrašas pagal lygį</h2>
+                <span className='items-list-span times-two' style={{borderRight: '2px solid black', height: '100%'}}>
+                    <div className="table-container" style={{marginRight: '0'}}>
+                        <h2 className="list-headers" style={{background: 'black', color: '#fff'}}>Testų sąrašas pagal lygį</h2>
                         {levels.length ? (
                             <table className="my-table">
                                 <thead>
@@ -73,10 +86,11 @@ const Quizes = () => {
                                             <td>{level?.itemCount}</td>
                                             <td>
                                                 <button 
-                                                    className="play-button"
-                                                    onClick={() => playQuiz(level.id)}
+                                                    className="gold-button"
+                                                    style={{width: '35%'}}
+                                                    onClick={() => setLevelData(level.id, level.name, level.description, level.minExperience, level.itemCount)}
                                                 >
-                                                    Žaisti
+                                                    Plačiau
                                                 </button>                                   
                                             </td>    
                                         </tr>
@@ -90,19 +104,31 @@ const Quizes = () => {
                             <p>Loading...</p>
                         ) : levels.length >= 0 ? (
                             <div className="pagination-buttons">
-                                <button onClick={() => setPage(page === 1 ? page : page - 1)} className="load-button-v1">-</button>
-                                <button onClick={() => setPage(levels.length === 0 ? page : page + 1)} className="load-button-v1">+</button>
-                                <div className='page-number-div'><p>{page}</p></div>
+                                <span className="pagination-buttons-span"><button className='pagination-btn' onClick={() => setPage(page === 1 ? page : page - 1)}>-</button></span>
+                                <span className="pagination-buttons-span" style={{height: '50%', marginTop: 'auto', marginBottom:'auto'}}>{page}</span>
+                                <span className="pagination-buttons-span"><button className='pagination-btn' onClick={() => setPage(levels.length === 0 ? page : page + 1)}>+</button></span>
                             </div>                    
                         ) : null}
                     </div>
                 </span>
-                <span className='items-list-span' style={{borderLeft: '2px solid black', height: '100%'}}>
+                <span className='items-list-span' style={{borderLeft: '2px solid black', height: '100%', overflow: 'auto', paddingBottom: '25px'}}>
                     <div>
-                        <h2>Lygio aprašymas</h2>
+                        <h2 style={{background: 'black', color: '#fff'}}>Lygio aprašymas</h2>
                         <h3>Pavadinimas</h3>
-                        <h3>Pavadinimas</h3>
-                        <h3>Pavadinimas</h3>
+                        <p style={{textAlign: 'center'}}>{selectedLevelId !== '' ? selectedLevelName : ''}</p>
+                        <h3>Aprašymas</h3>
+                        <p style={{textAlign: 'center'}}>{selectedLevelId !== '' ? selectedLevelDescription : ''}</p>
+                        <h3>Patirtis</h3>
+                        <p style={{textAlign: 'center'}}>{selectedLevelId !== '' ? selectedLevelExperience : ''}</p>
+                        {selectedLevelId !== '' ? (<div style={{width: '35%', margin: 'auto'}}>
+                            <button 
+                                className="green-button"
+                                style={{width: '100%'}}
+                                onClick={() => playQuiz(selectedLevelId)}
+                            >
+                                Žaisti
+                            </button>
+                        </div>) : null}
                     </div>
                 </span>
             </div>

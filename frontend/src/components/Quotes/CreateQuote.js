@@ -106,7 +106,6 @@ const CreateQuote = ({ show, onClose, levelId }) => {
                       type="number"
                       id="timeForCitation"
                       placeholder="Laikas įveikti"
-                      value={timeToComplete <= 30 ? '' : timeToComplete}
                       onChange={(e) => setTimeToComplete(e.target.value)}
                       required
                       className="input-field"

@@ -473,6 +473,22 @@ form.create-note button {
     outline: none;
 }
 
+.red-button:hover {
+    background: rgb(175, 32, 51);
+}
+
+.blue-button:hover {
+    background: rgb(24, 109, 134);
+}
+
+.green-button:hover {
+    background: rgb(25, 136, 40);
+}
+
+.gold-button:hover {
+    background: rgb(179, 182, 34);
+}
+
 .allowance {
     width: 15%;
     padding-left: 0;
@@ -813,7 +829,7 @@ tbody tr {
     padding: 15px;
     border-radius: 7px;
     box-shadow: 0 1px 5px rgb(138, 137, 137);
-    height: 250px;
+    height: 300px;
     overflow: auto;
     background: #fff;
     text-align: center;
@@ -858,7 +874,6 @@ tbody tr {
     height: 70vh;
     min-height: 70vh;
     overflow: auto;
-    background-color: red;
 }
 
 .users-list-span{
@@ -870,9 +885,33 @@ tbody tr {
     text-align: left;
 }
 
+.pagination-buttons {
+    display: grid;
+    grid-gap: 5px;
+    grid-template-columns: repeat(3, 1fr);
+    width: 10%;
+    overflow: auto;
+    margin: auto;
+}
+
+.pagination-btn {
+    margin-left: 0;
+    margin-right: 0;
+    background-color: #808080;
+    cursor: pointer;
+    color: #fff;
+}
+
+.pagination-buttons-span {
+    margin: 5px;
+    text-align: center;
+    height: 70px;
+}
+
 .users-list-header {
     height: 100%;
     text-align: left;
+    margin-left: 5%;
 }
 
 .users-list-header p {
@@ -886,4 +925,21 @@ tbody tr {
     background-color: #fff;
     overflow: auto;
     max-height: 80vh;
+}
+
+.first-place {
+    background-color: gold;
+    font-size: 30px;
+    font-weight: 550;
+}
+
+.second-place {
+    background-color: silver;
+    font-size: 25px;
+    font-weight: 500;
+}
+.third-place {
+    background-color: brown;
+    font-size: 20px;
+    font-weight: 450;
 }

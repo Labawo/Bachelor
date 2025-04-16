@@ -23,6 +23,8 @@ const Words = ({ levelId }) => {
     const { auth } = useAuth();
     const [deleteId, setDeleteId] = useState("");
     const [errorMessage, setErrorMessage] = useState("");  
+    const [filter, setFilter] = useState('');
+    const [filteredWords, setFilteredWords] = useState([]);
 
     const fetchWords = useCallback(async (pageNumber) => {
         try {
@@ -73,40 +75,69 @@ const Words = ({ levelId }) => {
         }
     };
 
+    useEffect(() => {
+        setFilteredWords(words.filter(word => word.question.toLowerCase().includes(filter.toLowerCase())));       
+    }, [words, filter]);
+
     return (
         <article className="list-article">
             <div className="table-container">
-                <h2 className="list-headers">Klausimų sąrašas</h2>
+            <div className='users-list-div' style={{background : 'black', color: '#fff', width : '100%', 
+                    marginTop: '0', paddingLeft: '10px', 
+                    paddingRight: '20px', paddingTop: '15px', paddingBottom: '10px'}}>
+                    <span className='users-list-span times-two'>
+                        <div className='users-list-header'>
+                            <p>Klausimų sąrašas</p>
+                        </div>
+                    </span>
+                    <span className='users-list-span'>
+                        <div className="filter-container">
+                            <div className="filter-container-inside">
+                                <input
+                                    type="text"
+                                    value={filter}
+                                    onChange={(e) => setFilter(e.target.value)}
+                                    placeholder="Filtruoti pagal klausimą"
+                                    className="filter-container-input"
+                                />
+                            </div>  
+                        </div>
+                    </span>
+                </div>
                 <div className="create-btn-div">
-                    <button onClick={createWord} className="create-button"> Sukurti Klausimą </button>
-                    <p style={{borderBottom: "2px solid black", borderTop: "2px solid black", fontWeight: "bold", fontSize:"20px", paddingTop: "10px", paddingBottom: "10px"}}> ARBA </p>
+                    <div style={{width: '25%', margin: 'auto'}}>
+                        <button onClick={createWord} className="blue-button" style={{width : '100%', fontWeight: '600', fontSize: '16px'}}> Sukurti Klausimą </button>
+                    </div>
+                    <p style={{borderBottom: "2px solid black", borderTop: "2px solid black", fontWeight: "bold", fontSize:"20px", paddingTop: "10px", paddingBottom: "10px", textAlign: 'center'}}> ARBA </p>
                     <div className="outer-import-file-div">
                         <ImportFile levelId={levelId}/>
                     </div>                    
                 </div>
-                {words.length ? (
+                {filteredWords.length ? (
                     <table className="my-table">
                         <thead>
                             <tr>
+                                <th>#</th>
                                 <th>Klausimas</th>
                                 <th>Atsakymas</th>
                                 <th></th>
                             </tr>
                         </thead>
                         <tbody>
-                            {words.map((word, i) => (
+                            {filteredWords.map((word, i) => (
                                 <tr key={i}>
+                                    <td>{i+1}</td>
                                     <td>{word?.question}</td>
                                     <td>{word?.correctAnswer}</td>
                                     <td>
                                         <button 
-                                            className="load-button-v1"
+                                            className="green-button"
                                             onClick={() => updateWord(word.id)}
                                         >
                                             <FontAwesomeIcon icon={faEdit} />
                                         </button>
                                         <button
-                                            className="load-button-v1"
+                                            className="red-button"
                                             onClick={() => setDeleteId(word.id)}
                                         >
                                             <FontAwesomeIcon icon={faTrash} />
@@ -121,11 +152,11 @@ const Words = ({ levelId }) => {
                 )}
                 {isLoading ? (
                     <p>Kraunasi...</p>
-                ) : words.length >= 0 ? (
+                ) : words.length >= 0 && filter === '' ? (
                     <div className="pagination-buttons">
-                        <button onClick={() => setPage(page === 1 ? page : page - 1)} className="load-button-v1">-</button>
-                        <button onClick={() => setPage(words.length === 0 ? page : page + 1)} className="load-button-v1">+</button>
-                        <div className='page-number-div'><p>{page}</p></div>
+                        <span className="pagination-buttons-span"><button className='pagination-btn' onClick={() => setPage(page === 1 ? page : page - 1)}>-</button></span>
+                        <span className="pagination-buttons-span" style={{height: '50%', marginTop: 'auto', marginBottom:'auto'}}>{page}</span>
+                        <span className="pagination-buttons-span"><button className='pagination-btn' onClick={() => setPage(words.length === 0 ? page : page + 1)}>+</button></span>
                     </div>                    
                 ) : null}
             </div>

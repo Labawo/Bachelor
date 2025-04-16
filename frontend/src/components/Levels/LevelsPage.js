@@ -12,8 +12,8 @@ const LevelPage = ({ urlApiName, headerName, flag }) => {
             <NavBarNew />
             
             <section className='admin-section' style={{paddingTop: '0'}}>    
-                {flag ? (<img src={logo1} alt="Logo" width='100%' height='200px'/>  ) : (<img src={logo2} alt="Logo" width='100%' height='200px'/>)}
-                <Levels urlApi={urlApiName} header={headerName}/>
+                {flag ? (<img src={logo1} alt="Logo" width='100%' height='150px'/>  ) : (<img src={logo2} alt="Logo" width='100%' height='150px'/>)}
+                <Levels urlApi={urlApiName} header={headerName} headerBackgroundColor={flag ? 'black' : 'black'}/>
             </section>
             
             <Footer />

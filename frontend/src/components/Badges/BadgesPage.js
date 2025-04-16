@@ -3,7 +3,6 @@ import Footer from "../Main/Footer";
 import Badges from "./Badges";
 import logo from "./badges-image.png";
 
-
 const BadgesPage = () => {
 
     return (

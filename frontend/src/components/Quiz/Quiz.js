@@ -1,7 +1,8 @@
 import { useState } from "react";
-import './quiz.css'
-import { resultInitialState } from "./constants"
-import AnswerTimer from "../QuizTimer/AnswerTimer"
+import './quiz.css';
+import { resultInitialState } from "./constants";
+import AnswerTimer from "../QuizTimer/AnswerTimer";
+import useAxiosPrivate from "../../hooks/UseAxiosPrivate";
 
 const Quiz = ({ questions, currQuestion }) => {
     const [currentQuestion, setCurrentQuestion] = useState(currQuestion);
@@ -133,21 +134,21 @@ const Quiz = ({ questions, currQuestion }) => {
                         </button>
                     </div>
                 </>) : <div className='quiz-result'>
-                        <h3 className='quiz-h3'>Result</h3>
+                        <h3 className='quiz-h3'>Rezultatas</h3>
                         <p className='quiz-p'>
-                            Total Questions: <span className='quiz-span'>{questions.length}</span>
+                            Iš viso klausimų: <span className='quiz-span'>{questions.length}</span>
                         </p>
                         <p className='quiz-p'>
-                            Total Score: <span className='quiz-span'>{result.score}</span>
+                            Surinkti taškai: <span className='quiz-span'>{result.score}</span>
                         </p>
                         <p className='quiz-p'>
-                            Correct Answers: <span className='quiz-span'>{result.correctAnswers}</span>
+                            Teisingi atsakymai: <span className='quiz-span'>{result.correctAnswers}</span>
                         </p>
                         <p>
-                            Wrong Answers: <span className='quiz-span'>{result.wrongAnswers}</span>
+                            Neteisingi atsakymai: <span className='quiz-span'>{result.wrongAnswers}</span>
                         </p>
                         <button onClick={onTryAgain} className="quiz-button">
-                            Try again
+                            Bandyti dar kartą.
                         </button>
                     </div>}
                 

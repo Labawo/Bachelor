@@ -53,6 +53,7 @@ const CreateLevel = ({ show, onClose }) => {
 
   const clearForm = () => {
     setName('');
+    setDescription('');
     setIsForWords(false);
     setMinExperience(0);
   };

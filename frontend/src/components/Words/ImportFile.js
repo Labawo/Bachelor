@@ -75,8 +75,11 @@ const ImportFile = ({ levelId }) => {
                 onChange={handleOnChange}
                 />
 
+                <p style={{textAlign: 'center', fontSize: '10px'}}>Duomenu formatas pirmoje eiluteje "question, correctAnswer," kituose duomenis tokiu formatu "Keturkojis gyvunas?, Šuo,"</p>
+
                 <button
-                className="create-button"
+                className="blue-button" 
+                style={{fontWeight: '600', fontSize: '16px', width:'100%'}}
                 id='file-bth'
                 onClick={(e) => {
                     e.persist();

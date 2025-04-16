@@ -16,10 +16,7 @@ const GameModal = () => {
 
   return (
     <>
-      <div className="training-engine-holder-div" style={{color: 'black'}}>
-        <div className='close-training-button-div'>
-            <button className="" onClick={onClose}>Gryžti atgal</button>
-        </div>
+      <div style={{color: 'black', width: '100%', minHeight: '70vh', marginRight: '10px'}}>
         <Game />
       </div>
     </>

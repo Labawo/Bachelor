@@ -1065,6 +1065,16 @@
   },
   {
     "ContainingType": "backend.Controllers.UsersController",
+    "Method": "GetUsersBadges",
+    "RelativePath": "api/topUsers",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "backend.Controllers.UsersController",
     "Method": "UpdateProfile",
     "RelativePath": "api/updateProfile",
     "HttpMethod": "PUT",

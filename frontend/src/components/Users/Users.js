@@ -22,7 +22,7 @@ const Users = () => {
         series: [
           {
             name: "Naudotojai",
-            data: [28, 29, 33, 36, 32, 32, 33, 1, 1, 3, 0]
+            data: []
           }
         ],
         options: {
@@ -44,7 +44,7 @@ const Users = () => {
               show: false
             }
           },
-          colors: ['#77B6EA', '#545454'],
+          colors: ['black', '#545454'],
           dataLabels: {
             enabled: true,
           },
@@ -98,6 +98,16 @@ const Users = () => {
                     signal: controller.signal
                 });
                 setUsers(response.data);
+                let data = createGraphData(response.data);
+                setGraph(prevGraph => {
+                    return {
+                        ...prevGraph,
+                        series : [{
+                            name : "Naudotojai",
+                            data: data
+                        }]
+                    }
+                })
             } catch (err) {
                 console.error(err);
                 navigate('/login', { state: { from: location }, replace: true });
@@ -132,11 +142,24 @@ const Users = () => {
         }
     };
 
+    const createGraphData = (data) => {
+        let array = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+
+        for(let i = 0; i < data.length; i++) {
+            if (parseInt(data[i].registrationDate.split('T')[0].split('-')[0]) === new Date(Date.now()).getFullYear()) {
+                let ind = parseInt(data[i].registrationDate.split('T')[0].split('-')[1]);
+                array[ind - 1] += 1;
+            }
+        }
+
+        return array;
+    }
+
     return (
         <article>
             <ReactApexChart options={graph.options} series={graph.series} type="line" height={350} width={'100%'} style={{width: '95%', margin: 'auto', marginTop : '15px'}} />
             <div className="table-container" style={{borderTop : '2px solid black'}}>
-                <div className='users-list-div' style={{background : 'lightgrey', width : '100%', 
+                <div className='users-list-div' style={{background : 'black', color:'#fff', width : '100%', 
                     marginTop: '0', paddingLeft: '10px', 
                     paddingRight: '20px', paddingTop: '15px', paddingBottom: '10px'}}>
                     <span className='users-list-span times-two'>
@@ -175,6 +198,8 @@ const Users = () => {
                             <tr>
                                 <th>Vardas</th>
                                 <th>El. paštas</th>
+                                <th>Registracijos data</th>
+                                <th>Patvirtintas?</th>
                                 <th></th>
                             </tr>
                         </thead>
@@ -183,6 +208,8 @@ const Users = () => {
                                 <tr key={i}>
                                     <td>{user?.userName}</td>
                                     <td>{user?.email}</td>
+                                    <td>{user?.registrationDate.split('T')[0]}</td>
+                                    <td>{user?.emailConfirmed ? 'TAIP' : 'NE'}</td>
                                     <td>
                                         <button 
                                             className='red-button'

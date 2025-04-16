@@ -41,7 +41,7 @@ const Users = () => {
     return (
         <article>
             <div className="table-container" style={{borderTop : '2px solid black'}}>
-                <div className='users-list-div' style={{background : 'lightgrey', width : '100%', 
+                <div className='users-list-div' style={{background : 'black', color : '#fff', width : '100%', 
                     marginTop: '0', paddingLeft: '10px', 
                     paddingRight: '20px', paddingTop: '15px', paddingBottom: '10px'}}>
                     <span className='users-list-span times-two'>
@@ -64,8 +64,8 @@ const Users = () => {
                         </thead>
                         <tbody>
                             {users.map((user, i) => (
-                                <tr key={i}>
-                                    <td>{i}</td>
+                                <tr key={i} className={i === 0 ? 'first-place' : i === 1 ? 'second-place' : i === 2 ? 'third-place' : ''}>
+                                    <td>{i+1}</td>
                                     <td>{user?.userName}</td>
                                     <td>{user?.badgeCount}</td>   
                                     <td>{user?.firstRegistrationYear}</td>

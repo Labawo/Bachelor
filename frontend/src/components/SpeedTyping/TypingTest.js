@@ -65,10 +65,10 @@ const TypingTest = ({ content, timeToComplete }) => {
     }
 
     const handleChange = (e) => {
-        const characters = charRefs.current;
+        //const characters = charRefs.current;
         const currentChar = charRefs.current[charIndex];
         let typedChar = e.target.value.slice(-1)
-        if (charIndex < characters.length && timeLeft > 0) {
+        if (charIndex < content.length && timeLeft > 0) {
             if (!isTyping) {
                 setIsTyping(true)
             }
@@ -82,7 +82,7 @@ const TypingTest = ({ content, timeToComplete }) => {
                 correctWrong[charIndex] = ' wrong'
             }
 
-            if(charIndex === characters.length - 1) {
+            if(charIndex === content.length - 1) {
                 setIsTyping(false);
             } else {
                 setIsTyping(true);
@@ -127,7 +127,7 @@ const TypingTest = ({ content, timeToComplete }) => {
                         <p>Likęs laikas: <strong>{timeLeft}</strong> </p>
                         <p>Klaidos: <strong>{mistakes}</strong></p>
                         <p>Žodžiai/min: <strong>{WPM}</strong> </p>
-                        <button className='btn' onClick={resetGame}>Bandyti iš naujo</button>
+                        <button className='btn' onClick={resetGame} style={{width: '40%'}}>Bandyti iš naujo</button>
                     </div>) : <button className='btn' onClick={resetGame}>Pradėti</button>}
             </div>
         </div>

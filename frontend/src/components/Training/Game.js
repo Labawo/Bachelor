@@ -204,7 +204,7 @@ const AnimatedHeader = styled.h1`
 
 const ViewContainer = styled.div`
   width: 100%;
-  max-height: 70vh;
+  height: 100vh;
   display: flex;
   overflow: hidden;
   align-items: center;
@@ -213,17 +213,19 @@ const ViewContainer = styled.div`
 `;
 
 const HealthBarContainer = styled.div`
-  width: 80%;
+  width: 100%;
   position: absolute;
   bottom: 0;
-  left: 10%;
+  left: 0;
   height: 50px;
+  border-top: 2px solid black;
+  background: #fff;
 `;
 
 const Title = styled.p`
   position: absolute;
   left: 50%;
-  top: -10%;
+  top: 40%;
   transform: translate(-50%, -50%);
   font-size: 30px;
 `;
@@ -395,7 +397,7 @@ class StartView extends Component {
       "Lėtai"
     ].map((el, i) => {
       let checked = false;
-      let value = 60 + i * 5;
+      let value = 30 + i * 5;
       if (spawnRate === value) {
         checked = true;
       }
@@ -478,7 +480,7 @@ class GameView extends Component {
       const index = this.randomIntInRange(0, this.state.options.length);
       let item = {
         character: this.state.options[index],
-        xPosition: this.randomIntInRange(5, 25),
+        xPosition: this.randomIntInRange(10, 75),
         yPosition: -20,
         active: true,
         hitHealth: false,
@@ -688,13 +690,13 @@ class GameOverView extends React.Component {
 
     let spawnSpeedText = "";
     switch (props.spawnRate) {
-      case 60:
+      case 30:
         spawnSpeedText = "Greitai";
         break;
-      case 65:
+      case 35:
         spawnSpeedText = "Įprastai";
         break;
-      case 70:
+      case 40:
         spawnSpeedText = "Lėtai";
         break;
       default:
@@ -734,7 +736,7 @@ class Game extends Component {
       currentView: "StartView",
       selectedTextOptions: ["raidės"],
       textOptions: ["raidės", "skaičiai", "simboliai", "lietuviškos"],
-      spawnRate: 60,
+      spawnRate: 30,
       hardcore: true,
       score: 0,
       highScore: 0
