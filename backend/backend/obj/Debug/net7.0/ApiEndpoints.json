@@ -1054,6 +1054,26 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "backend.Controllers.UsersController",
+    "Method": "UserStatistics",
+    "RelativePath": "api/statistics",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "backend.Auth.Models.UserStatisticsDto",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
     "ContainingType": "backend.Controllers.AuthController",
     "Method": "TestingRoute",
     "RelativePath": "api/test",

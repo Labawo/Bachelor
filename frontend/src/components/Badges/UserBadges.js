@@ -5,6 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrash, faSearch, faEdit } from '@fortawesome/free-solid-svg-icons';
 import ErrorModal from "../Modals/ErrorModal";
 import logo from "./badge-default.png";
+import InspectBadge from "./InspectBadge";
 
 const UserBadges = () => {
     const [badges, setBadges] = useState([]);
@@ -15,6 +16,7 @@ const UserBadges = () => {
     const [errorMessage, setErrorMessage] = useState("");
     const [loadBadgesFlag, setLoadBadgesFlag] = useState(false);
     const [filter, setFilter] = useState('');
+    const [instpectId, setInspectId] = useState(0);
     const [filteredBadges, setFilteredBadges] = useState([]);
 
     const fetchBadges = useCallback(async () => {
@@ -45,6 +47,10 @@ const UserBadges = () => {
         setFilteredBadges(badges.filter(badge => badge.name.toLowerCase().includes(filter.toLowerCase())));       
     }, [badges, filter]);
 
+    const handleInspect = (badgeId) => {
+        setInspectId(badgeId);
+    }; 
+
     return (
         <article className="list-article">
             <div className="table-container">
@@ -73,13 +79,14 @@ const UserBadges = () => {
                 {filteredBadges.length ? (
                     <div className='badge-div'>
                         {filteredBadges.map((badge, i) => (
-                            <span key={i} className='badge-span alerts-border'>
+                            <span key={i} className={`badge-span ${badge?.seen === 0 ? 'alerts-border' : ''}`}>
                                 <img src={logo} alt="Logo" width='80%' height='120px'/>
                                 <p style={{fontWeight : '600'}}>{badge?.name}</p>
                                 <p>{badge?.type}</p>
                                 <div>
                                     <button
                                         className = 'black-button'
+                                        onClick = {() => handleInspect(badge.id)}
                                     >
                                         Peržiūrėti
                                     </button>                                       
@@ -95,6 +102,11 @@ const UserBadges = () => {
                 show={errorMessage !== ""}
                 onClose={() => setErrorMessage("")}
                 message={errorMessage}
+            />
+            <InspectBadge
+                show={instpectId !== 0}
+                onClose={() => setInspectId(0)}
+                badgeId = {instpectId} 
             />
         </article>
     );

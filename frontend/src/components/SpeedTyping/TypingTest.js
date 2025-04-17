@@ -10,6 +10,7 @@ const TypingTest = ({ content, timeToComplete, isTraining }) => {
     const [isTyping, setIsTyping] = useState(false);
     const [WPM, setWPM] = useState(0);
     const [CPM, setCPM] = useState(0);
+    const [flag, setFlag] = useState('');
     const inputRef = useRef(null);
     const charRefs = useRef([]);
 
@@ -104,6 +105,7 @@ const TypingTest = ({ content, timeToComplete, isTraining }) => {
           console.log(response.data);
     
           setSuccessMessage(`Pabaiga, surinktas ženklelių skaičius : ${response.data}!`);
+          setFlag('e');
         } catch (error) {
           console.error("Klaida išsiunčiant rezultatus:", error);
           setErrorMessage("Klaida išsiunčiant rezultatus.");

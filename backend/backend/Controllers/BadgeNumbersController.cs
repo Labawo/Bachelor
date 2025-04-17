@@ -122,7 +122,7 @@ public class BadgeNumbersController : ControllerBase
 
             await _badgeNumbersRepository.CreateRangeAsync(numbers);
 
-            user.XP += 10;
+            user.QuizXp += 10;
             user.QuizDone += 1;
         
             if (user.NewBadgeCnt == null)

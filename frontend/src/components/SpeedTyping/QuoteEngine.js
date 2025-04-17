@@ -38,12 +38,17 @@ const QuoteEngine = ({ show, onClose, levelId }) => {
         }
     }, [axiosPrivate, levelId]);
 
+    const handleClose = () => {
+        onClose();
+        window.location.reload();
+    };
+
     return (
         <>
             <div className={`modal-game ${show ? "show" : ""}`}>
                 <div className="modal-content-game">
                     <div className='close-button-div-game'>
-                        <button className="primary-button-game" onClick={onClose}>X</button>
+                        <button className="primary-button-game" onClick={handleClose}>X</button>
                     </div>
                     
                     <div className='engine-holder-div'>

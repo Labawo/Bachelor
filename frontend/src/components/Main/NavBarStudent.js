@@ -1,7 +1,8 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import AuthContext from "../../context/AuthProvider";
+import useAxiosPrivate from "../../hooks/UseAxiosPrivate";
 import { faSignOutAlt, faArchive, faTrophy, faUser, faHome, faCheckSquare, faDumbbell, faCar } from '@fortawesome/free-solid-svg-icons';
 import '../../styles/NavBarNew.css'; // Import your CSS file
 import useAuth from "../../hooks/UseAuth";
@@ -13,6 +14,13 @@ const NavBarStudent = () => {
     const [showHtmlCssSubMenu, setShowHtmlCssSubMenu] = useState(false);
     const [showJsSubMenu, setShowJsSubMenu] = useState(false);
     const [showMoreSubMenu, setShowMoreSubMenu] = useState(false);
+    const [badageCount, setBadgeCount] = useState(0);
+    const [quizDone, setQuizDone] = useState(0);
+    const [playerWpm, setPlayerWpm] = useState(0);
+    const [playerXp, setPlayerXp] = useState(0);
+    const [quizXp, setQuizXp] = useState(0);
+
+    const axiosPrivate = useAxiosPrivate();
 
     const navigate = useNavigate();
 
@@ -61,6 +69,25 @@ const NavBarStudent = () => {
         setShowMoreSubMenu(!showMoreSubMenu);
     };
 
+    useEffect(() => {
+      const fetchStatistics = async () => {
+        try {
+          const response = await axiosPrivate.get("/statistics");
+          const { badgeCount, wpm, quizDone, quizXp, quoteXP } = response.data;
+          setBadgeCount(badgeCount);
+          setPlayerWpm(wpm);
+          setQuizDone(quizDone);
+          setPlayerXp(quoteXP);
+          setQuizXp(quizXp);
+        } catch (error) {
+          console.error("Klaida gaunant statistika", error);
+        }
+      };
+
+      fetchStatistics();
+      
+    }, [axiosPrivate]);
+
   return (
     <nav>
       <div className="navbar">
@@ -97,11 +124,11 @@ const NavBarStudent = () => {
                     <i className={`bx bxs-chevron-right arrow more-arrow ${showMoreSubMenu ? 'rotated' : ''}`}></i>
                   </span>
                   <ul className={`more-sub-menu sub-menu ${showMoreSubMenu ? 'show' : ''}`}>
-                    <li><a href="#">Atlikti testai:</a></li>
-                    <li><a href="#">Žodžiai/min: </a></li>
-                    <li><a href="#">Ženkliukų sk.:</a></li>
-                    <li><a href="#">Citatų patirtis:</a></li>
-                    <li><a href="#">Testų patirtis:</a></li>
+                    <li><a href="#">Atlikti testai: {quizDone}</a></li>
+                    <li><a href="#">Žodžiai/min: {playerWpm}</a></li>
+                    <li><a href="#">Ženkliukų sk.: {badageCount}</a></li>
+                    <li><a href="#">Citatų patirtis: {playerXp}</a></li>
+                    <li><a href="#">Testų patirtis: {quizXp}</a></li>
                   </ul>
                 </li>
                 <li>
