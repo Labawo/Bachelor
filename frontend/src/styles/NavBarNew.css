@@ -98,6 +98,7 @@ nav{
     top: 0;
     left: 100%;
     border-radius: 0 4px 4px 4px;
+    background-color: rgb(53, 53, 53);
     z-index: 1;
     display: none;
   }

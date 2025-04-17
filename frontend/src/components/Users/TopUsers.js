@@ -25,6 +25,7 @@ const Users = () => {
                     signal: controller.signal
                 });
                 setUsers(response.data);
+                console.log(response.data);
             } catch (err) {
                 console.error(err);
                 navigate('/login', { state: { from: location }, replace: true });

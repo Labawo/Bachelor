@@ -453,7 +453,7 @@ form.create-note button {
 
 .gold-button {
     background: rgb(203, 206, 37);
-    color: #fff;
+    color: black;
     border: none;
     width: 36px;
     height: 36px;
@@ -471,6 +471,21 @@ form.create-note button {
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
     cursor: pointer;
     outline: none;
+}
+
+.black-button {
+    background-color: rgb(36, 36, 36);
+    color: #fff;
+    border: none;
+    width: 36px;
+    height: 36px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+    cursor: pointer;
+    outline: none;
+}
+
+.black-button:hover {
+    background-color: black;
 }
 
 .red-button:hover {
@@ -835,6 +850,14 @@ tbody tr {
     text-align: center;
 }
 
+.alerts-border {
+    border: 2px solid #ff0000;
+    animation: blink 1s;
+    animation-iteration-count: 5;
+}
+
+@keyframes blink { 50% { border-color: #fff; }  }
+
 .badge-span button{
     width: 30%;
     position: relative;
@@ -939,7 +962,7 @@ tbody tr {
     font-weight: 500;
 }
 .third-place {
-    background-color: brown;
+    background-color: #CE8946;
     font-size: 20px;
     font-weight: 450;
 }

@@ -87,9 +87,22 @@ const NavBarStudent = () => {
                     </a>
                 </li>
                 <li>
+                    
+                </li>
+                <li className="more">
+                  <span onClick={toggleMoreSubMenu}>
                     <a style={{cursor : 'pointer'}}>
-                        Profilis
+                        Statistika
                     </a>
+                    <i className={`bx bxs-chevron-right arrow more-arrow ${showMoreSubMenu ? 'rotated' : ''}`}></i>
+                  </span>
+                  <ul className={`more-sub-menu sub-menu ${showMoreSubMenu ? 'show' : ''}`}>
+                    <li><a href="#">Atlikti testai:</a></li>
+                    <li><a href="#">Žodžiai/min: </a></li>
+                    <li><a href="#">Ženkliukų sk.:</a></li>
+                    <li><a href="#">Citatų patirtis:</a></li>
+                    <li><a href="#">Testų patirtis:</a></li>
+                  </ul>
                 </li>
                 <li>
                     <a onClick={logout} style={{cursor : 'pointer'}}>

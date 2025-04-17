@@ -73,13 +73,13 @@ const UserBadges = () => {
                 {filteredBadges.length ? (
                     <div className='badge-div'>
                         {filteredBadges.map((badge, i) => (
-                            <span key={i} className='badge-span'>
+                            <span key={i} className='badge-span alerts-border'>
                                 <img src={logo} alt="Logo" width='80%' height='120px'/>
                                 <p style={{fontWeight : '600'}}>{badge?.name}</p>
                                 <p>{badge?.type}</p>
                                 <div>
                                     <button
-                                        className = 'red-button'
+                                        className = 'black-button'
                                     >
                                         Peržiūrėti
                                     </button>                                       

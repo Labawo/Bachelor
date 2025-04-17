@@ -2,7 +2,7 @@ import React, { useState, useRef, useEffect } from 'react';
 import useAxiosPrivate from "../../hooks/UseAxiosPrivate";
 import './typingtest.css';
 
-const TypingTest = ({ content, timeToComplete }) => {
+const TypingTest = ({ content, timeToComplete, isTraining }) => {
 
     const [timeLeft, setTimeLeft] = useState(timeToComplete);
     const [mistakes, setMistakes] = useState(0);
@@ -84,23 +84,26 @@ const TypingTest = ({ content, timeToComplete }) => {
 
             if(charIndex === content.length - 1) {
                 setIsTyping(false);
+                handleEnding(WPM);
             } else {
                 setIsTyping(true);
             }
         }
     }
 
-    const handleEnding = async (cpm, wpm, mistakes, time) => {
+    const handleEnding = async (wpm) => {
         try {
           const speedData = {
+            points: wpm,
             wpm: wpm,
-            mistakes: mistakes,
-            time: time,
+            single: isTraining
           };
     
           const response = await axiosPrivate.post("/badgesnumber/quote", speedData);
+
+          console.log(response.data);
     
-          setSuccessMessage("Pabaiga, surinktas ženklelių skaičius!");
+          setSuccessMessage(`Pabaiga, surinktas ženklelių skaičius : ${response.data}!`);
         } catch (error) {
           console.error("Klaida išsiunčiant rezultatus:", error);
           setErrorMessage("Klaida išsiunčiant rezultatus.");

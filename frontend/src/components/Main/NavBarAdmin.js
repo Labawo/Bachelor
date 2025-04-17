@@ -101,11 +101,6 @@ const NavBarAdmin = () => {
                     </a>
                 </li>
                 <li>
-                    <a style={{cursor : 'pointer'}}>
-                        Profilis
-                    </a>
-                </li>
-                <li>
                     <a onClick={logout} style={{cursor : 'pointer'}}>
                         Atsijungti
                     </a>

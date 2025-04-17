@@ -3,12 +3,20 @@
   "WorkspaceRootPath": "C:\\Users\\Laurynas\\Desktop\\Bachelor\\backend\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{64529463-021C-4BA8-B04A-745421D16DCE}|backend\\backend.csproj|c:\\users\\laurynas\\desktop\\bachelor\\backend\\backend\\signalr\\notehub.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{64529463-021C-4BA8-B04A-745421D16DCE}|backend\\backend.csproj|solutionrelative:backend\\signalr\\notehub.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{64529463-021C-4BA8-B04A-745421D16DCE}|backend\\backend.csproj|c:\\users\\laurynas\\desktop\\bachelor\\backend\\backend\\data\\dtos\\badgenumbers\\badgenumberdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{64529463-021C-4BA8-B04A-745421D16DCE}|backend\\backend.csproj|solutionrelative:backend\\data\\dtos\\badgenumbers\\badgenumberdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{64529463-021C-4BA8-B04A-745421D16DCE}|backend\\backend.csproj|c:\\users\\laurynas\\desktop\\bachelor\\backend\\backend\\controllers\\badgenumberscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{64529463-021C-4BA8-B04A-745421D16DCE}|backend\\backend.csproj|solutionrelative:backend\\controllers\\badgenumberscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{64529463-021C-4BA8-B04A-745421D16DCE}|backend\\backend.csproj|c:\\users\\laurynas\\desktop\\bachelor\\backend\\backend\\controllers\\notescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{64529463-021C-4BA8-B04A-745421D16DCE}|backend\\backend.csproj|solutionrelative:backend\\controllers\\notescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{64529463-021C-4BA8-B04A-745421D16DCE}|backend\\backend.csproj|c:\\users\\laurynas\\desktop\\bachelor\\backend\\backend\\signalr\\notehub.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{64529463-021C-4BA8-B04A-745421D16DCE}|backend\\backend.csproj|solutionrelative:backend\\signalr\\notehub.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{64529463-021C-4BA8-B04A-745421D16DCE}|backend\\backend.csproj|c:\\users\\laurynas\\desktop\\bachelor\\backend\\backend\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -30,11 +38,37 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 4,
+          "SelectedChildIndex": 0,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 0,
+              "Title": "BadgeNumberDto.cs",
+              "DocumentMoniker": "C:\\Users\\Laurynas\\Desktop\\Bachelor\\backend\\backend\\Data\\Dtos\\BadgeNumbers\\BadgeNumberDto.cs",
+              "RelativeDocumentMoniker": "backend\\Data\\Dtos\\BadgeNumbers\\BadgeNumberDto.cs",
+              "ToolTip": "C:\\Users\\Laurynas\\Desktop\\Bachelor\\backend\\backend\\Data\\Dtos\\BadgeNumbers\\BadgeNumberDto.cs",
+              "RelativeToolTip": "backend\\Data\\Dtos\\BadgeNumbers\\BadgeNumberDto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAsAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-17T15:39:16.02Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "BadgeNumbersController.cs",
+              "DocumentMoniker": "C:\\Users\\Laurynas\\Desktop\\Bachelor\\backend\\backend\\Controllers\\BadgeNumbersController.cs",
+              "RelativeDocumentMoniker": "backend\\Controllers\\BadgeNumbersController.cs",
+              "ToolTip": "C:\\Users\\Laurynas\\Desktop\\Bachelor\\backend\\backend\\Controllers\\BadgeNumbersController.cs",
+              "RelativeToolTip": "backend\\Controllers\\BadgeNumbersController.cs",
+              "ViewState": "AgIAALYAAAAAAAAAAAAgwMAAAAAdAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-17T15:27:54.513Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
               "Title": "appsettings.json",
               "DocumentMoniker": "C:\\Users\\Laurynas\\Desktop\\Bachelor\\backend\\backend\\appsettings.json",
               "RelativeDocumentMoniker": "backend\\appsettings.json",
@@ -46,7 +80,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 4,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Users\\Laurynas\\Desktop\\Bachelor\\backend\\backend\\Program.cs",
               "RelativeDocumentMoniker": "backend\\Program.cs",
@@ -58,7 +92,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 5,
               "Title": "JwtTokenService.cs",
               "DocumentMoniker": "C:\\Users\\Laurynas\\Desktop\\Bachelor\\backend\\backend\\Auth\\JwtTokenService.cs",
               "RelativeDocumentMoniker": "backend\\Auth\\JwtTokenService.cs",
@@ -70,19 +104,19 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "NotesController.cs",
               "DocumentMoniker": "C:\\Users\\Laurynas\\Desktop\\Bachelor\\backend\\backend\\Controllers\\NotesController.cs",
               "RelativeDocumentMoniker": "backend\\Controllers\\NotesController.cs",
               "ToolTip": "C:\\Users\\Laurynas\\Desktop\\Bachelor\\backend\\backend\\Controllers\\NotesController.cs",
               "RelativeToolTip": "backend\\Controllers\\NotesController.cs",
-              "ViewState": "AgIAAIEAAAAAAAAAAAAowIoAAAAJAAAAAAAAAA==",
+              "ViewState": "AgIAAFsAAAAAAAAAAAAAAFsAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-03-30T19:22:55.341Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 3,
               "Title": "NoteHub.cs",
               "DocumentMoniker": "C:\\Users\\Laurynas\\Desktop\\Bachelor\\backend\\backend\\SignalR\\NoteHub.cs",
               "RelativeDocumentMoniker": "backend\\SignalR\\NoteHub.cs",
@@ -90,8 +124,7 @@
               "RelativeToolTip": "backend\\SignalR\\NoteHub.cs",
               "ViewState": "AgIAACUAAAAAAAAAAAAcwFAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-30T19:01:19.442Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-30T19:01:19.442Z"
             }
           ]
         }

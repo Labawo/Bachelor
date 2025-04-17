@@ -20,3 +20,5 @@ public record ResetPasswordDto([Required] string CurrentPassword, [Required] str
 public record UpdateProfileDto([Required] string Name, [Required] string LastName);
 
 public record UserTopDto(string UserName, int? BadgeCount, int? FirstRegistrationYear);
+
+public record UserStatisticsDto(int? BadgeCount, int? WPM, int? QuizDone, int? QuizXp, int? QuoteXP);

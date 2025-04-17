@@ -67,7 +67,7 @@ const Quizes = () => {
             <div className='items-list-div' >
                 <span className='items-list-span times-two' style={{borderRight: '2px solid black', height: '100%'}}>
                     <div className="table-container" style={{marginRight: '0'}}>
-                        <h2 className="list-headers" style={{background: 'black', color: '#fff'}}>Testų sąrašas pagal lygį</h2>
+                        <h2 className="list-headers" style={{background: 'black', color: '#fff', paddingTop: '15px', paddingBottom: '15px'}}>Testų sąrašas pagal lygį</h2>
                         {levels.length ? (
                             <table className="my-table">
                                 <thead>
@@ -113,7 +113,7 @@ const Quizes = () => {
                 </span>
                 <span className='items-list-span' style={{borderLeft: '2px solid black', height: '100%', overflow: 'auto', paddingBottom: '25px'}}>
                     <div>
-                        <h2 style={{background: 'black', color: '#fff'}}>Lygio aprašymas</h2>
+                        <h2 style={{background: 'black', color: '#fff', paddingTop: '15px', paddingBottom: '15px'}}>Lygio aprašymas</h2>
                         <h3>Pavadinimas</h3>
                         <p style={{textAlign: 'center'}}>{selectedLevelId !== '' ? selectedLevelName : ''}</p>
                         <h3>Aprašymas</h3>

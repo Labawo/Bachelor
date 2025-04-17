@@ -89,44 +89,57 @@ public class BadgeNumbersController : ControllerBase
             return BadRequest();
         }
 
-        var badges = await _badgesRepository.GetManyQuizAsync(requestDto.Points);
-        var badgenumbers = await _badgeNumbersRepository.GetManyUserAsync(userId);
-        var numbers = new List<BadgeNumber>();
-
-        if (badges.Count() > 0)
+        if (requestDto.Points >= 50)
         {
-            if (badgenumbers.Count() == 0)
-            {
-                foreach (var badge in badges)
-                {
-                    BadgeNumber number = new BadgeNumber { OwnerId = userId, BadgeId = badge.Id, EarnedBadges = 0 };
+            var badges = await _badgesRepository.GetManyQuizAsync(user.QuizDone is null ? 0 : (int)user.QuizDone);
+            var badgenumbers = await _badgeNumbersRepository.GetManyUserAsync(userId);
+            var numbers = new List<BadgeNumber>();
 
-                    numbers.Add(number);
-                }
-            }
-            else
+            if (badges.Count() > 0)
             {
-                foreach (var badge in badges)
+                if (badgenumbers.Count() == 0)
                 {
-                    if (badgenumbers.Where(o => o.BadgeId == badge.Id).Count() == 0)
+                    foreach (var badge in badges)
                     {
                         BadgeNumber number = new BadgeNumber { OwnerId = userId, BadgeId = badge.Id, EarnedBadges = 0 };
 
                         numbers.Add(number);
                     }
                 }
+                else
+                {
+                    foreach (var badge in badges)
+                    {
+                        if (badgenumbers.Where(o => o.BadgeId == badge.Id).Count() == 0)
+                        {
+                            BadgeNumber number = new BadgeNumber { OwnerId = userId, BadgeId = badge.Id, EarnedBadges = 0 };
+
+                            numbers.Add(number);
+                        }
+                    }
+                }
             }
+
+            await _badgeNumbersRepository.CreateRangeAsync(numbers);
+
+            user.XP += 10;
+            user.QuizDone += 1;
+        
+            if (user.NewBadgeCnt == null)
+            {
+                user.NewBadgeCnt = numbers.Count();
+            }
+            else
+            {
+                user.NewBadgeCnt += numbers.Count();
+            }
+
+            await _userManager.UpdateAsync(user);
+
+            return Ok(numbers.Count());
         }
 
-        await _badgeNumbersRepository.CreateRangeAsync(numbers);
-
-        user.XP += 10;
-        user.QuizDone += 1;
-        user.NewBadgeCnt = user.NewBadgeCnt + numbers.Count();
-
-        await _userManager.UpdateAsync(user);
-
-        return Ok(numbers.Count());
+        return Ok(0);
     }
 
     [HttpPost]
@@ -177,7 +190,14 @@ public class BadgeNumbersController : ControllerBase
 
         await _badgeNumbersRepository.CreateRangeAsync(numbers);
 
-        user.NewBadgeCnt += numbers.Count();
+        if (user.NewBadgeCnt == null)
+        {
+            user.NewBadgeCnt = numbers.Count();
+        }
+        else
+        {
+            user.NewBadgeCnt += numbers.Count();
+        }
 
         if (requestDto.Single)
         {

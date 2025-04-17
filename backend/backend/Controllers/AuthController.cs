@@ -53,6 +53,8 @@ public class AuthController : ControllerBase
             WPM = 0,
             Skill = "Beginner",
             WPM10 = 0,
+            QuizXp = 0,
+            QuizDone = 0,
             RegistrationDate = DateTime.Now
         };
 

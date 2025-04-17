@@ -7,6 +7,7 @@ const QuoteEngine = ({ show, onClose, levelId }) => {
 
     const [content, setContent] = useState('');
     const [timeToComplete, setTimeToComplete] = useState(0);
+    const [isTraining, setIsTraining] = useState(false);
 
     const axiosPrivate = useAxiosPrivate();
 
@@ -14,9 +15,12 @@ const QuoteEngine = ({ show, onClose, levelId }) => {
         const fetchLevelData = async () => {
             try {
             const response = await axiosPrivate.get(`/levels/quotes/${levelId}/randomQuote`);
-            const { content, timeToComplete } = response.data;
+            const { source, content, timeToComplete } = response.data;
             setContent(content.length > 500 ? content.substring(0, content.indexOf(' ', 475)) : content);
             setTimeToComplete(timeToComplete);
+            if(source.toLowerCase().includes("treniruotė") || source.toLowerCase().includes("treniruočių") || source.toLowerCase().includes("treniruo")) {
+                setIsTraining(true);
+            }
             } catch (error) {
             console.error("Klaida gaunant citatą:", error);
             onClose();
@@ -43,7 +47,7 @@ const QuoteEngine = ({ show, onClose, levelId }) => {
                     </div>
                     
                     <div className='engine-holder-div'>
-                        <TypingTest content={content} timeToComplete={timeToComplete}/>
+                        <TypingTest content={content} timeToComplete={timeToComplete} isTraining={isTraining}/>
                     </div>                
                 </div>
             </div>

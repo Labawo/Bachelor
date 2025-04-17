@@ -172,6 +172,23 @@ public class UsersController : ControllerBase
         return BadRequest(result.Errors);
     }
     
+    [HttpGet]
+    [Route("statistics")]
+    [Authorize(Roles = SiteRoles.Admin + "," + SiteRoles.Student)]
+    public async Task<ActionResult<UserStatisticsDto>> UserStatistics()
+    {
+        var user = await _userManager.FindByIdAsync(User.FindFirstValue(JwtRegisteredClaimNames.Sub));
+
+        if (user == null)
+        {
+            return NotFound("Naudotojas nerastas.");
+        }
+        
+        var userStatsDto = new UserStatisticsDto(user.NewBadgeCnt, user.WPM/user.WPM10, user.QuizDone, user.QuizXp, user.XP);
+
+        return Ok(userStatsDto);
+    }
+    
     [HttpPut]
     [Route("updateUser/{userId}")]
     [Authorize(Roles = SiteRoles.Admin)]

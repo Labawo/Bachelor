@@ -50,6 +50,8 @@ const Quiz = ({ questions, currQuestion }) => {
         } else {
             setCurrentQuestion(0);
             setShowResult(true);
+            let answer = result.correctAnswers / questions.length * 100;
+            handleEnding(answer);
         }
 
         setInputAnswer('');
@@ -61,13 +63,12 @@ const Quiz = ({ questions, currQuestion }) => {
 
     const handleEnding = async (score) => {
         try {
-          const speedData = {
-            points: score
-          };
-    
-          const response = await axiosPrivate.post("/badgesnumber/quiz", speedData);
-    
-          setSuccessMessage("Pabaiga, surinktas ženklelių skaičius!");
+            const speedData = {
+                points: score,
+            };
+            const response = await axiosPrivate.post("/badgesnumber/quiz", speedData);
+
+            setSuccessMessage(`Pabaiga, surinktas ženklelių skaičius : ${response.data}!`);
         } catch (error) {
           console.error("Klaida išsiunčiant rezultatus:", error);
           setErrorMessage("Klaida išsiunčiant rezultatus.");
