@@ -1,6 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import useAxiosPrivate from "../../hooks/UseAxiosPrivate";
 import './typingtest.css';
+import SuccessSelectModal from "../Modals/SuccessSelectModal";
 
 const TypingTest = ({ content, timeToComplete, isTraining }) => {
 
@@ -135,6 +136,11 @@ const TypingTest = ({ content, timeToComplete, isTraining }) => {
                         <button className='btn' onClick={resetGame} style={{width: '40%'}}>Bandyti iš naujo</button>
                     </div>) : <button className='btn' onClick={resetGame}>Pradėti</button>}
             </div>
+            <SuccessSelectModal
+                show={successMessage !== ""}
+                onClose={() => setSuccessMessage("")}
+                message={successMessage}
+            />
         </div>
         
     )

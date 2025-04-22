@@ -63,9 +63,9 @@ const Quizes = () => {
     }, [page]); 
 
     return (
-        <article className="list-article">
+        <article className="list-article" style={{background: 'lightgrey'}}>
             <div className='items-list-div' >
-                <span className='items-list-span times-two' style={{borderRight: '2px solid black', height: '100%'}}>
+                <span className='items-list-span times-two' style={{borderRight: '2px solid black', height: '100%', background:'#fff'}}>
                     <div className="table-container" style={{marginRight: '0'}}>
                         <h2 className="list-headers" style={{background: 'black', color: '#fff', paddingTop: '15px', paddingBottom: '15px'}}>Testų sąrašas pagal lygį</h2>
                         {levels.length ? (
@@ -111,7 +111,7 @@ const Quizes = () => {
                         ) : null}
                     </div>
                 </span>
-                <span className='items-list-span' style={{borderLeft: '2px solid black', height: '100%', overflow: 'auto', paddingBottom: '25px'}}>
+                <span className='items-list-span' style={{background: '#fff', borderLeft: '2px solid black', height: '100%', overflow: 'auto', paddingBottom: '25px'}}>
                     <div>
                         <h2 style={{background: 'black', color: '#fff', paddingTop: '15px', paddingBottom: '15px'}}>Lygio aprašymas</h2>
                         <h3>Pavadinimas</h3>
@@ -123,7 +123,7 @@ const Quizes = () => {
                         {selectedLevelId !== '' ? (<div style={{width: '35%', margin: 'auto'}}>
                             <button 
                                 className="green-button"
-                                style={{width: '100%'}}
+                                style={{width: '100%', color: 'rgb(56, 56, 56)'}}
                                 onClick={() => playQuiz(selectedLevelId)}
                             >
                                 Žaisti

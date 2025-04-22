@@ -88,8 +88,8 @@ const EditUser = ({ show, onClose, userId }) => {
     <>
       <div className={`modal-form ${show ? "show" : ""}`}>
       <div className="modal-content-form"> 
-      <div className='close-button-div-form'>
-          <button className="primary-button-form" onClick={closePassword}>X</button>
+      <div className='close-button-div-form edit'>
+          <button className="primary-button-form edit" onClick={closePassword}>X</button>
         </div>
         <div className="outer-form-div">
         <div className="form-container">
@@ -141,7 +141,7 @@ const EditUser = ({ show, onClose, userId }) => {
                         
             
             <div className="modal-buttons-form">
-                <button disabled={ !validPwd || !validMatch ? true : false} className="auth_button">Pakeisti slaptažodį</button>
+                <button disabled={ !validPwd || !validMatch ? true : false} className="edit-form-button">Pakeisti slaptažodį</button>
             </div>
           </form>
           

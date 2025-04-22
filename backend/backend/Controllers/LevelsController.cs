@@ -144,14 +144,14 @@ public class LevelsController : ControllerBase
     }
 
     [HttpGet("quizes")]
-    public async Task<IEnumerable<LevelDto>> GetManyUserQuizPaging([FromQuery] LevelSearchParameters searchParameters)
+    public async Task<IEnumerable<LevelWithDescriptionDto>> GetManyUserQuizPaging([FromQuery] LevelSearchParameters searchParameters)
     {
         var userId = User.FindFirstValue(JwtRegisteredClaimNames.Sub);
         var user = await _userManager.FindByIdAsync(userId);
 
         if (user == null)
         {
-            return new List<LevelDto>();
+            return new List<LevelWithDescriptionDto>();
         }
 
         int userScore = user.QuizXp == null ? 0 : (int)user.QuizXp;
@@ -184,18 +184,18 @@ public class LevelsController : ControllerBase
             Response.Headers.Add("Pagination", JsonSerializer.Serialize(paginationMetaData));
         }
 
-        return levels.Select(o => new LevelDto(o.Id, o.Name, o.ItemCount, o.MinExperience, o.IsForWords));
+        return levels.Select(o => new LevelWithDescriptionDto(o.Id, o.Name, o.Description, o.ItemCount, o.MinExperience, o.IsForWords));
     }
 
     [HttpGet("quotes")]
-    public async Task<IEnumerable<LevelDto>> GetManyUserQuotesPaging([FromQuery] LevelSearchParameters searchParameters)
+    public async Task<IEnumerable<LevelWithDescriptionDto>> GetManyUserQuotesPaging([FromQuery] LevelSearchParameters searchParameters)
     {
         var userId = User.FindFirstValue(JwtRegisteredClaimNames.Sub);
         var user = await _userManager.FindByIdAsync(userId);
 
         if (user == null)
         {
-            return new List<LevelDto>();
+            return new List<LevelWithDescriptionDto>();
         }
 
         int userScore = user.XP == null ? 0 : (int)user.XP;
@@ -228,7 +228,7 @@ public class LevelsController : ControllerBase
             Response.Headers.Add("Pagination", JsonSerializer.Serialize(paginationMetaData));
         }
 
-        return levels.Select(o => new LevelDto(o.Id, o.Name, o.ItemCount, o.MinExperience, o.IsForWords));
+        return levels.Select(o => new LevelWithDescriptionDto(o.Id, o.Name, o.Description, o.ItemCount, o.MinExperience, o.IsForWords));
     }
 
     [HttpGet("quotes/{quoteId}/randomQuote")]

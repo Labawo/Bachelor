@@ -3,6 +3,7 @@ import './quiz.css';
 import { resultInitialState } from "./constants";
 import AnswerTimer from "../QuizTimer/AnswerTimer";
 import useAxiosPrivate from "../../hooks/UseAxiosPrivate";
+import SuccessSelectModal from "../Modals/SuccessSelectModal";
 
 const Quiz = ({ questions, currQuestion }) => {
     const [currentQuestion, setCurrentQuestion] = useState(currQuestion);
@@ -154,6 +155,11 @@ const Quiz = ({ questions, currQuestion }) => {
                     </div>}
                 
             </div>
+            <SuccessSelectModal
+                show={successMessage !== ""}
+                onClose={() => setSuccessMessage("")}
+                message={successMessage}
+            />
         </div>
         
     )
