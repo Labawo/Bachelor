@@ -83,7 +83,7 @@ const NavBarAdmin = () => {
             <li>
               <a onClick={toggleHtmlCssSubMenu} className={!canAccessAdmin ? 'hidden' : ''}><FontAwesomeIcon icon={faRocket} /> LYGIAI</a>
               <i className={`bx bxs-chevron-down htmlcss-arrow arrow ${showHtmlCssSubMenu ? 'rotated' : ''}`} />
-              <ul className={`htmlCss-sub-menu sub-menu ${showHtmlCssSubMenu ? 'show' : ''}`}>
+              <ul className={`htmlCss-sub-menu sub-menu ${showHtmlCssSubMenu ? 'show2' : ''}`}>
                 <li><Link to="/levelsQuotesPage" className={!canAccessAdmin ? 'hidden' : ''}>Citatų</Link></li>
                 <li><Link to="/levelsQuizPage" className={!canAccessAdmin ? 'hidden' : ''}>Klausimų</Link></li>
                 <li><a onClick={createLevel} style={{cursor : 'pointer'}}>Sukurti</a></li>
@@ -94,7 +94,7 @@ const NavBarAdmin = () => {
             <li>
               <a href="#" onClick={toggleJsSubMenu}><FontAwesomeIcon icon={faUser} /> {auth.user ? auth.user.toUpperCase() : null}</a>
               <i className={`bx bxs-chevron-down js-arrow arrow ${showJsSubMenu ? 'rotated' : ''}`} />
-              <ul className={`js-sub-menu sub-menu ${showJsSubMenu ? 'show' : ''}`}>
+              <ul className={`js-sub-menu sub-menu ${showJsSubMenu ? 'show3' : ''}`}>
               <li>
                     <a onClick={changePassword} style={{cursor : 'pointer'}}>
                         Pakeisti Slaptažodį

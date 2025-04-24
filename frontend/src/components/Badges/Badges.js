@@ -117,8 +117,8 @@ const Badges = () => {
                     <div className='badge-div'>
                         {filteredBadges.map((badge, i) => (
                             <span key={i} className='badge-span'>
-                                <img src={logo} alt="Logo" width='80%' height='120px'/>
-                                <p style={{fontWeight : '600'}}>{badge?.name}</p>
+                                <img src={logo} alt="Logo" width='60%' height='120px'/>
+                                <p style={{fontWeight : '600', borderBottom: '1px solid black'}}>{badge?.name}</p>
                                 <p>{badge?.type}</p>
                                 <div>
                                     <button 

@@ -62,8 +62,7 @@
               "RelativeToolTip": "backend\\Data\\Entities\\Level.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-22T10:06:27.744Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-22T10:06:27.744Z"
             },
             {
               "$type": "Document",
@@ -73,7 +72,7 @@
               "RelativeDocumentMoniker": "backend\\Controllers\\LevelsController.cs",
               "ToolTip": "C:\\Users\\Laurynas\\Desktop\\Bachelor\\backend\\backend\\Controllers\\LevelsController.cs",
               "RelativeToolTip": "backend\\Controllers\\LevelsController.cs",
-              "ViewState": "AgIAANoAAAAAAAAAAAAAwOYAAABaAAAAAAAAAA==",
+              "ViewState": "AgIAAAsBAAAAAAAAAAAYwB0BAAA9AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-04-22T10:05:29.273Z",
               "EditorCaption": ""
@@ -88,8 +87,7 @@
               "RelativeToolTip": "backend\\Data\\Dtos\\Levels\\LevelDto.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-22T10:05:14.459Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-22T10:05:14.459Z"
             },
             {
               "$type": "Document",
@@ -113,8 +111,7 @@
               "RelativeToolTip": "backend\\Controllers\\BadgeNumbersController.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAIEAAAAzAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-17T15:27:54.513Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-17T15:27:54.513Z"
             },
             {
               "$type": "Document",

@@ -2,6 +2,7 @@ import NavBarNew from "../Main/NavBarNew";
 import Footer from "../Main/Footer";
 import Badges from "./Badges";
 import logo from "./badges-image.png";
+import './background.css';
 
 const BadgesPage = () => {
 
@@ -9,7 +10,10 @@ const BadgesPage = () => {
         <>
             <NavBarNew />
             <section style={{marginTop: '0', color:"black", overflow:'auto', maxHeight:'85vh'}}>  
-                <img src={logo} alt="Logo" width='100%' height='200px'/>              
+                <div className='container'>
+                    
+                </div>
+                              
                 <div>
                     <Badges />
                 </div>

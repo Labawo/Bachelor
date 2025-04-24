@@ -1,0 +1,132 @@
+Date : 2025-04-24 20:50:04
+Directory : c:\Users\Laurynas\Desktop\Bachelor\frontend
+Total : 82 files,  36081 codes, 45 comments, 1033 blanks, all 37159 lines
+
+Languages
++------------+------------+------------+------------+------------+------------+
+| language   | files      | code       | comment    | blank      | total      |
++------------+------------+------------+------------+------------+------------+
+| JSON       |          3 |     28,361 |          0 |          3 |     28,364 |
+| JavaScript |         66 |      5,743 |         36 |        741 |      6,520 |
+| CSS        |         11 |      1,959 |          9 |        285 |      2,253 |
+| HTML       |          1 |         17 |          0 |          3 |         20 |
+| Markdown   |          1 |          1 |          0 |          1 |          2 |
++------------+------------+------------+------------+------------+------------+
+
+Directories
++-------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| path                                                                                      | files      | code       | comment    | blank      | total      |
++-------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| .                                                                                         |         82 |     36,081 |         45 |      1,033 |     37,159 |
+| . (Files)                                                                                 |          3 |     28,337 |          0 |          3 |     28,340 |
+| public                                                                                    |          2 |         42 |          0 |          4 |         46 |
+| src                                                                                       |         77 |      7,702 |         45 |      1,026 |      8,773 |
+| src (Files)                                                                               |          2 |         80 |          0 |         10 |         90 |
+| src\api                                                                                   |          1 |         15 |          0 |          3 |         18 |
+| src\components                                                                            |         67 |      6,147 |         39 |        806 |      6,992 |
+| src\components\Authorization                                                              |          6 |        601 |          0 |         86 |        687 |
+| src\components\Badges                                                                     |          8 |        789 |          2 |        102 |        893 |
+| src\components\Levels                                                                     |          6 |        661 |          1 |         93 |        755 |
+| src\components\Main                                                                       |          9 |        319 |          8 |         57 |        384 |
+| src\components\Modals                                                                     |          6 |        193 |          0 |         37 |        230 |
+| src\components\Notes                                                                      |          2 |        178 |          3 |         28 |        209 |
+| src\components\Quiz                                                                       |          7 |        580 |          0 |         73 |        653 |
+| src\components\QuizTimer                                                                  |          2 |         48 |          0 |          9 |         57 |
+| src\components\Quotes                                                                     |          3 |        439 |          1 |         45 |        485 |
+| src\components\SpeedTyping                                                                |          5 |        398 |          1 |         56 |        455 |
+| src\components\Training                                                                   |          5 |      1,014 |          5 |        101 |      1,120 |
+| src\components\Users                                                                      |          4 |        463 |          0 |         52 |        515 |
+| src\components\Words                                                                      |          4 |        464 |         18 |         67 |        549 |
+| src\context                                                                               |          1 |         11 |          0 |          4 |         15 |
+| src\hooks                                                                                 |          3 |         93 |          0 |         17 |        110 |
+| src\styles                                                                                |          3 |      1,356 |          6 |        186 |      1,548 |
++-------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+
+Files
++-------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| filename                                                                                  | language   | code       | comment    | blank      | total      |
++-------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| c:\Users\Laurynas\Desktop\Bachelor\frontend\README.md                                     | Markdown   |          1 |          0 |          1 |          2 |
+| c:\Users\Laurynas\Desktop\Bachelor\frontend\package-lock.json                             | JSON       |     28,289 |          0 |          1 |     28,290 |
+| c:\Users\Laurynas\Desktop\Bachelor\frontend\package.json                                  | JSON       |         47 |          0 |          1 |         48 |
+| c:\Users\Laurynas\Desktop\Bachelor\frontend\public\index.html                             | HTML       |         17 |          0 |          3 |         20 |
+| c:\Users\Laurynas\Desktop\Bachelor\frontend\public\manifest.json                          | JSON       |         25 |          0 |          1 |         26 |
+| c:\Users\Laurynas\Desktop\Bachelor\frontend\src\App.js                                    | JavaScript |         62 |          0 |          9 |         71 |
+| c:\Users\Laurynas\Desktop\Bachelor\frontend\src\api\axios.js                              | JavaScript |         15 |          0 |          3 |         18 |
+| c:\Users\Laurynas\Desktop\Bachelor\frontend\src\components\Authorization\Login.js         | JavaScript |        108 |          0 |         16 |        124 |
+| c:\Users\Laurynas\Desktop\Bachelor\frontend\src\components\Authorization\PersistLogin.js  | JavaScript |         37 |          0 |          6 |         43 |
+| c:\Users\Laurynas\Desktop\Bachelor\frontend\src\components\Authorization\Register.js      | JavaScript |        236 |          0 |         29 |        265 |
+| c:\Users\Laurynas\Desktop\Bachelor\frontend\src\components\Authorization\RequireAuth.js   | JavaScript |         17 |          0 |          5 |         22 |
+| c:\Users\Laurynas\Desktop\Bachelor\frontend\src\components\Authorization\ResetPassword.js | JavaScript |        185 |          0 |         25 |        210 |
+| c:\Users\Laurynas\Desktop\Bachelor\frontend\src\components\Authorization\Unauthorized.js  | JavaScript |         18 |          0 |          5 |         23 |
+| c:\Users\Laurynas\Desktop\Bachelor\frontend\src\components\Badges\Badges.js               | JavaScript |        156 |          0 |         12 |        168 |
+| c:\Users\Laurynas\Desktop\Bachelor\frontend\src\components\Badges\BadgesPage.js           | JavaScript |         21 |          0 |          6 |         27 |
+| c:\Users\Laurynas\Desktop\Bachelor\frontend\src\components\Badges\CreateBadge.js          | JavaScript |        239 |          1 |         29 |        269 |
+| c:\Users\Laurynas\Desktop\Bachelor\frontend\src\components\Badges\EditBadge.js            | JavaScript |        150 |          0 |         27 |        177 |
+| c:\Users\Laurynas\Desktop\Bachelor\frontend\src\components\Badges\InspectBadge.js         | JavaScript |         78 |          0 |         14 |         92 |
+| c:\Users\Laurynas\Desktop\Bachelor\frontend\src\components\Badges\UserBadges.js           | JavaScript |        106 |          1 |          8 |        115 |
+| c:\Users\Laurynas\Desktop\Bachelor\frontend\src\components\Badges\UserBadgesPage.js       | JavaScript |         24 |          0 |          5 |         29 |
+| c:\Users\Laurynas\Desktop\Bachelor\frontend\src\components\Badges\background.css          | CSS        |         15 |          0 |          1 |         16 |
+| c:\Users\Laurynas\Desktop\Bachelor\frontend\src\components\Levels\CreateLevel.js          | JavaScript |        130 |          0 |         18 |        148 |
+| c:\Users\Laurynas\Desktop\Bachelor\frontend\src\components\Levels\EditLevel.js            | JavaScript |        125 |          0 |         19 |        144 |
+| c:\Users\Laurynas\Desktop\Bachelor\frontend\src\components\Levels\LevelPage.js            | JavaScript |         49 |          0 |          6 |         55 |
+| c:\Users\Laurynas\Desktop\Bachelor\frontend\src\components\Levels\Levels.js               | JavaScript |        179 |          1 |         13 |        193 |
+| c:\Users\Laurynas\Desktop\Bachelor\frontend\src\components\Levels\LevelsPage.js           | JavaScript |         19 |          0 |          6 |         25 |
+| c:\Users\Laurynas\Desktop\Bachelor\frontend\src\components\Levels\levelmodals.css         | CSS        |        159 |          0 |         31 |        190 |
+| c:\Users\Laurynas\Desktop\Bachelor\frontend\src\components\Main\Footer.js                 | JavaScript |          8 |          0 |          2 |         10 |
+| c:\Users\Laurynas\Desktop\Bachelor\frontend\src\components\Main\GameComponent.js          | JavaScript |          0 |          0 |          1 |          1 |
+| c:\Users\Laurynas\Desktop\Bachelor\frontend\src\components\Main\Home.js                   | JavaScript |         24 |          0 |          6 |         30 |
+| c:\Users\Laurynas\Desktop\Bachelor\frontend\src\components\Main\Layout.js                 | JavaScript |          9 |          0 |          2 |         11 |
+| c:\Users\Laurynas\Desktop\Bachelor\frontend\src\components\Main\LoginNavBar.js            | JavaScript |         11 |          0 |          3 |         14 |
+| c:\Users\Laurynas\Desktop\Bachelor\frontend\src\components\Main\Missing.js                | JavaScript |         13 |          0 |          2 |         15 |
+| c:\Users\Laurynas\Desktop\Bachelor\frontend\src\components\Main\NavBarAdmin.js            | JavaScript |        107 |          4 |         16 |        127 |
+| c:\Users\Laurynas\Desktop\Bachelor\frontend\src\components\Main\NavBarNew.js              | JavaScript |         17 |          0 |          5 |         22 |
+| c:\Users\Laurynas\Desktop\Bachelor\frontend\src\components\Main\NavBarStudent.js          | JavaScript |        130 |          4 |         20 |        154 |
+| c:\Users\Laurynas\Desktop\Bachelor\frontend\src\components\Modals\ConfirmationModal.js    | JavaScript |         21 |          0 |          3 |         24 |
+| c:\Users\Laurynas\Desktop\Bachelor\frontend\src\components\Modals\ErrorModal.js           | JavaScript |         20 |          0 |          4 |         24 |
+| c:\Users\Laurynas\Desktop\Bachelor\frontend\src\components\Modals\ModalStyles.css         | CSS        |         81 |          0 |         16 |         97 |
+| c:\Users\Laurynas\Desktop\Bachelor\frontend\src\components\Modals\RedirectModal.js        | JavaScript |         24 |          0 |          5 |         29 |
+| c:\Users\Laurynas\Desktop\Bachelor\frontend\src\components\Modals\SuccessModal.js         | JavaScript |         27 |          0 |          5 |         32 |
+| c:\Users\Laurynas\Desktop\Bachelor\frontend\src\components\Modals\SuccessSelectModal.js   | JavaScript |         20 |          0 |          4 |         24 |
+| c:\Users\Laurynas\Desktop\Bachelor\frontend\src\components\Notes\NotesPage.js             | JavaScript |        120 |          2 |         17 |        139 |
+| c:\Users\Laurynas\Desktop\Bachelor\frontend\src\components\Notes\UseNote.js               | JavaScript |         58 |          1 |         11 |         70 |
+| c:\Users\Laurynas\Desktop\Bachelor\frontend\src\components\QuizTimer\AnswerTimer.js       | JavaScript |         36 |          0 |          8 |         44 |
+| c:\Users\Laurynas\Desktop\Bachelor\frontend\src\components\QuizTimer\timer.css            | CSS        |         12 |          0 |          1 |         13 |
+| c:\Users\Laurynas\Desktop\Bachelor\frontend\src\components\Quiz\Quiz.js                   | JavaScript |        145 |          0 |         23 |        168 |
+| c:\Users\Laurynas\Desktop\Bachelor\frontend\src\components\Quiz\QuizEngine.js             | JavaScript |         55 |          0 |         11 |         66 |
+| c:\Users\Laurynas\Desktop\Bachelor\frontend\src\components\Quiz\QuizPage.js               | JavaScript |         20 |          0 |          4 |         24 |
+| c:\Users\Laurynas\Desktop\Bachelor\frontend\src\components\Quiz\Quizes.js                 | JavaScript |        140 |          0 |         10 |        150 |
+| c:\Users\Laurynas\Desktop\Bachelor\frontend\src\components\Quiz\constants.js              | JavaScript |         62 |          0 |          1 |         63 |
+| c:\Users\Laurynas\Desktop\Bachelor\frontend\src\components\Quiz\engineModal.css           | CSS        |         62 |          0 |          9 |         71 |
+| c:\Users\Laurynas\Desktop\Bachelor\frontend\src\components\Quiz\quiz.css                  | CSS        |         96 |          0 |         15 |        111 |
+| c:\Users\Laurynas\Desktop\Bachelor\frontend\src\components\Quotes\CreateQuote.js          | JavaScript |        125 |          0 |         16 |        141 |
+| c:\Users\Laurynas\Desktop\Bachelor\frontend\src\components\Quotes\EditQuote.js            | JavaScript |        140 |          0 |         18 |        158 |
+| c:\Users\Laurynas\Desktop\Bachelor\frontend\src\components\Quotes\Quotes.js               | JavaScript |        174 |          1 |         11 |        186 |
+| c:\Users\Laurynas\Desktop\Bachelor\frontend\src\components\SpeedTyping\QuoteEngine.js     | JavaScript |         54 |          0 |         10 |         64 |
+| c:\Users\Laurynas\Desktop\Bachelor\frontend\src\components\SpeedTyping\QuoteLevels.js     | JavaScript |        140 |          0 |         10 |        150 |
+| c:\Users\Laurynas\Desktop\Bachelor\frontend\src\components\SpeedTyping\TypingPage.js      | JavaScript |         20 |          0 |          5 |         25 |
+| c:\Users\Laurynas\Desktop\Bachelor\frontend\src\components\SpeedTyping\TypingTest.js      | JavaScript |        126 |          1 |         22 |        149 |
+| c:\Users\Laurynas\Desktop\Bachelor\frontend\src\components\SpeedTyping\typingtest.css     | CSS        |         58 |          0 |          9 |         67 |
+| c:\Users\Laurynas\Desktop\Bachelor\frontend\src\components\Training\Game.js               | JavaScript |        753 |          0 |         67 |        820 |
+| c:\Users\Laurynas\Desktop\Bachelor\frontend\src\components\Training\GameModal.js          | JavaScript |         19 |          1 |          7 |         27 |
+| c:\Users\Laurynas\Desktop\Bachelor\frontend\src\components\Training\Keyboard.js           | JavaScript |         84 |          0 |          3 |         87 |
+| c:\Users\Laurynas\Desktop\Bachelor\frontend\src\components\Training\TrainingPage.js       | JavaScript |         38 |          1 |          7 |         46 |
+| c:\Users\Laurynas\Desktop\Bachelor\frontend\src\components\Training\keyboard.css          | CSS        |        120 |          3 |         17 |        140 |
+| c:\Users\Laurynas\Desktop\Bachelor\frontend\src\components\Users\Admin.js                 | JavaScript |         15 |          0 |          3 |         18 |
+| c:\Users\Laurynas\Desktop\Bachelor\frontend\src\components\Users\EditUser.js              | JavaScript |        146 |          0 |         22 |        168 |
+| c:\Users\Laurynas\Desktop\Bachelor\frontend\src\components\Users\TopUsers.js              | JavaScript |         75 |          0 |          9 |         84 |
+| c:\Users\Laurynas\Desktop\Bachelor\frontend\src\components\Users\Users.js                 | JavaScript |        227 |          0 |         18 |        245 |
+| c:\Users\Laurynas\Desktop\Bachelor\frontend\src\components\Words\CreateWord.js            | JavaScript |         94 |          0 |         15 |        109 |
+| c:\Users\Laurynas\Desktop\Bachelor\frontend\src\components\Words\EditWord.js              | JavaScript |        105 |          0 |         17 |        122 |
+| c:\Users\Laurynas\Desktop\Bachelor\frontend\src\components\Words\ImportFile.js            | JavaScript |         88 |         17 |         24 |        129 |
+| c:\Users\Laurynas\Desktop\Bachelor\frontend\src\components\Words\Words.js                 | JavaScript |        177 |          1 |         11 |        189 |
+| c:\Users\Laurynas\Desktop\Bachelor\frontend\src\context\AuthProvider.js                   | JavaScript |         11 |          0 |          4 |         15 |
+| c:\Users\Laurynas\Desktop\Bachelor\frontend\src\hooks\UseAuth.js                          | JavaScript |          6 |          0 |          2 |          8 |
+| c:\Users\Laurynas\Desktop\Bachelor\frontend\src\hooks\UseAxiosPrivate.js                  | JavaScript |         56 |          0 |          7 |         63 |
+| c:\Users\Laurynas\Desktop\Bachelor\frontend\src\hooks\useRefreshToken.js                  | JavaScript |         31 |          0 |          8 |         39 |
+| c:\Users\Laurynas\Desktop\Bachelor\frontend\src\index.js                                  | JavaScript |         18 |          0 |          1 |         19 |
+| c:\Users\Laurynas\Desktop\Bachelor\frontend\src\styles\NavBarNew.css                      | CSS        |        283 |          6 |          0 |        289 |
+| c:\Users\Laurynas\Desktop\Bachelor\frontend\src\styles\index.css                          | CSS        |        820 |          0 |        148 |        968 |
+| c:\Users\Laurynas\Desktop\Bachelor\frontend\src\styles\login.css                          | CSS        |        253 |          0 |         38 |        291 |
+| Total                                                                                     |            |     36,081 |         45 |      1,033 |     37,159 |
++-------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+

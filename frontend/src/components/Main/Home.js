@@ -1,6 +1,4 @@
-import NavBar from "./NavBar";
 import Footer from "./Footer";
-import Title from "./Title";
 import useAuth from "../../hooks/UseAuth";
 import React, { useState } from 'react';
 import NavBarNew from '../Main/NavBarNew';
@@ -12,8 +10,11 @@ const Home = () => {
     return (
         <>
             <NavBarNew />
-            <section style={{paddingTop: '0'}}>    
-                <img src={logo1} alt="Logo" width='100%' height='200px'/>            
+            <section style={{paddingTop: '0'}}>   
+                <div style={{}}>
+                    <img src={logo1} alt="Logo" width='100%' height='200px' className='image-container-pages' style={{marginLeft: 'auto'}}/>
+                </div> 
+                            
                 <div className='content-holder-div' style={{marginTop: "10px"}}>
                     <p className="greeting-note">Hello <i><b>{auth.user}</b></i>, we are glad you are here! {auth.roles}  100 - (mistakes/length * 100) </p>
                     <h3>{auth.id}</h3>

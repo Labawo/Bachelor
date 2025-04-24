@@ -1,0 +1,73 @@
+Date : 2025-04-24 20:50:04
+Directory : c:\Users\Laurynas\Desktop\Bachelor\frontend
+Total : 35 files,  473 codes, 1 comments, 47 blanks, all 521 lines
+
+Languages
++------------+------------+------------+------------+------------+------------+
+| language   | files      | code       | comment    | blank      | total      |
++------------+------------+------------+------------+------------+------------+
+| JavaScript |         31 |        378 |          1 |         31 |        410 |
+| CSS        |          4 |         95 |          0 |         16 |        111 |
++------------+------------+------------+------------+------------+------------+
+
+Directories
++---------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| path                                                                                  | files      | code       | comment    | blank      | total      |
++---------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| .                                                                                     |         35 |        473 |          1 |         47 |        521 |
+| src                                                                                   |         35 |        473 |          1 |         47 |        521 |
+| src\components                                                                        |         33 |        397 |          1 |         33 |        431 |
+| src\components\Badges                                                                 |          6 |        139 |          0 |         18 |        157 |
+| src\components\Levels                                                                 |          4 |         41 |          0 |          0 |         41 |
+| src\components\Main                                                                   |          5 |        -66 |          0 |        -11 |        -77 |
+| src\components\Notes                                                                  |          1 |          2 |          0 |          0 |          2 |
+| src\components\Quiz                                                                   |          4 |         63 |          0 |          4 |         67 |
+| src\components\Quotes                                                                 |          2 |         27 |          0 |          1 |         28 |
+| src\components\SpeedTyping                                                            |          3 |         53 |          1 |          4 |         58 |
+| src\components\Training                                                               |          4 |          7 |          0 |          3 |         10 |
+| src\components\Users                                                                  |          2 |         99 |          0 |         12 |        111 |
+| src\components\Words                                                                  |          2 |         32 |          0 |          2 |         34 |
+| src\styles                                                                            |          2 |         76 |          0 |         14 |         90 |
++---------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+
+Files
++---------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| filename                                                                              | language   | code       | comment    | blank      | total      |
++---------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| c:\Users\Laurynas\Desktop\Bachelor\frontend\src\components\Badges\Badges.js           | JavaScript |          3 |          0 |          0 |          3 |
+| c:\Users\Laurynas\Desktop\Bachelor\frontend\src\components\Badges\BadgesPage.js       | JavaScript |          4 |          0 |          1 |          5 |
+| c:\Users\Laurynas\Desktop\Bachelor\frontend\src\components\Badges\InspectBadge.js     | JavaScript |         78 |          0 |         14 |         92 |
+| c:\Users\Laurynas\Desktop\Bachelor\frontend\src\components\Badges\UserBadges.js       | JavaScript |         33 |          0 |          2 |         35 |
+| c:\Users\Laurynas\Desktop\Bachelor\frontend\src\components\Badges\UserBadgesPage.js   | JavaScript |          6 |          0 |          0 |          6 |
+| c:\Users\Laurynas\Desktop\Bachelor\frontend\src\components\Badges\background.css      | CSS        |         15 |          0 |          1 |         16 |
+| c:\Users\Laurynas\Desktop\Bachelor\frontend\src\components\Levels\CreateLevel.js      | JavaScript |         17 |          0 |          0 |         17 |
+| c:\Users\Laurynas\Desktop\Bachelor\frontend\src\components\Levels\EditLevel.js        | JavaScript |         17 |          0 |          0 |         17 |
+| c:\Users\Laurynas\Desktop\Bachelor\frontend\src\components\Levels\LevelPage.js        | JavaScript |          4 |          0 |         -1 |          3 |
+| c:\Users\Laurynas\Desktop\Bachelor\frontend\src\components\Levels\LevelsPage.js       | JavaScript |          3 |          0 |          1 |          4 |
+| c:\Users\Laurynas\Desktop\Bachelor\frontend\src\components\Main\Home.js               | JavaScript |          2 |          0 |          1 |          3 |
+| c:\Users\Laurynas\Desktop\Bachelor\frontend\src\components\Main\NavBar.js             | JavaScript |        -45 |          0 |         -7 |        -52 |
+| c:\Users\Laurynas\Desktop\Bachelor\frontend\src\components\Main\NavBarAdmin.js        | JavaScript |         -5 |          0 |          0 |         -5 |
+| c:\Users\Laurynas\Desktop\Bachelor\frontend\src\components\Main\NavBarStudent.js      | JavaScript |         35 |          0 |          5 |         40 |
+| c:\Users\Laurynas\Desktop\Bachelor\frontend\src\components\Main\Title.js              | JavaScript |        -53 |          0 |        -10 |        -63 |
+| c:\Users\Laurynas\Desktop\Bachelor\frontend\src\components\Notes\NotesPage.js         | JavaScript |          2 |          0 |          0 |          2 |
+| c:\Users\Laurynas\Desktop\Bachelor\frontend\src\components\Quiz\Quiz.js               | JavaScript |         25 |          0 |          3 |         28 |
+| c:\Users\Laurynas\Desktop\Bachelor\frontend\src\components\Quiz\QuizEngine.js         | JavaScript |          1 |          0 |          0 |          1 |
+| c:\Users\Laurynas\Desktop\Bachelor\frontend\src\components\Quiz\QuizPage.js           | JavaScript |          0 |          0 |         -1 |         -1 |
+| c:\Users\Laurynas\Desktop\Bachelor\frontend\src\components\Quiz\Quizes.js             | JavaScript |         37 |          0 |          2 |         39 |
+| c:\Users\Laurynas\Desktop\Bachelor\frontend\src\components\Quotes\CreateQuote.js      | JavaScript |         -1 |          0 |          0 |         -1 |
+| c:\Users\Laurynas\Desktop\Bachelor\frontend\src\components\Quotes\Quotes.js           | JavaScript |         28 |          0 |          1 |         29 |
+| c:\Users\Laurynas\Desktop\Bachelor\frontend\src\components\SpeedTyping\QuoteEngine.js | JavaScript |          8 |          0 |          1 |          9 |
+| c:\Users\Laurynas\Desktop\Bachelor\frontend\src\components\SpeedTyping\QuoteLevels.js | JavaScript |         37 |          0 |          2 |         39 |
+| c:\Users\Laurynas\Desktop\Bachelor\frontend\src\components\SpeedTyping\TypingTest.js  | JavaScript |          8 |          1 |          1 |         10 |
+| c:\Users\Laurynas\Desktop\Bachelor\frontend\src\components\Training\Game.js           | JavaScript |          2 |          0 |          0 |          2 |
+| c:\Users\Laurynas\Desktop\Bachelor\frontend\src\components\Training\GameModal.js      | JavaScript |         -3 |          0 |          0 |         -3 |
+| c:\Users\Laurynas\Desktop\Bachelor\frontend\src\components\Training\TrainingPage.js   | JavaScript |          4 |          0 |          2 |          6 |
+| c:\Users\Laurynas\Desktop\Bachelor\frontend\src\components\Training\keyboard.css      | CSS        |          4 |          0 |          1 |          5 |
+| c:\Users\Laurynas\Desktop\Bachelor\frontend\src\components\Users\TopUsers.js          | JavaScript |         75 |          0 |          9 |         84 |
+| c:\Users\Laurynas\Desktop\Bachelor\frontend\src\components\Users\Users.js             | JavaScript |         24 |          0 |          3 |         27 |
+| c:\Users\Laurynas\Desktop\Bachelor\frontend\src\components\Words\ImportFile.js        | JavaScript |          2 |          0 |          1 |          3 |
+| c:\Users\Laurynas\Desktop\Bachelor\frontend\src\components\Words\Words.js             | JavaScript |         30 |          0 |          1 |         31 |
+| c:\Users\Laurynas\Desktop\Bachelor\frontend\src\styles\NavBarNew.css                  | CSS        |          1 |          0 |          0 |          1 |
+| c:\Users\Laurynas\Desktop\Bachelor\frontend\src\styles\index.css                      | CSS        |         75 |          0 |         14 |         89 |
+| Total                                                                                 |            |        473 |          1 |         47 |        521 |
++---------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
