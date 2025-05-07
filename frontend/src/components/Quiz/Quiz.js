@@ -132,7 +132,7 @@ const Quiz = ({ questions, currQuestion }) => {
                     {getAnswerUI()}
                     <div className='quiz-footer'>
                         <button className="quiz-button" onClick={() => onClickNext(answer)} disabled={answerIdx === null && !inputAnswer}>
-                            {currentQuestion === questions.length - 1 ? "Finish" : "Next"}
+                            {currentQuestion === questions.length - 1 ? "Baigti" : "Kitas"}
                         </button>
                     </div>
                 </>) : <div className='quiz-result'>

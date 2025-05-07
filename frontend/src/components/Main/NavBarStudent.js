@@ -100,9 +100,9 @@ const NavBarStudent = () => {
           </div>
           <ul className="links">
             <li><Link to="/"><FontAwesomeIcon icon={faHome} /> PAGRINDINIS</Link></li>
-            <li><Link to="/training" className={canAccessStudent ? '' : 'hidden'}><FontAwesomeIcon icon={faDumbbell} /> TRENIRUOTĖ</Link></li>
-            <li><Link to="/tests" className={canAccessStudent ? '' : 'hidden'}><FontAwesomeIcon icon={faCheckSquare} /> TESTAI</Link></li>
             <li><Link to="/speedTyping" className={canAccessStudent ? '' : 'hidden'}><FontAwesomeIcon icon={faCar} /> SPARTUS RAŠYMAS</Link></li>
+            <li><Link to="/tests" className={canAccessStudent ? '' : 'hidden'}><FontAwesomeIcon icon={faCheckSquare} /> TESTAI</Link></li>
+            <li><Link to="/training" className={canAccessStudent ? '' : 'hidden'}><FontAwesomeIcon icon={faDumbbell} /> TRENIRUOTĖ</Link></li>
             <li><Link to="/userBadges" className={canAccessStudent ? '' : 'hidden'}><FontAwesomeIcon icon={faTrophy} /> ŽENKLELIAI</Link></li>
             <li>
               <a href="#" onClick={toggleJsSubMenu}><FontAwesomeIcon icon={faUser} /> {auth.user ? auth.user.toUpperCase() : null}</a>

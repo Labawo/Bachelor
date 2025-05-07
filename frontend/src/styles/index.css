@@ -142,7 +142,7 @@ form.create-note textarea {
 
 .delete-note-button {
     width: 90%;
-    background-color: rgb(206, 37, 60);
+    background-color: rgba(206, 37, 60, 0.541);
     color: #fff;
     cursor: pointer;
     border: none;
@@ -905,6 +905,11 @@ tbody tr {
 
 .times-two {
     grid-column: span 3;
+    text-align: left;
+}
+
+.times-three {
+    grid-column: span 4;
     text-align: left;
 }
 

@@ -37,7 +37,8 @@ const InspectBadge = ({ show, onClose, badgeId }) => {
   }, [axiosPrivate, badgeId]);
 
   const handleSubmit = async (e) => {
-    
+    e.preventDefault();
+    onClose();
   };
 
   return (
@@ -74,7 +75,7 @@ const InspectBadge = ({ show, onClose, badgeId }) => {
             </div>
             
             <div className="modal-buttons-form">
-              <button type="submit" style={{background: 'black', color: '#fff'}} onClick={onClose}>
+              <button type="submit" style={{background: 'black', color: '#fff'}} onClick={handleSubmit}>
                 Uždaryti
               </button>
             </div>

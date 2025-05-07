@@ -118,15 +118,15 @@ const NotesPage = observer(() => {
                           <span key={i} className='note-span'>
                             <h2 style={{fontSize: '20px'}}>{note.name}</h2>
                             <p style={{fontSize: '12px'}}>{note.content}</p>
-                            <button
-                                onClick={() => deleteNote(note.id)}
-                                className='delete-note-button'
-                            >
-                                <FontAwesomeIcon icon={faTrash} />
-                            </button>
+                            <div style={{width: '30%', marginTop: '40px'}}>
+                              <button
+                                  onClick={() => deleteNote(note.id)}
+                                  className='delete-note-button'
+                              >
+                                  <FontAwesomeIcon icon={faTrash} />
+                              </button>
+                            </div>
                           </span>
-                          
-                        
                     ))}
                     </div>
                 </div>

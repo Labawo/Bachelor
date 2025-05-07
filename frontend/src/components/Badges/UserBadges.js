@@ -105,7 +105,7 @@ const UserBadges = () => {
             />
             <InspectBadge
                 show={instpectId !== 0}
-                onClose={() => setInspectId(0)}
+                onClose={() => {setInspectId(0); setLoadBadgesFlag(!loadBadgesFlag)}}
                 badgeId = {instpectId} 
             />
         </article>

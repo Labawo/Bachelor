@@ -55,6 +55,10 @@ const QuoteLevels = () => {
         setGameId(levelId);
     };
 
+    const showList = () => {
+        setSizesBool(false);
+    };
+
     const setLevelData = (levelId, levelName, levelDescription, levelXp, levelRecords) => {
         setSelectedLevelId(levelId);
         setSelectedLevelName(levelName);
@@ -67,7 +71,7 @@ const QuoteLevels = () => {
     return (
         <article className="list-article" style={{background: 'lightgrey'}}>
             <div className='items-list-div' >
-                <span className={`items-list-span ${sizesBool ? '' : 'times-two'}`} style={{background: '#fff', borderRight: '2px solid black', height: '100%'}}>
+                <span className={`items-list-span ${sizesBool ? 'hidden' : 'times-two'}`} style={{background: '#fff', borderRight: '2px solid black', height: '100%'}}>
                     <div className='table-container'>
                         <h2 className="list-headers" style={{background: 'black', color: '#fff', paddingTop: '15px', paddingBottom: '15px'}}>Citatų sąrašas pagal lygį</h2>
                         {levels.length ? (
@@ -113,16 +117,25 @@ const QuoteLevels = () => {
                         ) : null}
                     </div>
                 </span>
-                <span className={`items-list-span ${sizesBool ? 'times-two' : ''}`} style={{background: '#fff', borderLeft: '2px solid black', height: '100%'}}>
+                <span className={`items-list-span ${sizesBool ? 'hidden' : ''}`} style={{background: '#fff', borderLeft: '2px solid black', height: '100%'}}>
+                    <div>
+                        <h2 style={{background: 'black', color: '#fff', paddingTop: '15px', paddingBottom: '15px'}}>Paaiškinimas</h2>
+                        <p></p>
+                    </div> 
+                </span>
+                <span className={`items-list-span ${sizesBool ? 'times-three' : 'hidden'}`} style={{background: '#fff', borderLeft: '2px solid black', height: '100%'}}>
                     <div>
                         <h2 style={{background: 'black', color: '#fff', paddingTop: '15px', paddingBottom: '15px'}}>Lygio aprašymas</h2>
+                        <div style={{width: '20%'}}>
+                            <button onClick={showList} className='black-button' style={{width: '100%'}}> Išeiti </button>
+                        </div>
                         <h3>Pavadinimas</h3>
                         <p style={{textAlign: 'center'}}>{selectedLevelId !== '' ? selectedLevelName : ''}</p>
                         <h3>Aprašymas</h3>
                         <p style={{textAlign: 'center'}}>{selectedLevelId !== '' ? selectedLevelDescription : ''}</p>
                         <h3>Patirtis</h3>
                         <p style={{textAlign: 'center'}}>{selectedLevelId !== '' ? selectedLevelExperience : ''}</p>
-                        {selectedLevelId !== '' ? (<div style={{width: '35%', margin: 'auto'}}>
+                        {selectedLevelId !== '' ? (<div style={{width: '30%', margin: 'auto'}}>
                             <button 
                                 className="green-button"
                                 style={{width: '100%', color: 'rgb(56, 56, 56)'}}

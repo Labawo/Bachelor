@@ -43,7 +43,6 @@ const QuizEngine = ({ show, onClose, levelId }) => {
     const handleClose = () => {
         setWords([]);
         onClose();
-        window.location.reload();
     };
 
     return (

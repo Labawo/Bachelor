@@ -114,8 +114,8 @@ const TypingTest = ({ content, timeToComplete, isTraining }) => {
     };
 
     return (
-        <div className='typing-test'>
-            <div className='container'>
+        <div className='typing-test' >
+            <div className='container' style={{background: '#fff'}}>
                 <div className='test'>
                     <input type='text' className='speed-input-field' ref={inputRef} onChange={handleChange}/>
                     {

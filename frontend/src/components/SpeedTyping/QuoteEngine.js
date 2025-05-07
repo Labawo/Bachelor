@@ -40,7 +40,6 @@ const QuoteEngine = ({ show, onClose, levelId }) => {
 
     const handleClose = () => {
         onClose();
-        window.location.reload();
     };
 
     return (

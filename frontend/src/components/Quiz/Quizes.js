@@ -22,6 +22,7 @@ const Quizes = () => {
     const [selectedLevelDescription, setSelectedLevelDescription] = useState('');
     const [selectedLevelExperience, setSelectedLevelExperience] = useState(0);
     const [selectedLevelRecords, setSelectedLevelRecords] = useState(0);
+    const [sizesBool, setSizesBool] = useState(false);
 
     const fetchLevels = useCallback(async (pageNumber) => {
         try {
@@ -50,12 +51,17 @@ const Quizes = () => {
         setPlayId(levelId);
     };
 
+    const showList = () => {
+        setSizesBool(false);
+    };
+
     const setLevelData = (levelId, levelName, levelDescription, levelXp, levelRecords) => {
         setSelectedLevelId(levelId);
         setSelectedLevelName(levelName);
         setSelectedLevelDescription(levelDescription);
         setSelectedLevelExperience(levelXp);
         setSelectedLevelRecords(levelRecords);
+        setSizesBool(true);
     };
 
     useEffect(() => {
@@ -65,7 +71,7 @@ const Quizes = () => {
     return (
         <article className="list-article" style={{background: 'lightgrey'}}>
             <div className='items-list-div' >
-                <span className='items-list-span times-two' style={{borderRight: '2px solid black', height: '100%', background:'#fff'}}>
+                <span className={`items-list-span ${sizesBool ? 'hidden' : 'times-two'}`} style={{background: '#fff', borderRight: '2px solid black', height: '100%'}}>
                     <div className="table-container" style={{marginRight: '0'}}>
                         <h2 className="list-headers" style={{background: 'black', color: '#fff', paddingTop: '15px', paddingBottom: '15px'}}>Testų sąrašas pagal lygį</h2>
                         {levels.length ? (
@@ -111,9 +117,18 @@ const Quizes = () => {
                         ) : null}
                     </div>
                 </span>
-                <span className='items-list-span' style={{background: '#fff', borderLeft: '2px solid black', height: '100%', overflow: 'auto', paddingBottom: '25px'}}>
+                <span className={`items-list-span ${sizesBool ? 'hidden' : ''}`} style={{background: '#fff', borderLeft: '2px solid black', height: '100%'}}>
+                    <div>
+                        <h2 style={{background: 'black', color: '#fff', paddingTop: '15px', paddingBottom: '15px'}}>Paaiškinimas</h2>
+                        <p></p>
+                    </div> 
+                </span>
+                <span className={`items-list-span ${sizesBool ? 'times-three' : 'hidden'}`} style={{background: '#fff', borderLeft: '2px solid black', height: '100%', overflow: 'auto', paddingBottom: '25px'}}>
                     <div>
                         <h2 style={{background: 'black', color: '#fff', paddingTop: '15px', paddingBottom: '15px'}}>Lygio aprašymas</h2>
+                        <div style={{width: '20%'}}>
+                            <button onClick={showList} className='black-button' style={{width: '100%'}}> Išeiti </button>
+                        </div>
                         <h3>Pavadinimas</h3>
                         <p style={{textAlign: 'center'}}>{selectedLevelId !== '' ? selectedLevelName : ''}</p>
                         <h3>Aprašymas</h3>
