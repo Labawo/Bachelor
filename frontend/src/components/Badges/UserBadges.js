@@ -59,7 +59,7 @@ const UserBadges = () => {
                     paddingRight: '20px', paddingTop: '15px', paddingBottom: '10px'}}>
                     <span className='users-list-span times-two'>
                         <div className='users-list-header'>
-                            <p>Mano ženklelių sąrašas</p>
+                            <p style= {{fontSize: '40px'}}>Mano ženklelių sąrašas</p>
                         </div>
                     </span>
                     <span className='users-list-span'>
@@ -81,8 +81,7 @@ const UserBadges = () => {
                         {filteredBadges.map((badge, i) => (
                             <span key={i} className={`badge-span ${badge?.seen === 0 ? 'alerts-border' : ''}`}>
                                 <img src={logo} alt="Logo" width='80%' height='120px'/>
-                                <p style={{fontWeight : '600'}}>{badge?.name}</p>
-                                <p>{badge?.type}</p>
+                                <p style={{fontWeight : '600', fontSize: '20px'}}>{badge?.name}</p>
                                 <div>
                                     <button
                                         className = 'black-button'

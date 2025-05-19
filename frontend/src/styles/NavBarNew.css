@@ -21,7 +21,7 @@ nav{
     padding: 0 50px;
   }
   .navbar .logo a{
-    font-size: 30px;
+    font-size: 40px;
     color: #fff;
     text-decoration: none;
     font-weight: 600;
@@ -160,7 +160,7 @@ nav{
     width: 280px;
     outline: none;
     padding: 0 15px;
-    font-size: 16px;
+    font-size: 15px;
     border: none;
   }
   .navbar .nav-links .sidebar-logo{
@@ -175,7 +175,7 @@ nav{
       padding: 0 25px;
     }
     nav .navbar .logo a{
-      font-size: 27px;
+      font-size: 40px;
     }
     nav .navbar .links li{
       padding: 0 10px;
@@ -212,12 +212,12 @@ nav{
       justify-content: space-between;
     }
     .sidebar-logo .logo-name{
-      font-size: 25px;
+      font-size: 40px;
       color: #fff;
     }
       .sidebar-logo  i,
       .navbar .bx-menu{
-        font-size: 25px;
+        font-size: 40px;
         color: #fff;
       }
     nav .navbar .links{

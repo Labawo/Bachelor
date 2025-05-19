@@ -13,6 +13,7 @@ const Users = () => {
     const [filter, setFilter] = useState('');
     const [emailFilter, setEmailFilter] = useState('');
     const [selectedUserId, setSelectedUserId] = useState('');
+    const [selectedUserName, setSelectedUserName] = useState('');
     const axiosPrivate = useAxiosPrivate();
     const navigate = useNavigate();
     const location = useLocation();
@@ -164,7 +165,7 @@ const Users = () => {
                     paddingRight: '20px', paddingTop: '15px', paddingBottom: '10px'}}>
                     <span className='users-list-span times-two'>
                         <div className='users-list-header'>
-                            <p>Naudotojų sąrašas</p>
+                            <p style={{fontSize: '40px'}}>Naudotojų sąrašas</p>
                         </div>
                     </span>
                     <span className='users-list-span'>
@@ -218,9 +219,10 @@ const Users = () => {
                                             <FontAwesomeIcon icon={faTrash} />
                                         </button>
                                         <button
-                                            className='gold-button'
+                                            className='blue-button'
                                             onClick={() => {
                                                 setSelectedUserId(user.id);
+                                                setSelectedUserName(user.userName);
                                             }}
                                         >
                                             <FontAwesomeIcon icon={faKey} />
@@ -234,8 +236,9 @@ const Users = () => {
             </div>
             <EditUser 
                 show={selectedUserId != ''}
-                onClose={() => setSelectedUserId('')}
+                onClose={() => {setSelectedUserId(''); setSelectedUserName('')}}
                 userId={selectedUserId}
+                userName={selectedUserName}
             />
         </article>
     );

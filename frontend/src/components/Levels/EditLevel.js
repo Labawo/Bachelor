@@ -69,16 +69,17 @@ const EditLevel = ({ show, onClose, levelId }) => {
     <>
       <div className={`modal-form ${show ? "show" : ""}`}>
       <div className="modal-content-form"> 
-      <div className='close-button-div-form edit'>
-          <button className="primary-button-form edit" onClick={onClose}>X</button>
+      <div className='close-button-div-form'>
+          <button className="primary-button-form" onClick={onClose}>X</button>
         </div>
         <div className="outer-form-div">
         <div className="form-container">
-          <h2>Redaguoti lygį</h2>
+          <h2 style={{fontSize: '40px'}}>Redaguoti lygį</h2>
           <form onSubmit={handleSubmit} className = "input_form">
             <div className="form-group">
               <label htmlFor="name">Pavadinimas:</label><br/>
                 <input
+                    style={{fontSize: '15px'}}
                     type="text"
                     id="name"
                     value={name}
@@ -90,6 +91,7 @@ const EditLevel = ({ show, onClose, levelId }) => {
             <div className="form-group">
               <label htmlFor="description">Apibūdinimas:</label><br/>
               <textarea
+                style={{fontSize: '15px'}}
                 id="description"
                 name="description"
                 value={description}
@@ -105,6 +107,7 @@ const EditLevel = ({ show, onClose, levelId }) => {
             <div className="form-group">
               <label htmlFor="minExperience">Minimalus XP skaičius:</label><br/>
                 <input
+                    style={{fontSize: '15px'}}
                     type="number"
                     id="minExperience"
                     value={minExperience}
@@ -115,7 +118,7 @@ const EditLevel = ({ show, onClose, levelId }) => {
             </div>
             
             <div className="modal-buttons-form">
-              <button type="submit" className="edit-form-button">
+              <button type="submit" className="create-form-button">
                 Redaguoti
               </button>
             </div>

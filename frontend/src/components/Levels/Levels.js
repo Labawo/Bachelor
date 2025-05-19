@@ -131,7 +131,7 @@ const Levels = ({ urlApi, header, headerBackgroundColor }) => {
                                     <td>{level?.itemCount}</td>
                                     <td>
                                         <button 
-                                            className="green-button"
+                                            className="blue-button"
                                             onClick={() => updateLevel(level.id)}
                                         >
                                             <FontAwesomeIcon icon={faEdit} />

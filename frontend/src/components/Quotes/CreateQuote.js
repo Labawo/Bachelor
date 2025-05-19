@@ -63,7 +63,7 @@ const CreateQuote = ({ show, onClose, levelId }) => {
         </div>
         <div className="outer-form-div">
           <div className="form-container">
-            <h2>Sukurti naują citatą</h2>
+            <h2 style={{fontSize: "40px"}}>Sukurti naują citatą</h2>
             <form onSubmit={handleSubmit} className = "input_form">
               <div className="form-group">
                   <input

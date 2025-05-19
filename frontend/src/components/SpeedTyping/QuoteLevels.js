@@ -2,10 +2,10 @@ import { useState, useEffect, useCallback } from "react";
 import useAxiosPrivate from "../../hooks/UseAxiosPrivate";
 import { useNavigate, useLocation } from "react-router-dom";
 import useAuth from "../../hooks/UseAuth";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faTrash, faSearch, faEdit } from '@fortawesome/free-solid-svg-icons';
 import ErrorModal from "../Modals/ErrorModal";
 import QuoteEngine from "./QuoteEngine";
+import Keyboard from "../Training/Keyboard";
+import logo2 from "../Training/fingeries.png";
 
 const QuoteLevels = () => {
     const [levels, setLevels] = useState([]);
@@ -73,7 +73,7 @@ const QuoteLevels = () => {
             <div className='items-list-div' >
                 <span className={`items-list-span ${sizesBool ? 'hidden' : 'times-two'}`} style={{background: '#fff', borderRight: '2px solid black', height: '100%'}}>
                     <div className='table-container'>
-                        <h2 className="list-headers" style={{background: 'black', color: '#fff', paddingTop: '15px', paddingBottom: '15px'}}>Citatų sąrašas pagal lygį</h2>
+                        <h2 className="list-headers" style={{background: 'black', color: '#fff', paddingTop: '15px', paddingBottom: '15px', fontSize: '40px'}}>Citatų sąrašas pagal lygį</h2>
                         {levels.length ? (
                             <table className={`my-table ${sizesBool ? 'hidden' : ''}`}>
                                 <thead>
@@ -92,7 +92,7 @@ const QuoteLevels = () => {
                                             <td>{level?.itemCount}</td>
                                             <td>
                                                 <button 
-                                                    className="gold-button"
+                                                    className="blue-button"
                                                     style={{width: '35%'}}
                                                     onClick={() => setLevelData(level.id, level.name, level.description, level.minExperience, level.itemCount)}
                                                 >
@@ -119,26 +119,38 @@ const QuoteLevels = () => {
                 </span>
                 <span className={`items-list-span ${sizesBool ? 'hidden' : ''}`} style={{background: '#fff', borderLeft: '2px solid black', height: '100%'}}>
                     <div>
-                        <h2 style={{background: 'black', color: '#fff', paddingTop: '15px', paddingBottom: '15px'}}>Paaiškinimas</h2>
-                        <p></p>
+                        <h2 style={{background: 'black', color: '#fff', paddingTop: '15px', paddingBottom: '15px', fontSize: '40px'}}>Paaiškinimas</h2>
+                        <div style={{paddingLeft: '10px', paddingRight: '10px'}}>
+                            <p style={{fontSize: '15px'}}>Paspaudę mygtuką <strong>Plačiau</strong> yra atidaromas lygio aprašymas. Norint gryžti atgal spaudžaimas mygtukas <strong>Išeiti</strong> esantis lygio aprašymo pradžioje kairėje pusėje.</p>
+                            <p style={{fontSize: '15px'}}>Toliau galima pasirinkti žaisti lygį kurio metu bus atidarytas spartaus rašymo varikliukas.</p>
+                        </div>
                     </div> 
                 </span>
-                <span className={`items-list-span ${sizesBool ? 'times-three' : 'hidden'}`} style={{background: '#fff', borderLeft: '2px solid black', height: '100%'}}>
+                <span className={`items-list-span ${sizesBool ? 'times-three' : 'hidden'}`} style={{background: '#fff', paddingBottom: '50px', height: '100%'}}>
                     <div>
-                        <h2 style={{background: 'black', color: '#fff', paddingTop: '15px', paddingBottom: '15px'}}>Lygio aprašymas</h2>
+                        <h2 style={{background: 'black', color: '#fff', paddingTop: '15px', paddingBottom: '15px', fontSize: '40px'}}>Lygio aprašymas</h2>
                         <div style={{width: '20%'}}>
                             <button onClick={showList} className='black-button' style={{width: '100%'}}> Išeiti </button>
                         </div>
-                        <h3>Pavadinimas</h3>
-                        <p style={{textAlign: 'center'}}>{selectedLevelId !== '' ? selectedLevelName : ''}</p>
-                        <h3>Aprašymas</h3>
-                        <p style={{textAlign: 'center'}}>{selectedLevelId !== '' ? selectedLevelDescription : ''}</p>
-                        <h3>Patirtis</h3>
-                        <p style={{textAlign: 'center'}}>{selectedLevelId !== '' ? selectedLevelExperience : ''}</p>
+                        <div style={{fontSize: '15px'}}>
+                            <h3 style={{borderBottom: '1px solid black', paddingTop: '10px', paddingBottom: '10px'}}>Pavadinimas</h3>
+                            <p style={{textAlign: 'center'}}>{selectedLevelId !== '' ? selectedLevelName : ''}</p>
+                            <h3 style={{borderBottom: '1px solid black', paddingTop: '10px', paddingBottom: '10px'}}>Aprašymas</h3>
+                            <p style={{textAlign: 'center'}}>{selectedLevelId !== '' ? selectedLevelDescription : ''}</p>
+                            <p style={{textAlign: 'center'}}>Rekomenduojamas pirštų išsidėstymas:</p>
+                            <div style={{width: '80%', margin: 'auto', display: 'flex', flexDirection: 'row', paddingTop: '30px', paddingBottom: '10px'}}>
+                                <Keyboard />
+                                <div>
+                                    <img src={logo2} alt="Logo" width='600px' height='300px'/>
+                                </div>
+                                
+                            </div>
+                        </div>
+                        <p style={{textAlign: 'center', fontSize: '15px'}}>Norėdami pradėti žaidimą spauskite:</p>
                         {selectedLevelId !== '' ? (<div style={{width: '30%', margin: 'auto'}}>
                             <button 
-                                className="green-button"
-                                style={{width: '100%', color: 'rgb(56, 56, 56)'}}
+                                className="blue-button"
+                                style={{width: '100%'}}
                                 onClick={() => playQuote(selectedLevelId)}
                             >
                                 Žaisti

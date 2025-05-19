@@ -74,7 +74,7 @@ const Login = () => {
             <LoginNavBar />
             <div className='login-div'>
                 <div className='wrapper'>
-                    <div className='title-login'><span className='title-span'>Prisijungimas</span></div>
+                    <div className='title-login'><span className='title-span' style={{fontSize: '40px'}}>Prisijungimas</span></div>
                     <p ref={errRef} className={errMsg ? "errmsg" : "offscreen"} aria-live="assertive">{errMsg}</p>
                     <form onSubmit={handleSubmit}>
                         <div className="row">
@@ -105,12 +105,12 @@ const Login = () => {
                             />
                         </div>
 
-                        <div className="row button">
-                            <button>Prisijungti</button>
+                        <div className="row button" >
+                            <button style={{fontSize: '15px'}}>Prisijungti</button>
                         </div>
 
                         <div className="signup-link">
-                            Nesate registruotas? <Link to="/register">Registruotis</Link>
+                            Nesate registruotas? <Link to="/register" >Registruotis</Link>
                         </div>
                     </form>
                 </div>

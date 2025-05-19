@@ -67,7 +67,7 @@ input[type="email"] {
     padding-left: 70px;
     border-radius: 5px;
     border: 1px solid lightgrey;
-    font-size: 18px;
+    font-size: 15px;
     transition: all 0.3s ease;
 }
 
@@ -84,7 +84,7 @@ color: #999;
     width: 55px;
     height: 100%;
     color: #fff;
-    font-size: 22px;
+    font-size: 15px;
     background: #3E8DA8;
     border: 1px solid #3E8DA8;
     border-radius: 5px 0 0 5px;
@@ -102,7 +102,7 @@ color: #999;
     margin-right: 5px;
     height: 80%;
     color: #fff;
-    font-size: 22px;
+    font-size: 15px;
     background-color: #fff;
     border: none;
     display: flex;
@@ -116,7 +116,7 @@ color: #999;
 
 .wrapper form .pass a {
     color: #3E8DA8;
-    font-size: 17px;
+    font-size: 15px;
     text-decoration: none;
 }
 
@@ -145,7 +145,7 @@ form button:hover {
 .wrapper form .signup-link {
     text-align: center;
     margin-top: 45px;
-    font-size: 17px;
+    font-size: 15px;
 }
 
 .wrapper form .signup-link a {
@@ -217,7 +217,7 @@ color: #999;
     width: 55px;
     height: 100%;
     color: #fff;
-    font-size: 22px;
+    font-size: 15px;
     background: #3E8DA8;
     border: 1px solid #3E8DA8;
     border-radius: 5px 0 0 5px;
@@ -235,7 +235,7 @@ color: #999;
     margin-right: 5px;
     height: 80%;
     color: #fff;
-    font-size: 19px;
+    font-size: 15px;
     background-color: #fff;
     border: none;
     display: flex;
@@ -249,7 +249,7 @@ color: #999;
 
 .wrapper-reg form .pass a {
     color: #3E8DA8;
-    font-size: 12px;
+    font-size: 15px;
     text-decoration: none;
 }
 
@@ -263,7 +263,7 @@ color: #999;
     height: 50px;
     margin-top: 20px;
     color: #fff;
-    font-size: 17px;
+    font-size: 15px;
     font-weight: 600;
     padding-left: 0px;
     background: #3E8DA8;

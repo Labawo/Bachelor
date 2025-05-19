@@ -3,12 +3,24 @@
   "WorkspaceRootPath": "C:\\Users\\Laurynas\\Desktop\\Bachelor\\backend\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{54C5A994-EE0A-40F4-AA74-F5918518B295}|backendTest\\backendTest.csproj|c:\\users\\laurynas\\desktop\\bachelor\\backend\\backendtest\\controllers\\levelscontrollertests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{54C5A994-EE0A-40F4-AA74-F5918518B295}|backendTest\\backendTest.csproj|solutionrelative:backendtest\\controllers\\levelscontrollertests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{64529463-021C-4BA8-B04A-745421D16DCE}|backend\\backend.csproj|c:\\users\\laurynas\\desktop\\bachelor\\backend\\backend\\controllers\\userscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{64529463-021C-4BA8-B04A-745421D16DCE}|backend\\backend.csproj|solutionrelative:backend\\controllers\\userscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{64529463-021C-4BA8-B04A-745421D16DCE}|backend\\backend.csproj|c:\\users\\laurynas\\desktop\\bachelor\\backend\\backend\\backend.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{64529463-021C-4BA8-B04A-745421D16DCE}|backend\\backend.csproj|solutionrelative:backend\\backend.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{64529463-021C-4BA8-B04A-745421D16DCE}|backend\\backend.csproj|c:\\users\\laurynas\\desktop\\bachelor\\backend\\backend\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{64529463-021C-4BA8-B04A-745421D16DCE}|backend\\backend.csproj|solutionrelative:backend\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{64529463-021C-4BA8-B04A-745421D16DCE}|backend\\backend.csproj|c:\\users\\laurynas\\desktop\\bachelor\\backend\\backend\\controllers\\levelscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{64529463-021C-4BA8-B04A-745421D16DCE}|backend\\backend.csproj|solutionrelative:backend\\controllers\\levelscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Laurynas\\Desktop\\Bachelor\\backend\\backendTest\\Controllers\\LevelsControllerTests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:backendTest\\Controllers\\LevelsControllerTests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -18,11 +30,48 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 0,
           "Children": [
             {
               "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "UsersController.cs",
+              "DocumentMoniker": "C:\\Users\\Laurynas\\Desktop\\Bachelor\\backend\\backend\\Controllers\\UsersController.cs",
+              "RelativeDocumentMoniker": "backend\\Controllers\\UsersController.cs",
+              "ToolTip": "C:\\Users\\Laurynas\\Desktop\\Bachelor\\backend\\backend\\Controllers\\UsersController.cs",
+              "RelativeToolTip": "backend\\Controllers\\UsersController.cs",
+              "ViewState": "AgIAAGYAAAAAAAAAAAAowH4AAAApAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-14T15:42:32.944Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\Laurynas\\Desktop\\Bachelor\\backend\\backend\\Program.cs",
+              "RelativeDocumentMoniker": "backend\\Program.cs",
+              "ToolTip": "C:\\Users\\Laurynas\\Desktop\\Bachelor\\backend\\backend\\Program.cs",
+              "RelativeToolTip": "backend\\Program.cs",
+              "ViewState": "AgIAADwAAAAAAAAAAAAAADoAAAAaAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-12T12:45:04.725Z"
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 1,
+              "Title": "backend.csproj",
+              "DocumentMoniker": "C:\\Users\\Laurynas\\Desktop\\Bachelor\\backend\\backend\\backend.csproj",
+              "RelativeDocumentMoniker": "backend\\backend.csproj",
+              "ToolTip": "C:\\Users\\Laurynas\\Desktop\\Bachelor\\backend\\backend\\backend.csproj",
+              "RelativeToolTip": "backend\\backend.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2025-05-12T10:29:53.489Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
               "Title": "LevelsController.cs",
               "DocumentMoniker": "C:\\Users\\Laurynas\\Desktop\\Bachelor\\backend\\backend\\Controllers\\LevelsController.cs",
               "RelativeDocumentMoniker": "backend\\Controllers\\LevelsController.cs",
@@ -34,7 +83,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 4,
               "Title": "LevelsControllerTests.cs",
               "DocumentMoniker": "C:\\Users\\Laurynas\\Desktop\\Bachelor\\backend\\backendTest\\Controllers\\LevelsControllerTests.cs",
               "RelativeDocumentMoniker": "backendTest\\Controllers\\LevelsControllerTests.cs",
@@ -42,8 +91,7 @@
               "RelativeToolTip": "backendTest\\Controllers\\LevelsControllerTests.cs",
               "ViewState": "AgIAABIAAAAAAAAAAAAAAPUAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-07T21:52:57.752Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-07T21:52:57.752Z"
             }
           ]
         }

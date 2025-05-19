@@ -111,7 +111,7 @@ const Badges = () => {
                     </span>
                 </div>
                 <div style={{textAligh: 'center'}}>
-                    <button className = 'blue-button' onClick={createBadge} style={{marginLeft: '40%', width: '20%', fontWeight: '600'}}> Sukurti Ženklelį </button>
+                    <button className = 'blue-button' onClick={createBadge} style={{marginLeft: '40%', width: '20%', fontWeight: '600', fontSize: '20px', paddingBottom: '35px'}}> Sukurti Ženklelį </button>
                 </div>
                 {filteredBadges.length ? (
                     <div className='badge-div'>
@@ -122,7 +122,7 @@ const Badges = () => {
                                 <p>{badge?.type}</p>
                                 <div>
                                     <button 
-                                        className = 'green-button'
+                                        className = 'blue-button'
                                         onClick={() => updateBadge(badge.id)}
                                     >
                                         <FontAwesomeIcon icon={faEdit} />

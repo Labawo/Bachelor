@@ -47,21 +47,17 @@ span.wrong {
 }
 
 button.btn {
-    padding: 0.25rem 0.75rem;
-    font-size: 1.3rem;
-    background: "transparent";
-    border-radius: 3px;
-    display: inline-block;
-    border: 2px solid #000;
+    background: #3E8DA8;
+    color: #fff;
+    border: none;
+    width: 36px;
+    height: 36px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
     cursor: pointer;
-    transition: 0.25s;
-    will-change: transform;
-    box-shadow: -1px 1px 0px #333,
-        -2px 2px 0px #333,
-        -3px 3px 0px #333,
-        -4px 4px 0px #333;
+    outline: none;
+    width: 100%;
 }
 
 button.btn:hover {
-    background-color: #049715;
+    background: rgb(24, 109, 134);
 }

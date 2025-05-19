@@ -24,7 +24,8 @@ const TrainingPage = () => {
             <section className='admin-section' style={{paddingTop: '0', minHeight: '90vh'}}>
             <img src={logo1} alt="Logo" width='100%' height='200px'/>
                 <div>
-                    <h1>Rekomenduojamas pirštų išsidėstymas:</h1>
+                <h2 className="list-headers" style={{background: 'black', color: '#fff', paddingTop: '15px', paddingBottom: '15px', fontSize: '40px'}}>Treniruotė</h2>
+                    <p style={{textAlign: 'center', fontSize: '15px', paddingBottom: '30px'}}>Rekomenduojamas pirštų išsidėstymas:</p>
                     <div style={{width: '80%', margin: 'auto', display: 'flex', flexDirection: 'row'}}>
                         <Keyboard />
                         <div>
@@ -32,9 +33,9 @@ const TrainingPage = () => {
                         </div>
                         
                     </div>
-                    
+                    <p style={{textAlign: 'center', fontSize: '15px', paddingTop: '30px'}}>Norėdami pradėti treniruočių žaidimą spauskite:</p>
                     <div className="create-btn-div" style = {{width: '20%', margin: 'auto'}}>
-                        <button onClick={createLevel} className="create-button" style = {{width: '90%'}}> Treniruotis </button>
+                        <button onClick={createLevel} className="blue-button" style = {{width: '90%'}}> Treniruotis </button>
                     </div>
                 </div>
             </section>

@@ -133,6 +133,10 @@ figure.keyboard .key-function.key-small-type.key-right {
     text-align: right;
 }
 
+figure .keyboard .key {
+    color: red;
+}
+
 @media screen and (max-width: 1400px) {
     figure.keyboard {
         display: none;

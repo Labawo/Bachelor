@@ -91,7 +91,7 @@ const ResetPassword = () => {
             <section className='log-reg-sec'>
                 <div className="login-div">
                     <div className="wrapper-reg" style={{ height: '400px'}}>
-                        <div className='title-login'><span className='title-span'>Slaptažodžio keitimas</span></div>
+                        <div className='title-login'><span className='title-span' style={{fontSize: '40px'}}>Slaptažodžio keitimas</span></div>
                         <p ref={errRef} className={errMsg ? "errmsg" : "offscreen"} aria-live="assertive">{errMsg}</p>
                         <form onSubmit={handleSubmit}>
                             <div className="row">
@@ -189,7 +189,7 @@ const ResetPassword = () => {
                             </div>
                             
                             <div className="row button">
-                                <button disabled={!validcPwd || !validPwd || !validMatch ? true : false}>Pakeisti slaptažodį</button>
+                                <button disabled={!validcPwd || !validPwd || !validMatch ? true : false} style={{fontSize: '15px'}}>Pakeisti slaptažodį</button>
                             </div>
                         </form>
                     </div>

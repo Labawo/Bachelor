@@ -146,7 +146,7 @@ const Quiz = ({ questions, currQuestion }) => {
                         <p className='quiz-p'>
                             Teisingi atsakymai: <span className='quiz-span'>{result.correctAnswers}</span>
                         </p>
-                        <p>
+                        <p className='quiz-p'>
                             Neteisingi atsakymai: <span className='quiz-span'>{result.wrongAnswers}</span>
                         </p>
                         <button onClick={onTryAgain} className="quiz-button">

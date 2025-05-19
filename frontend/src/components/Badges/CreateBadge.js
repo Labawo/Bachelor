@@ -106,10 +106,12 @@ const CreateBadge = ({ show, onClose }) => {
       
       <div className="outer-form-div">
       <div className="form-container">
-          <h2>Sukurti ženklelį</h2>
+          <h2 style={{fontSize: "40px"}}>Sukurti ženklelį</h2>
           <form onSubmit={handleSubmit}>
             <div className="form-group">
+                <p style={{color: 'red', fontSize: '12px'}}>*Būtinas laukas</p>
                 <input
+                    style={{fontSize: "15px"}}
                     type="text"
                     id="name"
                     value={name}
@@ -120,7 +122,9 @@ const CreateBadge = ({ show, onClose }) => {
                 />
             </div>
             <div className="form-group">
+              <p style={{color: 'red', fontSize: '12px'}}>*</p>
               <textarea
+                style={{fontSize: "15px"}}
                 id="description"
                 name="description"
                 value={description}
@@ -134,13 +138,14 @@ const CreateBadge = ({ show, onClose }) => {
               )}
             </div>
             <div className="form-group">
+                <p style={{color: 'red', fontSize: '12px'}}>*</p>
                 <select
                   id="badgeType"
                   name="badgeType"
                   value={badgeType}
                   onChange={(e) => setBadgeType(e.target.value)}
                   className="select-field"
-                  style = {{color: badgeType !== '' ?  'black' : 'grey'}}
+                  style = {{color: badgeType !== '' ?  'black' : 'grey', fontSize: "15px"}}
                   required
                 >
                   <option value="" >Pasirinkti ženkliuko tipą</option>
@@ -158,7 +163,7 @@ const CreateBadge = ({ show, onClose }) => {
 
             <div className="form-group">
               <input
-                style={{color: 'grey'}}
+                style={{color: 'grey', fontSize: '15px'}}
                 type="file"
                 id="image"
                 name="image"
@@ -200,6 +205,7 @@ const CreateBadge = ({ show, onClose }) => {
                 <div className="form-group">
                 <label htmlFor="trainingXp">Minimalus XP skaičius:</label><br/>
                   <input
+                      style={{fontSize: "15px"}}
                       type="number"
                       id="traingingXp"
                       value={trainingXp}
@@ -213,7 +219,9 @@ const CreateBadge = ({ show, onClose }) => {
 
             {badgeType === "Quiz" && (
               <div className="form-group">
+                <p style={{color: 'red', fontSize: '12px'}}>*</p>
                 <input
+                    style={{fontSize: "15px"}}
                     type="number"
                     id="quizXp"
                     value={quizXp === 0 ? '' : quizXp}
@@ -228,7 +236,9 @@ const CreateBadge = ({ show, onClose }) => {
             {badgeType === "Quote" && (
               <div className="form-group">
               <label htmlFor="wpm"></label><br/>
+              <p style={{color: 'red', fontSize: '12px'}}>*</p>
                 <input
+                    style={{fontSize: "15px"}}
                     type="number"
                     id="wpm"
                     value={wpm === 0 ? '' : wpm}

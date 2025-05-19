@@ -43,11 +43,11 @@ const CreateLevel = ({ show, onClose }) => {
 
       const response = await axiosPrivate.post("/levels", levelData);
 
-      setSuccessMessage("Level created successfully!");
+      setSuccessMessage("Lygis sukurtas sėkmingai!");
       clearForm();
     } catch (error) {
       console.error("Error creating level:", error);
-      setErrorMessage("Failed to create level. Please try again.");
+      setErrorMessage(error.response.data);
     }
   };
 
@@ -67,10 +67,12 @@ const CreateLevel = ({ show, onClose }) => {
         </div>
         <div className="outer-form-div">
         <div className="form-container" style={{color: "black"}}>
-          <h2>Sukurti lygį</h2>
+          <h2 style={{fontSize: "40px"}}>Sukurti lygį</h2>
           <form onSubmit={handleSubmit} className = "input_form">
             <div className="form-group">
+                <p style={{color: 'red', fontSize: '12px'}}>*Būtinas laukas</p>
                 <input
+                    style={{fontSize: '15px'}}
                     type="text"
                     id="name"
                     onChange={(e) => setName(e.target.value)}
@@ -80,7 +82,9 @@ const CreateLevel = ({ show, onClose }) => {
                 />
             </div>
             <div className="form-group">
+              <p style={{color: 'red', fontSize: '12px'}}>*</p>
               <textarea
+                style={{fontSize: '15px'}}
                 id="description"
                 name="description"
                 value={description}
@@ -94,7 +98,9 @@ const CreateLevel = ({ show, onClose }) => {
               )}
             </div>
             <div className="form-group">
+                <p style={{color: 'red', fontSize: '12px'}}>*</p>
                 <input
+                    style={{fontSize: '15px'}}
                     type="number"
                     id="minExperience"
                     onChange={(e) => setMinExperience(e.target.value)}
@@ -104,9 +110,10 @@ const CreateLevel = ({ show, onClose }) => {
                 />
             </div>
             <div className="form-group">
-              <label htmlFor="isForWords" style={{color:'grey', fontSize: '12px'}}>Skirtas žodžiams? </label>
+              <label htmlFor="isForWords" style={{color:'grey', fontSize: '15px'}}>Skirtas žodžiams? </label>
               <span>
                 <input
+                    style={{fontSize: '15px'}}
                     type="checkbox"
                     id="isForWords"
                     value={isForWords}

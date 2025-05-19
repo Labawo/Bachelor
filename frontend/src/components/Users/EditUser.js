@@ -9,7 +9,7 @@ import "../Levels/levelmodals.css";
 const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/;
 const REGISTER_URL = '/resetPassword';
 
-const EditUser = ({ show, onClose, userId }) => {
+const EditUser = ({ show, onClose, userId, userName }) => {
     const errRef = useRef();
 
     const [pwd, setPwd] = useState('');
@@ -88,15 +88,15 @@ const EditUser = ({ show, onClose, userId }) => {
     <>
       <div className={`modal-form ${show ? "show" : ""}`}>
       <div className="modal-content-form"> 
-      <div className='close-button-div-form edit'>
-          <button className="primary-button-form edit" onClick={closePassword}>X</button>
+      <div className='close-button-div-form'>
+          <button className="primary-button-form" onClick={closePassword}>X</button>
         </div>
         <div className="outer-form-div">
         <div className="form-container">
-          <h2>Pakeisti slaptažodį naudotojui {userId}</h2>
+          <h2 style={{fontSize: "40px"}}>Keisti slaptažodi naudotojui <span style={{fontSize: '40px', color: 'red'}}>{userName.toUpperCase()}</span></h2>
           <form onSubmit={handleSubmit} className = "input_form">
           <label htmlFor="password">
-                            Slaptažodis:
+                            <span style={{color: 'red'}}>*</span>Slaptažodis:
                             <FontAwesomeIcon icon={faCheck} className={validPwd ? "valid" : "hide"} />
                             <FontAwesomeIcon icon={faTimes} className={validPwd || !pwd ? "hide" : "invalid"} />
                         </label>
@@ -118,7 +118,7 @@ const EditUser = ({ show, onClose, userId }) => {
                             Leistini simboliai: <span aria-label="exclamation mark">!</span> <span aria-label="at symbol">@</span> <span aria-label="hashtag">#</span> <span aria-label="dollar sign">$</span> <span aria-label="percent">%</span>
                         </p>
                         <label htmlFor="confirm_pwd">
-                            Patvirtinti slaptažodį:
+                            <span style={{color: 'red'}}>*</span>Patvirtinti slaptažodį:
                             <FontAwesomeIcon icon={faCheck} className={validMatch && matchPwd ? "valid" : "hide"} />
                             <FontAwesomeIcon icon={faTimes} className={validMatch || !matchPwd ? "hide" : "invalid"} />
                         </label>
@@ -141,7 +141,7 @@ const EditUser = ({ show, onClose, userId }) => {
                         
             
             <div className="modal-buttons-form">
-                <button disabled={ !validPwd || !validMatch ? true : false} className="edit-form-button">Pakeisti slaptažodį</button>
+                <button disabled={ !validPwd || !validMatch ? true : false} className="create-form-button">Pakeisti slaptažodį</button>
             </div>
           </form>
           

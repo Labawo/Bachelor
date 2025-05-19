@@ -4,26 +4,25 @@
     min-height: 50vh;
     overflow: auto;
     background-color: white;
-    border: 5px double #c6c6cb;
     padding: 30px 60px;
     box-sizing: border-box;
     margin: auto;
 }
 
 .active-question-no {
-    font-size: 32px;
+    font-size: 30px;
     font-weight: 500;
     color: blue;
 }
 
 .total-questions {
-    font-size: 16px;
+    font-size: 15px;
     font-weight: 500;
     color: black;
 }
 
 .quiz-question {
-    font-size: 16px;
+    font-size: 15px;
     font-weight: 500;
     margin: 0;
 }
@@ -36,7 +35,7 @@
 .quiz-li {
     text-decoration: none;
     list-style: none;
-    font-size: 16px;
+    font-size: 15px;
     border: 1px solid black;
     border-radius: 16px;
     padding: 11px;
@@ -56,19 +55,19 @@
 }
 
 .quiz-button {
-    padding: 0.25rem 0.75rem;
-    font-size: 1.3rem;
-    background: "transparent";
-    border-radius: 3px;
-    display: inline-block;
-    border: 2px solid #000;
+    background: #3E8DA8;
+    color: #fff;
+    border: none;
+    width: 36px;
+    height: 36px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
     cursor: pointer;
-    transition: 0.25s;
-    will-change: transform;
-    box-shadow: -1px 1px 0px #333,
-        -2px 2px 0px #333,
-        -3px 3px 0px #333,
-        -4px 4px 0px #333;
+    outline: none;
+    width: 100%;
+}
+
+.quiz-button:hover {
+    background: rgb(24, 109, 134);
 }
 
 .quiz-button:disabled {
@@ -79,6 +78,7 @@
 
 .quiz-result {
     text-align: center;
+    font-size: 15px;
 }
 
 .quiz-h3 {
@@ -88,17 +88,18 @@
 }
 
 .quiz-p {
-    font-size: 16px;
-    font-weight: 500;
+    font-size: 15px;
+    font-weight: 400;
 }
 
 .quiz-span {
     color: black;
-    font-size: 22px;
+    font-size: 20px;
 }
 
 .quiz-input {
-    border: 5px double #c6c6cb;
+    border: 2px solid black;
+    border-radius: 10px;
     padding: 10px 20px;
     width: 100%;
     margin-top: 20px;

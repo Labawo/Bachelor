@@ -18,7 +18,7 @@
     background-color: #fefefe;
     margin: 10% auto;
     padding: 0;
-    border: 5px double #c6c6cb;
+    border: 2px solid black;
     border-radius: 0;
     width: 80%;
     max-width: 800px;
@@ -45,18 +45,20 @@
 }
 
 .close-button-div-game {
+    background-color: black;
     text-align: end;
 }
 
 .primary-button-game {
     border:none;
-    background-color: #fefefe;
+    background-color: black;
+    color: white;
     width: 70px;
     margin: 0;
     font-weight: bold;
     border-radius: 0;
-    border-bottom: 5px double #c6c6cb;
-    border-left: 5px double #c6c6cb;
+    border-left: 1px solid white;
+    cursor: pointer;
 }
 
 .primary-button-game:hover {

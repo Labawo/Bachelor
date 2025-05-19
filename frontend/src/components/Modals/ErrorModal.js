@@ -11,7 +11,7 @@ const ErrorModal = ({ show, onClose, message }) => {
         </span>
         
         <h2 className="error-header"><FiAlertTriangle /> Klaida</h2>
-        <p>{message}</p>
+        <p style={{color: 'black'}}>{message}</p>
         <div className="modal-buttons single">
           <button className="primary-button" onClick={onClose}>Uždaryti</button>
         </div>

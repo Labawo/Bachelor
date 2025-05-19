@@ -248,112 +248,17 @@ form.create-note button {
     color:#fff;
     font-size: 15px;
     font-weight: 250;
-}
-
-.footer {
-    font-size: 14px;
     text-align: center;
     padding-top: 7px;
     padding-bottom: 7px;
-}
-
-.navbar {
-    background-color: #3E8DA8;
-    width: 100%;
-    min-height: 7vh;
-}
-
-.nav-link-span {
-    flex: 1;
-    text-align: center;
-    min-height: 7vh;
-}
-
-.nav-link {
-    text-decoration: none;
-    display: inline-block;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    width: 100%;
-    height: 100%;
-    font-size: 25px;
-    font-weight: bold;
-    color: #043d3d;
-}
-
-.navbar-links {
-    display: flex;
-    flex-wrap: wrap;
-    margin-left: 0px;
-}
-
-.nav-link-span:hover {
-    cursor: pointer;
-    transition: background-color 0.3s, border 0.3s;
-}
-
-.nav-link-span:hover .nav-link {
-    color: #2f8a85; 
-    transition: color 0.3s;
-}
-
-.active-span .nav-link{
-    color: #2f8a85;
-    background-color: #c8ced6; 
 }
 
 .hidden {
     display: none;
 }
 
-.logout-div {
-    float: right;
-    text-align: center;
-    margin-top: 5px;
-    width: 35%;
-}
-
-.logout-btn {
-    background-color: #3AAFA9;
-    color: #043d3d;
-    border: none;
-    text-align: center;
-    margin-top: 0;
-    font-size: 22px;
-    cursor: pointer;
-    width: 13%;
-    padding: 0;
-}
-
 .logout-btn:hover{
     background-color: rgb(190, 2, 2);
-}
-
-.password-btn {
-    background-color: #3AAFA9;
-    color: #043d3d;
-    border: none;
-    text-align: center;
-    margin-top: 0;
-    font-size: 25px;
-    cursor: pointer;
-    width: 13%;
-    padding: 0;
-}
-
-.password-btn:hover {
-    background-color: #bcbbb7;
-}
-
-.user-name-div {
-    background-color: #3AAFA9;
-    color: #043d3d;
-    border: none;
-    text-align: center;
-    margin-top: 0;
-    font-size: 22px;
-    width: 25%;
-    padding: 0;
 }
 
 .table-container h2{
@@ -413,14 +318,13 @@ form.create-note button {
     text-align: left;
 }
 
-
 .table-container {
     overflow-x: auto; 
 }
-  
 
 .my-table {
     width: 100%; 
+    font-size: 15px;
     border-collapse: collapse;
     text-align: center;
 }
@@ -430,7 +334,7 @@ form.create-note button {
 }
 
 .blue-button {
-    background: rgb(37, 167, 206);
+    background: #3E8DA8;
     color: #fff;
     border: none;
     width: 36px;
@@ -925,15 +829,21 @@ tbody tr {
 .pagination-btn {
     margin-left: 0;
     margin-right: 0;
-    background-color: #808080;
+    background-color: rgb(36, 36, 36);
     cursor: pointer;
+    border: none;
     color: #fff;
+}
+
+.pagination-btn:hover {
+    background-color: black;
 }
 
 .pagination-buttons-span {
     margin: 5px;
     text-align: center;
     height: 70px;
+    font-size: 15px;
 }
 
 .users-list-header {

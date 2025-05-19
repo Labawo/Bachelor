@@ -102,6 +102,7 @@ const Register = () => {
                     <LoginNavBar />
                     <div className='reg-succ-div'>
                         <h1>Registracija sėkminga!</h1>
+                        <p> Patvirtinkite savo paskyra nuoroda nusiųsta nurodytu el. paštu ir galėsite:</p>
                         <p>
                             <Link to="/">Prisijungti</Link>
                         </p>
@@ -113,7 +114,7 @@ const Register = () => {
                     <LoginNavBar />
                     <div className='login-div'>
                         <div className='wrapper-reg'>
-                            <div className='title-login'><span className='title-span'>Registracija</span></div>
+                            <div className='title-login'><span className='title-span' style={{fontSize: '40px'}}>Registracija</span></div>
                             <p ref={errRef} className={errMsg ? "errmsg" : "offscreen"} aria-live="assertive">{errMsg}</p>
                             <form onSubmit={handleSubmit}>
                                 <div className="row">

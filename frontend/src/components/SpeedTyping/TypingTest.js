@@ -114,13 +114,13 @@ const TypingTest = ({ content, timeToComplete, isTraining }) => {
     };
 
     return (
-        <div className='typing-test' >
+        <div className='typing-test'>
             <div className='container' style={{background: '#fff'}}>
                 <div className='test'>
                     <input type='text' className='speed-input-field' ref={inputRef} onChange={handleChange}/>
                     {
                         content.split("").map((char, index) => (
-                            <span className={`char ${index === charIndex ? " active" : ""} ${correctWrong[index]}`} 
+                            <span  style={{fontSize: '15px'}} className={`char ${index === charIndex ? " active" : ""} ${correctWrong[index]}`} 
                             ref={(e) => charRefs.current[index] = e}>
                                 {char}
                             </span>
@@ -129,7 +129,7 @@ const TypingTest = ({ content, timeToComplete, isTraining }) => {
                 </div>
 
                 {timeLeft !== 0 ? (
-                    <div className='result'>
+                    <div className='result' style={{fontSize: '15px'}}>
                         <p>Likęs laikas: <strong>{timeLeft}</strong> </p>
                         <p>Klaidos: <strong>{mistakes}</strong></p>
                         <p>Žodžiai/min: <strong>{WPM}</strong> </p>
