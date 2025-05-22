@@ -77,7 +77,7 @@ const EditLevel = ({ show, onClose, levelId }) => {
           <h2 style={{fontSize: '40px'}}>Redaguoti lygį</h2>
           <form onSubmit={handleSubmit} className = "input_form">
             <div className="form-group">
-              <label htmlFor="name">Pavadinimas:</label><br/>
+              <label htmlFor="name" style={{fontWeight: '600'}}>Pavadinimas:</label><br/>
                 <input
                     style={{fontSize: '15px'}}
                     type="text"
@@ -89,7 +89,7 @@ const EditLevel = ({ show, onClose, levelId }) => {
                 />
             </div>
             <div className="form-group">
-              <label htmlFor="description">Apibūdinimas:</label><br/>
+              <label htmlFor="description" style={{fontWeight: '600'}}>Apibūdinimas:</label><br/>
               <textarea
                 style={{fontSize: '15px'}}
                 id="description"
@@ -105,7 +105,7 @@ const EditLevel = ({ show, onClose, levelId }) => {
               )}
             </div>
             <div className="form-group">
-              <label htmlFor="minExperience">Minimalus XP skaičius:</label><br/>
+              <label htmlFor="minExperience" style={{fontWeight: '600'}}>Minimalus XP skaičius:</label><br/>
                 <input
                     style={{fontSize: '15px'}}
                     type="number"

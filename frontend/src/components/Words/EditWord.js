@@ -63,16 +63,17 @@ const EditWord = ({ show, onClose, levelId, wordId }) => {
     <>
       <div className={`modal-form ${show ? "show" : ""}`}>
       <div className="modal-content-form">
-        <div className='close-button-div-form edit'>
-          <button className="primary-button-form edit" onClick={onClose}>X</button>
+        <div className='close-button-div-form'>
+          <button className="primary-button-form" onClick={onClose}>X</button>
         </div>
         <div className="outer-form-div">
           <div className="form-container">
-            <h2>Atnaujinti klausimą</h2>
+            <h2 style={{fontSize: '40px'}}>Atnaujinti klausimą</h2>
             <form onSubmit={handleSubmit} className = "input_form">
               <div className="form-group">
-                <label htmlFor="question">Klausimas:</label><br/>
+                <label htmlFor="question" style={{fontWeight: '600'}}>Klausimas:</label><br/>
                   <input
+                      style={{fontSize: '15px'}}
                       type="text"
                       id="question"
                       value={question}
@@ -82,8 +83,9 @@ const EditWord = ({ show, onClose, levelId, wordId }) => {
                   />
               </div>
               <div className="form-group">
-                <label htmlFor="correctAnswer">Atsakymas:</label><br/>
+                <label htmlFor="correctAnswer" style={{fontWeight: '600'}}>Atsakymas:</label><br/>
                   <input
+                      style={{fontSize: '15px'}}
                       type="text"
                       id="correctAnswer"
                       value={correctAnswer}
@@ -94,7 +96,7 @@ const EditWord = ({ show, onClose, levelId, wordId }) => {
               </div>
               
               <div className="modal-buttons-form">
-                <button type="submit" className="edit-form-button">
+                <button type="submit" className="create-form-button">
                   Atnaujinti
                 </button>
               </div>

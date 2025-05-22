@@ -58,6 +58,7 @@ const CreateWord = ({ show, onClose, levelId }) => {
             <h2 style={{fontSize: "40px"}}>Sukurti naują klausimą</h2>
             <form onSubmit={handleSubmit} className = "input_form">
               <div className="form-group">
+                  <p style={{color: 'red', fontSize: '12px'}}>*Būtinas laukas</p>
                   <input
                       style={{fontSize: "15px"}}
                       type="text"
@@ -70,6 +71,7 @@ const CreateWord = ({ show, onClose, levelId }) => {
                   />
               </div>
               <div className="form-group">
+                  <p style={{color: 'red', fontSize: '12px'}}>*</p>
                   <input
                       style={{fontSize: "15px"}}
                       type="text"

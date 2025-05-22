@@ -11,6 +11,7 @@ using MailKit.Security;
 using MimeKit;
 using MimeKit.Text;
 using MailKit.Net.Smtp;
+using System.Linq;
 
 namespace backend.Controllers;
 
@@ -34,7 +35,7 @@ public class UsersController : ControllerBase
 
         var nonAdminUsers = allUsers
             .Where(u => !_userManager.IsInRoleAsync(u, SiteRoles.Admin).Result) // Filter out Admin users
-            .Select(u => new UserDto(u.Id, u.UserName, u.Email, u.RegistrationDate, u.EmailConfirmed))
+            .Select(u => new UserStatDto(u.Id, u.UserName, u.Email, u.RegistrationDate, u.EmailConfirmed, u.QuizDone == null ? 0 : (int)u.QuizDone, u.WPM == null ? 0 : (int)u.WPM, u.WPM10 == null ? 0 : (int)u.WPM10))
             .ToList();
 
         return Ok(nonAdminUsers);

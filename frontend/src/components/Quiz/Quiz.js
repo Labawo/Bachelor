@@ -120,7 +120,7 @@ const Quiz = ({ questions, currQuestion }) => {
     return (
         <div>
             {!showResult ? (<div className='timer-div-main'>
-                {showAnswerTimer && <AnswerTimer duration={30} onTimeUp={handleTimeUp}/>}
+                {showAnswerTimer && <AnswerTimer duration={10} onTimeUp={handleTimeUp}/>}
             </div>) : null}
             
             <div className="quiz-container">

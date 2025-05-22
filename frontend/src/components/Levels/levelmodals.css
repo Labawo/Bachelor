@@ -118,6 +118,7 @@
     font-weight: bold;
     border-radius: 0;
     width: 10%;
+    cursor: pointer;
 }
 
 .primary-button-form:hover {

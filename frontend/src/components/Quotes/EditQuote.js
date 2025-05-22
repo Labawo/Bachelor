@@ -73,16 +73,17 @@ const EditQuote = ({ show, onClose, levelId, quoteId }) => {
     <>
       <div className={`modal-form ${show ? "show" : ""}`}>
       <div className="modal-content-form"> 
-        <div className='close-button-div-form edit'>
-          <button className="primary-button-form edit" onClick={onClose}>X</button>
+        <div className='close-button-div-form'>
+          <button className="primary-button-form" onClick={onClose}>X</button>
         </div>
         <div className="outer-form-div">
           <div className="form-container">
-            <h2>Atnaujinti citatą</h2>
+            <h2 style={{fontSize: '40px'}}>Atnaujinti citatą</h2>
             <form onSubmit={handleSubmit} className = "input_form">
               <div className="form-group">
-                <label htmlFor="source">Šaltinis:</label><br/>
+                <label htmlFor="source" style={{fontWeight: '600'}}>Šaltinis:</label><br/>
                   <input
+                      style={{fontSize: '15px'}}
                       type="text"
                       id="source"
                       value={source}
@@ -92,8 +93,9 @@ const EditQuote = ({ show, onClose, levelId, quoteId }) => {
                   />
               </div>
               <div className="form-group">
-                <label htmlFor="author">Autorius:</label><br/>
+                <label htmlFor="author" style={{fontWeight: '600'}}>Autorius:</label><br/>
                   <input
+                      style={{fontSize: '15px'}}
                       type="text"
                       id="author"
                       value={author}
@@ -103,8 +105,9 @@ const EditQuote = ({ show, onClose, levelId, quoteId }) => {
                   />
               </div>
               <div className="form-group">
-                <label htmlFor="content">Citata:</label><br/>
+                <label htmlFor="content" style={{fontWeight: '600'}}>Citata:</label><br/>
                 <textarea
+                  style={{fontSize: '15px'}}
                   id="content"
                   name="content"
                   value={content}
@@ -118,8 +121,9 @@ const EditQuote = ({ show, onClose, levelId, quoteId }) => {
                 )}
               </div>
               <div className="form-group">
-                <label htmlFor="timeToComplete">Laikas perrašymui sekundėmis:</label><br/>
+                <label htmlFor="timeToComplete" style={{fontWeight: '600'}}>Laikas perrašymui sekundėmis:</label><br/>
                   <input
+                      style={{fontSize: '15px'}}
                       type="number"
                       id="timeToComplete"
                       value={timeToComplete}
@@ -130,7 +134,7 @@ const EditQuote = ({ show, onClose, levelId, quoteId }) => {
               </div>
               
               <div className="modal-buttons-form">
-                <button type="submit" className="edit-form-button">
+                <button type="submit" className="create-form-button">
                   Atnaujinti
                 </button>
               </div>

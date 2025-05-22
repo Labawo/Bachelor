@@ -37,9 +37,9 @@ const LevelPage = () => {
                 {level ? (
                     <div  style={{paddingTop: '0'}}>
                         <p style={{background: 'black', color: '#fff', paddingTop: '10px', paddingBottom: '10px', marginBottom: '10px', textAlign : 'left', paddingLeft: '5%', fontWeight: '600', fontSize: '40px'}}>Lygio aprašymas</p>
-                        <h2> Lygio pavadinimas: {level.name}</h2>
-                        <h2 style={{paddingBottom: "10px"}}>Patirtis: {level.minExperience}</h2>
-                        <h2> Lygio informacija: {level.description}</h2>
+                        <h2 style={{fontSize: '15px'}}> Lygio pavadinimas: {level.name}</h2>
+                        <h2 style={{paddingBottom: "10px", fontSize:'15px'}}>Patirtis: {level.minExperience}</h2>
+                        <h2 style={{fontSize: '15px'}}> Lygio informacija: {level.description}</h2>
                         {level.isForWords ? <Words levelId={level.id}/> : <Quotes levelId={level.id} /> }
                     </div>
                 ) : (

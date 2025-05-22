@@ -66,7 +66,9 @@ const CreateQuote = ({ show, onClose, levelId }) => {
             <h2 style={{fontSize: "40px"}}>Sukurti naują citatą</h2>
             <form onSubmit={handleSubmit} className = "input_form">
               <div className="form-group">
+                  <p style={{color: 'red', fontSize: '12px'}}>*Būtinas laukas</p>
                   <input
+                      style={{fontSize: '15px'}}
                       type="text"
                       id="source"
                       placeholder="Šaltinis:"
@@ -77,7 +79,9 @@ const CreateQuote = ({ show, onClose, levelId }) => {
                   />
               </div>
               <div className="form-group">
+                  <p style={{color: 'red', fontSize: '12px'}}>*</p>
                   <input
+                      style={{fontSize: '15px'}}
                       type="text"
                       id="author"
                       placeholder="Autorius:"
@@ -88,7 +92,9 @@ const CreateQuote = ({ show, onClose, levelId }) => {
                   />
               </div>
               <div className="form-group">
+                <p style={{color: 'red', fontSize: '12px'}}>*</p>
                 <textarea
+                  style={{fontSize: '15px'}}
                   id="content"
                   name="content"
                   value={content}
@@ -102,7 +108,9 @@ const CreateQuote = ({ show, onClose, levelId }) => {
                 )}
               </div>
               <div className="form-group">
+                  <p style={{color: 'red', fontSize: '12px'}}>*</p>
                   <input
+                      style={{fontSize: '15px'}}
                       type="number"
                       id="timeForCitation"
                       placeholder="Laikas įveikti"

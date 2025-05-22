@@ -106,7 +106,7 @@ const Words = ({ levelId }) => {
                 </div>
                 <div className="create-btn-div">
                     <div style={{width: '25%', margin: 'auto'}}>
-                        <button onClick={createWord} className="blue-button" style={{width : '100%', fontWeight: '600', fontSize: '16px'}}> Sukurti Klausimą </button>
+                        <button onClick={createWord} className="blue-button" style={{width : '100%', fontWeight: '600', fontSize: '15px'}}> Sukurti Klausimą </button>
                     </div>
                     <p style={{borderBottom: "2px solid black", borderTop: "2px solid black", fontWeight: "bold", fontSize:"20px", paddingTop: "10px", paddingBottom: "10px", textAlign: 'center'}}> ARBA </p>
                     <div className="outer-import-file-div">
@@ -131,7 +131,7 @@ const Words = ({ levelId }) => {
                                     <td>{word?.correctAnswer}</td>
                                     <td>
                                         <button 
-                                            className="green-button"
+                                            className="blue-button"
                                             onClick={() => updateWord(word.id)}
                                         >
                                             <FontAwesomeIcon icon={faEdit} />

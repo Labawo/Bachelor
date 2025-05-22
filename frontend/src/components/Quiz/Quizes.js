@@ -130,7 +130,7 @@ const Quizes = () => {
                     <div>
                         <h2 style={{background: 'black', color: '#fff', paddingTop: '15px', paddingBottom: '15px', fontSize: '40px'}}>Lygio aprašymas</h2>
                         <div style={{width: '20%'}}>
-                            <button onClick={showList} className='black-button' style={{width: '100%'}}> Išeiti </button>
+                            <button onClick={showList} className='black-button' style={{width: '100%', fontSize: '15px'}}> Išeiti </button>
                         </div>
                         <div style={{fontSize: '15px'}}>
                             <h3 style={{borderBottom: '1px solid black', paddingTop: '10px', paddingBottom: '10px'}}>Pavadinimas</h3>
@@ -151,7 +151,7 @@ const Quizes = () => {
                         {selectedLevelId !== '' ? (<div style={{width: '35%', margin: 'auto'}}>
                             <button 
                                 className="blue-button"
-                                style={{width: '100%'}}
+                                style={{width: '100%', fontSize: '15px'}}
                                 onClick={() => playQuiz(selectedLevelId)}
                             >
                                 Žaisti

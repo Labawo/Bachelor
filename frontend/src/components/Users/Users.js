@@ -99,6 +99,7 @@ const Users = () => {
                     signal: controller.signal
                 });
                 setUsers(response.data);
+                console.log(response.data);
                 let data = createGraphData(response.data);
                 setGraph(prevGraph => {
                     return {
@@ -201,6 +202,8 @@ const Users = () => {
                                 <th>El. paštas</th>
                                 <th>Registracijos data</th>
                                 <th>Patvirtintas?</th>
+                                <th>Atlikti testai</th>
+                                <th>Žodžiai/min</th>
                                 <th></th>
                             </tr>
                         </thead>
@@ -211,6 +214,8 @@ const Users = () => {
                                     <td>{user?.email}</td>
                                     <td>{user?.registrationDate.split('T')[0]}</td>
                                     <td>{user?.emailConfirmed ? 'TAIP' : 'NE'}</td>
+                                    <td>{user?.quizDone}</td>
+                                    <td>{user?.wpM10 > 0 ? user?.wpm/user.wpM10|0 : 0}</td>
                                     <td>
                                         <button 
                                             className='red-button'

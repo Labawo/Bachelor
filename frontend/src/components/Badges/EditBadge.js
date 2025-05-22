@@ -101,16 +101,17 @@ const EditBadge = ({ show, onClose, badgeId }) => {
     <>
       <div className={`modal-form ${show ? "show" : ""}`}>
       <div className="modal-content-form"> 
-      <div className='close-button-div-form edit'>
-          <button className="primary-button-form edit" onClick={onClose}>X</button>
+      <div className='close-button-div-form'>
+          <button className="primary-button-form" onClick={onClose}>X</button>
         </div>
           <div className="outer-form-div">
             <div className="form-container">
-              <h2>Atnaujinti ženkliuką</h2>
+              <h2 style={{fontSize: '40px'}}>Atnaujinti ženkliuką</h2>
               <form onSubmit={handleSubmit} className = "input_form">
                 <div className="form-group">
-                  <label htmlFor="name">Pavadinimas:</label><br/>
+                  <label htmlFor="name" style={{fontWeight: '600'}}>Pavadinimas:</label><br/>
                     <input
+                        style={{fontSize: '15px'}}
                         type="text"
                         id="name"
                         value={name}
@@ -120,8 +121,9 @@ const EditBadge = ({ show, onClose, badgeId }) => {
                     />
                 </div>
                 <div className="form-group">
-                  <label htmlFor="description">Apibūdinimas:</label><br/>
+                  <label htmlFor="description" style={{fontWeight: '600'}}>Apibūdinimas:</label><br/>
                   <textarea
+                    style={{fontSize: '15px'}}
                     id="description"
                     name="description"
                     value={description}
@@ -136,8 +138,9 @@ const EditBadge = ({ show, onClose, badgeId }) => {
                 </div>
 
                 <div className="form-group">
-                  <label htmlFor="image2">Paveikslėlis:</label><br />
+                  <label htmlFor="image2" style={{fontWeight: '600'}}>Paveikslėlis:</label><br />
                   <input
+                    style={{fontSize: '15px'}}
                     type="file"
                     id="image2"
                     name="image"
@@ -149,7 +152,7 @@ const EditBadge = ({ show, onClose, badgeId }) => {
                 
                 <div className="modal-buttons-form">
                   
-                  <button type="submit" className="edit-form-button">
+                  <button type="submit" className="create-form-button">
                     Atnaujinti
                   </button>
                 </div>

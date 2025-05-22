@@ -26,10 +26,11 @@ const NotesPage = observer(() => {
         return (
         <div className="form-container-notes">
             <img src={logo} alt="Logo" width='100%' height='200px'/>
-            <h2>Sukurti įrašą</h2>
+            <h2 style={{fontSize: '40px'}}>Sukurti įrašą</h2>
             <form onSubmit={handleSubmit} className = "create-note">
               <div className="form-group note-name-input">
                 <input
+                  style = {{fontSize: '15px'}}
                   type="text"
                   id="name"
                   name="name"
@@ -42,7 +43,7 @@ const NotesPage = observer(() => {
               </div>
               <div className="form-group">
                 <textarea
-                  style={{margin: '0'}}
+                  style={{margin: '0', fontSize: '15px'}}
                   id="content"
                   name="content"
                   value={formData.content}
@@ -117,7 +118,7 @@ const NotesPage = observer(() => {
                         
                           <span key={i} className='note-span'>
                             <h2 style={{fontSize: '20px'}}>{note.name}</h2>
-                            <p style={{fontSize: '12px'}}>{note.content}</p>
+                            <p style={{fontSize: '15px'}}>{note.content}</p>
                             <div style={{width: '30%', marginTop: '40px'}}>
                               <button
                                   onClick={() => deleteNote(note.id)}

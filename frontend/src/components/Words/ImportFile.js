@@ -69,6 +69,7 @@ const ImportFile = ({ levelId }) => {
         <div className='import-file-div'>
             <form>
                 <input
+                style={{fontSize: '15px'}}
                 type={"file"}
                 id={"csvFileInput"}
                 accept={".csv"}
@@ -79,7 +80,7 @@ const ImportFile = ({ levelId }) => {
 
                 <button
                 className="blue-button" 
-                style={{fontWeight: '600', fontSize: '16px', width:'100%'}}
+                style={{fontWeight: '600', fontSize: '15px', width:'100%'}}
                 id='file-bth'
                 onClick={(e) => {
                     e.persist();

@@ -104,7 +104,7 @@ const Quotes = ({ levelId }) => {
                     </span>
                 </div>
                 <div className="create-btn-div" style={{width: '20%', margin: 'auto'}}>
-                    <button onClick={createQuote} className="blue-button" style={{width : '100%', fontWeight: '600', fontSize: '16px'}}> Sukurti Citatą </button>
+                    <button onClick={createQuote} className="blue-button" style={{width : '100%', fontWeight: '600', fontSize: '15px'}}> Sukurti Citatą </button>
                 </div>
                 {filteredQuotes.length ? (
                     <table className="my-table">
@@ -126,7 +126,7 @@ const Quotes = ({ levelId }) => {
                                     <td>{quote?.timeToComplete}</td>
                                     <td>
                                         <button 
-                                            className="green-button"
+                                            className="blue-button"
                                             style={{width: '30%'}}
                                             onClick={() => updateQuote(quote.id)}
                                         >

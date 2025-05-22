@@ -35,7 +35,7 @@ const TrainingPage = () => {
                     </div>
                     <p style={{textAlign: 'center', fontSize: '15px', paddingTop: '30px'}}>Norėdami pradėti treniruočių žaidimą spauskite:</p>
                     <div className="create-btn-div" style = {{width: '20%', margin: 'auto'}}>
-                        <button onClick={createLevel} className="blue-button" style = {{width: '90%'}}> Treniruotis </button>
+                        <button onClick={createLevel} className="blue-button" style = {{width: '90%', fontSize: '15px'}}> Treniruotis </button>
                     </div>
                 </div>
             </section>

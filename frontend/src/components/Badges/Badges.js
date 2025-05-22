@@ -111,14 +111,14 @@ const Badges = () => {
                     </span>
                 </div>
                 <div style={{textAligh: 'center'}}>
-                    <button className = 'blue-button' onClick={createBadge} style={{marginLeft: '40%', width: '20%', fontWeight: '600', fontSize: '20px', paddingBottom: '35px'}}> Sukurti Ženklelį </button>
+                    <button className = 'blue-button' onClick={createBadge} style={{marginLeft: '40%', width: '20%', fontWeight: '600', fontSize: '15px', paddingBottom: '30px'}}> Sukurti Ženklelį </button>
                 </div>
                 {filteredBadges.length ? (
                     <div className='badge-div'>
                         {filteredBadges.map((badge, i) => (
                             <span key={i} className='badge-span'>
                                 <img src={logo} alt="Logo" width='60%' height='120px'/>
-                                <p style={{fontWeight : '600', borderBottom: '1px solid black'}}>{badge?.name}</p>
+                                <p style={{fontWeight : '600', borderBottom: '1px solid black', fontSize: '15px'}}>{badge?.name}</p>
                                 <p>{badge?.type}</p>
                                 <div>
                                     <button 
