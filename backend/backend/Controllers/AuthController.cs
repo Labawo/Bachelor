@@ -66,8 +66,8 @@ public class AuthController : ControllerBase
         await _userManager.AddToRoleAsync(newUser, SiteRoles.Student);
         
         var token = await _userManager.GenerateEmailConfirmationTokenAsync(newUser);
-        
-        var confirmationLink = Url.Action("ConfirmEmail", "api", new { userId = newUser.Id, token = token }, Request.Scheme);
+
+        //var confirmationLink = Url.Action("ConfirmEmail", "api", new { userId = newUser.Id, token = token }, Request.Scheme);
 
         /*var email = new MimeMessage();
         email.From.Add(MailboxAddress.Parse("hesm6150@gmail.com"));
@@ -81,7 +81,8 @@ public class AuthController : ControllerBase
         smtp.Send(email);
         smtp.Disconnect(true);*/
 
-        string? route = Request.Host.Value + Request.Path.Value.Replace("register", "ConfirmEmail") + "?userId=" + newUser.Id + "&token=" + token;
+        //string? route = Request.Host.Value + Request.Path.Value.Replace("register", "ConfirmEmail") + "?userId=" + newUser.Id + "&token=" + token != null ? token : "empty";
+        string? route = "empty";
 
         return CreatedAtAction(nameof(Register), new UserWithConfimationLinkDto(newUser.Id, newUser.UserName, token, route));
     }

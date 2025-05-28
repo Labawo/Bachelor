@@ -3,8 +3,44 @@
   "WorkspaceRootPath": "C:\\Users\\Laurynas\\Desktop\\Bachelor\\backend\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{1874E6E9-AD34-41F9-A282-6E2E5A347D06}|backenTests\\backend.Tests.csproj|c:\\users\\laurynas\\desktop\\bachelor\\backend\\backentests\\controllers\\authcontrollertests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1874E6E9-AD34-41F9-A282-6E2E5A347D06}|backenTests\\backend.Tests.csproj|solutionrelative:backentests\\controllers\\authcontrollertests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{64529463-021C-4BA8-B04A-745421D16DCE}|backend\\backend.csproj|c:\\users\\laurynas\\desktop\\bachelor\\backend\\backend\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{64529463-021C-4BA8-B04A-745421D16DCE}|backend\\backend.csproj|solutionrelative:backend\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1874E6E9-AD34-41F9-A282-6E2E5A347D06}|backenTests\\backend.Tests.csproj|c:\\users\\laurynas\\desktop\\bachelor\\backend\\backentests\\controllers\\wordscontrollertests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1874E6E9-AD34-41F9-A282-6E2E5A347D06}|backenTests\\backend.Tests.csproj|solutionrelative:backentests\\controllers\\wordscontrollertests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1874E6E9-AD34-41F9-A282-6E2E5A347D06}|backenTests\\backend.Tests.csproj|c:\\users\\laurynas\\desktop\\bachelor\\backend\\backentests\\controllers\\quotescontrollertests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1874E6E9-AD34-41F9-A282-6E2E5A347D06}|backenTests\\backend.Tests.csproj|solutionrelative:backentests\\controllers\\quotescontrollertests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1874E6E9-AD34-41F9-A282-6E2E5A347D06}|backenTests\\backend.Tests.csproj|c:\\users\\laurynas\\desktop\\bachelor\\backend\\backentests\\controllers\\levelscontrollertests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1874E6E9-AD34-41F9-A282-6E2E5A347D06}|backenTests\\backend.Tests.csproj|solutionrelative:backentests\\controllers\\levelscontrollertests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1874E6E9-AD34-41F9-A282-6E2E5A347D06}|backenTests\\backend.Tests.csproj|c:\\users\\laurynas\\desktop\\bachelor\\backend\\backentests\\controllers\\badgescontrollertests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1874E6E9-AD34-41F9-A282-6E2E5A347D06}|backenTests\\backend.Tests.csproj|solutionrelative:backentests\\controllers\\badgescontrollertests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1874E6E9-AD34-41F9-A282-6E2E5A347D06}|backenTests\\backend.Tests.csproj|c:\\users\\laurynas\\desktop\\bachelor\\backend\\backentests\\controllers\\badgenumberscontrollertests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1874E6E9-AD34-41F9-A282-6E2E5A347D06}|backenTests\\backend.Tests.csproj|solutionrelative:backentests\\controllers\\badgenumberscontrollertests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{64529463-021C-4BA8-B04A-745421D16DCE}|backend\\backend.csproj|c:\\users\\laurynas\\desktop\\bachelor\\backend\\backend\\controllers\\notescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{64529463-021C-4BA8-B04A-745421D16DCE}|backend\\backend.csproj|solutionrelative:backend\\controllers\\notescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{64529463-021C-4BA8-B04A-745421D16DCE}|backend\\backend.csproj|c:\\users\\laurynas\\desktop\\bachelor\\backend\\backend\\auth\\models\\authdtos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{64529463-021C-4BA8-B04A-745421D16DCE}|backend\\backend.csproj|solutionrelative:backend\\auth\\models\\authdtos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1874E6E9-AD34-41F9-A282-6E2E5A347D06}|backenTests\\backend.Tests.csproj|c:\\users\\laurynas\\desktop\\bachelor\\backend\\backentests\\backend.tests.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{1874E6E9-AD34-41F9-A282-6E2E5A347D06}|backenTests\\backend.Tests.csproj|solutionrelative:backentests\\backend.tests.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
     },
     {
       "AbsoluteMoniker": "D:0:0:{64529463-021C-4BA8-B04A-745421D16DCE}|backend\\backend.csproj|c:\\users\\laurynas\\desktop\\bachelor\\backend\\backend\\controllers\\userscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -34,11 +70,127 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "WordsControllerTests.cs",
+              "DocumentMoniker": "C:\\Users\\Laurynas\\Desktop\\Bachelor\\backend\\backenTests\\Controllers\\WordsControllerTests.cs",
+              "RelativeDocumentMoniker": "backenTests\\Controllers\\WordsControllerTests.cs",
+              "ToolTip": "C:\\Users\\Laurynas\\Desktop\\Bachelor\\backend\\backenTests\\Controllers\\WordsControllerTests.cs",
+              "RelativeToolTip": "backenTests\\Controllers\\WordsControllerTests.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAfAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-28T19:15:41.464Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "QuotesControllerTests.cs",
+              "DocumentMoniker": "C:\\Users\\Laurynas\\Desktop\\Bachelor\\backend\\backenTests\\Controllers\\QuotesControllerTests.cs",
+              "RelativeDocumentMoniker": "backenTests\\Controllers\\QuotesControllerTests.cs",
+              "ToolTip": "C:\\Users\\Laurynas\\Desktop\\Bachelor\\backend\\backenTests\\Controllers\\QuotesControllerTests.cs",
+              "RelativeToolTip": "backenTests\\Controllers\\QuotesControllerTests.cs",
+              "ViewState": "AgIAACwAAAAAAAAAAAAmwD4AAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-28T19:15:17.576Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "AuthControllerTests.cs",
+              "DocumentMoniker": "C:\\Users\\Laurynas\\Desktop\\Bachelor\\backend\\backenTests\\Controllers\\AuthControllerTests.cs",
+              "RelativeDocumentMoniker": "backenTests\\Controllers\\AuthControllerTests.cs",
+              "ToolTip": "C:\\Users\\Laurynas\\Desktop\\Bachelor\\backend\\backenTests\\Controllers\\AuthControllerTests.cs",
+              "RelativeToolTip": "backenTests\\Controllers\\AuthControllerTests.cs",
+              "ViewState": "AgIAAGMAAAAAAAAAAAAcwHwAAAA1AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-24T12:58:13.628Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "BadgesControllerTests.cs",
+              "DocumentMoniker": "C:\\Users\\Laurynas\\Desktop\\Bachelor\\backend\\backenTests\\Controllers\\BadgesControllerTests.cs",
+              "RelativeDocumentMoniker": "backenTests\\Controllers\\BadgesControllerTests.cs",
+              "ToolTip": "C:\\Users\\Laurynas\\Desktop\\Bachelor\\backend\\backenTests\\Controllers\\BadgesControllerTests.cs",
+              "RelativeToolTip": "backenTests\\Controllers\\BadgesControllerTests.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAmAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-28T19:10:25.192Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "LevelsControllerTests.cs",
+              "DocumentMoniker": "C:\\Users\\Laurynas\\Desktop\\Bachelor\\backend\\backenTests\\Controllers\\LevelsControllerTests.cs",
+              "RelativeDocumentMoniker": "backenTests\\Controllers\\LevelsControllerTests.cs",
+              "ToolTip": "C:\\Users\\Laurynas\\Desktop\\Bachelor\\backend\\backenTests\\Controllers\\LevelsControllerTests.cs",
+              "RelativeToolTip": "backenTests\\Controllers\\LevelsControllerTests.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAKAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-28T19:11:16.184Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "AuthController.cs",
+              "DocumentMoniker": "C:\\Users\\Laurynas\\Desktop\\Bachelor\\backend\\backend\\Controllers\\AuthController.cs",
+              "RelativeDocumentMoniker": "backend\\Controllers\\AuthController.cs",
+              "ToolTip": "C:\\Users\\Laurynas\\Desktop\\Bachelor\\backend\\backend\\Controllers\\AuthController.cs",
+              "RelativeToolTip": "backend\\Controllers\\AuthController.cs",
+              "ViewState": "AgIAAHAAAAAAAAAAAAAkwFYAAAA8AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-24T13:03:31.172Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "BadgeNumbersControllerTests.cs",
+              "DocumentMoniker": "C:\\Users\\Laurynas\\Desktop\\Bachelor\\backend\\backenTests\\Controllers\\BadgeNumbersControllerTests.cs",
+              "RelativeDocumentMoniker": "backenTests\\Controllers\\BadgeNumbersControllerTests.cs",
+              "ToolTip": "C:\\Users\\Laurynas\\Desktop\\Bachelor\\backend\\backenTests\\Controllers\\BadgeNumbersControllerTests.cs",
+              "RelativeToolTip": "backenTests\\Controllers\\BadgeNumbersControllerTests.cs",
+              "ViewState": "AgIAADIAAAAAAAAAAAAswEUAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-28T19:09:51.412Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "NotesController.cs",
+              "DocumentMoniker": "C:\\Users\\Laurynas\\Desktop\\Bachelor\\backend\\backend\\Controllers\\NotesController.cs",
+              "RelativeDocumentMoniker": "backend\\Controllers\\NotesController.cs",
+              "ToolTip": "C:\\Users\\Laurynas\\Desktop\\Bachelor\\backend\\backend\\Controllers\\NotesController.cs",
+              "RelativeToolTip": "backend\\Controllers\\NotesController.cs",
+              "ViewState": "AgIAABYAAAAAAAAAAAAQwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-28T19:12:12.796Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "backend.Tests.csproj",
+              "DocumentMoniker": "C:\\Users\\Laurynas\\Desktop\\Bachelor\\backend\\backenTests\\backend.Tests.csproj",
+              "RelativeDocumentMoniker": "backenTests\\backend.Tests.csproj",
+              "ToolTip": "C:\\Users\\Laurynas\\Desktop\\Bachelor\\backend\\backenTests\\backend.Tests.csproj",
+              "RelativeToolTip": "backenTests\\backend.Tests.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABUAAAA8AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2025-05-24T12:45:39.058Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
               "Title": "AuthDtos.cs",
               "DocumentMoniker": "C:\\Users\\Laurynas\\Desktop\\Bachelor\\backend\\backend\\Auth\\Models\\AuthDtos.cs",
               "RelativeDocumentMoniker": "backend\\Auth\\Models\\AuthDtos.cs",
@@ -46,37 +198,35 @@
               "RelativeToolTip": "backend\\Auth\\Models\\AuthDtos.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAACDAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-22T16:29:49.376Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-22T16:29:49.376Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 10,
               "Title": "UsersController.cs",
               "DocumentMoniker": "C:\\Users\\Laurynas\\Desktop\\Bachelor\\backend\\backend\\Controllers\\UsersController.cs",
               "RelativeDocumentMoniker": "backend\\Controllers\\UsersController.cs",
               "ToolTip": "C:\\Users\\Laurynas\\Desktop\\Bachelor\\backend\\backend\\Controllers\\UsersController.cs",
               "RelativeToolTip": "backend\\Controllers\\UsersController.cs",
-              "ViewState": "AgIAABcAAAAAAAAAAAAzwCUAAACSAAAAAAAAAA==",
+              "ViewState": "AgIAABgAAAAAAAAAAAAAwCUAAACSAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-14T15:42:32.944Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-14T15:42:32.944Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 12,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Users\\Laurynas\\Desktop\\Bachelor\\backend\\backend\\Program.cs",
               "RelativeDocumentMoniker": "backend\\Program.cs",
               "ToolTip": "C:\\Users\\Laurynas\\Desktop\\Bachelor\\backend\\backend\\Program.cs",
               "RelativeToolTip": "backend\\Program.cs",
-              "ViewState": "AgIAADwAAAAAAAAAAAAAADoAAAAaAAAAAAAAAA==",
+              "ViewState": "AgIAADkAAAAAAAAAAIBJwDoAAAAaAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-05-12T12:45:04.725Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 11,
               "Title": "backend.csproj",
               "DocumentMoniker": "C:\\Users\\Laurynas\\Desktop\\Bachelor\\backend\\backend\\backend.csproj",
               "RelativeDocumentMoniker": "backend\\backend.csproj",
@@ -88,7 +238,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 13,
               "Title": "LevelsController.cs",
               "DocumentMoniker": "C:\\Users\\Laurynas\\Desktop\\Bachelor\\backend\\backend\\Controllers\\LevelsController.cs",
               "RelativeDocumentMoniker": "backend\\Controllers\\LevelsController.cs",
@@ -100,13 +250,12 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 14,
               "Title": "LevelsControllerTests.cs",
               "DocumentMoniker": "C:\\Users\\Laurynas\\Desktop\\Bachelor\\backend\\backendTest\\Controllers\\LevelsControllerTests.cs",
               "RelativeDocumentMoniker": "backendTest\\Controllers\\LevelsControllerTests.cs",
               "ToolTip": "C:\\Users\\Laurynas\\Desktop\\Bachelor\\backend\\backendTest\\Controllers\\LevelsControllerTests.cs",
               "RelativeToolTip": "backendTest\\Controllers\\LevelsControllerTests.cs",
-              "ViewState": "AgIAABIAAAAAAAAAAAAAAPUAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-05-07T21:52:57.752Z"
             }
