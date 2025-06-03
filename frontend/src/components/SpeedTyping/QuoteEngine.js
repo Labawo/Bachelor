@@ -6,6 +6,8 @@ import "../Quiz/engineModal.css";
 const QuoteEngine = ({ show, onClose, levelId }) => {
 
     const [content, setContent] = useState('');
+    const [author, setAuthor] = useState('');
+    const [source, setSource] = useState('');
     const [timeToComplete, setTimeToComplete] = useState(0);
     const [isTraining, setIsTraining] = useState(false);
 
@@ -15,10 +17,12 @@ const QuoteEngine = ({ show, onClose, levelId }) => {
         const fetchLevelData = async () => {
             try {
             const response = await axiosPrivate.get(`/levels/quotes/${levelId}/randomQuote`);
-            const { source, content, timeToComplete } = response.data;
+            const { source, author, content, timeToComplete } = response.data;
             setContent(content.length > 500 ? content.substring(0, content.indexOf(' ', 475)) : content);
+            setSource(source);
+            setAuthor(author);
             setTimeToComplete(timeToComplete);
-            if(source.toLowerCase().includes("treniruotė") || source.toLowerCase().includes("treniruočių") || source.toLowerCase().includes("treniruo")) {
+            if(source.toLowerCase().includes("trenir") || source.toLowerCase().includes("treniruočių") || source.toLowerCase().includes("treniruo")) {
                 setIsTraining(true);
             }
             } catch (error) {
@@ -34,6 +38,8 @@ const QuoteEngine = ({ show, onClose, levelId }) => {
             fetchLevelData();
         } else {
             setContent('');
+            setSource('');
+            setAuthor('');
             setTimeToComplete(0);
         }
     }, [axiosPrivate, levelId]);
@@ -49,7 +55,12 @@ const QuoteEngine = ({ show, onClose, levelId }) => {
                     <div className='close-button-div-game'>
                         <button className="primary-button-game" onClick={handleClose}>X</button>
                     </div>
-                    
+                    <div>
+                        <div style={{paddingLeft: '4.5%', paddingTop: '3%'}}>
+                            <p style={{fontWeight: 'bold'}}>{source}</p>
+                            <p style={{fontStyle: 'italic'}}>{author}</p>
+                        </div>
+                    </div>
                     <div className='engine-holder-div'>
                         <TypingTest content={content} timeToComplete={timeToComplete} isTraining={isTraining}/>
                     </div>                

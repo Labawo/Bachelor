@@ -22,6 +22,7 @@ const EditLevel = ({ show, onClose, levelId }) => {
         const response = await axiosPrivate.get(`/levels/${levelId}`);
         const { name, description, minExperience } = response.data.resource;
         setName(name);
+        setDescription(description);
         setMinExperience(minExperience);
       } catch (error) {
         console.error("Klaida gaunant lygį:", error);
@@ -96,7 +97,6 @@ const EditLevel = ({ show, onClose, levelId }) => {
                 name="description"
                 value={description}
                 onChange={(e) => setDescription(e.target.value)}
-                placeholder="Įveskite ženkliuko apibūdinimą"
                 required
                 className="textarea-field"
               />
