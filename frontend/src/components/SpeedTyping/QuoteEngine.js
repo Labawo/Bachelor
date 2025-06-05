@@ -3,7 +3,7 @@ import TypingTest from "./TypingTest";
 import useAxiosPrivate from "../../hooks/UseAxiosPrivate";
 import "../Quiz/engineModal.css";
 
-const QuoteEngine = ({ show, onClose, levelId }) => {
+const QuoteEngine = ({ show, onClose, levelId, levelName }) => {
 
     const [content, setContent] = useState('');
     const [author, setAuthor] = useState('');
@@ -22,7 +22,7 @@ const QuoteEngine = ({ show, onClose, levelId }) => {
             setSource(source);
             setAuthor(author);
             setTimeToComplete(timeToComplete);
-            if(source.toLowerCase().includes("trenir") || source.toLowerCase().includes("treniruočių") || source.toLowerCase().includes("treniruo")) {
+            if(levelName.toLowerCase().includes("trenir") || levelName.toLowerCase().includes("treniruočių") || levelName.toLowerCase().includes("treniruo")) {
                 setIsTraining(true);
             }
             } catch (error) {

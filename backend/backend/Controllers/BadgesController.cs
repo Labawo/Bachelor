@@ -22,15 +22,16 @@ public class BadgesController : ControllerBase
     }
 
     [HttpGet(Name = "GetBadges")]
-    public async Task<IEnumerable<BadgeDto>> GetMany()
+    public async Task<IEnumerable<BadgeImageDto>> GetMany()
     {
         var badges = await _badgesRepository.GetManyAsync();
 
         return badges.Select(o => 
-            new BadgeDto(
+            new BadgeImageDto(
                 o.Id, 
                 o.Name, 
-                o.Descripotion));
+                o.Descripotion,
+                o.BadgeImage));
     }
     
     [HttpGet("{badgeId}", Name = "GetBadge")]

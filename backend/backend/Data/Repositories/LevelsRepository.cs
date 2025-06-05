@@ -59,28 +59,28 @@ public class LevelsRepository : ILevelsRepository
     
     public async Task<PagedList <Level>> GetManyForWordsAsync(LevelSearchParameters levelSearchParameters)
     {
-        var queryable = _lsDbContext.Levels.Where(o => o.IsForWords == true).AsQueryable().OrderBy(o => o.Name);
+        var queryable = _lsDbContext.Levels.Where(o => o.IsForWords == true).AsQueryable().OrderBy(o => o.MinExperience);
 
         return await PagedList<Level>.CreateAsync(queryable, levelSearchParameters.PageNumber, levelSearchParameters.PageSize);
     }
     
     public async Task<PagedList <Level>> GetManyNotForWordsAsync(LevelSearchParameters levelSearchParameters)
     {
-        var queryable = _lsDbContext.Levels.Where(o => o.IsForWords == false).AsQueryable().OrderBy(o => o.Name);
+        var queryable = _lsDbContext.Levels.Where(o => o.IsForWords == false).AsQueryable().OrderBy(o => o.MinExperience);
 
         return await PagedList<Level>.CreateAsync(queryable, levelSearchParameters.PageNumber, levelSearchParameters.PageSize);
     }
 
     public async Task<PagedList<Level>> GetManyQuizAsync(LevelSearchParameters levelSearchParameters, int score)
     {
-        var queryable = _lsDbContext.Levels.Where(o => o.IsForWords == true && o.MinExperience <= score).AsQueryable().OrderBy(o => o.Name);
+        var queryable = _lsDbContext.Levels.Where(o => o.IsForWords == true && o.MinExperience <= score).AsQueryable().OrderBy(o => o.MinExperience);
 
         return await PagedList<Level>.CreateAsync(queryable, levelSearchParameters.PageNumber, levelSearchParameters.PageSize);
     }
 
     public async Task<PagedList<Level>> GetManyQuoteAsync(LevelSearchParameters levelSearchParameters, int score)
     {
-        var queryable = _lsDbContext.Levels.Where(o => o.IsForWords == false && o.MinExperience <= score).AsQueryable().OrderBy(o => o.Name);
+        var queryable = _lsDbContext.Levels.Where(o => o.IsForWords == false && o.MinExperience <= score).AsQueryable().OrderBy(o => o.MinExperience);
 
         return await PagedList<Level>.CreateAsync(queryable, levelSearchParameters.PageNumber, levelSearchParameters.PageSize);
     }

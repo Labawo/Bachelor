@@ -80,7 +80,7 @@ const UserBadges = () => {
                     <div className='badge-div'>
                         {filteredBadges.map((badge, i) => (
                             <span key={i} className={`badge-span ${badge?.seen === 0 ? 'alerts-border' : ''}`}>
-                                <img src={logo} alt="Logo" width='80%' height='120px'/>
+                                <img src={badge?.image === null ? logo : badge?.image} alt="Logo" width='80%' height='120px'/>
                                 <p style={{fontWeight : '600', fontSize: '20px'}}>{badge?.name}</p>
                                 <div>
                                     <button

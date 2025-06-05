@@ -132,15 +132,15 @@ const Levels = ({ urlApi, header, headerBackgroundColor }) => {
                                     <td>
                                         <button 
                                             className="blue-button"
-                                            onClick={() => updateLevel(level.id)}
-                                        >
-                                            <FontAwesomeIcon icon={faEdit} />
-                                        </button>
-                                        <button 
-                                            className="blue-button"
                                             onClick={() => handleInspect(level.id)}
                                         >
                                             <FontAwesomeIcon icon={faSearch} />
+                                        </button>
+                                        <button 
+                                            className="blue-button"
+                                            onClick={() => updateLevel(level.id)}
+                                        >
+                                            <FontAwesomeIcon icon={faEdit} />
                                         </button>
                                         <button
                                             className="red-button"

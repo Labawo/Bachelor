@@ -26,6 +26,7 @@ const TypingTest = ({ content, timeToComplete, isTraining }) => {
         inputRef.current.focus();
         setCorrectWrong(Array(charRefs.current.length).fill(''));
         setTimeLeft(0);
+        console.log(isTraining);
     }, [content]);
 
     useEffect(() => {

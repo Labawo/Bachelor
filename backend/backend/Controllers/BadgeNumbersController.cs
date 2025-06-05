@@ -159,7 +159,7 @@ public class BadgeNumbersController : ControllerBase
             return BadRequest();
         }
 
-        var badges = await _badgesRepository.GetManyQuotesAsync(requestDto.Points);
+        var badges = await _badgesRepository.GetManyQuotesAsync(requestDto.Single ? 0 : requestDto.Points);
         var badgenumbers = await _badgeNumbersRepository.GetManyUserAsync(userId);
         var numbers = new List<BadgeNumber>();
 

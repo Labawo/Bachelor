@@ -17,6 +17,7 @@ const QuoteLevels = () => {
     const { auth } = useAuth();
     const [errorMessage, setErrorMessage] = useState("");
     const [gameId, setGameId] = useState(0);
+    const [gameName, setGameName] = useState('');
     const [selectedLevelId, setSelectedLevelId] = useState('');
     const [selectedLevelName, setSelectedLevelName] = useState('');
     const [selectedLevelDescription, setSelectedLevelDescription] = useState('');
@@ -51,8 +52,9 @@ const QuoteLevels = () => {
         loadLevels(page);
     }, [page]); 
 
-    const playQuote = (levelId) => {
+    const playQuote = (levelId, levelName) => {
         setGameId(levelId);
+        setGameName(levelName);
     };
 
     const showList = () => {
@@ -151,7 +153,7 @@ const QuoteLevels = () => {
                             <button 
                                 className="blue-button"
                                 style={{width: '100%', fontSize: '15px'}}
-                                onClick={() => playQuote(selectedLevelId)}
+                                onClick={() => playQuote(selectedLevelId, selectedLevelName)}
                             >
                                 Žaisti
                             </button>
@@ -167,8 +169,9 @@ const QuoteLevels = () => {
             />
             <QuoteEngine
                 show={gameId !== 0}
-                onClose={() => setGameId(0)}
+                onClose={() => {setGameId(0); setGameName('')}}
                 levelId={gameId}
+                levelName={gameName}
             />
         </article>
     );
